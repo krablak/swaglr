@@ -1,0 +1,43 @@
+{% extends "based.html" %}
+
+{% block cliplist %}
+    			<div id="clip" class="{{ clip|clip_class }}">
+    				<span id="date">before {{ clip.date|timesince }} by </span>
+    				<span id="author"><a href="/user/{{ clip.user.user_id }}/page/0">{{ clip.user.user.nickname }}</a></span>
+    				{% ifnotequal clip.page "null" %}
+    				<span id="page">at <a href="{{ clip.page }}">{{ clip.page|slice:"0:100" }}...</a></span>
+    				{% endifnotequal %}    				
+    				{% if clip|is_text_clip %}
+    				<div id="text">"{{ clip.text|escape }}"</div>
+    				{% endif %}
+    				{% if clip|is_link_clip %}
+    					<div id="link"><a href="{{ clip.link }}">{{ clip.link|escape }}</a></div>
+    				{% endif %}
+    				{% if clip|is_page_clip %}
+    				<div id="link"><a href="{{ clip.page }}">{{ clip.page|escape }}</a></div>
+   					{% endif %}
+   					{% if clip|is_image_clip %}
+    				<div id="detail-image">
+    					<center>
+    					<a href="{{ clip.src }}"><img width="400px" src="{{ clip.src }}"/></a>
+    					</center>
+    				</div>
+    				{% endif %}
+    				<div id="controls">
+    					{% ifequal user.user_id clip.user.user_id %}
+    					<span id="delete"><a href="/delete/{{ clip.key.id }}">Delete</a></span>
+    					{% endifequal %}
+    					<span id="tweet">
+    						{% if clip|is_text_clip %}
+	    					<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://swagclip.appspot.com/clip/{{ clip.key.id }}" data-text='{{ clip.text|slice:"0:50" }}...' data-count="none">Tweet</a>
+	    					{% endif %} 
+	    					{% if clip|is_link_clip or clip|is_page_clip %}
+							<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://swagclip.appspot.com/clip/{{ clip.key.id }}" data-text='Swagged link...' data-count="none">Tweet</a>
+							{% endif %} 
+							{% if clip|is_image_clip %}
+							<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://swagclip.appspot.com/clip/{{ clip.key.id }}" data-text='Swagged picture...' data-count="none">Tweet</a>
+	    					{% endif %}
+    					</span>
+    				</div>
+    			</div>
+{% endblock %}

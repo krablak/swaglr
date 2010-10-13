@@ -1,0 +1,49 @@
+{% extends "based.html" %}
+
+{% block cliplist %}
+			{% for day in day_clips %}
+			<div class="ltDay"> 
+			<div class="ltRight">
+    			<ul>
+    		{% for clip in day.clips %}	
+    			{% if clip|is_image_clip %}
+    			<li class="box" style="background-image:url('/images/tiny/{{ clip.image.key.id }}.jpg');">
+    			{% else %}
+    			<li class="box">
+    			{% endif %}	
+    				<p>
+    				{% ifnotequal clip.page "null" %}
+    				<a href="{{ clip.page }}">{{ clip.page|slice:"0:100" }}...</a><br/>    				
+    				{% endifnotequal %} 
+    				   				
+    				{% if clip|is_text_clip %}
+    				<q cite="{{ clip.page }}">{{ clip.text|slice:"0:250"|escape }}...</q>
+   					{% endif %}
+   					
+   					{% if clip|is_page_clip %}
+    				<q cite="{{ clip.page }}">{{ clip.page|slice:"0:250"|escape }}...</q>
+   					{% endif %}
+    				
+    				{% if clip|is_link_clip %}
+    				<q cite="{{ clip.link }}">{{ clip.link|slice:"0:100"|escape }}...</q>
+    				{% endif %}     					 
+   					</p>   				
+    			</li>
+    		{% endfor %}    				
+    			</ul>
+    		</div>
+    		<div class="ltLeft"> 
+		        <p>{{ day.day }}</p>
+		    </div>
+		    {% endfor %} 
+    		</div>
+{% endblock %}
+{% block paging-controls %}
+    			{% if next %}
+    				<a id="next" href="{{ next }}">Newer</a>
+    			{% endif %}
+    			{% if prev %}
+    				<a id="prev" href="{{ prev }}">Older</a>
+    			{% endif %}
+{% endblock %}
+{% debug %} 

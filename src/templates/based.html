@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+         <title>Swagged web clips</title>
+         <meta name="robots" content="all" />
+         <meta name="rating" content="safe for kids" />
+         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+         <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css' />
+         <link href='http://fonts.googleapis.com/css?family=Molengo' rel='stylesheet' type='text/css' />
+         <link type="text/css" rel="stylesheet" href="/static/css/map-theme/jquery-ui-1.8.custom.css" />
+         <link type="text/css" rel="stylesheet" href="/static/css/sclip.css" />
+         <script type="text/javascript" src="/static/js/jquery-1.4.2.min.js"></script>
+         <script type="text/javascript" src="/static/js/imgpreview.min.0.22.jquery.js"></script>
+         <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+         <script type="text/javascript" src="/static/js/sclip.js"></script>
+    </head>
+    <body onload="initUI();">
+    	<div id="container">
+    	{% block container %}
+    		<div id="header">
+    		{% block header %}
+    			<a href="/">Swag Clips</a>
+    		{% endblock %}
+    		</div>
+    		<div id="toolbar">
+    		{% block toolbar %}
+    			{% if user %}
+    				<a href="/user/{{ user.user_id }}/page/0">Home</a>
+    				<a href="/static/crx/sclipper.crx">Chrome Swag Clipping extension</a>
+    			{% endif %}
+    				<a href="/about/">About</a>
+    			{{ greeting }}
+    		{% endblock %}
+    		</div>
+    		<div id="cliplist">
+    		{% block cliplist %}
+    		{% endblock %}
+    		</div>
+    		<div id="paging-controls">
+    		{% block paging-controls %}
+    		{% endblock %}
+    		</div>
+    	{% endblock %}
+    	</div>
+    </body>
+</html>

@@ -1,0 +1,26 @@
+{% extends "based.html" %}
+
+{% block cliplist %}
+	<b>What is it?</b>
+	<div id="clip">
+	<p>
+		Swag Clips is only the bag of posted web clips... nothing more.
+	</p>
+	</div>
+	<b>How to use it?</b>
+	<div id="clip">
+	<p>
+		<div><span>1. </span><span>Login to the Swag Clips.</span></div>
+		<div><span>2. </span><span>Download and install the <a href="/static/crx/sclipper.crx">Swag Clip Chrome extension</a>.</span></div>
+		<div><span>3. </span><span>Perform first clip swag to authorize exetension using the Chrome context menu.</span></div>
+		<div><span>4. </span><span>Swag a text, link or image clip.</span></div>
+	</p>
+	</div>
+	<b>How it works?</b>
+	<div id="clip">
+	<p>
+		Whole Swag Clips server-side is running on <a href="http://code.google.com/appengine/">Google App Engine</a> and is written in <a href="http://www.python.org/">Python</a>. Web pages and browser extension is build and tested only for <a href="http://www.google.com/chrome">Chrome 6</a>.<br/>
+		Authentication between server application and browser extension is based on <a href="http://oauth.net/">OAuth</a>.<br/>
+	</p>
+	</div>
+{% endblock %}
