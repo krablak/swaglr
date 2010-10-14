@@ -13,6 +13,7 @@ from google.appengine.ext.webapp.util import login_required
 from google.appengine.api import oauth
 from image import thumbnail
 import ui.models
+from ui.error_logging import log_errors
 from dbo import *
 import datetime
 import dbo
@@ -21,6 +22,7 @@ PAGING = 20
 
 class MainPage(webapp.RequestHandler):    
     
+    @log_errors
     def get(self):
         params = {}
         params['greeting'] = get_greeting()
@@ -35,6 +37,7 @@ class MainPage(webapp.RequestHandler):
         
 class Paging(webapp.RequestHandler):    
     
+    @log_errors
     def get(self,page_val):
         page = 0    
         try:
@@ -56,6 +59,7 @@ class Paging(webapp.RequestHandler):
         
 class User(webapp.RequestHandler):    
     
+    @log_errors
     def get(self,user_id_val,page_val):
         user_id = ""
         try:
@@ -80,8 +84,11 @@ class User(webapp.RequestHandler):
         params['day_clips'] = ui.models.to_day_clips(clips)
         util.render("templates/index.html", params, self.response)
         
+
+        
 class Detail(webapp.RequestHandler):    
     
+    @log_errors
     def get(self,clip_id_val):
         clip_id = 0
         try:
@@ -97,6 +104,7 @@ class Detail(webapp.RequestHandler):
         
 class About(webapp.RequestHandler):    
     
+    @log_errors
     def get(self):
         params = {}
         params['greeting'] = get_greeting()   
@@ -106,6 +114,7 @@ class About(webapp.RequestHandler):
         
 class Delete(webapp.RequestHandler):    
     
+    @log_errors
     @login_required
     def get(self,clip_id_val):
         clip_id = 0
@@ -178,6 +187,7 @@ class ImageTest(webapp.RequestHandler):
         
 class Images(webapp.RequestHandler):
     
+    @log_errors
     def get(self,type,name):
         image_type = str(type)
         image_name = str(name)
@@ -198,7 +208,8 @@ class Post(webapp.RequestHandler):
     """
     Post the clip into system.
     """    
-    
+   
+    @log_errors 
     def get(self):
         page = self.request.get('page')
         link = self.request.get('link')
