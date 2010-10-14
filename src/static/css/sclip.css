@@ -1,63 +1,74 @@
+/* line 4, ../src/sclip.scss */
 body {
-        margin: 0;
-        padding: 2em;
-		font-family: Helvetica;
-      }
-	  
-	  q{
-	    text-align:left;
-	  }
-	  
-	  ul {
-		margin: 0px;
-		padding: 0px;
-	  }
-	    .box {
-		width:180px;
-		height:180px;
-		display: block;
-		float:left;
-		margin: 0px 5px 5px 0;
-		border: 1px solid #eeeeee;
-		padding: 5px;
-		osition:relative;
-		}
-		
-		.box a{
-			position:relative;
-			left:0px;
-			top:140px;
-			background-color: #fff;
-			color: #555;
-			font-size:0.8em;
-			
-		
-		}
- 
-      .ltDay {
-        /*border-top: 1px solid #999999;*/
-        }
-      .ltRight {
-        width: 80%;
-        float: right;
-	    background-color:  #fff;
-        }
- 
-      .ltLeft {
-        width: 19%;
-        float: left;
-	    color: #999999;
-		font-weight:bold;
-		font-size:1.5em;
-		text-align:right;
-      }
- 
-      .cleaner {
-        clear: both;
-        height: 0;
-        content: ' ';
-        overflow: hidden;
-      }
-      .cleaner hr {
-        display: none;
-      }
+  margin: 0;
+  padding: 2em;
+  font-family: Helvetica;
+}
+
+/* line 10, ../src/sclip.scss */
+q {
+  text-align: left;
+}
+
+/* line 14, ../src/sclip.scss */
+ul {
+  margin: 0px;
+  padding: 0px;
+}
+
+/* line 18, ../src/sclip.scss */
+.box {
+  width: 180px;
+  height: 180px;
+  display: block;
+  float: left;
+  margin: 0px 5px 5px 0;
+  border: 1px solid #eeeeee;
+  padding: 5px;
+  osition: relative;
+}
+
+/* line 29, ../src/sclip.scss */
+.box a {
+  position: relative;
+  left: 0px;
+  top: 140px;
+  background-color: #fff;
+  color: #555;
+  font-size: 0.8em;
+}
+
+/* line 40, ../src/sclip.scss */
+.ltDay {
+  /*border-top: 1px solid #999999;*/
+}
+
+/* line 43, ../src/sclip.scss */
+.ltRight {
+  width: 80%;
+  float: right;
+  background-color: #fff;
+}
+
+/* line 49, ../src/sclip.scss */
+.ltLeft {
+  width: 19%;
+  float: left;
+  color: #999999;
+  font-weight: bold;
+  font-size: 1.5em;
+  text-align: right;
+}
+
+/* line 58, ../src/sclip.scss */
+.cleaner {
+  clear: both;
+  height: 0;
+  content: ' ';
+  overflow: hidden;
+}
+
+/* line 64, ../src/sclip.scss */
+.cleaner hr {
+  display: none;
+}
