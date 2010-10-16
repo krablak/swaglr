@@ -1,0 +1,111 @@
+<html>
+    <style type="text/css" media="all">
+           .awesome{
+background: #222 url(http://www.zurb.com/images/alert-overlay.png) repeat-x;
+display: inline-block;
+padding: 5px 10px 6px;
+color: #fff;
+text-decoration: none;
+font-weight: bold;
+line-height: 1;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+-moz-box-shadow: 0 1px 3px #999;
+-webkit-box-shadow: 0 1px 3px #999;
+text-shadow: 0 -1px 1px #222;
+border-bottom: 1px solid #222;
+position: relative;
+cursor: pointer;
+
+
+
+-moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+border-bottom: 1px solid rgba(0,0,0,0.25);
+}
+
+
+/* Sizes ---------- */
+.small.awesome {
+font-size: 11px;
+}
+.medium.awesome {
+font-size: 13px;
+}
+.large.awesome {
+font-size: 14px;
+padding: 8px 14px 9px;
+}
+ 
+/* Colors ---------- */
+.blue.awesome {
+background-color: #2daebf;
+}
+.red.awesome {
+background-color: #e33100;
+}
+.magenta.awesome {
+background-color: #a9014b;
+}
+.orange.awesome {
+background-color: #ff5c00;
+}
+.yellow.awesome {
+background-color: #ffb515;
+}
+
+
+ .dialog_window {
+    position: absolute;
+    right: 50%;
+    width: 300px;
+    height: auto;
+
+    padding: 5px;
+    border: 2px solid gray;
+    background-color: white;
+    z-index: 99999;
+}
+
+.dialog_button {
+    border: 1px solid gray;
+    background-color: gray;
+    color: white;
+    margin: 22px 2px 2px;
+    -webkit-border-radius: 5px;
+}
+
+.dialog_input {
+    width: 190px;
+    height: 50px;
+    margin: 2px 2px 2px 2px;
+}
+
+#sc_post_text {
+    width: 99%;
+}
+    </style>
+<body>
+    <div id="sc_post_dialog" class="dialog_window" style="top: 351px;">
+
+<H2>Your clip</h2>
+
+
+
+<p id="clip_details">Clipped text : persists from the time the plugin is instantiated on the element until it is destroyed, either explicitly</p> 
+
+<textarea id="sc_post_text" class="dialog_input" type="text"></textarea>
+
+<p>
+<a class="medium blue awesome" id="btn_post">Post</a>
+
+<span  class="dialog_button" >Post</span><span id="btn_cancel" class="dialog_button" >Close</span>
+</p>
+
+
+</div>
+    
+    
+    </body>
+</html>

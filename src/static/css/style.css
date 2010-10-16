@@ -1,22 +1,22 @@
-/* line 4, ../src/sclip.scss */
+/* line 4, ../src/style.scss */
 body {
   margin: 0;
   padding: 2em;
   font-family: Helvetica;
 }
 
-/* line 10, ../src/sclip.scss */
+/* line 10, ../src/style.scss */
 q {
   text-align: left;
 }
 
-/* line 14, ../src/sclip.scss */
+/* line 14, ../src/style.scss */
 ul {
   margin: 0px;
   padding: 0px;
 }
 
-/* line 18, ../src/sclip.scss */
+/* line 18, ../src/style.scss */
 .box {
   width: 180px;
   height: 180px;
@@ -28,7 +28,7 @@ ul {
   osition: relative;
 }
 
-/* line 29, ../src/sclip.scss */
+/* line 29, ../src/style.scss */
 .box a {
   position: relative;
   left: 0px;
@@ -38,19 +38,19 @@ ul {
   font-size: 0.8em;
 }
 
-/* line 40, ../src/sclip.scss */
+/* line 40, ../src/style.scss */
 .ltDay {
   /*border-top: 1px solid #999999;*/
 }
 
-/* line 43, ../src/sclip.scss */
+/* line 43, ../src/style.scss */
 .ltRight {
   width: 80%;
   float: right;
   background-color: #fff;
 }
 
-/* line 49, ../src/sclip.scss */
+/* line 49, ../src/style.scss */
 .ltLeft {
   width: 19%;
   float: left;
@@ -60,7 +60,7 @@ ul {
   text-align: right;
 }
 
-/* line 58, ../src/sclip.scss */
+/* line 58, ../src/style.scss */
 .cleaner {
   clear: both;
   height: 0;
@@ -68,7 +68,7 @@ ul {
   overflow: hidden;
 }
 
-/* line 64, ../src/sclip.scss */
+/* line 64, ../src/style.scss */
 .cleaner hr {
   display: none;
 }
