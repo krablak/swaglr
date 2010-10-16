@@ -228,3 +228,20 @@ footer {
 	-webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
 
 }
+
+.box {
+		width:100%;
+		height:180px;
+		padding: 5px;
+		}
+		
+.box a{
+			position:relative;
+			left:0px;
+			top:140px;
+			background-color: #fff;
+			color: #555;
+			font-size:0.8em;
+			
+		
+		}
