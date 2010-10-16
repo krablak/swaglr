@@ -6,6 +6,7 @@ Created on Sep 23, 2010
 
 from google.appengine.ext import webapp
 import clips.api
+import clips.validations
 register = webapp.template.create_template_register()
 
 
@@ -33,8 +34,15 @@ def is_text_clip(clip):
     """
     return clips.api.TEXT == clip.type
 
+def is_commented_clip(clip):
+    """
+    Returns true in case that clip is commented.
+    """
+    return clip.comment and clip.comment!=clips.validations.NULL
+
 
 register.filter(is_page_clip)
 register.filter(is_image_clip)
 register.filter(is_link_clip)
 register.filter(is_text_clip)
+register.filter(is_commented_clip)

@@ -19,6 +19,10 @@
    					{% if clip|is_page_clip %}
     				<q cite="{{ clip.page }}">{{ clip.page|slice:"0:250"|escape }}...</q>
    					{% endif %}
+   					
+   					{% if clip|is_commented_clip %}
+   						{{  clip.comment }}
+   					{% endif %}
     				
     				{% if clip|is_link_clip %}
     				<q cite="{{ clip.link }}">{{ clip.link|slice:"0:100"|escape }}...</q>

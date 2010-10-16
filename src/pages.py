@@ -140,6 +140,8 @@ class Test(webapp.RequestHandler):
         #Linky
         for i in range(1,4):
             clips.api.store("http://behance.vo.llnwd.net/", "http://www.somepage.com/linked/link", "null", "null" , "null")
+        for i in range(1,2):
+            clips.api.store("http://behance.vo.llnwd.net/", "null", "http://img.aktualne.centrum.cz/334/18/3341852-ustavni-soud-v-brne.jpg", "null" , "Komentar k obrazku.")
         #Obrazky
         for i in range(1,4):
             clips.api.store("http://www.somepage.com/", "null", "http://behance.vo.llnwd.net/profiles/58035/projects/741714/bc8412ad79bd7ebd65a4c3c191f62ec9.jpg", "null", "null")

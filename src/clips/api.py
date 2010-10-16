@@ -36,6 +36,8 @@ def __validate_clip(page,link,src,text,comment):
     #Validate text
     if validations.is_set(text):
         validations.validate_str(text,"text")
+    #Validate comment
+    validations.validate_str(comment,"comment")
 
 PAGE = "page"
 LINK = "link"
