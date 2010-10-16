@@ -12,7 +12,6 @@ application = webapp.WSGIApplication([('/', MainPage),
                                       ('/about/', About),
                                       ('/images/(.*)/(.*)', Images),
                                       ('/test/', Test),
-                                      ('/itest/(.*)', ImageTest),
                                      ]
                                      , debug=True)
 

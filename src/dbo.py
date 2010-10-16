@@ -45,6 +45,7 @@ class UserInfo(db.Model):
         return UserInfo.all().filter('user_id = ', user_id).fetch(1)
 
 class Clip(db.Model):
+    type = db.StringProperty(required=True)
     page = db.StringProperty(required=True)
     text = db.TextProperty()
     comment = db.TextProperty()

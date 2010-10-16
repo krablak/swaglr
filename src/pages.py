@@ -4,18 +4,15 @@ Created on Aug 18, 2010
 @author: michalracek
 '''
 
-import logging
 import util
 from django.utils import simplejson
 from google.appengine.api import users
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import login_required
-from google.appengine.api import oauth
-from image import thumbnail
+import clips.api
 import ui.models
 from ui.error_logging import log_errors
 from dbo import *
-import datetime
 import dbo
 
 PAGING = 20
@@ -134,58 +131,23 @@ class Delete(webapp.RequestHandler):
 class Test(webapp.RequestHandler):   
     
     def get(self):
-        user = users.get_current_user()
-        #Obrazky
-        for i in range(1,2):
-            src="http://img.aktualne.centrum.cz/334/18/3341852-ustavni-soud-v-brne.jpg";
-            image = thumbnail(src)
-            image.put()
-            clip = Clip(page="http://www.somepage.com/",
-                        type="null",
-                        comment="null",
-                        link="null",
-                        src="http://behance.vo.llnwd.net/profiles/58035/projects/741714/bc8412ad79bd7ebd65a4c3c191f62ec9.jpg",
-                        text="Testovaci text... blablabla bla bla",
-                        user=UserInfo.getUserInfo(user))
-            clip.image = image
-            clip.put()
-        #Linky
-        for i in range(1,4):
-            clip = Clip(page="http://www.somepage.com/",type="link",comment="komentar",link="http://www.google.com/",src="null",text="null",user=UserInfo.getUserInfo(user))
-            clip.put()
         #Texty
         for i in range(1,4):
-            clip = Clip(page="http://www.somepage.com/",
-                        type="null",
-                        comment="null",
-                        link="null",src="null",
-                        text="Testovaci text... blablabla bla bla",
-                        user=UserInfo.getUserInfo(user))
-            clip.put()
+            clips.api.store("http://behance.vo.llnwd.net/", "null", "null", "Velmi nudny text %s " % (i), "null")
+        #Obrazky
+        for i in range(1,2):
+            clips.api.store("http://behance.vo.llnwd.net/", "null", "http://img.aktualne.centrum.cz/334/18/3341852-ustavni-soud-v-brne.jpg", "null" , "null")
+        #Linky
+        for i in range(1,4):
+            clips.api.store("http://behance.vo.llnwd.net/", "http://www.somepage.com/linked/link", "null", "null" , "null")
         #Obrazky
         for i in range(1,4):
-            src="http://behance.vo.llnwd.net/profiles/58035/projects/741714/bc8412ad79bd7ebd65a4c3c191f62ec9.jpg";
-            image = thumbnail(src)
-            image.put()
-            clip = Clip(page="http://www.somepage.com/",
-                        type="null",
-                        comment="null",
-                        link="null",
-                        src="http://behance.vo.llnwd.net/profiles/58035/projects/741714/bc8412ad79bd7ebd65a4c3c191f62ec9.jpg",
-                        text="null",
-                        user=UserInfo.getUserInfo(user))
-            clip.image = image
-            clip.put()
-
-            
-class ImageTest(webapp.RequestHandler):
-    
-    def get(self,src):
-        src="http://behance.vo.llnwd.net/profiles/58035/projects/741714/bc8412ad79bd7ebd65a4c3c191f62ec9.jpg";
-        image = thumbnail(src)
-        image.put()
+            clips.api.store("http://www.somepage.com/", "null", "http://behance.vo.llnwd.net/profiles/58035/projects/741714/bc8412ad79bd7ebd65a4c3c191f62ec9.jpg", "null", "null")
         
 class Images(webapp.RequestHandler):
+    """
+    Finds image in datastore and returns it as response.
+    """
     
     @log_errors
     def get(self,type,name):
@@ -216,13 +178,7 @@ class Post(webapp.RequestHandler):
         src = self.request.get('src')
         text = self.request.get('text')
         comment = self.request.get('comment') 
-        user = oauth.get_current_user()
-        if type and page and user:
-            clip = Clip(page=page,type=type,comment=comment,link=link,src=src,text=text,user=UserInfo.getUserInfo(user))
-            if src:
-                image = thumbnail(src)
-                clip.image = image
-            clip.put()
+        clips.api.store(page, link, src, text, comment)
                         
 
 def get_greeting():
