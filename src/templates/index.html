@@ -8,9 +8,7 @@
     		{% for clip in day.clips %}	
 	    			<li id="clip_box" class="box" {% if clip|is_image_clip %}style="background-image:url('/images/tiny/{{ clip.image.key.id }}.jpg');"{% endif %}>
     				<p>
-    				{% ifnotequal clip.page "null" %}
     				<a href="{{ clip.page }}">{{ clip.page|slice:"0:100" }}...</a><br/>    				
-    				{% endifnotequal %} 
     				   				
     				{% if clip|is_text_clip %}
     				<q cite="{{ clip.page }}">{{ clip.text|slice:"0:250"|escape }}...</q>
