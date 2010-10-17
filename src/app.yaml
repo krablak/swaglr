@@ -11,3 +11,7 @@ handlers:
   
 error_handlers:
   - file: static/errors/default_error.html
+
+builtins:
+- remote_api: on
+- datastore_admin: on
