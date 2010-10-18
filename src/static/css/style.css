@@ -1,34 +1,182 @@
-/* line 4, ../src/style.scss */
-body {
-  margin: 0;
-  padding: 2em;
-  font-family: Helvetica;
+/* Getting the new tags to behave */
+/* line 6, ../src/style.scss */
+article, aside, audio, canvas, command, datalist, details, embed, figcaption, figure, footer, header, hgroup, keygen, meter, nav, output, progress, section, source, video {
+  display: block;
 }
 
-/* line 10, ../src/style.scss */
+/* line 7, ../src/style.scss */
+mark, rp, rt, ruby, summary, time {
+  display: inline;
+}
+
+@font-face {
+  font-family: 'RalewayThin';
+  src: url("../fonts/raleway_thin-webfont.eot");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Lobster1.1Regular';
+  src: url("../fonts/Lobster_1.1_-webfont.eot");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Site-wide properties ======================================================== */
+/* line 24, ../src/style.scss */
+body {
+  font: normal normal 10px/10px Tahoma, Arial, Helvetica, Verdana, sans-serif;
+}
+
+/* Fibonacci based heading scale ratio */
+/* line 28, ../src/style.scss */
+h1 {
+  font-size: 4.4em;
+  font-weight: normal;
+}
+
+/* line 29, ../src/style.scss */
+h2 {
+  font-size: 2.8em;
+  font-weight: bold;
+}
+
+/* line 30, ../src/style.scss */
+h3 {
+  font-size: 1.6em;
+  font-weight: bold;
+}
+
+/* line 31, ../src/style.scss */
+h4 {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+/* Reusable classes ============================================================ */
+/* Left & Right alignment */
+/* line 36, ../src/style.scss */
+.left {
+  float: left;
+}
+
+/* line 37, ../src/style.scss */
+.right {
+  float: right;
+}
+
+/* The inside class provides consistent padding. To be used often! */
+/* line 40, ../src/style.scss */
+.inside {
+  padding: 20px;
+}
+
+/* The fraction classes are useful for column lists */
+/* line 43, ../src/style.scss */
+.half, .third, .quarter, .fifth, .sixth {
+  width: 100%;
+}
+
+/* line 44, ../src/style.scss */
+.half li, .third li, .quarter li, .fifth li, .sixth li {
+  float: left;
+}
+
+/* line 45, ../src/style.scss */
+.half li {
+  padding-right: 5%;
+  width: 45%;
+}
+
+/* line 46, ../src/style.scss */
+.third li {
+  padding-right: 5%;
+  width: 28.3%;
+}
+
+/* line 47, ../src/style.scss */
+.quarter li {
+  padding-right: 5%;
+  width: 20%;
+}
+
+/* line 48, ../src/style.scss */
+.fifth li {
+  padding-right: 5%;
+  width: 15%;
+}
+
+/* For when a <br /> just ain't enough */
+/* line 51, ../src/style.scss */
+.separator {
+  clear: both;
+  float: left;
+  height: 1px;
+  width: 100%;
+}
+
+/* Basic Structure ============================================================= */
+/* line 58, ../src/style.scss */
+#wrap {
+  margin: 0 auto;
+  position: relative;
+  width: 960px;
+}
+
+/* Header */
+/* line 64, ../src/style.scss */
+header {
+  float: left;
+  width: 100%;
+}
+
+/* Content */
+/* line 69, ../src/style.scss */
+article {
+  float: left;
+  width: 66.7%;
+}
+
+/* Sidebar */
+/* line 74, ../src/style.scss */
+aside {
+  float: left;
+  width: 33.3%;
+}
+
+/* Footer */
+/* line 79, ../src/style.scss */
+footer {
+  float: left;
+  width: 100%;
+}
+
+/* Project specifics =========================================================== */
+/* Pour some CSS below ========================================================= */
+/* line 86, ../src/style.scss */
+body {
+  background-color: #111111;
+}
+
+/* line 91, ../src/style.scss */
 q {
   text-align: left;
 }
 
-/* line 14, ../src/style.scss */
-ul {
-  margin: 0px;
-  padding: 0px;
-}
-
-/* line 18, ../src/style.scss */
+/* line 95, ../src/style.scss */
 .box {
   width: 180px;
   height: 180px;
   display: block;
   float: left;
   margin: 0px 5px 5px 0;
-  border: 1px solid #eeeeee;
+  border: 1px solid #888;
+  background-color: #fff;
   padding: 5px;
-  osition: relative;
+  position: relative;
 }
-
-/* line 29, ../src/style.scss */
+/* line 106, ../src/style.scss */
 .box a {
   position: relative;
   left: 0px;
@@ -38,29 +186,28 @@ ul {
   font-size: 0.8em;
 }
 
-/* line 40, ../src/style.scss */
+/* line 116, ../src/style.scss */
 .ltDay {
   /*border-top: 1px solid #999999;*/
 }
 
-/* line 43, ../src/style.scss */
+/* line 119, ../src/style.scss */
 .ltRight {
   width: 80%;
   float: right;
-  background-color: #fff;
 }
 
-/* line 49, ../src/style.scss */
+/* line 124, ../src/style.scss */
 .ltLeft {
   width: 19%;
   float: left;
-  color: #999999;
+  color: #fff;
   font-weight: bold;
   font-size: 1.5em;
   text-align: right;
 }
 
-/* line 58, ../src/style.scss */
+/* line 133, ../src/style.scss */
 .cleaner {
   clear: both;
   height: 0;
@@ -68,7 +215,7 @@ ul {
   overflow: hidden;
 }
 
-/* line 64, ../src/style.scss */
+/* line 139, ../src/style.scss */
 .cleaner hr {
   display: none;
 }

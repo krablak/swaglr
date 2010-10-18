@@ -1,66 +1,141 @@
 @import "compass/css3";
 @import "compass/utilities";
 
-body {
-        margin: 0;
-        padding: 2em;
-		font-family: Helvetica;
-      }
+
+/* Getting the new tags to behave */
+article, aside, audio, canvas, command, datalist, details, embed, figcaption, figure, footer, header, hgroup, keygen, meter, nav, output, progress, section, source, video{ display: block; }
+mark, rp, rt, ruby, summary, time{ display: inline }
+
+   
+@font-face {
+	font-family: 'RalewayThin';
+	src: url('../fonts/raleway_thin-webfont.eot');
+	font-weight: normal;
+	font-style: normal; }
+	
+@font-face {
+	font-family: 'Lobster1.1Regular';
+	src: url('../fonts/Lobster_1.1_-webfont.eot');
+	font-weight: normal;
+	font-style: normal;
+}	
+
+/* Site-wide properties ======================================================== */
+body{
+    font: normal normal 10px/10px Tahoma, Arial, Helvetica, Verdana, sans-serif; }
+    
+    /* Fibonacci based heading scale ratio */
+    h1{ font-size: 4.4em; font-weight: normal; }
+    h2{ font-size: 2.8em; font-weight: bold; }
+    h3{ font-size: 1.6em; font-weight: bold; }
+    h4{ font-size: 1.2em; font-weight: bold; }
+
+/* Reusable classes ============================================================ */
+
+/* Left & Right alignment */
+.left{ float: left; }
+.right{ float: right; }
+
+/* The inside class provides consistent padding. To be used often! */
+.inside{ padding: 20px; }
+
+/* The fraction classes are useful for column lists */
+.half, .third, .quarter, .fifth, .sixth{ width: 100%; }
+.half li, .third li, .quarter li, .fifth li, .sixth li{ float: left; }
+.half li{ padding-right: 5%; width: 45% }
+.third li{  padding-right: 5%; width: 28.3% }
+.quarter li{  padding-right: 5%; width: 20% }
+.fifth li{  padding-right: 5%; width: 15% }
+
+/* For when a <br /> just ain't enough */
+.separator{
+    clear: both;
+    float: left;
+    height: 1px;
+    width: 100%; }
+
+/* Basic Structure ============================================================= */
+#wrap{
+    margin: 0 auto;
+    position: relative;
+    width: 960px; }
+
+    /* Header */
+    header{
+        float: left;
+        width: 100%; }
+    
+    /* Content */
+    article{
+        float: left;
+        width: 66.7%; }
+    
+    /* Sidebar */
+    aside{
+        float: left;
+        width: 33.3%; }
+        
+    /* Footer */
+    footer{
+        float: left;
+        width: 100%; }
+    
+/* Project specifics =========================================================== */
+/* Pour some CSS below ========================================================= */
+
+body{
+	background-color: #111111;
+}
+
 	  
 	  q{
 	    text-align:left;
 	  }
 	  
-	  ul {
-		margin: 0px;
-		padding: 0px;
-	  }
-	    .box {
-		width:180px;
-		height:180px;
-		display: block;
-		float:left;
-		margin: 0px 5px 5px 0;
-		border: 1px solid #eeeeee;
-		padding: 5px;
-		osition:relative;
-		}
-		
-		.box a{
-			position:relative;
-			left:0px;
-			top:140px;
-			background-color: #fff;
-			color: #555;
-			font-size:0.8em;
-			
-		
-		}
+.box {
+	width:180px;
+	height:180px;
+	display: block;
+	float:left;
+	margin: 0px 5px 5px 0;
+	border: 1px solid #888;
+	background-color: #fff;
+	padding: 5px;
+	position:relative;
+	
+	a{
+		position:relative;
+		left:0px;
+		top:140px;
+		background-color: #fff;
+		color: #555;
+		font-size:0.8em;
+	}
+}
  
-      .ltDay {
-        /*border-top: 1px solid #999999;*/
-        }
-      .ltRight {
-        width: 80%;
-        float: right;
-	    background-color:  #fff;
-        }
- 
-      .ltLeft {
-        width: 19%;
-        float: left;
-	    color: #999999;
-		font-weight:bold;
-		font-size:1.5em;
-		text-align:right;
-      }
- 
-      .cleaner {
-        clear: both;
-        height: 0;
-        content: ' ';
-        overflow: hidden;
-      }
-      .cleaner hr {
-        display: none;
-      }
+.ltDay {
+/*border-top: 1px solid #999999;*/
+}
+.ltRight {
+	width: 80%;
+	float: right;
+}
+
+.ltLeft {
+	width: 19%;
+	float: left;
+	color: #fff;
+	font-weight:bold;
+	font-size:1.5em;
+	text-align:right;
+}
+
+.cleaner {
+	clear: both;
+	height: 0;
+	content: ' ';
+	overflow: hidden;
+}
+.cleaner hr {
+	display: none;
+}

@@ -20,14 +20,11 @@
 
         
     </head>
-    <body onload="initUI();">
-    	<div id="container">
+    <body onload="initUI();">    
+    
+    
+    
     	{% block container %}
-    		<div id="header">
-    		{% block header %}
-    			<a href="/">Swag Clips</a>
-    		{% endblock %}
-    		</div>
     		<div id="toolbar">
     		{% block toolbar %}
     			{% if user %}
@@ -42,11 +39,6 @@
     		{% block cliplist %}
     		{% endblock %}
     		</div>
-    		<div id="paging-controls">
-    		{% block paging-controls %}
-    		{% endblock %}
-    		</div>
     	{% endblock %}
-    	</div>
     </body>
 </html>

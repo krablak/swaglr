@@ -1,9 +1,9 @@
 {% extends "based.html" %}
 
 {% block cliplist %}
+		<div class="ltRight">
 			{% for day in day_clips %}
-			<div class="ltDay"> 
-			<div class="ltRight">
+				<p>{{ day.day }}</p>	
     			<ul>
     		{% for clip in day.clips %}	
 	    			<li id="clip_box" class="box" {% if clip|is_image_clip %}style="background-image:url('/images/tiny/{{ clip.image.key.id }}.jpg');"{% endif %}>
@@ -29,19 +29,13 @@
     			</li>
     		{% endfor %}    				
     			</ul>
-    		</div>
-    		<div class="ltLeft"> 
-		        <p>{{ day.day }}</p>
-		    </div>
-		    {% endfor %} 
-    		</div>
-{% endblock %}
-{% block paging-controls %}
-    			{% if next %}
+		    {% endfor %}
+		    </div> <!-- ltRight-->
+		        {% if next %}
     				<a id="next" href="{{ next }}">Newer</a>
     			{% endif %}
     			{% if prev %}
     				<a id="prev" href="{{ prev }}">Older</a>
-    			{% endif %}
+    			{% endif %} 
 {% endblock %}
 {% debug %} 
