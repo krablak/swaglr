@@ -1,0 +1,29 @@
+<html>
+	<head>
+		<script type="text/javascript">
+		function post(){
+			var postEvn = document.createEvent("Event");
+			postEvn.initEvent("postEvn", true, true);
+			window.dispatchEvent(postEvn);
+		}
+		
+		function cancel(){
+			var cancelEvn = document.createEvent("Event");
+			cancelEvn.initEvent("cancelEvn", true, true);
+			window.dispatchEvent(cancelEvn);
+		}
+		</script>
+	</head>
+	<body>
+		{% if not user %}
+			{{ greeting }}
+		{% else %}
+			Logged as {{ user.nickname }}
+		{% endif %}    		
+		<form>
+			<textarea id="comment_text_id" rows="4" cols="20">Velky test</textarea>
+			<a id="btn_post" onclick='post()'>Post</a>
+   			<a id="btn_cancel" onclick='cancel()'>Close</a>
+		</form>
+	</body>
+</html>

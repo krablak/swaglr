@@ -1,5 +1,11 @@
 {% extends "based.html" %}
 
+{% block head %}
+	<script type="text/javascript">
+	var clips = {{ json_clips }};
+	</script>
+{% endblock %}
+
 {% block cliplist %}
 		<div class="ltRight">
 			{% for day in day_clips %}

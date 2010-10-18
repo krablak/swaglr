@@ -11,6 +11,13 @@ def render(path, values, response):
     response.headers['Content-Type'] = 'text/html'
     path = os.path.join(os.path.dirname(__file__), path)
     response.out.write(template.render(path, values))
+    
+def execute_template(path, values):
+    """
+    Renders template and returns result as string.
+    """
+    path = os.path.join(os.path.dirname(__file__), path)
+    return template.render(path, values)
 
 def renderjson(path, values, response):
     response.headers['Content-Type'] = 'application/json'
@@ -20,6 +27,7 @@ def renderjson(path, values, response):
 def renderJPEG(image_data, response):
     response.headers['Content-Type'] = 'image/jpeg'
     response.out.write(image_data)
+    
     
 html_escape_table = {
                      "&": "&amp;",
