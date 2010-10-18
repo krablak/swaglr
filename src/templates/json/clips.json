@@ -1,0 +1,1 @@
+[{% for clip in clips %}{'id' : {{ clip.key.id }} , 'comment' : {{ clip.comment }} , 'type' : {{ clip.type }}, 'page' : {{ clip.page }}, 'text' : {{ clip.text }}, 'link' : {{ clip.link }} },{% endfor %}]
