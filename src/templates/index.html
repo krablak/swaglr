@@ -1,5 +1,7 @@
 {% extends "based.html" %}
 
+{% block main %}
+		<div id="clips">
 {% block head %}
 	<script type="text/javascript">
 	var clips = {{ json_clips }};
@@ -7,12 +9,13 @@
 {% endblock %}
 
 {% block cliplist %}
-		<div class="ltRight">
+		<div class="clips">
+
 			{% for day in day_clips %}
-				<p>{{ day.day }}</p>	
+				<p class="dayId">{{ day.day }}</p>	
     			<ul>
     		{% for clip in day.clips %}	
-	    			<li id="clip_box" class="box" {% if clip|is_image_clip %}style="background-image:url('/images/tiny/{{ clip.image.key.id }}.jpg');"{% endif %}>
+	    			<li class="box" {% if clip|is_image_clip %}style="background-image:url('/images/tiny/{{ clip.image.key.id }}.jpg');"{% endif %}>
     				<p>
     				<a href="{{ clip.page }}">{{ clip.page|slice:"0:100" }}...</a><br/>    				
     				   				
@@ -36,12 +39,20 @@
     		{% endfor %}    				
     			</ul>
 		    {% endfor %}
-		    </div> <!-- ltRight-->
-		        {% if next %}
-    				<a id="next" href="{{ next }}">Newer</a>
-    			{% endif %}
-    			{% if prev %}
-    				<a id="prev" href="{{ prev }}">Older</a>
+			<div class="cleaner">
+				<hr />
+			</div>
+			
+			<div id="paging">
+			    {% if prev %}
+    				<a id="prev" href="{{ prev }}">&lt;&nbsp;Older</a>
     			{% endif %} 
+		        {% if next %}
+    				<a id="next" href="{{ next }}">Newer&nbsp;&gt;</a>
+    			{% endif %}
+			</div>	<!-- /paging-->
+		    </div> <!-- /clips-->
+			
+			
 {% endblock %}
 {% debug %} 

@@ -26,3 +26,16 @@ var {
   padding: 0;
   vertical-align: baseline;
 }
+/* Getting the new tags to behave */
+article, aside, audio, canvas, command, datalist, details, embed, figcaption, figure, footer, header, hgroup, keygen, meter, nav, output, progress, section, source, video{ display: block; }
+mark, rp, rt, ruby, summary, time{ display: inline }
+
+
+/* Site-wide properties ======================================================== */
+
+    
+    /* Fibonacci based heading scale ratio */
+    h1{ font-size: 4.4em; font-weight: normal; }
+    h2{ font-size: 2.8em; font-weight: bold; }
+    h3{ font-size: 1.6em; font-weight: bold; }
+    h4{ font-size: 1.2em; font-weight: bold; }

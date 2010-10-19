@@ -10,7 +10,9 @@
         
          <link rel="Shortcut Icon" type="image/ico" href="/static/img/favicon.png">
          <link rel="stylesheet" href="/static/css/reset.css" type="text/css" media="screen">
+		 <link rel="stylesheet" href="/static/css/grid.css" type="text/css" media="screen">
          <link rel="stylesheet" href="/static/css/style.css" type="text/css" media="screen">
+		 
          
          <script type="text/javascript" src="/static/js/html5.js"></script>
          <script type="text/javascript" src="/static/js/jquery-1.4.2.min.js"></script>
@@ -21,24 +23,39 @@
         {% endblock %}
     </head>
     <body onload="initUI();">    
-    
-    
-    
-    	{% block container %}
-    		<div id="toolbar">
-    		{% block toolbar %}
-    			{% if user %}
-    				<a href="/user/{{ user.user_id }}/page/0">Home</a>
-    				<a href="/static/crx/sclipper.crx">Chrome Swag Clipping extension</a>
-    			{% endif %}
-    				<a href="/about/">About</a>
-    			{{ greeting }}
-    		{% endblock %}
-    		</div>
-    		<div id="cliplist">
-    		{% block cliplist %}
-    		{% endblock %}
-    		</div>
-    	{% endblock %}
+	{% block container %} <!-- MZ: Co to znamena ten container? -->   
+		
+		<div id="contentWrap" class="container_18">
+
+			<div id="column1" class="grid_14">
+				<div id="main">
+				{% block main %}
+				{% endblock %}
+				</div><!-- /main -->
+			</div> <!-- /column1 --> 
+
+			<div id="column2" class="grid_4">
+				<div id="navigation">
+				{% block navigation %}
+					<h1 id="logo"><a href="/">yousw.ag</a></h1>
+					{% if user %}
+						<p><a href="/user/{{ user.user_id }}/page/0">username</a></p>
+					{% endif %}
+						
+					<p>{{ greeting }}</p> <!-- MZ: Co to znamena greeting? -->   
+
+				{% endblock %}
+				</div><!-- /navigation --> 
+			</div><!-- /column2 --> 
+		</div><!-- /content --> 
+
+		<div id="footerWrap" class="container_18">
+			<div id="footer" class="grid_14">
+				<a href="/about/">About us</a><br/>
+				<a href="/static/crx/sclipper.crx">Get Our Chrome Extension</a>
+			</div>
+		</div><!-- /footer --> 
+				
+			{% endblock %}<!-- /block container --> 
     </body>
 </html>

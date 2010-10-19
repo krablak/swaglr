@@ -1,114 +1,27 @@
-/* Getting the new tags to behave */
-/* line 6, ../src/style.scss */
-article, aside, audio, canvas, command, datalist, details, embed, figcaption, figure, footer, header, hgroup, keygen, meter, nav, output, progress, section, source, video {
-  display: block;
-}
-
-/* line 7, ../src/style.scss */
-mark, rp, rt, ruby, summary, time {
-  display: inline;
-}
-
 @font-face {
-  font-family: 'RalewayThin';
-  src: url("../fonts/raleway_thin-webfont.eot");
-  font-weight: normal;
-  font-style: normal;
+  font-family: 'Anivers';
+  src: url("../fonts/Anivers_Regular.otf");
 }
 
-@font-face {
-  font-family: 'Lobster1.1Regular';
-  src: url("../fonts/Lobster_1.1_-webfont.eot");
-  font-weight: normal;
-  font-style: normal;
-}
-
-/* Site-wide properties ======================================================== */
-/* line 24, ../src/style.scss */
-body {
-  font: normal normal 10px/10px Tahoma, Arial, Helvetica, Verdana, sans-serif;
-}
-
-/* Fibonacci based heading scale ratio */
-/* line 28, ../src/style.scss */
-h1 {
-  font-size: 4.4em;
-  font-weight: normal;
-}
-
-/* line 29, ../src/style.scss */
-h2 {
-  font-size: 2.8em;
-  font-weight: bold;
-}
-
-/* line 30, ../src/style.scss */
-h3 {
-  font-size: 1.6em;
-  font-weight: bold;
-}
-
-/* line 31, ../src/style.scss */
-h4 {
-  font-size: 1.2em;
-  font-weight: bold;
-}
-
-/* Reusable classes ============================================================ */
 /* Left & Right alignment */
-/* line 36, ../src/style.scss */
+/* line 11, ../src/style.scss */
 .left {
   float: left;
 }
 
-/* line 37, ../src/style.scss */
+/* line 12, ../src/style.scss */
 .right {
   float: right;
 }
 
 /* The inside class provides consistent padding. To be used often! */
-/* line 40, ../src/style.scss */
+/* line 15, ../src/style.scss */
 .inside {
   padding: 20px;
 }
 
-/* The fraction classes are useful for column lists */
-/* line 43, ../src/style.scss */
-.half, .third, .quarter, .fifth, .sixth {
-  width: 100%;
-}
-
-/* line 44, ../src/style.scss */
-.half li, .third li, .quarter li, .fifth li, .sixth li {
-  float: left;
-}
-
-/* line 45, ../src/style.scss */
-.half li {
-  padding-right: 5%;
-  width: 45%;
-}
-
-/* line 46, ../src/style.scss */
-.third li {
-  padding-right: 5%;
-  width: 28.3%;
-}
-
-/* line 47, ../src/style.scss */
-.quarter li {
-  padding-right: 5%;
-  width: 20%;
-}
-
-/* line 48, ../src/style.scss */
-.fifth li {
-  padding-right: 5%;
-  width: 15%;
-}
-
 /* For when a <br /> just ain't enough */
-/* line 51, ../src/style.scss */
+/* line 19, ../src/style.scss */
 .separator {
   clear: both;
   float: left;
@@ -116,106 +29,146 @@ h4 {
   width: 100%;
 }
 
-/* Basic Structure ============================================================= */
-/* line 58, ../src/style.scss */
-#wrap {
-  margin: 0 auto;
-  position: relative;
-  width: 960px;
-}
-
-/* Header */
-/* line 64, ../src/style.scss */
-header {
-  float: left;
-  width: 100%;
-}
-
-/* Content */
-/* line 69, ../src/style.scss */
-article {
-  float: left;
-  width: 66.7%;
-}
-
-/* Sidebar */
-/* line 74, ../src/style.scss */
-aside {
-  float: left;
-  width: 33.3%;
-}
-
-/* Footer */
-/* line 79, ../src/style.scss */
-footer {
-  float: left;
-  width: 100%;
-}
-
 /* Project specifics =========================================================== */
-/* Pour some CSS below ========================================================= */
-/* line 86, ../src/style.scss */
+/* line 33, ../src/style.scss */
 body {
+  padding: 20px;
+  font: normal normal 10px/10px "Anivers", Tahoma, Arial, Helvetica, Verdana, sans-serif;
+  color: #fff;
   background-color: #111111;
 }
 
-/* line 91, ../src/style.scss */
+/* line 42, ../src/style.scss */
 q {
   text-align: left;
 }
 
-/* line 95, ../src/style.scss */
+/**
+* Box list
+*/
+/* line 56, ../src/style.scss */
+#clips .dayId {
+  font-size: 1.4em;
+  color: #fff;
+}
+/* line 61, ../src/style.scss */
+#clips #paging {
+  padding: 5px 10px 0px 0px;
+  text-align: center;
+}
+/* line 64, ../src/style.scss */
+#clips #paging a {
+  color: white;
+  font-size: 1.4em;
+  text-decoration: none;
+}
+/* line 18, ../../../../../../Ruby/lib/ruby/gems/1.8/gems/compass-0.10.4/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+#clips #paging a:visited {
+  color: white;
+}
+/* line 22, ../../../../../../Ruby/lib/ruby/gems/1.8/gems/compass-0.10.4/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+#clips #paging a:focus {
+  color: white;
+}
+/* line 26, ../../../../../../Ruby/lib/ruby/gems/1.8/gems/compass-0.10.4/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+#clips #paging a:hover {
+  color: white;
+}
+/* line 30, ../../../../../../Ruby/lib/ruby/gems/1.8/gems/compass-0.10.4/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+#clips #paging a:active {
+  color: white;
+}
+
+/* line 75, ../src/style.scss */
+#navigation #logo {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 3.6em;
+}
+/* line 79, ../src/style.scss */
+#navigation #logo a {
+  color: white;
+  text-decoration: none;
+}
+/* line 18, ../../../../../../Ruby/lib/ruby/gems/1.8/gems/compass-0.10.4/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+#navigation #logo a:visited {
+  color: white;
+}
+/* line 22, ../../../../../../Ruby/lib/ruby/gems/1.8/gems/compass-0.10.4/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+#navigation #logo a:focus {
+  color: white;
+}
+/* line 26, ../../../../../../Ruby/lib/ruby/gems/1.8/gems/compass-0.10.4/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+#navigation #logo a:hover {
+  color: white;
+}
+/* line 30, ../../../../../../Ruby/lib/ruby/gems/1.8/gems/compass-0.10.4/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+#navigation #logo a:active {
+  color: white;
+}
+/* line 85, ../src/style.scss */
+#navigation p {
+  margin-bottom: 5px;
+}
+
+/* line 93, ../src/style.scss */
+#footer {
+  margin-top: 30px;
+  padding: 5px;
+  height: 100px;
+}
+/* line 99, ../src/style.scss */
+#footer a {
+  color: #999999;
+  text-decoration: none;
+}
+/* line 18, ../../../../../../Ruby/lib/ruby/gems/1.8/gems/compass-0.10.4/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+#footer a:visited {
+  color: #999999;
+}
+/* line 22, ../../../../../../Ruby/lib/ruby/gems/1.8/gems/compass-0.10.4/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+#footer a:focus {
+  color: #999999;
+}
+/* line 26, ../../../../../../Ruby/lib/ruby/gems/1.8/gems/compass-0.10.4/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+#footer a:hover {
+  color: #999999;
+}
+/* line 30, ../../../../../../Ruby/lib/ruby/gems/1.8/gems/compass-0.10.4/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+#footer a:active {
+  color: #999999;
+}
+
+/* line 108, ../src/style.scss */
 .box {
-  width: 180px;
-  height: 180px;
+  width: 149px;
+  height: 120px;
   display: block;
   float: left;
   margin: 0px 5px 5px 0;
-  border: 1px solid #888;
+  border: 1px solid #5a5a5a;
   background-color: #fff;
   padding: 5px;
   position: relative;
 }
-/* line 106, ../src/style.scss */
+/* line 119, ../src/style.scss */
 .box a {
   position: relative;
   left: 0px;
-  top: 140px;
+  top: 100px;
   background-color: #fff;
   color: #555;
   font-size: 0.8em;
 }
 
-/* line 116, ../src/style.scss */
-.ltDay {
-  /*border-top: 1px solid #999999;*/
-}
-
-/* line 119, ../src/style.scss */
-.ltRight {
-  width: 80%;
-  float: right;
-}
-
-/* line 124, ../src/style.scss */
-.ltLeft {
-  width: 19%;
-  float: left;
-  color: #fff;
-  font-weight: bold;
-  font-size: 1.5em;
-  text-align: right;
-}
-
-/* line 133, ../src/style.scss */
+/* line 137, ../src/style.scss */
 .cleaner {
   clear: both;
   height: 0;
   content: ' ';
   overflow: hidden;
 }
-
-/* line 139, ../src/style.scss */
+/* line 143, ../src/style.scss */
 .cleaner hr {
   display: none;
 }
