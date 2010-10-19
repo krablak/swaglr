@@ -62,19 +62,19 @@ q {
   font-size: 1.4em;
   text-decoration: none;
 }
-/* line 18, ../../../../../../Ruby/lib/ruby/gems/1.8/gems/compass-0.10.4/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+/* line 18, ../../../../../../../.gem/ruby/1.8/gems/compass-0.10.2/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
 #clips #paging a:visited {
   color: white;
 }
-/* line 22, ../../../../../../Ruby/lib/ruby/gems/1.8/gems/compass-0.10.4/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+/* line 21, ../../../../../../../.gem/ruby/1.8/gems/compass-0.10.2/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
 #clips #paging a:focus {
   color: white;
 }
-/* line 26, ../../../../../../Ruby/lib/ruby/gems/1.8/gems/compass-0.10.4/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+/* line 24, ../../../../../../../.gem/ruby/1.8/gems/compass-0.10.2/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
 #clips #paging a:hover {
   color: white;
 }
-/* line 30, ../../../../../../Ruby/lib/ruby/gems/1.8/gems/compass-0.10.4/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+/* line 27, ../../../../../../../.gem/ruby/1.8/gems/compass-0.10.2/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
 #clips #paging a:active {
   color: white;
 }
@@ -90,19 +90,19 @@ q {
   color: white;
   text-decoration: none;
 }
-/* line 18, ../../../../../../Ruby/lib/ruby/gems/1.8/gems/compass-0.10.4/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+/* line 18, ../../../../../../../.gem/ruby/1.8/gems/compass-0.10.2/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
 #navigation #logo a:visited {
   color: white;
 }
-/* line 22, ../../../../../../Ruby/lib/ruby/gems/1.8/gems/compass-0.10.4/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+/* line 21, ../../../../../../../.gem/ruby/1.8/gems/compass-0.10.2/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
 #navigation #logo a:focus {
   color: white;
 }
-/* line 26, ../../../../../../Ruby/lib/ruby/gems/1.8/gems/compass-0.10.4/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+/* line 24, ../../../../../../../.gem/ruby/1.8/gems/compass-0.10.2/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
 #navigation #logo a:hover {
   color: white;
 }
-/* line 30, ../../../../../../Ruby/lib/ruby/gems/1.8/gems/compass-0.10.4/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+/* line 27, ../../../../../../../.gem/ruby/1.8/gems/compass-0.10.2/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
 #navigation #logo a:active {
   color: white;
 }
@@ -122,19 +122,19 @@ q {
   color: #999999;
   text-decoration: none;
 }
-/* line 18, ../../../../../../Ruby/lib/ruby/gems/1.8/gems/compass-0.10.4/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+/* line 18, ../../../../../../../.gem/ruby/1.8/gems/compass-0.10.2/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
 #footer a:visited {
   color: #999999;
 }
-/* line 22, ../../../../../../Ruby/lib/ruby/gems/1.8/gems/compass-0.10.4/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+/* line 21, ../../../../../../../.gem/ruby/1.8/gems/compass-0.10.2/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
 #footer a:focus {
   color: #999999;
 }
-/* line 26, ../../../../../../Ruby/lib/ruby/gems/1.8/gems/compass-0.10.4/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+/* line 24, ../../../../../../../.gem/ruby/1.8/gems/compass-0.10.2/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
 #footer a:hover {
   color: #999999;
 }
-/* line 30, ../../../../../../Ruby/lib/ruby/gems/1.8/gems/compass-0.10.4/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+/* line 27, ../../../../../../../.gem/ruby/1.8/gems/compass-0.10.2/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
 #footer a:active {
   color: #999999;
 }
@@ -171,4 +171,45 @@ q {
 /* line 143, ../src/style.scss */
 .cleaner hr {
   display: none;
+}
+
+/* Modal dialogs =========================================================== */
+/* line 150, ../src/style.scss */
+.detail {
+  display: none;
+}
+
+/* Overlay */
+/* line 152, ../src/style.scss */
+#simplemodal-overlay {
+  background-color: #000;
+}
+
+/* Container */
+/* line 154, ../src/style.scss */
+#simplemodal-container {
+  height: 320px;
+  width: 600px;
+  color: #bbb;
+  background-color: #111111;
+  border: 4px solid #444;
+  padding: 12px;
+}
+
+/* line 155, ../src/style.scss */
+#simplemodal-container a.modalCloseImg {
+  background: url(/static/img/x.png) no-repeat;
+  width: 25px;
+  height: 29px;
+  display: inline;
+  z-index: 3200;
+  position: absolute;
+  top: -15px;
+  right: -16px;
+  cursor: pointer;
+}
+
+/* line 156, ../src/style.scss */
+#simplemodal-container #basic-modal-content {
+  padding: 8px;
 }

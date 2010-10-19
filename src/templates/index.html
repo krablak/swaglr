@@ -2,9 +2,6 @@
 
 
 {% block head %}
-	<script type="text/javascript">
-	var clips = {{ json_clips }};
-	</script>
 {% endblock %}
 
 {% block main %}
@@ -14,7 +11,7 @@
 				<p class="dayId">{{ day.day }}</p>	
     			<ul>
     		{% for clip in day.clips %}	
-	    			<li class="box" {% if clip|is_image_clip %}style="background-image:url('/images/tiny/{{ clip.image.key.id }}.jpg');"{% endif %}>
+	    			<li id='clip_box' class="box" {% if clip|is_image_clip %}style="background-image:url('/images/tiny/{{ clip.image.key.id }}.jpg');"{% endif %} onclick="showDetail({{clip.key.id}});">
     				<p>
     				<a href="{{ clip.page }}">{{ clip.page|slice:"0:100" }}...</a><br/>    				
     				   				
@@ -33,7 +30,10 @@
     				{% if clip|is_link_clip %}
     				<q cite="{{ clip.link }}">{{ clip.link|slice:"0:100"|escape }}...</q>
     				{% endif %}     					 
-   					</p>   				
+   					</p>
+   					<div id="detail_{{clip.key.id}}" class="detail"> 
+   						<h3>Clip detail</h3>   							
+   					</div>			
     			</li>
     		{% endfor %}    				
     			</ul>
