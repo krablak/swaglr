@@ -1,15 +1,14 @@
 {% extends "based.html" %}
 
-{% block main %}
-		<div id="clips">
+
 {% block head %}
 	<script type="text/javascript">
 	var clips = {{ json_clips }};
 	</script>
 {% endblock %}
 
-{% block cliplist %}
-		<div class="clips">
+{% block main %}
+		<div id="clips">
 
 			{% for day in day_clips %}
 				<p class="dayId">{{ day.day }}</p>	
