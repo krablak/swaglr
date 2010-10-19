@@ -32,7 +32,32 @@
     				{% endif %}     					 
    					</p>
    					<div id="detail_{{clip.key.id}}" class="detail"> 
-   						<h3>Clip detail</h3>   							
+   						<a href="{{ clip.page }}">{{ clip.page|slice:"0:100" }}...</a><br/>
+   						{% if clip|is_text_clip %}
+    					<q cite="{{ clip.page }}">{{ clip.text|slice:"0:250"|escape }}...</q>
+   						{% endif %}
+   						
+   						{% if clip|is_image_clip %}
+   						<img src="/images/small/{{ clip.image.key.id }}.jpg"></img>
+   						{% endif %}
+   					
+   						{% if clip|is_page_clip %}
+    					<q cite="{{ clip.page }}">{{ clip.page|slice:"0:250"|escape }}...</q>
+   						{% endif %}
+   						
+   						More by<a href="/user/{{ clip.user.user_id }}/page/0"> {{ clip.user.user.nickname }}</a><br/>
+   						
+   						{% ifequal user.user_id clip.user.user_id %}
+    					<a href="/delete/{{ clip.key.id }}">Delete</a>
+    					{% endifequal %}
+   					
+   						{% if clip|is_commented_clip %}
+   							{{  clip.comment }}
+   						{% endif %}
+    				
+    				{% if clip|is_link_clip %}
+    				<q cite="{{ clip.link }}">{{ clip.link|slice:"0:100"|escape }}...</q>
+    				{% endif %} 							
    					</div>			
     			</li>
     		{% endfor %}    				
