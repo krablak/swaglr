@@ -29,12 +29,13 @@
 $mainFont: "Anivers";
 $footer-link-color:#999;
 $common-padding: 5px;
+$body-background:#111111;
 
 body{
 	padding:20px;
     font: normal normal 10px/10px $mainFont, Tahoma, Arial, Helvetica, Verdana, sans-serif; 
 	color: #fff;
-	background-color: #111111;
+	background-color: $body-background;
 	}
 
 
@@ -104,17 +105,38 @@ q{
 }
 
 
+ul.boxList{
+	list-style: none;
+	margin: 0 auto; padding: 0;
+}
 	  
-.box {
-	width:149px;
-	height:120px;
-	display: block;
+ul.boxList li {
+    //opacity: 0.8;
+	width:22%;
+	height:140px;
 	float:left;
 	margin: 0px 5px 5px 0;
 	border: 1px solid #5a5a5a;
 	background-color: #fff;
 	padding: 5px;
 	position:relative;
+	
+	.detail {
+		position: absolute;
+		left: -10%; 
+		top: -10px;
+		padding: 130px 10px 20px;
+		width: 120%;
+		height: 200px;
+		display: none;
+		background: $body-background;
+		background-repeat:no-repeat;
+		-webkit-border-radius: 3px;
+		-moz-border-radius: 3px;
+		border-radius: 3px;
+	}
+	
+	
 	
 	a{
 		position:relative;
@@ -126,6 +148,18 @@ q{
 	}
 }
 
+ul.boxList li:hover {
+
+		border: 1px solid #777;
+		//opacity: 1;
+		a, q, img{
+			z-index: 999;
+		}
+		.detail {
+			display: block;
+			z-index: 50;
+		}
+	}
  
 .clips {
 
@@ -151,6 +185,6 @@ q{
 /* Overlay */
 #simplemodal-overlay {background-color:#000;}
 /* Container */
-#simplemodal-container {height:430px; width:730px; color:#bbb; background-color:#111111; border:4px solid #444; padding:12px;}
+#simplemodal-container {height:300px; width:400px; color:#bbb; background-color:#111111; border:4px solid #444; padding:12px;}
 #simplemodal-container a.modalCloseImg {background:url(/static/img/x.png) no-repeat; width:25px; height:29px; display:inline; z-index:3200; position:absolute; top:-15px; right:-16px; cursor:pointer;}
 #simplemodal-container #basic-modal-content {padding:8px;}
