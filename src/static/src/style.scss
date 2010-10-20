@@ -31,7 +31,7 @@ $footer-link-color:#999;
 $body-background:#222;
 $general-padding:8px;
 
-$box-width:22%; 
+$box-width:23.5%; 
 $box-height:140px;
 $box-height:140px;
 $box-margin:10px;
@@ -139,9 +139,9 @@ ul.boxList li {
 		position: absolute;
 		left: -10%; 
 		top: -20px;
-		padding: 170px 0px 20px 0px;
+		padding: 20px 0px 20px 0px;
 		width: 120%;
-		height: 200px;
+		height: 250px;
 		display: none;
 		background: $box-background;
 		background-repeat:no-repeat;
@@ -166,8 +166,8 @@ ul.boxList li {
 	q{
 		font-size:1.4em;
 		line-height:1.2em;
-		position: absolute;
-		top: 30%;
+		//position: absolute;
+		margin-top: 30px;
 		word-wrap: break-word;
 		padding: $general-padding;
 		text-align:center;
@@ -176,7 +176,7 @@ ul.boxList li {
 		
 	}
 	q.full{
-		display:none;
+		//display:none;
 	}
 }
 
@@ -186,17 +186,17 @@ ul.boxList li:hover {
 		opacity: 1;
 		a, q, img, p{
 			//position: relative;
-			z-index: 999;
+			//z-index: 999;
 		}
 		q.crop{
 			display:none;
 		}
 		q.full{
-		display:block;
+		//display:block;
 	}
 		.detail {
 			display: block;
-			z-index: 50;
+			z-index: 999;
 		}
 }
 	
