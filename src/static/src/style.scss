@@ -29,7 +29,9 @@
 $mainFont: "Anivers";
 $footer-link-color:#999;
 $common-padding: 5px;
-$body-background:#111111;
+$body-background:#222;
+$box-width:22%; 
+$box-height:140px;
 
 body{
 	padding:20px;
@@ -111,19 +113,28 @@ ul.boxList{
 }
 	  
 ul.boxList li {
-    //opacity: 0.8;
-	width:22%;
-	height:140px;
+
+	width:$box-width;
+	height:$box-height;
 	float:left;
 	margin: 0px 5px 5px 0;
 	border: 1px solid #5a5a5a;
-	background-color: #fff;
-	padding: 5px;
+	background-color: #222;
 	position:relative;
+	
+	
+	
+    color: #fff;
+	background: #111;
+	border: 1px solid #000;
+	border-right: 1px solid #353535;
+	border-bottom: 1px solid #353535;
+
+	
 	
 	.detail {
 		position: absolute;
-		left: -10%; 
+		left: -15%; 
 		top: -10px;
 		padding: 130px 10px 20px;
 		width: 120%;
@@ -151,8 +162,8 @@ ul.boxList li {
 ul.boxList li:hover {
 
 		border: 1px solid #777;
-		//opacity: 1;
-		a, q, img{
+		a, q, img, p{
+			position: relative;
 			z-index: 999;
 		}
 		.detail {
@@ -160,6 +171,10 @@ ul.boxList li:hover {
 			z-index: 50;
 		}
 	}
+	
+.pressed {
+
+}	
  
 .clips {
 

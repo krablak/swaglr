@@ -30,15 +30,15 @@
 }
 
 /* Project specifics =========================================================== */
-/* line 33, ../src/style.scss */
+/* line 36, ../src/style.scss */
 body {
   padding: 20px;
   font: normal normal 10px/10px "Anivers", Tahoma, Arial, Helvetica, Verdana, sans-serif;
   color: #fff;
-  background-color: #111111;
+  background-color: #222222;
 }
 
-/* line 42, ../src/style.scss */
+/* line 45, ../src/style.scss */
 q {
   text-align: left;
 }
@@ -46,113 +46,138 @@ q {
 /**
 * Box list
 */
-/* line 56, ../src/style.scss */
+/* line 59, ../src/style.scss */
 #clips .dayId {
   font-size: 1.4em;
   color: #fff;
 }
-/* line 61, ../src/style.scss */
+/* line 64, ../src/style.scss */
 #clips #paging {
   padding: 5px 10px 0px 0px;
   text-align: center;
 }
-/* line 64, ../src/style.scss */
+/* line 67, ../src/style.scss */
 #clips #paging a {
   color: white;
   font-size: 1.4em;
   text-decoration: none;
 }
-/* line 18, ../../../../../../../.gem/ruby/1.8/gems/compass-0.10.2/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+/* line 18, ../../../../../../Ruby/lib/ruby/gems/1.8/gems/compass-0.10.4/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
 #clips #paging a:visited {
   color: white;
 }
-/* line 21, ../../../../../../../.gem/ruby/1.8/gems/compass-0.10.2/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+/* line 22, ../../../../../../Ruby/lib/ruby/gems/1.8/gems/compass-0.10.4/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
 #clips #paging a:focus {
   color: white;
 }
-/* line 24, ../../../../../../../.gem/ruby/1.8/gems/compass-0.10.2/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+/* line 26, ../../../../../../Ruby/lib/ruby/gems/1.8/gems/compass-0.10.4/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
 #clips #paging a:hover {
   color: white;
 }
-/* line 27, ../../../../../../../.gem/ruby/1.8/gems/compass-0.10.2/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+/* line 30, ../../../../../../Ruby/lib/ruby/gems/1.8/gems/compass-0.10.4/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
 #clips #paging a:active {
   color: white;
 }
 
-/* line 75, ../src/style.scss */
+/* line 78, ../src/style.scss */
 #navigation #logo {
   margin-top: 10px;
   margin-bottom: 10px;
   font-size: 3.6em;
 }
-/* line 79, ../src/style.scss */
+/* line 82, ../src/style.scss */
 #navigation #logo a {
   color: white;
   text-decoration: none;
 }
-/* line 18, ../../../../../../../.gem/ruby/1.8/gems/compass-0.10.2/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+/* line 18, ../../../../../../Ruby/lib/ruby/gems/1.8/gems/compass-0.10.4/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
 #navigation #logo a:visited {
   color: white;
 }
-/* line 21, ../../../../../../../.gem/ruby/1.8/gems/compass-0.10.2/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+/* line 22, ../../../../../../Ruby/lib/ruby/gems/1.8/gems/compass-0.10.4/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
 #navigation #logo a:focus {
   color: white;
 }
-/* line 24, ../../../../../../../.gem/ruby/1.8/gems/compass-0.10.2/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+/* line 26, ../../../../../../Ruby/lib/ruby/gems/1.8/gems/compass-0.10.4/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
 #navigation #logo a:hover {
   color: white;
 }
-/* line 27, ../../../../../../../.gem/ruby/1.8/gems/compass-0.10.2/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+/* line 30, ../../../../../../Ruby/lib/ruby/gems/1.8/gems/compass-0.10.4/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
 #navigation #logo a:active {
   color: white;
 }
-/* line 85, ../src/style.scss */
+/* line 88, ../src/style.scss */
 #navigation p {
   margin-bottom: 5px;
 }
 
-/* line 93, ../src/style.scss */
+/* line 96, ../src/style.scss */
 #footer {
   margin-top: 30px;
   padding: 5px;
   height: 100px;
 }
-/* line 99, ../src/style.scss */
+/* line 102, ../src/style.scss */
 #footer a {
   color: #999999;
   text-decoration: none;
 }
-/* line 18, ../../../../../../../.gem/ruby/1.8/gems/compass-0.10.2/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+/* line 18, ../../../../../../Ruby/lib/ruby/gems/1.8/gems/compass-0.10.4/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
 #footer a:visited {
   color: #999999;
 }
-/* line 21, ../../../../../../../.gem/ruby/1.8/gems/compass-0.10.2/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+/* line 22, ../../../../../../Ruby/lib/ruby/gems/1.8/gems/compass-0.10.4/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
 #footer a:focus {
   color: #999999;
 }
-/* line 24, ../../../../../../../.gem/ruby/1.8/gems/compass-0.10.2/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+/* line 26, ../../../../../../Ruby/lib/ruby/gems/1.8/gems/compass-0.10.4/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
 #footer a:hover {
   color: #999999;
 }
-/* line 27, ../../../../../../../.gem/ruby/1.8/gems/compass-0.10.2/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+/* line 30, ../../../../../../Ruby/lib/ruby/gems/1.8/gems/compass-0.10.4/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
 #footer a:active {
   color: #999999;
 }
 
-/* line 108, ../src/style.scss */
-.box {
-  width: 149px;
-  height: 120px;
-  display: block;
+/* line 110, ../src/style.scss */
+ul.boxList {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+}
+
+/* line 115, ../src/style.scss */
+ul.boxList li {
+  width: 22%;
+  height: 140px;
   float: left;
   margin: 0px 5px 5px 0;
   border: 1px solid #5a5a5a;
-  background-color: #fff;
-  padding: 5px;
+  background-color: #222;
   position: relative;
+  color: #fff;
+  background: #111;
+  border: 1px solid #000;
+  border-right: 1px solid #353535;
+  border-bottom: 1px solid #353535;
 }
-/* line 119, ../src/style.scss */
-.box a {
+/* line 135, ../src/style.scss */
+ul.boxList li .detail {
+  position: absolute;
+  left: -15%;
+  top: -10px;
+  padding: 130px 10px 20px;
+  width: 120%;
+  height: 200px;
+  display: none;
+  background: #222222;
+  background-repeat: no-repeat;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+/* line 152, ../src/style.scss */
+ul.boxList li a {
   position: relative;
   left: 0px;
   top: 100px;
@@ -161,42 +186,57 @@ q {
   font-size: 0.8em;
 }
 
-/* line 137, ../src/style.scss */
+/* line 162, ../src/style.scss */
+ul.boxList li:hover {
+  border: 1px solid #777;
+}
+/* line 165, ../src/style.scss */
+ul.boxList li:hover a, ul.boxList li:hover q, ul.boxList li:hover img, ul.boxList li:hover p {
+  position: relative;
+  z-index: 999;
+}
+/* line 169, ../src/style.scss */
+ul.boxList li:hover .detail {
+  display: block;
+  z-index: 50;
+}
+
+/* line 186, ../src/style.scss */
 .cleaner {
   clear: both;
   height: 0;
   content: ' ';
   overflow: hidden;
 }
-/* line 143, ../src/style.scss */
+/* line 192, ../src/style.scss */
 .cleaner hr {
   display: none;
 }
 
 /* Modal dialogs =========================================================== */
-/* line 150, ../src/style.scss */
+/* line 199, ../src/style.scss */
 .detail {
   display: none;
 }
 
 /* Overlay */
-/* line 152, ../src/style.scss */
+/* line 201, ../src/style.scss */
 #simplemodal-overlay {
   background-color: #000;
 }
 
 /* Container */
-/* line 154, ../src/style.scss */
+/* line 203, ../src/style.scss */
 #simplemodal-container {
-  height: 320px;
-  width: 600px;
+  height: 300px;
+  width: 400px;
   color: #bbb;
   background-color: #111111;
   border: 4px solid #444;
   padding: 12px;
 }
 
-/* line 155, ../src/style.scss */
+/* line 204, ../src/style.scss */
 #simplemodal-container a.modalCloseImg {
   background: url(/static/img/x.png) no-repeat;
   width: 25px;
@@ -209,7 +249,7 @@ q {
   cursor: pointer;
 }
 
-/* line 156, ../src/style.scss */
+/* line 205, ../src/style.scss */
 #simplemodal-container #basic-modal-content {
   padding: 8px;
 }
