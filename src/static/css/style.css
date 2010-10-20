@@ -30,7 +30,7 @@
 }
 
 /* Project specifics =========================================================== */
-/* line 36, ../src/style.scss */
+/* line 39, ../src/style.scss */
 body {
   padding: 20px;
   font: normal normal 10px/10px "Anivers", Tahoma, Arial, Helvetica, Verdana, sans-serif;
@@ -38,7 +38,7 @@ body {
   background-color: #222222;
 }
 
-/* line 45, ../src/style.scss */
+/* line 48, ../src/style.scss */
 q {
   text-align: left;
 }
@@ -46,17 +46,17 @@ q {
 /**
 * Box list
 */
-/* line 59, ../src/style.scss */
+/* line 62, ../src/style.scss */
 #clips .dayId {
   font-size: 1.4em;
   color: #fff;
 }
-/* line 64, ../src/style.scss */
+/* line 67, ../src/style.scss */
 #clips #paging {
   padding: 5px 10px 0px 0px;
   text-align: center;
 }
-/* line 67, ../src/style.scss */
+/* line 70, ../src/style.scss */
 #clips #paging a {
   color: white;
   font-size: 1.4em;
@@ -79,13 +79,13 @@ q {
   color: white;
 }
 
-/* line 78, ../src/style.scss */
+/* line 81, ../src/style.scss */
 #navigation #logo {
   margin-top: 10px;
   margin-bottom: 10px;
   font-size: 3.6em;
 }
-/* line 82, ../src/style.scss */
+/* line 85, ../src/style.scss */
 #navigation #logo a {
   color: white;
   text-decoration: none;
@@ -106,18 +106,18 @@ q {
 #navigation #logo a:active {
   color: white;
 }
-/* line 88, ../src/style.scss */
+/* line 91, ../src/style.scss */
 #navigation p {
   margin-bottom: 5px;
 }
 
-/* line 96, ../src/style.scss */
+/* line 99, ../src/style.scss */
 #footer {
   margin-top: 30px;
   padding: 5px;
   height: 100px;
 }
-/* line 102, ../src/style.scss */
+/* line 105, ../src/style.scss */
 #footer a {
   color: #999999;
   text-decoration: none;
@@ -139,44 +139,40 @@ q {
   color: #999999;
 }
 
-/* line 110, ../src/style.scss */
+/* line 113, ../src/style.scss */
 ul.boxList {
   list-style: none;
   margin: 0 auto;
   padding: 0;
 }
 
-/* line 115, ../src/style.scss */
+/* line 118, ../src/style.scss */
 ul.boxList li {
-  width: 22%;
+  width: 23.5%;
   height: 140px;
   float: left;
-  margin: 0px 5px 5px 0;
-  border: 1px solid #5a5a5a;
-  background-color: #222;
+  margin: 0px 10px 10px 0;
+  border: 1px solid #222;
   position: relative;
   color: #fff;
   background: #111;
-  border: 1px solid #000;
-  border-right: 1px solid #353535;
-  border-bottom: 1px solid #353535;
 }
-/* line 135, ../src/style.scss */
+/* line 132, ../src/style.scss */
 ul.boxList li .detail {
   position: absolute;
   left: -15%;
-  top: -10px;
+  top: -20px;
   padding: 130px 10px 20px;
   width: 120%;
   height: 200px;
   display: none;
-  background: #222222;
+  background: #111;
   background-repeat: no-repeat;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
 }
-/* line 152, ../src/style.scss */
+/* line 149, ../src/style.scss */
 ul.boxList li a {
   position: relative;
   left: 0px;
@@ -186,47 +182,47 @@ ul.boxList li a {
   font-size: 0.8em;
 }
 
-/* line 162, ../src/style.scss */
+/* line 159, ../src/style.scss */
 ul.boxList li:hover {
   border: 1px solid #777;
 }
-/* line 165, ../src/style.scss */
+/* line 162, ../src/style.scss */
 ul.boxList li:hover a, ul.boxList li:hover q, ul.boxList li:hover img, ul.boxList li:hover p {
   position: relative;
   z-index: 999;
 }
-/* line 169, ../src/style.scss */
+/* line 166, ../src/style.scss */
 ul.boxList li:hover .detail {
   display: block;
   z-index: 50;
 }
 
-/* line 186, ../src/style.scss */
+/* line 183, ../src/style.scss */
 .cleaner {
   clear: both;
   height: 0;
   content: ' ';
   overflow: hidden;
 }
-/* line 192, ../src/style.scss */
+/* line 189, ../src/style.scss */
 .cleaner hr {
   display: none;
 }
 
 /* Modal dialogs =========================================================== */
-/* line 199, ../src/style.scss */
+/* line 196, ../src/style.scss */
 .detail {
   display: none;
 }
 
 /* Overlay */
-/* line 201, ../src/style.scss */
+/* line 198, ../src/style.scss */
 #simplemodal-overlay {
   background-color: #000;
 }
 
 /* Container */
-/* line 203, ../src/style.scss */
+/* line 200, ../src/style.scss */
 #simplemodal-container {
   height: 300px;
   width: 400px;
@@ -236,7 +232,7 @@ ul.boxList li:hover .detail {
   padding: 12px;
 }
 
-/* line 204, ../src/style.scss */
+/* line 201, ../src/style.scss */
 #simplemodal-container a.modalCloseImg {
   background: url(/static/img/x.png) no-repeat;
   width: 25px;
@@ -249,7 +245,7 @@ ul.boxList li:hover .detail {
   cursor: pointer;
 }
 
-/* line 205, ../src/style.scss */
+/* line 202, ../src/style.scss */
 #simplemodal-container #basic-modal-content {
   padding: 8px;
 }

@@ -30,8 +30,11 @@ $mainFont: "Anivers";
 $footer-link-color:#999;
 $common-padding: 5px;
 $body-background:#222;
-$box-width:22%; 
+
+$box-width:23.5%; 
 $box-height:140px;
+$box-height:140px;
+$box-margin:10px;
 
 body{
 	padding:20px;
@@ -117,30 +120,24 @@ ul.boxList li {
 	width:$box-width;
 	height:$box-height;
 	float:left;
-	margin: 0px 5px 5px 0;
-	border: 1px solid #5a5a5a;
-	background-color: #222;
+	margin: 0px $box-margin $box-margin 0;
+	border: 1px solid #222;
 	position:relative;
-	
-	
-	
-    color: #fff;
+	color: #fff;
 	background: #111;
-	border: 1px solid #000;
-	border-right: 1px solid #353535;
-	border-bottom: 1px solid #353535;
+	
 
 	
 	
 	.detail {
 		position: absolute;
 		left: -15%; 
-		top: -10px;
+		top: -20px;
 		padding: 130px 10px 20px;
 		width: 120%;
 		height: 200px;
 		display: none;
-		background: $body-background;
+		background: #111;
 		background-repeat:no-repeat;
 		-webkit-border-radius: 3px;
 		-moz-border-radius: 3px;
