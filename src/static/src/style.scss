@@ -28,13 +28,14 @@
 
 $mainFont: "Anivers";
 $footer-link-color:#999;
-$common-padding: 5px;
 $body-background:#222;
+$general-padding:8px;
 
-$box-width:23.5%; 
+$box-width:22%; 
 $box-height:140px;
 $box-height:140px;
 $box-margin:10px;
+$box-background: #fff;
 
 body{
 	padding:20px;
@@ -61,6 +62,8 @@ q{
 
 	.dayId{
 		font-size: 1.4em;
+		margin-bottom:5px;
+		margin-left:-50px;
 		color: #fff;
 	}
 	
@@ -79,7 +82,7 @@ q{
 
 #navigation {
 	#logo{
-		margin-top:10px;
+		margin-top:15px;
 		margin-bottom:10px;
 		font-size: 3.6em;
 		a{
@@ -99,7 +102,7 @@ q{
 #footer {
 
 	margin-top:30px;
-	padding: $common-padding;
+	padding: $general-padding;
 	height:100px;
 	
 	a{
@@ -116,58 +119,88 @@ ul.boxList{
 }
 	  
 ul.boxList li {
-
+    opacity: 0.9;
 	width:$box-width;
 	height:$box-height;
 	float:left;
 	margin: 0px $box-margin $box-margin 0;
 	border: 1px solid #222;
 	position:relative;
-	color: #fff;
-	background: #111;
+	word-wrap: break-word;
+	color: black;
+	
+	vertical-align: center;
+	background:$box-background;
 	
 
 	
 	
 	.detail {
 		position: absolute;
-		left: -15%; 
+		left: -10%; 
 		top: -20px;
-		padding: 130px 10px 20px;
+		padding: 170px 0px 20px 0px;
 		width: 120%;
 		height: 200px;
 		display: none;
-		background: #111;
+		background: $box-background;
 		background-repeat:no-repeat;
-		-webkit-border-radius: 3px;
-		-moz-border-radius: 3px;
-		border-radius: 3px;
+		-webkit-border-radius: 2px;
+		-moz-border-radius: 2px;
+		border-radius: 2px;
+	}
+	
+	.comment{
+		line-height:1.1em;
 	}
 	
 	
 	
-	a{
-		position:relative;
-		left:0px;
-		top:100px;
-		background-color: #fff;
-		color: #555;
-		font-size:0.8em;
+	a.page-url{
+		//padding: $general-padding;
+	}
+	
+	p {padding: $general-padding;
+	}
+	
+	q{
+		font-size:1.4em;
+		line-height:1.2em;
+		position: absolute;
+		top: 30%;
+		word-wrap: break-word;
+		padding: $general-padding;
+		text-align:center;
+		display:block;
+		
+		
+	}
+	q.full{
+		display:none;
 	}
 }
 
 ul.boxList li:hover {
 
-		border: 1px solid #777;
+		
+		opacity: 1;
 		a, q, img, p{
-			position: relative;
+			//position: relative;
 			z-index: 999;
 		}
+		q.crop{
+			display:none;
+		}
+		q.full{
+		display:block;
+	}
 		.detail {
 			display: block;
 			z-index: 50;
 		}
-	}
+}
+	
+	
 	
 .pressed {
 
@@ -190,13 +223,3 @@ ul.boxList li:hover {
 		display: none;
 		}
 }
-
-
-/* Modal dialogs =========================================================== */
-.detail {display:none;}
-/* Overlay */
-#simplemodal-overlay {background-color:#000;}
-/* Container */
-#simplemodal-container {height:300px; width:400px; color:#bbb; background-color:#111111; border:4px solid #444; padding:12px;}
-#simplemodal-container a.modalCloseImg {background:url(/static/img/x.png) no-repeat; width:25px; height:29px; display:inline; z-index:3200; position:absolute; top:-15px; right:-16px; cursor:pointer;}
-#simplemodal-container #basic-modal-content {padding:8px;}
