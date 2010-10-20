@@ -133,6 +133,7 @@ class Delete(webapp.RequestHandler):
 
 class Test(webapp.RequestHandler):   
     
+    @login_required
     def get(self):
         #Texty
         clips.api.store("http://behance.vo.llnwd.net/", "null", "null", "Lorem ipsum kasd facete reformidans ne sed, mea etiam simul forensibus ad. Cum tempor intellegat intellegam an. Qui congue nonummy.", "Et sit molestie delicatissimi. Sit te impedit adipisci. His eu prompta eleifend sententiae. Sed ut modus tation, id dicant aliquyam vulputate has, in laudem feugiat necessitatibus eam.")

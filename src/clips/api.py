@@ -64,11 +64,11 @@ def store(page,link,src,text,comment):
     Performs validation of passed values and stores clip into datastore. In case of invalid values throws
     exception.
     """
-    #Check if user was provided by oauth
-    user = oauth.get_current_user()
+    #Check if user was provided by  google user api
+    user = users.get_current_user()
     if not user:
-        #Try to get user from google user api
-        user = users.get_current_user()
+        #Try to get user from oauth
+        user = oauth.get_current_user()
         if not user:
             raise UserError("User is not logged in and clip cannot be stored into datastore.")
     __validate_clip(page,link,src,text,comment)
