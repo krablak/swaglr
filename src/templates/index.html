@@ -11,52 +11,57 @@
 				<p class="dayId">{{ day.day }}</p>	
     			<ul class="boxList">
     		{% for clip in day.clips %}	
-	    			<li {% if clip|is_image_clip %}style="background-image:url('/images/tiny/{{ clip.image.key.id }}.jpg');"{% endif %} class="pressed">
-
-					 				
-    				{% if clip|is_text_clip %}
-    				<q class="crop" cite="{{ clip.page }}">CROP{{ clip.text|slice:"0:75"|escape }}...</q>
-   					{% endif %}
-   					
-   					{% if clip|is_page_clip %}
-    				<q cite="{{ clip.page }}">{{ clip.page|slice:"0:20"|escape }}...</q>
-   					{% endif %}
-    				
-    				{% if clip|is_link_clip %}
-    				<q cite="{{ clip.link }}">{{ clip.link|slice:"0:20"|escape }}...</q>
-    				{% endif %}  
+	    			<li>
+						{% if clip|is_image_clip %}
+							<img src="/images/tiny/{{ clip.image.key.id }}.jpg"/>
+						{% endif %}
+			
+						{% if clip|is_text_clip %}
+						<q class="crop" cite="{{ clip.page }}">CROP{{ clip.text|slice:"0:75"|escape }}...</q>
+						{% endif %}
 						
-
-   					<div id="detail_{{clip.key.id}}" class="detail" {% if clip|is_image_clip %}style="background-image:url('/images/tiny/{{ clip.image.key.id }}.jpg');"{% endif %}> 
-   					{% if clip|is_text_clip %}
-					<q class="full" cite="{{ clip.page }}">FULL{{ clip.text|escape }}</q>
-   					{% endif %}
-   					
-   					{% if clip|is_page_clip %}
-    				<q cite="{{ clip.page }}">{{ clip.page|slice:"0:20"|escape }}...</q>
-   					{% endif %}
-    				
-    				{% if clip|is_link_clip %}
-    				<q cite="{{ clip.link }}">{{ clip.link|slice:"0:20"|escape }}...</q>
-    				{% endif %}  
-					
-					<p>Source:&nbsp;<a class="page-url" href="{{ clip.page }}">{{ clip.page|slice:"0:20" }}...</a></p>			
-   												
-   						
-   					<p class="comment"> Comment:<br/>
-   						{% if clip|is_commented_clip %}
-   							{{  clip.comment }}
-   						{% endif %}
-					</p>	
+						{% if clip|is_page_clip %}
+						<q cite="{{ clip.page }}">{{ clip.page|slice:"0:20"|escape }}...</q>
+						{% endif %}
 						
-						<p>More by<a href="/user/{{ clip.user.user_id }}/page/0"> {{ clip.user.user.nickname }}</a></p>
-   						
-   						{% ifequal user.user_id clip.user.user_id %}
-    					<a href="/delete/{{ clip.key.id }}">Delete</a>
-    					{% endifequal %}
+						{% if clip|is_link_clip %}
+						<q cite="{{ clip.link }}">{{ clip.link|slice:"0:20"|escape }}...</q>
+						{% endif %}  
 							
-   					</div>			
-    			</li>
+
+						<div id="detail_{{clip.key.id}}" class="detail"> 
+							{% if clip|is_image_clip %}
+							<img src="/images/tiny/{{ clip.image.key.id }}.jpg"/>
+							{% endif %}
+							{% if clip|is_text_clip %}
+							<q class="full" cite="{{ clip.page }}">FULL{{ clip.text|escape }}</q>
+							{% endif %}
+							
+							{% if clip|is_page_clip %}
+							<q cite="{{ clip.page }}">{{ clip.page|slice:"0:20"|escape }}...</q>
+							{% endif %}
+							
+							{% if clip|is_link_clip %}
+							<q cite="{{ clip.link }}">{{ clip.link|slice:"0:20"|escape }}...</q>
+							{% endif %}  
+							
+							<p>Source:&nbsp;<a class="page-url" href="{{ clip.page }}">{{ clip.page|slice:"0:20" }}...</a></p>			
+														
+								
+							<p class="comment"> Comment:<br/>
+								{% if clip|is_commented_clip %}
+									{{  clip.comment }}
+								{% endif %}
+							</p>	
+								
+							<p>More by<a href="/user/{{ clip.user.user_id }}/page/0"> {{ clip.user.user.nickname }}</a></p>
+							
+							{% ifequal user.user_id clip.user.user_id %}
+							<a href="/delete/{{ clip.key.id }}">Delete</a>
+							{% endifequal %}
+								
+						</div>	<!-- /detail-->		
+					</li>
     		{% endfor %}    				
     			</ul>
 		    {% endfor %}

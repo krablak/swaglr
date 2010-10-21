@@ -61,7 +61,8 @@ q{
 #clips {
 
 	.dayId{
-		font-size: 1.4em;
+		font-size: 1.6em;
+		font-weight:bold;
 		margin-bottom:5px;
 		margin-left:-50px;
 		color: #fff;
@@ -119,7 +120,7 @@ ul.boxList{
 }
 	  
 ul.boxList li {
-    opacity: 0.9;
+    opacity: 0.85;
 	width:$box-width;
 	height:$box-height;
 	float:left;
@@ -141,13 +142,21 @@ ul.boxList li {
 		top: -20px;
 		padding: 20px 0px 20px 0px;
 		width: 120%;
-		height: 250px;
+		//height: 250px;
 		display: none;
 		background: $box-background;
 		background-repeat:no-repeat;
 		-webkit-border-radius: 2px;
 		-moz-border-radius: 2px;
 		border-radius: 2px;
+	}
+	
+	img{
+		display:block;
+		width:90%;
+		//height:80%;
+		margin:5%;
+		
 	}
 	
 	.comment{

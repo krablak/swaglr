@@ -48,17 +48,18 @@ q {
 */
 /* line 63, ../src/style.scss */
 #clips .dayId {
-  font-size: 1.4em;
+  font-size: 1.6em;
+  font-weight: bold;
   margin-bottom: 5px;
   margin-left: -50px;
   color: #fff;
 }
-/* line 70, ../src/style.scss */
+/* line 71, ../src/style.scss */
 #clips #paging {
   padding: 5px 10px 0px 0px;
   text-align: center;
 }
-/* line 73, ../src/style.scss */
+/* line 74, ../src/style.scss */
 #clips #paging a {
   color: white;
   font-size: 1.4em;
@@ -81,13 +82,13 @@ q {
   color: white;
 }
 
-/* line 84, ../src/style.scss */
+/* line 85, ../src/style.scss */
 #navigation #logo {
   margin-top: 15px;
   margin-bottom: 10px;
   font-size: 3.6em;
 }
-/* line 88, ../src/style.scss */
+/* line 89, ../src/style.scss */
 #navigation #logo a {
   color: white;
   text-decoration: none;
@@ -108,18 +109,18 @@ q {
 #navigation #logo a:active {
   color: white;
 }
-/* line 94, ../src/style.scss */
+/* line 95, ../src/style.scss */
 #navigation p {
   margin-bottom: 5px;
 }
 
-/* line 102, ../src/style.scss */
+/* line 103, ../src/style.scss */
 #footer {
   margin-top: 30px;
   padding: 8px;
   height: 100px;
 }
-/* line 108, ../src/style.scss */
+/* line 109, ../src/style.scss */
 #footer a {
   color: #999999;
   text-decoration: none;
@@ -141,16 +142,16 @@ q {
   color: #999999;
 }
 
-/* line 116, ../src/style.scss */
+/* line 117, ../src/style.scss */
 ul.boxList {
   list-style: none;
   margin: 0 auto;
   padding: 0;
 }
 
-/* line 121, ../src/style.scss */
+/* line 122, ../src/style.scss */
 ul.boxList li {
-  opacity: 0.9;
+  opacity: 0.85;
   width: 23.5%;
   height: 140px;
   float: left;
@@ -162,14 +163,13 @@ ul.boxList li {
   vertical-align: center;
   background: white;
 }
-/* line 138, ../src/style.scss */
+/* line 139, ../src/style.scss */
 ul.boxList li .detail {
   position: absolute;
   left: -10%;
   top: -20px;
   padding: 20px 0px 20px 0px;
   width: 120%;
-  height: 250px;
   display: none;
   background: white;
   background-repeat: no-repeat;
@@ -177,15 +177,21 @@ ul.boxList li .detail {
   -moz-border-radius: 2px;
   border-radius: 2px;
 }
-/* line 153, ../src/style.scss */
+/* line 154, ../src/style.scss */
+ul.boxList li img {
+  display: block;
+  width: 90%;
+  margin: 5%;
+}
+/* line 162, ../src/style.scss */
 ul.boxList li .comment {
   line-height: 1.1em;
 }
-/* line 163, ../src/style.scss */
+/* line 172, ../src/style.scss */
 ul.boxList li p {
   padding: 8px;
 }
-/* line 166, ../src/style.scss */
+/* line 175, ../src/style.scss */
 ul.boxList li q {
   font-size: 1.4em;
   line-height: 1.2em;
@@ -196,28 +202,28 @@ ul.boxList li q {
   display: block;
 }
 
-/* line 183, ../src/style.scss */
+/* line 192, ../src/style.scss */
 ul.boxList li:hover {
   opacity: 1;
 }
-/* line 191, ../src/style.scss */
+/* line 200, ../src/style.scss */
 ul.boxList li:hover q.crop {
   display: none;
 }
-/* line 197, ../src/style.scss */
+/* line 206, ../src/style.scss */
 ul.boxList li:hover .detail {
   display: block;
   z-index: 999;
 }
 
-/* line 216, ../src/style.scss */
+/* line 225, ../src/style.scss */
 .cleaner {
   clear: both;
   height: 0;
   content: ' ';
   overflow: hidden;
 }
-/* line 222, ../src/style.scss */
+/* line 231, ../src/style.scss */
 .cleaner hr {
   display: none;
 }
