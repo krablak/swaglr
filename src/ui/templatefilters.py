@@ -5,8 +5,10 @@ Created on Sep 23, 2010
 '''
 
 from google.appengine.ext import webapp
+from google.appengine.api import users
 import clips.api
 import clips.validations
+import dbo
 register = webapp.template.create_template_register()
 
 
@@ -40,9 +42,32 @@ def is_commented_clip(clip):
     """
     return clip.comment and clip.comment!=clips.validations.NULL
 
+def is_my(clip):
+    """
+    Checks if the clip belongs to the current logged user.
+    """
+    user = users.get_current_user()
+    if not user:
+        return False
+    if user.user_id() == clip.user.user_id:
+        return True
+    return False
+
+def user_nick(user):
+    """
+    Get user nic defined by user settings.
+    """
+    user = users.get_current_user()
+    if not user:
+        return False
+    else:
+        return dbo.UserInfo.getUserInfo(user).nick
+
 
 register.filter(is_page_clip)
 register.filter(is_image_clip)
 register.filter(is_link_clip)
 register.filter(is_text_clip)
 register.filter(is_commented_clip)
+register.filter(is_my)
+register.filter(user_nick)

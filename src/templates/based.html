@@ -40,7 +40,7 @@
 				{% block navigation %}
 					<h1 id="logo"><a href="/">yousw.ag</a></h1>
 					{% if user %}
-						<p><a href="/user/{{ user.user_id }}/page/0">username</a></p>
+						<p><a href="/user/{{ user.user_id }}/page/0">{{ user|user_nick }}</a></p>
 					{% endif %}
 						
 					<p>{{ greeting }}</p> <!-- MZ: Co to znamena greeting? -->   
@@ -57,6 +57,6 @@
 			</div>
 		</div><!-- /footer --> 
 				
-			{% endblock %}<!-- /block container --> 
+	{% endblock %}<!-- /block container --> 
     </body>
 </html>

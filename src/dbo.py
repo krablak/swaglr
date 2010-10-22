@@ -27,14 +27,15 @@ class Image(db.Model):
 
 class UserInfo(db.Model):
     
-    user_id = db.StringProperty(required=False)
+    user_id = db.StringProperty(required=True)
     user = db.UserProperty(required=True)
+    nick = db.StringProperty(required=True)
     
     @staticmethod
     def getUserInfo(user):
         user_info = UserInfo.all().filter('user =', user).fetch(1)
         if not user_info:
-            user_info = UserInfo(user=user,user_id=user.user_id())
+            user_info = UserInfo(user=user,user_id=user.user_id(),nick=user.nickname())
             user_info.put()
             return user_info
         else:
@@ -51,7 +52,7 @@ class Clip(db.Model):
     comment = db.TextProperty()
     link = db.StringProperty(required=False)
     src = db.StringProperty(required=False) 
-    user = db.ReferenceProperty(required=True)
+    user = db.ReferenceProperty(UserInfo,required=True)
     date = db.DateTimeProperty(auto_now_add = True)
     image = db.ReferenceProperty(Image)   
     

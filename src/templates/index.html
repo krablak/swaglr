@@ -47,18 +47,17 @@
 							
 							<p>Source:&nbsp;<a class="page-url" href="{{ clip.page }}">{{ clip.page|slice:"0:20" }}...</a></p>			
 														
-								
 							<p class="comment"> Comment:<br/>
 								{% if clip|is_commented_clip %}
 									{{  clip.comment }}
 								{% endif %}
 							</p>	
 								
-							<p>More by<a href="/user/{{ clip.user.user_id }}/page/0"> {{ clip.user.user.nickname }}</a></p>
+							<p>More by<a href="/user/{{ clip.user.user_id }}/page/0"> {{ clip.user.nick }}</a></p>
 							
-							{% ifequal user.user_id clip.user.user_id %}
+							{% if clip|is_my %}
 							<a href="/delete/{{ clip.key.id }}">Delete</a>
-							{% endifequal %}
+							{% endif %}
 								
 						</div>	<!-- /detail-->		
 					</li>
