@@ -59,4 +59,15 @@ def is_one_set(*values):
             return True
     raise ValidationError("One of the required values is not set!" )
 
+def validate_int(value,name):
+    """
+    Perform validation for required integer property.
+    """
+    if not value:
+        raise ValidationError("Attribute %s is not defined but it's required." % (name))
+    try:
+        str(value)
+    except:
+        raise ValidationError("Attribute %s cannot be converted to int." % (name))
+
         

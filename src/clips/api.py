@@ -81,5 +81,22 @@ def store(page,link,src,text,comment):
         clip.image = image
     clip.put()
     
+def delete(id=0):
+    """
+    Deletes clip by id. Current user must be author of the deleted clip.
+    """
+    #Validate clip id
+    validations.validate_int(id, "Clip id")
+    #Get logged user
+    user = users.get_current_user()
+    if not user:
+        #Try to get user from oauth
+        user = oauth.get_current_user()
+        if not user:
+            raise UserError("User is not logged in and clip cannot be deleted from datastore.")
+    #Get clip from datastore
+    clip = Clip.getClip(id)
+    #Check clip ownership
+    if clip and clip.user.user_id == user.user_id():
+        clip.delete()
     
-        

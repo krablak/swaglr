@@ -1,17 +1,18 @@
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
-from pages import *
+import pages
+import ajax
 
 
-application = webapp.WSGIApplication([('/', MainPage), 
-                                      ('/post/', Post), 
-                                      ('/page/(.*)', Paging),
-                                      ('/user/(.*)/page/(.*)', User),
-                                      ('/clip/(.*)', Detail),
-                                      ('/delete/(.*)', Delete),
-                                      ('/about/', About),
-                                      ('/images/(.*)/(.*)', Images),
-                                      ('/test/', Test),
+application = webapp.WSGIApplication([('/', pages.MainPage), 
+                                      ('/post/', pages.Post), 
+                                      ('/page/(.*)', pages.Paging),
+                                      ('/user/(.*)/page/(.*)', pages.User),
+                                      ('/clip/(.*)', pages.Detail),
+                                      ('/clip-delete/(.*)', ajax.Delete),
+                                      ('/about/', pages.About),
+                                      ('/images/(.*)/(.*)', pages.Images),
+                                      ('/test/', pages.Test),
                                      ]
                                      , debug=True)
 
