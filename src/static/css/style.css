@@ -60,7 +60,9 @@ h1, h2, h3, h4 {
 }
 
 /* Project specifics =========================================================== */
-/* line 65, ../src/style.scss */
+/*Dialogs - confirm dialogs, etc.*/
+/*Main element in clip detail*/
+/* line 76, ../src/style.scss */
 body {
   padding: 20px;
   font: normal normal 11px/11px "Anivers", Tahoma, Arial, Helvetica, Verdana, sans-serif;
@@ -69,15 +71,10 @@ body {
   background-color: #222222;
 }
 
-/* line 75, ../src/style.scss */
-q {
-  text-align: left;
-}
-
 /**
 * Box list
 */
-/* line 89, ../src/style.scss */
+/* line 95, ../src/style.scss */
 #clips .dayId {
   font-size: 1.6em;
   font-weight: bold;
@@ -85,12 +82,12 @@ q {
   margin-left: -50px;
   color: #fff;
 }
-/* line 97, ../src/style.scss */
+/* line 103, ../src/style.scss */
 #clips #paging {
   padding: 5px 10px 0px 0px;
   text-align: center;
 }
-/* line 100, ../src/style.scss */
+/* line 106, ../src/style.scss */
 #clips #paging a {
   color: white;
   font-size: 1.4em;
@@ -113,13 +110,13 @@ q {
   color: white;
 }
 
-/* line 111, ../src/style.scss */
+/* line 117, ../src/style.scss */
 #navigation #logo {
   margin-top: 15px;
   margin-bottom: 10px;
   font-size: 3.6em;
 }
-/* line 115, ../src/style.scss */
+/* line 121, ../src/style.scss */
 #navigation #logo a {
   color: white;
   text-decoration: none;
@@ -140,18 +137,18 @@ q {
 #navigation #logo a:active {
   color: white;
 }
-/* line 121, ../src/style.scss */
+/* line 127, ../src/style.scss */
 #navigation p {
   margin-bottom: 5px;
 }
 
-/* line 129, ../src/style.scss */
+/* line 135, ../src/style.scss */
 #footer {
   margin-top: 30px;
   padding: 8px;
   height: 100px;
 }
-/* line 135, ../src/style.scss */
+/* line 141, ../src/style.scss */
 #footer a {
   color: #999999;
   text-decoration: none;
@@ -173,16 +170,15 @@ q {
   color: #999999;
 }
 
-/* line 143, ../src/style.scss */
+/* line 149, ../src/style.scss */
 ul.boxList {
   list-style: none;
   margin: 0 auto;
   padding: 0;
 }
 
-/* line 148, ../src/style.scss */
+/* line 154, ../src/style.scss */
 ul.boxList li {
-  opacity: 0.85;
   width: 23.5%;
   height: 140px;
   float: left;
@@ -194,31 +190,18 @@ ul.boxList li {
   vertical-align: center;
   background: white;
 }
-/* line 165, ../src/style.scss */
-ul.boxList li .detail {
-  position: absolute;
-  left: -20%;
-  top: -20px;
-  padding: 20px 0px 20px 0px;
-  width: 140%;
-  display: none;
-  background: white;
-  background-repeat: no-repeat;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: 2px;
-}
-/* line 179, ../src/style.scss */
+/* line 167, ../src/style.scss */
 ul.boxList li img {
+  opacity: 0.85;
   display: block;
   width: 90%;
   margin: 5%;
 }
-/* line 197, ../src/style.scss */
+/* line 183, ../src/style.scss */
 ul.boxList li p {
   padding: 8px;
 }
-/* line 200, ../src/style.scss */
+/* line 186, ../src/style.scss */
 ul.boxList li q {
   font-size: 1.4em;
   margin-top: 30px;
@@ -227,63 +210,95 @@ ul.boxList li q {
   text-align: center;
   display: block;
 }
+/* line 205, ../src/style.scss */
+ul.boxList li .detail {
+  position: absolute;
+  left: -20%;
+  top: -20px;
+  padding: 0px 0px 20px 0px;
+  width: 140%;
+  display: none;
+  background: #f6f6f6;
+  background-repeat: no-repeat;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+/* line 218, ../src/style.scss */
+ul.boxList li .detail q {
+  margin: 15px;
+  background: white;
+  padding: 25px;
+}
+/* line 223, ../src/style.scss */
+ul.boxList li .detail img {
+  margin: 15px;
+}
 
-/* line 217, ../src/style.scss */
-ul.boxList li:hover {
+/* line 233, ../src/style.scss */
+ul.boxList li:hover img {
   opacity: 1;
 }
-/* line 225, ../src/style.scss */
+/* line 240, ../src/style.scss */
 ul.boxList li:hover q.crop {
   display: none;
 }
-/* line 231, ../src/style.scss */
+/* line 246, ../src/style.scss */
 ul.boxList li:hover .detail {
   display: block;
   z-index: 999;
 }
 
-/* line 250, ../src/style.scss */
+/* line 265, ../src/style.scss */
 .cleaner {
   clear: both;
   height: 0;
   content: ' ';
   overflow: hidden;
 }
-/* line 256, ../src/style.scss */
+/* line 271, ../src/style.scss */
 .cleaner hr {
   display: none;
 }
 
-/* line 262, ../src/style.scss */
+/* line 277, ../src/style.scss */
 #delete-dialog {
   display: none;
 }
-/* line 264, ../src/style.scss */
-#delete-dialog h3, #delete-dialog p {
-  text-align: center;
-}
 
-/* line 268, ../src/style.scss */
+/* line 280, ../src/style.scss */
 #comment-dialog {
   display: none;
 }
 
 /* Overlay */
-/* line 270, ../src/style.scss */
+/* line 282, ../src/style.scss */
 #simplemodal-overlay {
   background-color: #000;
 }
 
 /* Container */
-/* line 273, ../src/style.scss */
+/* line 285, ../src/style.scss */
 #simplemodal-container {
   width: 300px;
   color: #000;
   background-color: #fff;
-  border: 4px solid #444;
-  padding: 12px;
+  border: 2px solid #444;
+  padding: 8px;
 }
-/* line 281, ../src/style.scss */
+/* line 292, ../src/style.scss */
+#simplemodal-container .buttons {
+  margin-top: 5px;
+}
+/* line 295, ../src/style.scss */
+#simplemodal-container h3, #simplemodal-container p {
+  text-align: center;
+}
+/* line 298, ../src/style.scss */
+#simplemodal-container h3 {
+  margin-bottom: 5px;
+}
+/* line 302, ../src/style.scss */
 #simplemodal-container a.modalCloseImg {
   background: url(/static/img/x.png) no-repeat;
   width: 25px;
@@ -296,12 +311,12 @@ ul.boxList li:hover .detail {
   cursor: pointer;
 }
 
-/* line 295, ../src/style.scss */
+/* line 316, ../src/style.scss */
 #simplemodal-container #basic-modal-content {
   padding: 8px;
 }
 
-/* line 298, ../src/style.scss */
+/* line 319, ../src/style.scss */
 .awesome {
   background: #222222 url(alert-overlay.png) repeat-x;
   display: inline-block;
@@ -324,44 +339,44 @@ ul.boxList li:hover .detail {
 }
 
 /* Sizes ---------- */
-/* line 320, ../src/style.scss */
+/* line 341, ../src/style.scss */
 .small.awesome {
   font-size: 11px;
 }
 
-/* line 324, ../src/style.scss */
+/* line 345, ../src/style.scss */
 .medium.awesome {
   font-size: 13px;
 }
 
-/* line 328, ../src/style.scss */
+/* line 349, ../src/style.scss */
 .large.awesome {
   font-size: 14px;
   padding: 8px 14px 9px;
 }
 
 /* Colors ---------- */
-/* line 334, ../src/style.scss */
+/* line 355, ../src/style.scss */
 .blue.awesome {
   background-color: #2daebf;
 }
 
-/* line 338, ../src/style.scss */
+/* line 359, ../src/style.scss */
 .red.awesome {
   background-color: #e33100;
 }
 
-/* line 342, ../src/style.scss */
+/* line 363, ../src/style.scss */
 .magenta.awesome {
   background-color: #a9014b;
 }
 
-/* line 346, ../src/style.scss */
+/* line 367, ../src/style.scss */
 .orange.awesome {
   background-color: #ff5c00;
 }
 
-/* line 350, ../src/style.scss */
+/* line 371, ../src/style.scss */
 .yellow.awesome {
   background-color: #ffb515;
 }
