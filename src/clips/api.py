@@ -38,6 +38,19 @@ def __validate_clip(page,link,src,text,comment):
         validations.validate_str(text,"text")
     #Validate comment
     validations.validate_str(comment,"comment")
+    
+def __get_user():
+    """
+    Helper function to get currently logged user.
+    """
+    #Get logged user
+    user = users.get_current_user()
+    if not user:
+        #Try to get user from oauth
+        user = oauth.get_current_user()
+        if not user:
+            raise UserError("User is not logged in and clip cannot be deleted from datastore.")
+    return user
 
 PAGE = "page"
 LINK = "link"
@@ -65,13 +78,7 @@ def store(page,link,src,text,comment):
     exception.
     """
     #Check if user was provided by  google user api
-    user = users.get_current_user()
-    if not user:
-        #Try to get user from oauth
-        user = oauth.get_current_user()
-        if not user:
-            raise UserError("User is not logged in and clip cannot be stored into datastore.")
-    __validate_clip(page,link,src,text,comment)
+    user = __get_user()
     #Prepare clip data object
     type = __get_type(page,link,src,text)
     #Create clip DO
@@ -85,18 +92,32 @@ def delete(id=0):
     """
     Deletes clip by id. Current user must be author of the deleted clip.
     """
+    #Get logged user
+    user = __get_user()
     #Validate clip id
     validations.validate_int(id, "Clip id")
-    #Get logged user
-    user = users.get_current_user()
-    if not user:
-        #Try to get user from oauth
-        user = oauth.get_current_user()
-        if not user:
-            raise UserError("User is not logged in and clip cannot be deleted from datastore.")
     #Get clip from datastore
     clip = Clip.getClip(id)
     #Check clip ownership
     if clip and clip.user.user_id == user.user_id():
         clip.delete()
+        
+def comment(id=0,comment=""):
+    """
+    Adds or update comment to clip found by clip id.
+    """
+    #Get logged user
+    user = __get_user()
+    #Validate clip id
+    validations.validate_int(id, "Clip id")
+    #Validate comment
+    validations.validate_str(comment, "comment")
+    #Get clip from datastore
+    clip = Clip.getClip(id)
+    #Check clip ownership
+    if clip and clip.user.user_id == user.user_id():
+        clip.comment = comment
+        clip.put()
+    
+    
     

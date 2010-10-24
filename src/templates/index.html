@@ -48,15 +48,14 @@
 							<p>Source:&nbsp;<a class="page-url" href="{{ clip.page }}">{{ clip.page|slice:"0:20" }}...</a></p>			
 														
 							<p class="comment"> Comment:<br/>
-								{% if clip|is_commented_clip %}
-									{{  clip.comment }}
-								{% endif %}
+								<span id="clip-comment-{{ clip.key.id }}">{% if clip|is_commented_clip %}{{  clip.comment }}{% endif %}</span>
 							</p>	
 								
 							<p>More by<a href="/user/{{ clip.user.user_id }}/page/0"> {{ clip.user.nick }}</a></p>
 							
 							{% if clip|is_my %}
-							<a onclick="showDeleteDialog({{ clip.key.id }});">Delete</a>
+								<a onclick="showDeleteDialog({{ clip.key.id }});">Delete</a>
+								<a onclick="showCommentDialog({{ clip.key.id }});">Edit comment</a>
 							{% endif %}
 								
 						</div>	<!-- /detail-->		
@@ -83,7 +82,15 @@
 				<p>Do you really want to delete clip?</p>
 				<a id="delete-yes">Yes</a>
 				<a id="delete-no">No</a> 		
-			</div> 
+			</div>
+			
+			<!-- Clip delete dialog --> 
+			<div id="comment-dialog"> 
+				<p>Comment</p>
+				<textarea id="comment-text" rows="4" cols="20" ></textarea><br/>
+				<a id="comment-yes">Save</a>
+				<a id="comment-no">Cancel</a> 		
+			</div>  
 	 
 			<!-- preload the images --> 
 			<div style='display:none'> 
