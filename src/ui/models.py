@@ -44,7 +44,7 @@ def __to_humanized_date(robotic_date):
             if days == -1:
                 return "yesterday"
             else:
-                robotic_date.strftime("%d.%m")
+                return robotic_date.strftime("%d.%m")
         except AttributeError:
             pass
         except ValueError:
