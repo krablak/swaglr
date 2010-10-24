@@ -45,10 +45,15 @@
 							<q cite="{{ clip.link }}">{{ clip.link|slice:"0:20"|escape }}...</q>
 							{% endif %}  
 							
-							<p>Source:&nbsp;<a class="page-url" href="{{ clip.page }}">{{ clip.page|slice:"0:20" }}...</a></p>			
+							<p>Source:&nbsp;<a class="page-url" href="{{ clip.page }}">{{ clip.page|slice:"0:20"|escape }}...</a></p>			
 														
 							<p class="comment"> Comment:<br/>
-								<span id="clip-comment-{{ clip.key.id }}">{% if clip|is_commented_clip %}{{  clip.comment }}{% endif %}</span>
+								<span id="clip-comment-view-{{ clip.key.id }}">{% if clip|is_commented_clip %}{{  clip.comment|escape }}{% endif %}</span>
+								<span id="clip-comment-edit-{{ clip.key.id }}" style="display:none">
+									<textarea id="comment-textarea-{{ clip.key.id }}" rows="4" cols="30" ></textarea><br/>
+									<a id="comment-yes-{{ clip.key.id }}" class="awesome">Save</a>
+									<a id="comment-no-{{ clip.key.id }}" class="awesome">Cancel</a>
+								</span>
 							</p>	
 								
 							<p>More by<a href="/user/{{ clip.user.user_id }}/page/0"> {{ clip.user.nick }}</a></p>
@@ -90,14 +95,6 @@
 					<a id="delete-yes" class="medium awesome" href="#">Delete</a>
 					<a id="delete-no" href="#">Cancel</a>
 				</p> 		
-			</div>
-			
-			<!-- Clip delete dialog --> 
-			<div id="comment-dialog"> 
-				<p>Clip comment</p>
-				<textarea id="comment-text" rows="4" cols="20" ></textarea><br/>
-				<a id="comment-yes">Save</a>
-				<a id="comment-no">Cancel</a> 		
 			</div>  
 	 
 			<!-- preload the images --> 

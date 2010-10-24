@@ -5,42 +5,34 @@ var sclipAPI = new SclipAPI();
 
 /****************************************Clip comment*****************************************************/
 /**
+ * ID of the currently edited clip.
+ */
+var EDITED_CLIP = null;
+
+/**
  * Displays clip comment dialog.
  * @param id clip id for commenting.
  */
 function showCommentDialog(id){
-	//Unbind old click events
-	$('#comment-yes').unbind('click');
-	$('#comment-no').unbind('click');
-	//Set comment current value to edit field
-	$('#comment-text').val($('#clip-comment-'+id).html());
-	//Bind function to comment dialog buttons
-	$('#comment-yes').bind('click', function() {
-		var comment = $('#comment-text').val();
-		sclipAPI.commentClip(id,comment,onCommentedClip,onDeleteError);
-		return false;
+	if(EDITED_CLIP!=null){
+		$('#clip-comment-edit-'+EDITED_CLIP).hide();
+		$('#comment-textarea-'+EDITED_CLIP).html($('#clip-comment-edit-'+EDITED_CLIP).html());
+		$('#clip-comment-view-'+EDITED_CLIP).fadeIn('fast');
+	}
+	EDITED_CLIP = id;
+	var originalComment = $('#clip-comment-view-'+id).html();
+	$('#comment-textarea-'+id).html(originalComment);
+	$('#clip-comment-view-'+id).hide();
+	$('#clip-comment-edit-'+id).fadeIn('fast');
+	$('#comment-no-'+id).bind('click',{elid:id,origcomment:originalComment},function(event){
+		$('#clip-comment-edit-'+event.data.elid).hide();
+		$('#clip-comment-view-'+event.data.elid).html(event.data.origcomment);
+		$('#comment-textarea-'+event.data.elid).html($('#clip-comment-edit-'+event.data.elid).html());
+		$('#clip-comment-view-'+event.data.elid).fadeIn('fast');
 	});
-	$('#comment-no').bind('click', function() {
-		  $.modal.close();
-		  return false;
-	});
-	//Open comment  dialog
-	$("#comment-dialog").modal({
-		onOpen: function (dialog) {
-			dialog.overlay.fadeIn('fast', function () {
-				dialog.data.show();
-				dialog.container.fadeIn('fast');
-			});
-		},
-		onClose: function (dialog) {
-			dialog.data.fadeOut('fast', function () {
-				dialog.container.fadeOut('fast', function () {
-					dialog.overlay.fadeOut('fast', function () {
-						$.modal.close();
-					});
-				});
-			});
-		}
+	$('#comment-yes-'+id).bind('click',{elid:id},function(event){
+		var updatedComment = $('#comment-textarea-'+event.data.elid).val();
+		sclipAPI.commentClip(event.data.elid,updatedComment,onCommentedClip,onCommentedError);
 	});
 }
 
@@ -48,13 +40,16 @@ function showCommentDialog(id){
  * Function called after clip save. Stores updated text into clip comment area.
  */
 function onCommentedClip(id,comment){
-	$.modal.close();
-	$('#clip-comment-'+id).html(comment);
+	$('#clip-comment-edit-'+id).hide();
+	$('#clip-comment-view-'+id).html(comment);
+	$('#comment-textarea-'+id).html(comment);
+	$('#clip-comment-view-'+id).fadeIn('fast');
+	EDITED_CLIP = null;
 }
 
 function onCommentedError(){
-	$.modal.close();
 	alert('Sorry but clip commenting ends with unexpected error.');
+	EDITED_CLIP = null;
 }
 
 /****************************************Clip delete*****************************************************/
