@@ -17,6 +17,7 @@ import ui.models
 from ui.error_logging import log_errors
 from dbo import *
 import dbo
+import logging
 
 
 
@@ -26,14 +27,14 @@ class Delete(webapp.RequestHandler):
     """    
     
     @log_errors
-    @login_required
-    def get(self,clip_id_val):
+    def post(self,clip_id_val):
         clip_id = 0
         result = {}
         try:
             clip_id = int(clip_id_val)
             clips.api.delete(clip_id)
-            result['state']='ok'
-        except:
-            result['state']='error'
-        self.response.out.write(simplejson.dumps(result))
+            self.response.headers['Content-Type'] = 'text/html'
+            self.response.out.write(simplejson.dumps(result))
+        except Exception, inst:
+            logging.error("Problem during clip delete.")
+            self.error(500)

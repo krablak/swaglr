@@ -13,7 +13,7 @@ function showDeleteDialog(id){
 	$('#delete-no').unbind('click');
 	//Bind function to delete dialog buttons
 	$('#delete-yes').bind('click', function() {
-		sclipAPI.deleteClip(id,onDeletedClip);
+		sclipAPI.deleteClip(id,onDeletedClip,onDeleteError);
 		return false;
 	});
 	$('#delete-no').bind('click', function() {
@@ -51,6 +51,11 @@ function onDeletedClip(id) {
 	$("#clip_box_"+id).fadeOut('slow', function() {
 		$("#clip_box_"+id).remove();
 	});
+}
+
+function onDeleteError(){
+	$.modal.close();
+	alert('Sorry but clip deleting ends with unexpected error.');
 }
 
 /**
