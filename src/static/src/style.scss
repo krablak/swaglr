@@ -31,14 +31,22 @@ h1, h2, h3, h4 {
 	line-height: 115%;
 
 }
-	
 
-/* Left & Right alignment */
-.left{ float: left; }
-.right{ float: right; }
 
-/* The inside class provides consistent padding. To be used often! */
-.inside{ padding: 20px; }
+.bold{
+	font-weight: bold;
+}
+
+.italic{
+	font-style: italic;
+}
+
+.right{
+	text-align:right;
+}
+.left{
+	text-align:left;
+}
 
 
 /* For when a <br /> just ain't enough */
@@ -57,25 +65,20 @@ $footer-link-color:#999;
 $body-background:#222;
 $general-padding:8px;
 
-$box-width:23.5%; 
+$box-width:194px; 
 $box-height:140px;
 $box-margin:10px;
 $box-background: #fff;
-$detail-background: #f6f6f6;
+$detail-background: #f4f4f4;
 
 /*Dialogs - confirm dialogs, etc.*/
 @mixin dialog-border {
 	border:2px solid #444; 
 }
 
-/*Main element in clip detail*/
-@mixin detail-main {
-	margin:15px; 
-}
-
 body{
 	padding:20px;
-    font: normal normal 11px/11px $mainFont, Tahoma, Arial, Helvetica, Verdana, sans-serif; 
+    font: normal normal 10px/10px $mainFont, Tahoma, Arial, Helvetica, Verdana, sans-serif; 
 	line-height: 110%;
 	color: #fff;
 	background-color: $body-background;
@@ -148,7 +151,8 @@ body{
 
 ul.boxList{
 	list-style: none;
-	margin: 0 auto; padding: 0;
+	margin: 0 auto;
+	padding: 0;
 }
 	  
 ul.boxList li {
@@ -160,33 +164,44 @@ ul.boxList li {
 	position:relative;
 	word-wrap: break-word;
 	color: black;
-	
-	vertical-align: center;
 	background:$box-background;
 	
-	img{
-		opacity: 0.85;
-		display:block;
-		width:90%;
-		margin:5%;
-		
+	.imgbox{
+		margin:10px;	
+		overflow: hidden;
+		text-align: center;
+		//vertical-align:middle;
+	
+		img{
+			vertical-align: middle;
+			opacity: 0.85;
+			width: 100%;
+		}
+	}
+	.crop { /*Use only with .imgbox*/
+		height: $box-height - 20px;
 	}
 	
 	.comment{
-		//line-height:1.1em;
+		.text {
+			padding: $general-padding;
+			display:block;
+			font-style: italic;
+		}
 	}
 
 	a.page-url{
 
 	}
 	
-	p {padding: $general-padding;
+	p {
+		padding: $general-padding;
+		font-size:1.2em;
 	}
 	
 	q{
 		font-size:1.4em;
-		//line-height:1.2em;
-		//position: absolute;
+		line-height:1.1em;
 		margin-top: 30px;
 		word-wrap: break-word;
 		padding: $general-padding;
@@ -202,47 +217,31 @@ ul.boxList li {
 
 	
 	
-	.detail {
-		position: absolute;
+	.detail { 
+		position: absolute; 
 		left: -20%; 
 		top: -20px;
 		padding: 0px 0px 20px 0px;
 		width: 140%;
 		display: none;
 		background: $detail-background;
-		background-repeat:no-repeat;
-		-webkit-border-radius: 2px;
-		-moz-border-radius: 2px;
-		border-radius: 2px;
-		//@include dialog-border; 
+		-webkit-border-radius: 4px;
+		-moz-border-radius: 4px;
+		border-radius: 4px;
+
 		q{
-			@include detail-main;
-			background: $box-background;
-			padding: 25px;
-		}
-		img{
-			@include detail-main;
+			margin-top: 0px;
+			padding: 30px;
+			text-shadow: #ddd 1px 1px 1px;
 		}
 	}
 	
 }
 
 ul.boxList li:hover {
-
-		
 		img{
 			opacity: 1;
 		}
-		a, q, img, p{
-			//position: relative;
-			//z-index: 999;
-		}
-		q.crop{
-			display:none;
-		}
-		q.full{
-		//display:block;
-	}
 		.detail {
 			display: block;
 			z-index: 999;
@@ -317,7 +316,7 @@ ul.boxList li:hover {
 
 
 .awesome {
-	background: #222 url(alert-overlay.png) repeat-x;
+	background: #222 url(/static/img/alert-overlay.png) repeat-x;
 	display: inline-block;
 	padding: 5px 10px 6px;
 	color: #fff;
@@ -340,6 +339,7 @@ ul.boxList li:hover {
 /* Sizes ---------- */
 .small.awesome {
 	font-size: 11px;
+	padding: 4px 8px 5px;
 }
 
 .medium.awesome {
@@ -350,24 +350,9 @@ ul.boxList li:hover {
 	font-size: 14px;
 	padding: 8px 14px 9px;
 }
-
-/* Colors ---------- */
 .blue.awesome {
 	background-color: #2daebf;
 }
 
-.red.awesome {
-	background-color: #e33100;
-}
 
-.magenta.awesome {
-	background-color: #a9014b;
-}
 
-.orange.awesome {
-	background-color: #ff5c00;
-}
-
-.yellow.awesome {
-	background-color: #ffb515;
-}

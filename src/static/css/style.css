@@ -1,185 +1,121 @@
 @font-face {
   font-family: 'Anivers';
-  src: url("../fonts/Anivers_Regular.otf");
-}
+  src: url("../fonts/Anivers_Regular.otf"); }
 
 /* Fibonacci based heading scale ratio */
-/* line 10, ../src/style.scss */
 h1 {
   font-size: 4.4em;
-  font-weight: normal;
-}
+  font-weight: normal; }
 
-/* line 15, ../src/style.scss */
 h2 {
   font-size: 2.8em;
-  font-weight: bold;
-}
+  font-weight: bold; }
 
-/* line 20, ../src/style.scss */
 h3 {
   font-size: 1.6em;
-  font-weight: bold;
-}
+  font-weight: bold; }
 
-/* line 25, ../src/style.scss */
 h4 {
   font-size: 1.2em;
-  font-weight: bold;
-}
+  font-weight: bold; }
 
-/* line 30, ../src/style.scss */
 h1, h2, h3, h4 {
-  line-height: 115%;
-}
+  line-height: 115%; }
 
-/* Left & Right alignment */
-/* line 37, ../src/style.scss */
-.left {
-  float: left;
-}
+.bold {
+  font-weight: bold; }
 
-/* line 38, ../src/style.scss */
+.italic {
+  font-style: italic; }
+
 .right {
-  float: right;
-}
+  text-align: right; }
 
-/* The inside class provides consistent padding. To be used often! */
-/* line 41, ../src/style.scss */
-.inside {
-  padding: 20px;
-}
+.left {
+  text-align: left; }
 
 /* For when a <br /> just ain't enough */
-/* line 45, ../src/style.scss */
 .separator {
   clear: both;
   float: left;
   height: 1px;
-  width: 100%;
-}
+  width: 100%; }
 
 /* Project specifics =========================================================== */
 /*Dialogs - confirm dialogs, etc.*/
-/*Main element in clip detail*/
-/* line 76, ../src/style.scss */
 body {
   padding: 20px;
-  font: normal normal 11px/11px "Anivers", Tahoma, Arial, Helvetica, Verdana, sans-serif;
+  font: normal normal 10px/10px "Anivers", Tahoma, Arial, Helvetica, Verdana, sans-serif;
   line-height: 110%;
   color: #fff;
-  background-color: #222222;
-}
+  background-color: #222222; }
 
 /**
 * Box list
 */
-/* line 95, ../src/style.scss */
 #clips .dayId {
   font-size: 1.6em;
   font-weight: bold;
   margin-bottom: 5px;
   margin-left: -50px;
-  color: #fff;
-}
-/* line 103, ../src/style.scss */
+  color: #fff; }
 #clips #paging {
   padding: 5px 10px 0px 0px;
-  text-align: center;
-}
-/* line 106, ../src/style.scss */
+  text-align: center; }
 #clips #paging a {
   color: white;
   font-size: 1.4em;
-  text-decoration: none;
-}
-/* line 18, ../../../../../../Ruby/lib/ruby/gems/1.8/gems/compass-0.10.4/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+  text-decoration: none; }
 #clips #paging a:visited {
-  color: white;
-}
-/* line 22, ../../../../../../Ruby/lib/ruby/gems/1.8/gems/compass-0.10.4/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+  color: white; }
 #clips #paging a:focus {
-  color: white;
-}
-/* line 26, ../../../../../../Ruby/lib/ruby/gems/1.8/gems/compass-0.10.4/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+  color: white; }
 #clips #paging a:hover {
-  color: white;
-}
-/* line 30, ../../../../../../Ruby/lib/ruby/gems/1.8/gems/compass-0.10.4/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+  color: white; }
 #clips #paging a:active {
-  color: white;
-}
+  color: white; }
 
-/* line 117, ../src/style.scss */
 #navigation #logo {
   margin-top: 15px;
   margin-bottom: 10px;
-  font-size: 3.6em;
-}
-/* line 121, ../src/style.scss */
+  font-size: 3.6em; }
 #navigation #logo a {
   color: white;
-  text-decoration: none;
-}
-/* line 18, ../../../../../../Ruby/lib/ruby/gems/1.8/gems/compass-0.10.4/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+  text-decoration: none; }
 #navigation #logo a:visited {
-  color: white;
-}
-/* line 22, ../../../../../../Ruby/lib/ruby/gems/1.8/gems/compass-0.10.4/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+  color: white; }
 #navigation #logo a:focus {
-  color: white;
-}
-/* line 26, ../../../../../../Ruby/lib/ruby/gems/1.8/gems/compass-0.10.4/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+  color: white; }
 #navigation #logo a:hover {
-  color: white;
-}
-/* line 30, ../../../../../../Ruby/lib/ruby/gems/1.8/gems/compass-0.10.4/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+  color: white; }
 #navigation #logo a:active {
-  color: white;
-}
-/* line 127, ../src/style.scss */
+  color: white; }
 #navigation p {
-  margin-bottom: 5px;
-}
+  margin-bottom: 5px; }
 
-/* line 135, ../src/style.scss */
 #footer {
   margin-top: 30px;
   padding: 8px;
-  height: 100px;
-}
-/* line 141, ../src/style.scss */
+  height: 100px; }
 #footer a {
   color: #999999;
-  text-decoration: none;
-}
-/* line 18, ../../../../../../Ruby/lib/ruby/gems/1.8/gems/compass-0.10.4/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+  text-decoration: none; }
 #footer a:visited {
-  color: #999999;
-}
-/* line 22, ../../../../../../Ruby/lib/ruby/gems/1.8/gems/compass-0.10.4/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+  color: #999999; }
 #footer a:focus {
-  color: #999999;
-}
-/* line 26, ../../../../../../Ruby/lib/ruby/gems/1.8/gems/compass-0.10.4/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+  color: #999999; }
 #footer a:hover {
-  color: #999999;
-}
-/* line 30, ../../../../../../Ruby/lib/ruby/gems/1.8/gems/compass-0.10.4/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+  color: #999999; }
 #footer a:active {
-  color: #999999;
-}
+  color: #999999; }
 
-/* line 149, ../src/style.scss */
 ul.boxList {
   list-style: none;
   margin: 0 auto;
-  padding: 0;
-}
+  padding: 0; }
 
-/* line 154, ../src/style.scss */
 ul.boxList li {
-  width: 23.5%;
+  width: 194px;
   height: 140px;
   float: left;
   margin: 0px 10px 10px 0;
@@ -187,30 +123,33 @@ ul.boxList li {
   position: relative;
   word-wrap: break-word;
   color: black;
-  vertical-align: center;
-  background: white;
-}
-/* line 167, ../src/style.scss */
-ul.boxList li img {
+  background: white; }
+ul.boxList li .imgbox {
+  margin: 10px;
+  overflow: hidden;
+  text-align: center; }
+ul.boxList li .imgbox img {
+  vertical-align: middle;
   opacity: 0.85;
+  width: 100%; }
+ul.boxList li .crop {
+  /*Use only with .imgbox*/
+  height: 120px; }
+ul.boxList li .comment .text {
+  padding: 8px;
   display: block;
-  width: 90%;
-  margin: 5%;
-}
-/* line 183, ../src/style.scss */
+  font-style: italic; }
 ul.boxList li p {
   padding: 8px;
-}
-/* line 186, ../src/style.scss */
+  font-size: 1.2em; }
 ul.boxList li q {
   font-size: 1.4em;
+  line-height: 1.1em;
   margin-top: 30px;
   word-wrap: break-word;
   padding: 8px;
   text-align: center;
-  display: block;
-}
-/* line 205, ../src/style.scss */
+  display: block; }
 ul.boxList li .detail {
   position: absolute;
   left: -20%;
@@ -218,87 +157,52 @@ ul.boxList li .detail {
   padding: 0px 0px 20px 0px;
   width: 140%;
   display: none;
-  background: #f6f6f6;
-  background-repeat: no-repeat;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: 2px;
-}
-/* line 218, ../src/style.scss */
+  background: #f4f4f4;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px; }
 ul.boxList li .detail q {
-  margin: 15px;
-  background: white;
-  padding: 25px;
-}
-/* line 223, ../src/style.scss */
-ul.boxList li .detail img {
-  margin: 15px;
-}
+  margin-top: 0px;
+  padding: 30px;
+  text-shadow: #ddd 1px 1px 1px; }
 
-/* line 233, ../src/style.scss */
 ul.boxList li:hover img {
-  opacity: 1;
-}
-/* line 240, ../src/style.scss */
-ul.boxList li:hover q.crop {
-  display: none;
-}
-/* line 246, ../src/style.scss */
+  opacity: 1; }
 ul.boxList li:hover .detail {
   display: block;
-  z-index: 999;
-}
+  z-index: 999; }
 
-/* line 265, ../src/style.scss */
 .cleaner {
   clear: both;
   height: 0;
   content: ' ';
-  overflow: hidden;
-}
-/* line 271, ../src/style.scss */
+  overflow: hidden; }
 .cleaner hr {
-  display: none;
-}
+  display: none; }
 
-/* line 277, ../src/style.scss */
 #delete-dialog {
-  display: none;
-}
+  display: none; }
 
-/* line 280, ../src/style.scss */
 #comment-dialog {
-  display: none;
-}
+  display: none; }
 
 /* Overlay */
-/* line 282, ../src/style.scss */
 #simplemodal-overlay {
-  background-color: #000;
-}
+  background-color: #000; }
 
 /* Container */
-/* line 285, ../src/style.scss */
 #simplemodal-container {
   width: 300px;
   color: #000;
   background-color: #fff;
   border: 2px solid #444;
-  padding: 8px;
-}
-/* line 292, ../src/style.scss */
+  padding: 8px; }
 #simplemodal-container .buttons {
-  margin-top: 5px;
-}
-/* line 295, ../src/style.scss */
+  margin-top: 5px; }
 #simplemodal-container h3, #simplemodal-container p {
-  text-align: center;
-}
-/* line 298, ../src/style.scss */
+  text-align: center; }
 #simplemodal-container h3 {
-  margin-bottom: 5px;
-}
-/* line 302, ../src/style.scss */
+  margin-bottom: 5px; }
 #simplemodal-container a.modalCloseImg {
   background: url(/static/img/x.png) no-repeat;
   width: 25px;
@@ -308,17 +212,13 @@ ul.boxList li:hover .detail {
   position: absolute;
   top: 0px;
   right: 0px;
-  cursor: pointer;
-}
+  cursor: pointer; }
 
-/* line 316, ../src/style.scss */
 #simplemodal-container #basic-modal-content {
-  padding: 8px;
-}
+  padding: 8px; }
 
-/* line 319, ../src/style.scss */
 .awesome {
-  background: #222222 url(alert-overlay.png) repeat-x;
+  background: #222222 url(/static/img/alert-overlay.png) repeat-x;
   display: inline-block;
   padding: 5px 10px 6px;
   color: #fff;
@@ -335,48 +235,19 @@ ul.boxList li:hover .detail {
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
   text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.25);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
-}
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25); }
 
 /* Sizes ---------- */
-/* line 341, ../src/style.scss */
 .small.awesome {
   font-size: 11px;
-}
+  padding: 4px 8px 5px; }
 
-/* line 345, ../src/style.scss */
 .medium.awesome {
-  font-size: 13px;
-}
+  font-size: 13px; }
 
-/* line 349, ../src/style.scss */
 .large.awesome {
   font-size: 14px;
-  padding: 8px 14px 9px;
-}
+  padding: 8px 14px 9px; }
 
-/* Colors ---------- */
-/* line 355, ../src/style.scss */
 .blue.awesome {
-  background-color: #2daebf;
-}
-
-/* line 359, ../src/style.scss */
-.red.awesome {
-  background-color: #e33100;
-}
-
-/* line 363, ../src/style.scss */
-.magenta.awesome {
-  background-color: #a9014b;
-}
-
-/* line 367, ../src/style.scss */
-.orange.awesome {
-  background-color: #ff5c00;
-}
-
-/* line 371, ../src/style.scss */
-.yellow.awesome {
-  background-color: #ffb515;
-}
+  background-color: #2daebf; }
