@@ -131,14 +131,20 @@ ul.boxList li .imgbox {
 ul.boxList li .imgbox img {
   vertical-align: middle;
   opacity: 0.85;
-  width: 100%; }
+  width: 100%;
+  display: inline; }
 ul.boxList li .crop {
   /*Use only with .imgbox*/
   height: 120px; }
 ul.boxList li .comment .text {
-  padding: 8px;
-  display: block;
-  font-style: italic; }
+  background: #FBFAE7;
+  margin: 0px 10px 10px 10px; }
+ul.boxList li .comment textarea {
+  margin-left: 10px;
+  width: 90%;
+  height: 100px; }
+ul.boxList li a.page-url {
+  font-size: 1.2em; }
 ul.boxList li p {
   padding: 8px;
   font-size: 1.2em; }
@@ -164,7 +170,8 @@ ul.boxList li .detail {
 ul.boxList li .detail q {
   margin-top: 0px;
   padding: 30px;
-  text-shadow: #ddd 1px 1px 1px; }
+  text-shadow: #ddd 1px 2px 1px;
+  font-size: 1.6em; }
 
 ul.boxList li:hover img {
   opacity: 1; }
