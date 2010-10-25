@@ -199,7 +199,7 @@ class Post(webapp.RequestHandler):
 def get_greeting():
     user = users.get_current_user()
     if user:
-        return ("Welcome, %s (<a href=\"%s\">sign out</a>)" % (user.nickname(), users.create_logout_url("/")))
+        return ("<a href=\"%s\">Sign out</a>" % (users.create_logout_url("/")))
     else:
         return ("<a href=\"%s\">Sign in</a>" % users.create_login_url("/"))   
             
