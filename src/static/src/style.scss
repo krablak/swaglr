@@ -176,6 +176,7 @@ ul.boxList li {
 			vertical-align: middle;
 			opacity: 0.85;
 			width: 100%;
+			display:inline;
 		}
 	}
 	.crop { /*Use only with .imgbox*/
@@ -184,14 +185,19 @@ ul.boxList li {
 	
 	.comment{
 		.text {
-			padding: $general-padding;
-			display:block;
-			font-style: italic;
+			background: #FBFAE7;
+			margin: 0px 10px 10px 10px;
+		}
+		
+		textarea {
+			margin-left: 10px;
+			width: 90%;
+			height: 100px;
 		}
 	}
 
 	a.page-url{
-
+		font-size:1.2em;
 	}
 	
 	p {
@@ -211,11 +217,7 @@ ul.boxList li {
 		
 	}
 	q.full{
-		//display:none;
 	}
-	
-
-	
 	
 	.detail { 
 		position: absolute; 
@@ -232,7 +234,8 @@ ul.boxList li {
 		q{
 			margin-top: 0px;
 			padding: 30px;
-			text-shadow: #ddd 1px 1px 1px;
+			text-shadow: #ddd 1px 2px 1px;
+			font-size:1.6em;
 		}
 	}
 	

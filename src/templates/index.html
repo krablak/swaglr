@@ -21,11 +21,11 @@
 						{% endif %}
 						
 						{% if clip|is_page_clip %}
-						<q cite="{{ clip.page }}">{{ clip.page|slice:"0:20"|escape }}...</q>
+						<q cite="{{ clip.page }}">{{ clip.page|slice:"0:40"|escape }}...</q>
 						{% endif %}
 						
 						{% if clip|is_link_clip %}
-						<q cite="{{ clip.link }}">{{ clip.link|slice:"0:20"|escape }}...</q>
+						<q cite="{{ clip.link }}">{{ clip.link|slice:"0:40"|escape }}...</q>
 						{% endif %}  
 							
 
@@ -38,14 +38,14 @@
 							{% endif %}
 							
 							{% if clip|is_page_clip %}
-							<q cite="{{ clip.page }}">{{ clip.page|slice:"0:20"|escape }}...</q>
+							<q cite="{{ clip.page }}">{{ clip.page|slice:"0:40"|escape }}...</q>
 							{% endif %}
 							
 							{% if clip|is_link_clip %}
-							<q cite="{{ clip.link }}">{{ clip.link|slice:"0:20"|escape }}...</q>
+							<q cite="{{ clip.link }}">{{ clip.link|slice:"0:40"|escape }}...</q>
 							{% endif %}  
 							
-							<p>Source:&nbsp;<a class="page-url" href="{{ clip.page }}">{{ clip.page|slice:"0:20"|escape }}...</a></p>			
+							<p>URL: <a class="page-url" href="{{ clip.page }}">{{ clip.page|slice:"0:40"|escape }}...</a></p>			
 								
 							{% if clip|is_commented_clip %}									
 								<div class="comment"> 
@@ -64,12 +64,12 @@
 									</p>
 								{% endif %}
 								</div>	
-
 							{% endif %}	<!-- /if clip|is_commented_clip-->							
 								
 							<p>More clips by&nbsp;<a href="/user/{{ clip.user.user_id }}/page/0"> {{ clip.user.nick }}</a></p>
+							{% if clip|is_my %} 
 							<p class="right"><a onclick="showDeleteDialog({{ clip.key.id }});" class="awesome small blue">Delete clip</a></p>
-							
+							{% endif %}
 							
 								
 						</div>	<!-- /detail-->		
