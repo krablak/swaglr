@@ -49,7 +49,7 @@ def __to_thumbnail(image,image_do):
         tiny = img_tiny.execute_transforms(output_encoding=images.JPEG)
         image_do.tiny = db.Blob(tiny)
     else:
-        image_do.tiny = db.Blob(str(img_tiny))
+        image_do.tiny = db.Blob(image)
     
 def __is_large(image):
     """
