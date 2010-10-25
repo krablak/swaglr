@@ -137,8 +137,15 @@ ul.boxList li .crop {
   /*Use only with .imgbox*/
   height: 120px; }
 ul.boxList li .comment .text {
-  background: #FBFAE7;
-  margin: 0px 10px 10px 10px; }
+  background: #D8F2F9;
+  margin: 0px 10px 10px 10px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -o-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -khtml-border-radius: 4px;
+  border-radius: 4px;
+  color: dark-gray; }
 ul.boxList li .comment textarea {
   margin-left: 10px;
   width: 90%;
@@ -164,8 +171,11 @@ ul.boxList li .detail {
   width: 140%;
   display: none;
   background: #f4f4f4;
-  -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -o-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -khtml-border-radius: 4px;
   border-radius: 4px; }
 ul.boxList li .detail q {
   margin-top: 0px;
@@ -231,8 +241,12 @@ ul.boxList li:hover .detail {
   color: #fff;
   text-decoration: none;
   font-weight: bold;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -o-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -khtml-border-radius: 4px;
+  border-radius: 4px;
   -moz-box-shadow: 0 1px 3px #999;
   -webkit-box-shadow: 0 1px 3px #999;
   text-shadow: 0 -1px 1px #222222;
