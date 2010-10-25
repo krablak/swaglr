@@ -17,7 +17,6 @@ class Image(db.Model):
 
     url = db.StringProperty()
     tiny =  db.BlobProperty()
-    small = db.BlobProperty()
     
     
     @staticmethod
