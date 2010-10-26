@@ -42,13 +42,41 @@ h1, h2, h3, h4 {
   width: 100%; }
 
 /* Project specifics =========================================================== */
+/*tmave seda */
+/*body background*/
+/*tyrkysova*/
+/*bila*/
+/*vychozi barva pisma*/
+/*cervena*/
+/*original tmave modra*/
 /*Dialogs - confirm dialogs, etc.*/
 body {
   padding: 20px;
   font: normal normal 10px/10px "Anivers", Tahoma, Arial, Helvetica, Verdana, sans-serif;
   line-height: 110%;
-  color: #fff;
-  background-color: #222222; }
+  color: #fffaf0;
+  background-color: #323232; }
+
+/*
+normal
+hover
+active
+visited
+focus
+*/
+a {
+  color: #2daebf;
+  text-decoration: none; }
+a:visited {
+  color: #2daebf; }
+a:focus {
+  color: #2daebf; }
+a:hover {
+  color: #f71624; }
+a:active {
+  color: #f71624; }
+a:hover {
+  text-decoration: underline; }
 
 /**
 * Box list
@@ -80,16 +108,16 @@ body {
   margin-bottom: 10px;
   font-size: 3.6em; }
 #navigation #logo a {
-  color: white;
+  color: #fffaf0;
   text-decoration: none; }
 #navigation #logo a:visited {
-  color: white; }
+  color: #fffaf0; }
 #navigation #logo a:focus {
-  color: white; }
+  color: #fffaf0; }
 #navigation #logo a:hover {
-  color: white; }
+  color: #fffaf0; }
 #navigation #logo a:active {
-  color: white; }
+  color: #fffaf0; }
 #navigation p {
   margin-bottom: 5px; }
 
@@ -119,13 +147,16 @@ ul.boxList li {
   height: 140px;
   float: left;
   margin: 0px 10px 10px 0;
-  border: 1px solid #222;
   position: relative;
   word-wrap: break-word;
   color: black;
-  background: white; }
+  background: #f5f0e6;
+  -moz-box-shadow: #828282 1px 1px 4px 0;
+  -webkit-box-shadow: #828282 1px 1px 4px 0;
+  -o-box-shadow: #828282 1px 1px 4px 0;
+  box-shadow: #828282 1px 1px 4px 0; }
 ul.boxList li .imgbox {
-  margin: 10px;
+  margin: 0px 0px 0px 0px;
   overflow: hidden;
   text-align: center; }
 ul.boxList li .imgbox img {
@@ -134,22 +165,7 @@ ul.boxList li .imgbox img {
   width: 100%;
   display: inline; }
 ul.boxList li .crop {
-  /*Use only with .imgbox*/
-  height: 120px; }
-ul.boxList li .comment .text {
-  background: #D8F2F9;
-  margin: 0px 10px 10px 10px;
-  -moz-border-radius: 4px;
-  -webkit-border-radius: 4px;
-  -o-border-radius: 4px;
-  -ms-border-radius: 4px;
-  -khtml-border-radius: 4px;
-  border-radius: 4px;
-  color: dark-gray; }
-ul.boxList li .comment textarea {
-  margin-left: 10px;
-  width: 90%;
-  height: 100px; }
+  height: 140px; }
 ul.boxList li a.page-url {
   font-size: 1.2em; }
 ul.boxList li p {
@@ -163,14 +179,23 @@ ul.boxList li q {
   padding: 8px;
   text-align: center;
   display: block; }
+ul.boxList li .page-url-box {
+  position: absolute;
+  top: 110px;
+  height: 12px;
+  width: 178px;
+  background: rgba(255, 250, 240, 0.65);
+  padding: 8px;
+  color: #323232;
+  font-size: 1.2em; }
 ul.boxList li .detail {
   position: absolute;
   left: -20%;
   top: -20px;
-  padding: 0px 0px 20px 0px;
+  padding: 0px 0px 8px 0px;
   width: 140%;
   display: none;
-  background: #f4f4f4;
+  background: #fffaf0;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   -o-border-radius: 4px;
@@ -182,6 +207,22 @@ ul.boxList li .detail q {
   padding: 30px;
   text-shadow: #ddd 1px 2px 1px;
   font-size: 1.6em; }
+ul.boxList li .detail .comment .text {
+  background: #D8F2F9;
+  margin: 0px 10px 10px 10px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -o-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -khtml-border-radius: 4px;
+  border-radius: 4px;
+  color: dark-gray; }
+ul.boxList li .detail .comment textarea {
+  margin-left: 10px;
+  width: 90%;
+  height: 100px; }
+ul.boxList li .detail .imgbox {
+  margin: 10px; }
 
 ul.boxList li:hover img {
   opacity: 1; }
@@ -235,7 +276,8 @@ ul.boxList li:hover .detail {
   padding: 8px; }
 
 .awesome {
-  background: #222222 url(/static/img/alert-overlay.png) repeat-x;
+  background: #323232 url(/static/img/alert-overlay.png) repeat-x;
+  color: white;
   display: inline-block;
   padding: 5px 10px 6px;
   color: #fff;
@@ -257,6 +299,17 @@ ul.boxList li:hover .detail {
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
   text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.25);
   border-bottom: 1px solid rgba(0, 0, 0, 0.25); }
+.awesome:visited {
+  color: white; }
+.awesome:focus {
+  color: white; }
+.awesome:hover {
+  color: white; }
+.awesome:active {
+  color: white; }
+
+a.awesome:hover {
+  text-decoration: none; }
 
 /* Sizes ---------- */
 .small.awesome {

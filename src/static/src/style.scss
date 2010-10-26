@@ -29,7 +29,7 @@ h4 {
 
 h1, h2, h3, h4 {
 	line-height: 115%;
-
+                                          
 }
 
 
@@ -60,17 +60,29 @@ h1, h2, h3, h4 {
     
 /* Project specifics =========================================================== */
 
+ 
+$color1: #323232;  /*tmave seda */    /*body background*/
+//$color2: #349096; /*tmave tyrkysova*/
+$color2: #2daebf;
+$color3: #3AF5F5; /*tyrkysova*/
+$color4: #FFFAF0; /*bila*/     /*vychozi barva pisma*/
+$color5: #F71624; /*cervena*/
+
+$color6: #2E2A36;  /*original tmave modra*/
+
+
+
 $mainFont: "Anivers";
 $footer-link-color:#999;
-$body-background:#222;
 $general-padding:8px;
 $default-radius:4px;
 
-$box-width:194px; 
+$box-width:194px;       
 $box-height:140px;
 $box-margin:10px;
-$box-background: #fff;
-$detail-background: #f4f4f4;
+$box-background: #F5F0E6;
+//$detail-background: #f4f4f4; 
+$detail-background: $color4;
 
 /*Dialogs - confirm dialogs, etc.*/
 @mixin dialog-border {
@@ -81,9 +93,22 @@ body{
 	padding:20px;
     font: normal normal 10px/10px $mainFont, Tahoma, Arial, Helvetica, Verdana, sans-serif; 
 	line-height: 110%;
-	color: #fff;
-	background-color: $body-background;
+	color: $color4;
+	background-color: $color1;
 	}
+
+/*
+normal
+hover
+active
+visited
+focus
+*/	
+a {
+  @include link-colors($color2, $color5, $color5, $color2, $color2);  
+  @include hover-link;
+
+}	
 
 	  
 #main {
@@ -123,7 +148,7 @@ body{
 		margin-bottom:10px;
 		font-size: 3.6em;
 		a{
-			@include link-colors(#fff, #fff, #fff, #fff, #fff);
+			@include link-colors($color4, $color4, $color4, $color4, $color4);
 			text-decoration: none;
 		}
 		
@@ -161,17 +186,16 @@ ul.boxList li {
 	height:$box-height;
 	float:left;
 	margin: 0px $box-margin $box-margin 0;
-	border: 1px solid #222;
 	position:relative;
 	word-wrap: break-word;
 	color: black;
 	background:$box-background;
+	@include box-shadow(rgb(130,130,130), 1px, 1px, 4px);
 	
 	.imgbox{
-		margin:10px;	
+		margin:0px 0px 0px 0px;
 		overflow: hidden;
 		text-align: center;
-		//vertical-align:middle;
 	
 		img{
 			vertical-align: middle;
@@ -180,24 +204,9 @@ ul.boxList li {
 			display:inline;
 		}
 	}
-	.crop { /*Use only with .imgbox*/
-		height: $box-height - 20px;
-	}
-	
-	.comment{
-		.text {
-			background: #D8F2F9;
-			margin: 0px 10px 10px 10px;
-			@include border-radius($default-radius);
-			color: dark-gray;
-		}
-		
-		textarea {
-			margin-left: 10px;
-			width: 90%;
-			height: 100px;
-		}
-	}
+	.crop {
+		height: $box-height;
+	}   
 
 	a.page-url{
 		font-size:1.2em;
@@ -216,17 +225,25 @@ ul.boxList li {
 		padding: $general-padding;
 		text-align:center;
 		display:block;
-		
-		
+			
 	}
-	q.full{
-	}
+	.page-url-box{
+    position: absolute;
+    top: $box-height - 30px;
+    height: 28px - 2*$general-padding;
+    width: $box-width - 2*$general-padding;
+    background: rgba(255, 250, 240, 0.65);
+    padding: $general-padding;
+    color: $color1;
+    font-size:1.2em;
+    //text-align: center;
+    }
 	
 	.detail { 
 		position: absolute; 
 		left: -20%; 
 		top: -20px;
-		padding: 0px 0px 20px 0px;
+		padding: 0px 0px $general-padding 0px;
 		width: 140%;
 		display: none;
 		background: $detail-background;
@@ -238,6 +255,25 @@ ul.boxList li {
 			text-shadow: #ddd 1px 2px 1px;
 			font-size:1.6em;
 		}
+    
+    .comment{
+  		.text {
+  			background: #D8F2F9;
+  			margin: 0px 10px 10px 10px;
+  			@include border-radius($default-radius);
+  			color: dark-gray;
+  		}
+  		
+  		textarea {
+  			margin-left: 10px;
+  			width: 90%;
+  			height: 100px;
+  		}
+	}  
+		
+		.imgbox {
+      margin: 10px;
+    }
 	}
 	
 }
@@ -320,7 +356,8 @@ ul.boxList li:hover {
 
 
 .awesome {
-	background: #222 url(/static/img/alert-overlay.png) repeat-x;
+	background: $color1 url(/static/img/alert-overlay.png) repeat-x;
+	@include link-colors(#fff, #fff, #fff, #fff, #fff);
 	display: inline-block;
 	padding: 5px 10px 6px;
 	color: #fff;
@@ -338,6 +375,10 @@ ul.boxList li:hover {
 	text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.25);
 	border-bottom: 1px solid rgba(0, 0, 0, 0.25);
 }
+
+a.awesome:hover {
+  text-decoration: none;
+  }
 
 /* Sizes ---------- */
 .small.awesome {

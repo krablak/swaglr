@@ -27,6 +27,8 @@
 						{% if clip|is_link_clip %}
 						<q cite="{{ clip.link }}">{{ clip.link|slice:"0:40"|escape }}...</q>
 						{% endif %}  
+						
+						<div class="page-url-box">{{ clip.page|slice:"0:40"|escape }}</a></div>
 							
 
 						<div id="detail_{{clip.key.id}}" class="detail"> 
@@ -45,11 +47,11 @@
 							<q cite="{{ clip.link }}">{{ clip.link|slice:"0:40"|escape }}...</q>
 							{% endif %}  
 							
-							<p>URL: <a class="page-url" href="{{ clip.page }}">{{ clip.page|slice:"0:40"|escape }}...</a></p>			
+							<p>URL: <a class="page-url" target="_blank" href="{{ clip.page }}">{{ clip.page|slice:"0:40"|escape }}...</a></p>			
 								
 							{% if clip|is_commented_clip %}									
 								<div class="comment"> 
-								<p><a href="/user/{{ clip.user.user_id }}/page/0"> {{ clip.user.nick }}</a> says:</p>
+								<p><strong><a href="/user/{{ clip.user.user_id }}/page/0"> {{ clip.user.nick }}</a></strong> says:</p>
 									<p id="clip-comment-view-{{ clip.key.id }}" class="text">{{  clip.comment|escape }}</p>
 									<span id="clip-comment-edit-{{ clip.key.id }}" style="display:none">
 										<textarea id="comment-textarea-{{ clip.key.id }}" rows="4" cols="30" ></textarea>
