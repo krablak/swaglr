@@ -18,17 +18,20 @@ function showCommentDialog(id){
 		$('#clip-comment-edit-'+EDITED_CLIP).hide();
 		$('#comment-textarea-'+EDITED_CLIP).html($('#clip-comment-edit-'+EDITED_CLIP).html());
 		$('#clip-comment-view-'+EDITED_CLIP).fadeIn('fast');
+		$('#edit-comment-btn-'+EDITED_CLIP).hide();
 	}
 	EDITED_CLIP = id;
 	var originalComment = $('#clip-comment-view-'+id).html();
 	$('#comment-textarea-'+id).html(originalComment);
 	$('#clip-comment-view-'+id).hide();
 	$('#clip-comment-edit-'+id).fadeIn('fast');
+	$('#edit-comment-btn-'+id).hide();
 	$('#comment-no-'+id).bind('click',{elid:id,origcomment:originalComment},function(event){
 		$('#clip-comment-edit-'+event.data.elid).hide();
 		$('#clip-comment-view-'+event.data.elid).html(event.data.origcomment);
 		$('#comment-textarea-'+event.data.elid).html($('#clip-comment-edit-'+event.data.elid).html());
 		$('#clip-comment-view-'+event.data.elid).fadeIn('fast');
+		$('#edit-comment-btn-'+id).fadeIn('fast');
 	});
 	$('#comment-yes-'+id).bind('click',{elid:id},function(event){
 		var updatedComment = $('#comment-textarea-'+event.data.elid).val();
@@ -44,6 +47,7 @@ function onCommentedClip(id,comment){
 	$('#clip-comment-view-'+id).html(comment);
 	$('#comment-textarea-'+id).html(comment);
 	$('#clip-comment-view-'+id).fadeIn('fast');
+	$('#edit-comment-btn-'+id).fadeIn('fast');
 	EDITED_CLIP = null;
 }
 

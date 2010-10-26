@@ -68,7 +68,7 @@
 								
 							<p>More clips by&nbsp;<a href="/user/{{ clip.user.user_id }}/page/0"> {{ clip.user.nick }}</a></p>
 							{% if clip|is_my %} 
-							<p class="right"><a onclick="showDeleteDialog({{ clip.key.id }});" class="awesome small blue">Delete clip</a></p>
+							<p class="right"><a id="edit-comment-btn-{{ clip.key.id }}" onclick="showDeleteDialog({{ clip.key.id }});" class="awesome small blue">Delete clip</a></p>
 							{% endif %}
 							
 								
