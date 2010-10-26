@@ -47,8 +47,8 @@ class UserInfo(db.Model):
 class Clip(db.Model):
     type = db.StringProperty(required=True)
     page = db.StringProperty(required=True)
-    text = db.TextProperty()
-    comment = db.TextProperty()
+    text = db.StringProperty()
+    comment = db.StringProperty()
     link = db.StringProperty(required=False)
     src = db.StringProperty(required=False) 
     user = db.ReferenceProperty(UserInfo,required=True)
