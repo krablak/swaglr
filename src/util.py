@@ -26,6 +26,7 @@ def renderjson(path, values, response):
     
 def renderJPEG(image_data, response):
     response.headers['Content-Type'] = 'image/jpeg'
+    response.headers['Cache-Control'] = "public, max-age=315360000"
     response.out.write(image_data)
     
     
