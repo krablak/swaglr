@@ -9,6 +9,7 @@ from google.appengine.ext import webapp
 
 def render(path, values, response):
     response.headers['Content-Type'] = 'text/html'
+    response.headers['Cache-Control'] = "public"
     path = os.path.join(os.path.dirname(__file__), path)
     response.out.write(template.render(path, values))
     
