@@ -6,6 +6,8 @@ Created on Oct 15, 2010
 
 #Defines default null value provided by clients
 NULL = "null"
+#Maximal allowed length of input values.
+MAX_LEN = 500;
 
 class ValidationError(Exception):
     """
@@ -39,7 +41,7 @@ def validate_str(value,name):
         str(value)
     except:
         raise ValidationError("Attribute %s cannot be converted to string." % (name))
-    if len(value)>=500:
+    if len(value)>=MAX_LEN:
         raise ValidationError("Attribute %s is too long! It could have only 500 characters." % (name))
     
 def is_set(value):
@@ -70,4 +72,15 @@ def validate_int(value,name):
     except:
         raise ValidationError("Attribute %s cannot be converted to int." % (name))
 
-        
+
+def to_param(value):
+    """
+    Helper function for update of the input values into clips API allowed style.
+    """       
+    if not value:
+        value = NULL
+    else:
+        if len(value)>MAX_LEN:
+            value = value[:499]
+        value = value.replace('\n',' ').replace('\t',' ')
+    return value 

@@ -154,6 +154,7 @@ class Images(webapp.RequestHandler):
                 util.renderJPEG(result, self.response)
         
         
+import clips.validations 
 
 class Post(webapp.RequestHandler):
     """
@@ -163,11 +164,11 @@ class Post(webapp.RequestHandler):
     @log_errors 
     def get(self):
         logging.debug("Posting clip...")
-        page = self.request.get('page')
-        link = self.request.get('link')
-        src = self.request.get('src')
-        text = self.request.get('text')
-        comment = self.request.get('comment')
+        page = clips.validations.to_param(self.request.get('page'))
+        link = clips.validations.to_param(self.request.get('link'))
+        src = clips.validations.to_param(self.request.get('src'))
+        text = clips.validations.to_param(self.request.get('text'))
+        comment = clips.validations.to_param(self.request.get('comment'))
         logging.debug("page:'%s' comment:'%s'" % (page,comment)) 
         clips.api.store(page, link, src, text, comment)
         logging.debug("Clip posted.")
