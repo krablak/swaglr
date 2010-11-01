@@ -44,6 +44,7 @@ h1, h2, h3, h4 {
 /* Project specifics =========================================================== */
 /*tmave seda */
 /*body background*/
+/*tyrkysova tmavsi*/
 /*tyrkysova*/
 /*bila*/
 /*vychozi barva pisma*/
@@ -180,7 +181,7 @@ ul.boxList li q {
   display: block; }
 ul.boxList li .page-url-box {
   position: absolute;
-  top: 110px;
+  bottom: 0px;
   height: 12px;
   width: 178px;
   background: rgba(255, 250, 240, 0.65);
@@ -251,8 +252,14 @@ ul.boxList li:hover .detail {
 #simplemodal-container {
   width: 300px;
   color: #000;
-  background-color: #fff;
-  border: 2px solid #444;
+  background-color: #fffaf0;
+  border: 2px solid #2e2a36;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -o-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -khtml-border-radius: 4px;
+  border-radius: 4px;
   padding: 8px; }
 #simplemodal-container .buttons {
   margin-top: 5px; }
@@ -276,7 +283,7 @@ ul.boxList li:hover .detail {
 
 .awesome {
   background: #323232 url(/static/img/alert-overlay.png) repeat-x;
-  color: white;
+  color: #fffaf0;
   display: inline-block;
   padding: 5px 10px 6px;
   color: #fff;
@@ -299,13 +306,13 @@ ul.boxList li:hover .detail {
   text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.25);
   border-bottom: 1px solid rgba(0, 0, 0, 0.25); }
 .awesome:visited {
-  color: white; }
+  color: #fffaf0; }
 .awesome:focus {
-  color: white; }
+  color: #fffaf0; }
 .awesome:hover {
-  color: white; }
+  color: #fffaf0; }
 .awesome:active {
-  color: white; }
+  color: #fffaf0; }
 
 a.awesome:hover {
   text-decoration: none; }

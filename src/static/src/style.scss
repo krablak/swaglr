@@ -32,7 +32,6 @@ h1, h2, h3, h4 {
                                           
 }
 
-
 .bold{
 	font-weight: bold;
 }
@@ -62,12 +61,10 @@ h1, h2, h3, h4 {
 
  
 $color1: #323232;  /*tmave seda */    /*body background*/
-//$color2: #349096; /*tmave tyrkysova*/
-$color2: #2daebf;
+$color2: #2daebf;   /*tyrkysova tmavsi*/
 $color3: #3AF5F5; /*tyrkysova*/
 $color4: #FFFAF0; /*bila*/     /*vychozi barva pisma*/
 $color5: #F71624; /*cervena*/
-
 $color6: #2E2A36;  /*original tmave modra*/
 
 
@@ -229,14 +226,13 @@ ul.boxList li {
 	}
 	.page-url-box{
     position: absolute;
-    top: $box-height - 30px;
-    height: 28px - 2*$general-padding;
+    bottom: 0px;
+    height: 12px;
     width: $box-width - 2*$general-padding;
     background: rgba(255, 250, 240, 0.65);
     padding: $general-padding;
     color: $color1;
     font-size:1.2em;
-    //text-align: center;
     }
 	
 	.detail { 
@@ -324,8 +320,9 @@ ul.boxList li:hover {
 #simplemodal-container {
 	width:300px; 
 	color:#000; 
-	background-color:#fff; 
-	@include dialog-border;
+	background-color: $color4; 
+	border:2px solid $color6;
+	@include border-radius($default-radius);
 	padding:$general-padding;
 	
 	.buttons{
@@ -357,7 +354,7 @@ ul.boxList li:hover {
 
 .awesome {
 	background: $color1 url(/static/img/alert-overlay.png) repeat-x;
-	@include link-colors(#fff, #fff, #fff, #fff, #fff);
+	@include link-colors($color4, $color4, $color4, $color4, $color4);
 	display: inline-block;
 	padding: 5px 10px 6px;
 	color: #fff;
