@@ -75,8 +75,13 @@
 							
 								
 						</div>	<!-- /detail-->		
-					</li>
-    		{% endfor %}  <!-- /for clip in day.clips  --> 				
+					</li>  
+    		{% endfor %}  <!-- /for clip in day.clips  --> 		
+        
+
+					<div class="cleaner">
+				    <hr />	
+           </div> 	
     			</ul>
     			<div class="cleaner">
 				    <hr />
@@ -88,7 +93,7 @@
 			
 			<div id="paging"> 
 		      {% if next %}
-    				<a id="next" href="{{ next }}">&lt;&nbsp;Previous</a>
+    				<a id="next" href="{{ next }}">&lt;&nbsp;Previous&nbsp;</a>
     			{% endif %}			
 			    {% if prev %}
     				<a id="prev" href="{{ prev }}">Next&nbsp;&gt;</a>

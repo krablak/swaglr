@@ -60,10 +60,10 @@ h1, h2, h3, h4 {
 /* Project specifics =========================================================== */
 
  
-$color1: #323232;  /*tmave seda */    /*body background*/
+$color1: #292929;  /*tmave seda */    /*body background*/
 $color2: #2daebf;   /*tyrkysova tmavsi*/
 $color3: #3AF5F5; /*tyrkysova*/
-$color4: #FFFAF0; /*bila*/     /*vychozi barva pisma*/
+$color4: #FDFAF9; /*bila*/     /*vychozi barva pisma*/
 $color5: #F71624; /*cervena*/
 $color6: #2E2A36;  /*original tmave modra*/
 
@@ -92,6 +92,7 @@ body{
 	line-height: 110%;
 	color: $color4;
 	background-color: $color1;
+	
 	}
 
 /*
@@ -121,18 +122,22 @@ a {
 	.dayId{
 		font-size: 1.6em;
 		font-weight:bold;
-		margin-bottom:5px;
-		margin-left:-50px;
-		color: #fff;
+		text-align: right;
+		position:relative;                                   
+		top: 10px;
+		left: -4*$box-width - 4*$box-margin - 25px;
+		color: $color4;
 	}
 	
 	#paging{
 		padding:5px 10px 0px 0px;
+		position:relative;
+		top:10px;
 		text-align: center;
 		a {
-			@include link-colors(#fff, #fff, #fff, #fff, #fff);
+			@include link-colors($color4, $color4, $color4, $color4, $color4);
 			font-size: 1.4em;
-			text-decoration: none;
+			@include hover-link;
 
 		}
 	}
@@ -140,16 +145,26 @@ a {
 }
 
 #navigation {
+  a { /*Login, username*/
+			@include link-colors($color2, $color4, $color2, $color2, $color2);
+			font-size: 1.2em;
+			@include hover-link;
+
+		}
+
 	#logo{
 		margin-top:15px;
 		margin-bottom:10px;
-		font-size: 3.6em;
-		a{
+		font-size: 3em;
+		text-shadow: rgb(130,130,130) 1px 2px 4px;
+
+		a{   /*LOGO*/
 			@include link-colors($color4, $color4, $color4, $color4, $color4);
 			text-decoration: none;
 		}
 		
 	}
+	
 	p{
 		margin-bottom:5px;
 	}
@@ -166,7 +181,7 @@ a {
 	
 	a{
 		@include link-colors($footer-link-color, $footer-link-color, $footer-link-color, $footer-link-color, $footer-link-color);
-		text-decoration: none;
+		@include hover-link;
 	
 	}
 }
@@ -175,6 +190,7 @@ a {
 ul.boxList{
 	list-style: none;
 	margin: 0 auto;
+	margin-bottom: - $box-margin;
 	padding: 0;
 }
 	  
