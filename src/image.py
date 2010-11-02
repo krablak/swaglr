@@ -41,16 +41,10 @@ def __to_thumbnail(image,image_do):
     __log_image(img_tiny)
     resized = False
     #Check if the image is large and should be resized
-    if __is_large(img_tiny):
-        #Vertical image resize by height
-        if __is_vertical(img_tiny):
-            #img_tiny.resize(height=TINY_IMAGE_HEIGHT)
-            img_tiny.resize(width=TINY_IMAGE_WIDTH)
-            resized = True
-        #Horizontal image resize by width    
-        elif __is_horizontal(img_tiny):
-            img_tiny.resize(width=TINY_IMAGE_WIDTH)
-            resized = True
+    if img_tiny.width > TINY_IMAGE_WIDTH:
+        img_tiny.resize(width=TINY_IMAGE_WIDTH)
+        resized = True
+        logging.debug("Image was is large and will be resized.")
     else:
         logging.debug("Image was is not large and will be not resized.")
     if resized:
