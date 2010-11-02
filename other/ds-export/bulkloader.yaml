@@ -32,7 +32,7 @@ transformers:
   property_map:
     - property: __key__
       external_name: key
-      export_transform: transform.key_id_or_name_as_string
+      export_transform: transform.key_id_or_name_as_string_n(1)
 
     - property: comment
       external_name: comment
