@@ -49,7 +49,7 @@ def __to_humanized_date(robotic_date):
             if days == -1:
                 return "yesterday"
             else:
-                return "before %s days" % (days*-1)
+                return "%s days ago" % (days*-1)
         except AttributeError:
             pass
         except ValueError:
