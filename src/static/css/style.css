@@ -178,10 +178,10 @@ ul.boxList li {
   word-wrap: break-word;
   color: black;
   background: #f5f0e6;
-  -moz-box-shadow: #828282 1px 1px 4px 0;
-  -webkit-box-shadow: #828282 1px 1px 4px 0;
-  -o-box-shadow: #828282 1px 1px 4px 0;
-  box-shadow: #828282 1px 1px 4px 0; }
+  -moz-box-shadow: #787878 1px 1px 6px 0;
+  -webkit-box-shadow: #787878 1px 1px 6px 0;
+  -o-box-shadow: #787878 1px 1px 6px 0;
+  box-shadow: #787878 1px 1px 6px 0; }
 ul.boxList li .imgbox {
   margin: 0px 0px 0px 0px;
   overflow: hidden;

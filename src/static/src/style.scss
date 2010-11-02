@@ -110,8 +110,6 @@ a {
 
 	  
 #main {
-
-
 }	
 
 /**
@@ -192,6 +190,7 @@ ul.boxList{
 	margin: 0 auto;
 	margin-bottom: - $box-margin;
 	padding: 0;
+	
 }
 	  
 ul.boxList li {
@@ -203,7 +202,7 @@ ul.boxList li {
 	word-wrap: break-word;
 	color: black;
 	background:$box-background;
-	@include box-shadow(rgb(130,130,130), 1px, 1px, 4px);
+	@include box-shadow(rgb(120,120,120), 1px, 1px, 6px);
 	
 	.imgbox{
 		margin:0px 0px 0px 0px;
