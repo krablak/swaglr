@@ -18,6 +18,8 @@ from ui.error_logging import log_errors
 from dbo import *
 import dbo
 import logging
+import traceback
+import StringIO
 
 
 
@@ -55,6 +57,10 @@ class Comment(webapp.RequestHandler):
             clips.api.comment(clip_id, comment)
             self.response.headers['Content-Type'] = 'text/html'
             self.response.out.write(simplejson.dumps(result))
-        except Exception, inst:
-            logging.error("Problem during clip delete.")
+        except:
+            #Get exception trace
+            fp = StringIO.StringIO()
+            traceback.print_exc(file=fp)
+            message = fp.getvalue()
+            logging.error("Problem during clip comment : %s" % (message) )
             self.error(500)
