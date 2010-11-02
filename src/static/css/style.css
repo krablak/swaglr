@@ -205,6 +205,18 @@ ul.boxList li q {
   padding: 8px;
   text-align: center;
   display: block; }
+ul.boxList li .comment-ico {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  height: 16px;
+  width: 16px;
+  text-align: center;
+  vertical-align: center;
+  filter: alpha(opacity=80);
+  -moz-opacity: 0.8;
+  -khtml-opacity: 0.8;
+  opacity: 0.8; }
 ul.boxList li .page-url-box {
   position: absolute;
   bottom: 0px;

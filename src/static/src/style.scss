@@ -195,7 +195,7 @@ ul.boxList{
 }
 	  
 ul.boxList li {
-    width:$box-width;
+  width:$box-width;
 	height:$box-height;
 	float:left;
 	margin: 0px $box-margin $box-margin 0;
@@ -240,6 +240,21 @@ ul.boxList li {
 		display:block;
 			
 	}
+	.comment-ico{
+    position: absolute;
+    bottom: $general-padding ;
+    right: $general-padding;
+    height: 16px;
+    width: 16px;
+    text-align: center;
+    vertical-align: center;
+
+    filter:alpha(opacity=80);
+	  -moz-opacity:0.8;
+	  -khtml-opacity: 0.8;
+  	opacity: 0.8;               
+  }
+  
 	.page-url-box{
     position: absolute;
     bottom: 0px;
