@@ -15,28 +15,45 @@ var EDITED_CLIP = null;
  */
 function showCommentDialog(id){
 	if(EDITED_CLIP!=null){
-		$('#clip-comment-edit-'+EDITED_CLIP).hide();
-		$('#comment-textarea-'+EDITED_CLIP).html($('#clip-comment-edit-'+EDITED_CLIP).html());
-		$('#clip-comment-view-'+EDITED_CLIP).fadeIn('fast');
-		$('#edit-comment-btn-'+EDITED_CLIP).hide();
+		cancelCommentEditor(EDITED_CLIP);
 	}
 	EDITED_CLIP = id;
-	var originalComment = $('#clip-comment-view-'+id).html();
-	$('#comment-textarea-'+id).html(originalComment);
-	$('#clip-comment-view-'+id).hide();
-	$('#clip-comment-edit-'+id).fadeIn('fast');
-	$('#edit-comment-btn-'+id).hide();
-	$('#comment-no-'+id).bind('click',{elid:id,origcomment:originalComment},function(event){
-		$('#clip-comment-edit-'+event.data.elid).hide();
-		$('#clip-comment-view-'+event.data.elid).html(event.data.origcomment);
-		$('#comment-textarea-'+event.data.elid).html($('#clip-comment-edit-'+event.data.elid).html());
-		$('#clip-comment-view-'+event.data.elid).fadeIn('fast');
-		$('#edit-comment-btn-'+id).fadeIn('fast');
+	openCommentEditor(id);
+	$('#comment-no-'+id).bind('click',{elid:id,origcomment:$('#clip-comment-view-'+id).html()},function(event){
+		cancelCommentEditor(event.data.elid);
 	});
 	$('#comment-yes-'+id).bind('click',{elid:id},function(event){
 		var updatedComment = $('#comment-textarea-'+event.data.elid).val();
 		sclipAPI.commentClip(event.data.elid,updatedComment,onCommentedClip,onCommentedError);
 	});
+	return false;
+}
+
+function cancelCommentEditor(id){
+	var originalComment = $('#clip-comment-view-'+id).html();
+	$('#clip-comment-edit-'+id).hide();
+	if(originalComment!="null" && originalComment!=""){
+		$('#clip-comment-view-'+id).html(originalComment);
+	}else{
+		$('#clip-comment-view-'+id).html("");
+		$('#clip-comment-view-div-'+id).hide();
+	}
+	$('#comment-textarea-'+id).html(originalComment);
+	$('#clip-comment-view-'+id).fadeIn('fast');
+	//Show edit buttons.
+	showEditButtons(id,true);
+}
+
+function openCommentEditor(id){
+	var originalComment = $('#clip-comment-view-'+id).html();
+	if(originalComment!="null"){
+		$('#comment-textarea-'+id).html(originalComment);
+	}
+	$('#clip-comment-view-div-'+id).show();
+	$('#clip-comment-view-'+id).hide();
+	$('#clip-comment-edit-'+id).fadeIn('fast');
+	//Hide edit buttons.
+	showEditButtons(id,false);
 }
 
 /**
@@ -48,9 +65,44 @@ function onCommentedClip(id,comment){
 	$('#comment-textarea-'+id).html(comment);
 	$('#clip-comment-view-'+id).fadeIn('fast');
 	$('#edit-comment-btn-'+id).fadeIn('fast');
+	var addBtn = $('#add-comment-'+id);
+	if(addBtn!="null"){
+		addBtn.html('Edit comment');
+	}
+	var addBtn = $('#add-comment-btn-'+id);
+	if(addBtn.length>0){
+		addBtn.html("Edit comment");
+	}
+	showEditButtons(id,true);
+	
 	EDITED_CLIP = null;
 }
 
+/**
+ * Shows or hide edit buttons for comment.
+ * @param show true or false for showing or hiding edit buttons.
+ */
+function showEditButtons(id,show){
+	var editBtn = $('#edit-comment-btn-'+id);
+	var addBtn = $('#add-comment-btn-'+id);
+	if(show){
+		if(editBtn.length>0){
+			editBtn.show();
+		}else if(addBtn.length>0){
+			addBtn.show();
+		}
+	}else{
+		if(editBtn.length>0){
+			editBtn.hide();
+		}else if(addBtn.length>0){
+			addBtn.hide();
+		}
+	}
+}
+
+/**
+ * Called in case of problem during comment save.
+ */
 function onCommentedError(){
 	alert('Sorry but clip commenting ends with unexpected error.');
 	EDITED_CLIP = null;

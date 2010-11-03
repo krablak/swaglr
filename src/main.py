@@ -2,6 +2,7 @@ from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 import pages
 import ajax
+import testpages
 
 
 application = webapp.WSGIApplication([('/', pages.MainPage), 
@@ -12,6 +13,7 @@ application = webapp.WSGIApplication([('/', pages.MainPage),
                                       ('/api/clip/delete/', ajax.Delete),
                                       ('/api/clip/comment/', ajax.Comment),
                                       ('/about/', pages.About),
+                                      #('/test/', testpages.Test),
                                       ('/images/(.*)/(.*)', pages.Images),
                                      ]
                                      , debug=True)
