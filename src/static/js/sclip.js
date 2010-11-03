@@ -65,10 +65,6 @@ function onCommentedClip(id,comment){
 	$('#comment-textarea-'+id).html(comment);
 	$('#clip-comment-view-'+id).fadeIn('fast');
 	$('#edit-comment-btn-'+id).fadeIn('fast');
-	var addBtn = $('#add-comment-'+id);
-	if(addBtn!="null"){
-		addBtn.html('Edit comment');
-	}
 	var addBtn = $('#add-comment-btn-'+id);
 	if(addBtn.length>0){
 		addBtn.html("Edit comment");
