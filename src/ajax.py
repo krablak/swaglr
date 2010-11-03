@@ -13,6 +13,7 @@ from google.appengine.api import users
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import login_required
 import clips.api
+import clips.validations 
 import ui.models
 from ui.error_logging import log_errors
 from dbo import *
@@ -53,7 +54,7 @@ class Comment(webapp.RequestHandler):
         result = {}
         try:
             clip_id = int(self.request.get('id'))
-            comment = str(self.request.get('comment'))
+            comment = clips.validations.to_param(self.request.get('comment'))
             clips.api.comment(clip_id, comment)
             self.response.headers['Content-Type'] = 'text/html'
             self.response.out.write(simplejson.dumps(result))

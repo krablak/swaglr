@@ -3,6 +3,13 @@
  */
 var sclipAPI = new SclipAPI();
 
+/****************************************Clip open*****************************************************/
+var OPEN_CLIP = null;
+
+function openClip(i){
+	
+}
+
 /****************************************Clip comment*****************************************************/
 /**
  * ID of the currently edited clip.
