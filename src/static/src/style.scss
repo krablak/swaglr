@@ -203,13 +203,13 @@ ul.boxList li {
 	word-wrap: break-word;
 	color: black;
 	background:$box-background;
-	text-align: center;
 	@include box-shadow(rgb(120,120,120), 1px, 1px, 6px);
 	@include border-radius(2px);
 	
 	.imgbox{
 		margin:0px 0px 0px 0px;
 		overflow: hidden;
+		text-align: center;
 		text-align: center;
 	
 		img{
@@ -381,7 +381,6 @@ ul.boxList li.open{
 		cursor:pointer;
 	}
 }
-//#simplemodal-container code {background:#141414; border-left:3px solid #65B43D; color:#bbb; display:block; margin-bottom:12px; padding:4px 6px 6px;}
 
 
 #simplemodal-container #basic-modal-content {padding:8px;}
@@ -390,22 +389,19 @@ ul.boxList li.open{
 .awesome {
 	background: $color1 url(/static/img/alert-overlay.png) repeat-x;
 	@include link-colors($color4, $color4, $color4, $color4, $color4);
-	display: inline-block;
-	padding: 5px 10px 6px;
-	color: #fff;
-	text-decoration: none;
-	font-weight: bold;
-	@include border-radius($default-radius);
-	-moz-box-shadow: 0 1px 3px #999;
-	-webkit-box-shadow: 0 1px 3px #999;
-	text-shadow: 0 -1px 1px #222;
-	border-bottom: 1px solid #222;
-	position: relative;
-	cursor: pointer;
-	-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-	-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-	text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.25);
-	border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  display: inline-block;
+  padding: 5px 10px 6px;
+  text-decoration: none;
+  font-weight: bold;
+  line-height: 1;
+  @include border-radius($default-radius);
+  -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+  -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+  text-shadow: 0 -1px 1px #222;
+  position: relative;
+  cursor: pointer;
+  text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+  border-bottom: 1px solid rgba(0,0,0,0.25);	
 }
 
 a.awesome:hover {
