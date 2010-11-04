@@ -210,16 +210,16 @@ ul.boxList li q {
   display: block; }
 ul.boxList li .comment-ico {
   position: absolute;
-  bottom: 8px;
-  right: 8px;
-  height: 16px;
-  width: 16px;
-  text-align: center;
-  vertical-align: center;
-  filter: alpha(opacity=80);
-  -moz-opacity: 0.8;
-  -khtml-opacity: 0.8;
-  opacity: 0.8; }
+  bottom: 0px;
+  right: 0px;
+  height: 22px;
+  border-left: 1px solid #ddd;
+  padding: 6px 2px 2px 2px;
+  z-index: 100;
+    /*filter:alpha(opacity=90);
+	  -moz-opacity:0.9;
+	  -khtml-opacity: 0.9;
+  	opacity: 0.9; */ }
 ul.boxList li .page-url-box {
   position: absolute;
   bottom: 0px;
@@ -228,7 +228,8 @@ ul.boxList li .page-url-box {
   background: rgba(255, 250, 240, 0.65);
   padding: 8px;
   color: #292929;
-  font-size: 1.2em; }
+  font-size: 1.2em;
+  z-index: 99; }
 ul.boxList li .detail {
   position: absolute;
   left: -20%;
