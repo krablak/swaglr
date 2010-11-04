@@ -7,18 +7,24 @@ var sclipAPI = new SclipAPI();
 var OPEN_CLIP = null;
 
 function openClip(id){
-	if(OPEN_CLIP!=null){
-		$("#clip_box_"+OPEN_CLIP).toggleClass("open");
-		console.log("");
-	}
-	if(OPEN_CLIP!=id){
-		$("#clip_box_"+id).toggleClass("open");
-	}
 	if(OPEN_CLIP==id){
-		OPEN_CLIP = null;
+		if(!$("#clip_box_"+OPEN_CLIP).hasClass("open")){
+			OPEN_CLIP = null;			
+		}
 	}else{
-		OPEN_CLIP = id;
+		if(OPEN_CLIP!=null && OPEN_CLIP!=id){
+			$("#clip_box_"+OPEN_CLIP).removeClass("open");
+		}
+		if(OPEN_CLIP!=id){
+			$("#clip_box_"+id).addClass("open");
+			$("#clip_box_"+id).unbind();
+		}
+		OPEN_CLIP=id;
 	}
+}
+
+function closeClip(id){
+	$("#clip_box_"+id).removeClass("open");
 }
 
 /****************************************Clip comment*****************************************************/
