@@ -6,8 +6,19 @@ var sclipAPI = new SclipAPI();
 /****************************************Clip open*****************************************************/
 var OPEN_CLIP = null;
 
-function openClip(i){
-	
+function openClip(id){
+	if(OPEN_CLIP!=null){
+		$("#clip_box_"+OPEN_CLIP).toggleClass("open");
+		console.log("");
+	}
+	if(OPEN_CLIP!=id){
+		$("#clip_box_"+id).toggleClass("open");
+	}
+	if(OPEN_CLIP==id){
+		OPEN_CLIP = null;
+	}else{
+		OPEN_CLIP = id;
+	}
 }
 
 /****************************************Clip comment*****************************************************/
