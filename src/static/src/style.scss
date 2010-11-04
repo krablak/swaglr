@@ -110,6 +110,7 @@ a {
 
 	  
 #main {
+
 }	
 
 /**
@@ -143,18 +144,18 @@ a {
 }
 
 #navigation {
+
   a { /*Login, username*/
 			@include link-colors($color2, $color4, $color2, $color2, $color2);
 			font-size: 1.2em;
 			@include hover-link;
-
 		}
 
 	#logo{
-		margin-top:15px;
-		margin-bottom:10px;
 		font-size: 3em;
 		text-shadow: rgb(130,130,130) 1px 2px 4px;
+		margin-top:0px;
+		//text-align: right;
 
 		a{   /*LOGO*/
 			@include link-colors($color4, $color4, $color4, $color4, $color4);
@@ -163,8 +164,8 @@ a {
 		
 	}
 	
-	p{
-		margin-bottom:5px;
+	#toolbar{
+		
 	}
 
 }
@@ -305,7 +306,7 @@ ul.boxList li {
 	
 }
 
-ul.boxList li:hover {
+ul.boxList li.open{
 		img{
 			opacity: 1;
 		}

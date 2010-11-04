@@ -126,10 +126,9 @@ a:hover {
 #navigation a:hover {
   text-decoration: underline; }
 #navigation #logo {
-  margin-top: 15px;
-  margin-bottom: 10px;
   font-size: 3em;
-  text-shadow: #828282 1px 2px 4px; }
+  text-shadow: #828282 1px 2px 4px;
+  margin-top: 0px; }
 #navigation #logo a {
   /*LOGO*/
   color: #fdfaf9;
@@ -142,8 +141,6 @@ a:hover {
   color: #fdfaf9; }
 #navigation #logo a:active {
   color: #fdfaf9; }
-#navigation p {
-  margin-bottom: 5px; }
 
 #footer {
   margin-top: 30px;
@@ -268,9 +265,9 @@ ul.boxList li .detail .comment textarea {
 ul.boxList li .detail .imgbox {
   margin: 10px; }
 
-ul.boxList li:hover img {
+ul.boxList li.open img {
   opacity: 1; }
-ul.boxList li:hover .detail {
+ul.boxList li.open .detail {
   display: block;
   z-index: 999; }
 

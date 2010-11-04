@@ -52,21 +52,22 @@
 				<div id="navigation">
 				{% block navigation %}
 					<h1 id="logo"><a href="/">swagclip</a></h1>
-					{% if user %}
+				
+        	<div id="toolbar">
+        	{% if user %}
 						<p><a href="/user/{{ user.user_id }}/page/0">{{ user|user_nick }}</a></p>
 					{% endif %}
-						
+		
 					<p>{{ greeting }}</p> <!-- MZ: Co to znamena greeting? -->   
-
+        </div>
 				{% endblock %}
 				</div><!-- /navigation --> 
-			</div><!-- /column2 --> 
+			</div><!-- /column2 -->	
 		</div><!-- /content --> 
 
 		<div id="footerWrap" class="container_18">
 			<div id="footer" class="grid_14">
 				<a href="/about/">About us</a><br/>
-				<a href="/static/crx/sclipper.crx">Get Our Chrome Extension</a>
 			</div>
 		</div><!-- /footer --> 
 				
