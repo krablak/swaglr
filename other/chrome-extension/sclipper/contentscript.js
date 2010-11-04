@@ -5,15 +5,13 @@ var DLG_POST_EVENT = "new function(){var postEvn = document.createEvent(\"Event\
 var DLG_CANCEL_EVENT = "new function(){var cancelEvn = document.createEvent(\"Event\");cancelEvn.initEvent(\"cancelEvn\", true, true);window.dispatchEvent(cancelEvn);}"
 
 var POST_HTML = "<div id=\""+DLG_ID+"\">\
-<H3>Preview:</h3>\
 <div id=\""+DLG_PREV_ID+"\"></div>\
 <form method=\"post\" action=\"\" onsubmit=\"return:false\">\
-<label for=\"comment\">Add comment to your clip:</label></br>\
+<label for=\"comment\">You say:</label></br>\
 <textarea class=\"com-ays-itextarea\" name=\"comment\" id=\"comment\"></textarea>\
 </form>\
-<p>\
-<a class=\"com-ays-awesome\" id=\"btn_post\" onclick='"+DLG_POST_EVENT+"'>Post</a>\
-<a class=\"com-ays-awesome\" id=\"btn_cancel\" onclick='"+DLG_CANCEL_EVENT+"'>Close</a></p>\
+<p class=\"com-ays-button-area\">\
+<a class=\"com-ays-awesome\" id=\"btn_post\" onclick='"+DLG_POST_EVENT+"'>Post</a>\&nbsp;<a id=\"btn_cancel\" onclick='"+DLG_CANCEL_EVENT+"'>Cancel</a></p>\
 </div>";
 
 //Response action method
@@ -67,12 +65,12 @@ function prepareClipDetail(clip){
                                 text = "<div class=\"com-ays-preview\"><img src=\""+clip['src']+"\"/></div>";
                 }else if(clip['link']!='null'){
                                 console.log("Is Link Clip");
-                                text = "<div class=\"com-ays-preview\">"+clip['link']+"</div>";
+                                text = "<div class=\"com-ays-preview\"><p>"+clip['link']+"</p></div>";
                 }else if(clip['text']!='null'){
-                                text = "<div class=\"com-ays-preview\">"+clip['text']+"</div>";
+                                text = "<div class=\"com-ays-preview\"><p>"+clip['text']+"</p></div>";
                 }else if(clip['page']!='null'){
                                 console.log("Is Page Clip");
-                                text = "<div class=\"com-ays-preview\">"+clip['page']+"</div>";
+                                text = "<div class=\"com-ays-preview\"><p>"+clip['page']+"</p></div>";
                 }
                 $('#'+DLG_PREV_ID).empty();
                 $(text).appendTo('#'+DLG_PREV_ID);

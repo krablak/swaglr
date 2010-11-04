@@ -1,70 +1,59 @@
-.com-ays-awesome {
-	background: #222;
-	display: inline-block;
-	padding: 5px 10px 6px;
-	color: #fff;
-	text-decoration: none;
-	font-weight: bold;
-	line-height: 1;
-	/*-moz-border-radius: 5px;*/
+/* Container */
+#com-ays-simplemodal-container {
+	height:auto !important; 
+	width:250px !important; 
+
+	background-color:#333; 
+	border:2px solid #444; 
+	padding:12px;
+	font-family: Helvetica, Arial, sans-serif;
+
+	color:#000; 
+	background-color: #FDFAF9; 
+	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
-	-webkit-box-shadow: 0 1px 3px #999;
-	text-shadow: 0 -1px 1px #222;
-	border-bottom: 1px solid #222;
-	position: relative;
-	cursor: pointer;
-	-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-	text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.25);
-	border-bottom: 1px solid rgba(0, 0, 0, 0.25);
 }
 
-.com-ays-dialog-window {
-	position: absolute;
-	/*right: 50%;
-	top: 40px;*/
-	width: 250px;
-	padding: 10px;
-        color: #BBB;
-	background-color: #333;
-	z-index: 99999;
-        font-family: serif;
-        font-size: 13px;
-        font-style: normal;
-        font-variant: normal;
-        font-weight: normal;
+#com-ays-simplemodal-container a {
+
 }
 
-.com-ays-dialog-window h3{
-	margin-top:0.4em;
-        color: #BBB;
-	background-color: #333;
-	z-index: 99999;
-        font-family: serif;
-        font-size: 13px;
-        font-style: normal;
-        font-variant: normal;
-        font-weight: normal;
-}
 
-#com-ays-button-area {
+
+.com-ays-button-area {
 	text-align: right;
-        color: #BBB;
-	background-color: #333;
-	z-index: 99999;
-        font-family: serif;
-        font-size: 13px;
-        font-style: normal;
-        font-variant: normal;
-        font-weight: normal;
 }
 
 
- .com-ays-itextarea { 	
+
+
+
+ .com-ays-preview {
+                    overflow-y: hidden;
+                    max-height: 300px;
+                    width:100%;
+                    text-align: center;
+                    font-size: 1.3em;
+                    margin-bottom: 8px;
+                                
+ }
+ 
+.com-ays-preview img {
+	max-width: 100%;
+	
+  }
+  
+.com-ays-preview p {
+	padding: 20px;
+	
+  }
+  
+   .com-ays-itextarea { 	
 	width: 235px;
 	height: 50px;
 	border:1px solid #999;
 	-webkit-border-radius: 3px;
-        border-radius:3px;
+    border-radius:3px;
 	margin:0;
 	padding:5px;
 	background: #fff;
@@ -72,51 +61,37 @@
 	background: -moz-linear-gradient(top, #fff, #eee 2px, #fff 25px);
 	box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
 	-webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
-        color: #BBB;
-	background-color: #333;
-	z-index: 99999;
-        font-family: serif;
-        font-size: 13px;
-        font-style: normal;
-        font-variant: normal;
-        font-weight: normal;
+
+}
+  
+.com-ays-awesome {
+	background: #222 url(http://swagclip.appspot.com/static/img/alert-overlay.png) repeat-x;
+	display: inline-block;
+	padding: 5px 10px 6px;
+	color: #fff;
+	text-decoration: none;
+	font-weight: bold;
+	line-height: 1;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+	text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+	border-bottom: 1px solid rgba(0,0,0,0.25);
+	text-shadow: 0 -1px 1px #222;
+	position: relative;
+	cursor: pointer;
 
 }
 
-.com-ays-box {
-		width:100px;
-		height:180px;
-		padding: 5px;
-		}
-		
-.com-ays-box a{
-			position:relative;
-			/*left:0px;
-			top:140px;*/
-			background-color: #fff;
-			color: #555;
-			font-size:0.8em;
+.com-ays-awesome:hover {
+	color: #fff;
+	text-decoration: none;
 }
-
- .com-ays-preview {
-                    overflow: auto;
-                    height: 160px;
-                    font-size: small;
-                    font-family: serif;
-                    font-size-adjust: none;
-                    font-style: normal;
-                    font-stretch:  normal;
-                    font-weight: normal;
- }
 
 #com-ays-basic-modal-content {display:none;}
 
 /* Overlay */
-#com-ays-simplemodal-overlay {background-color:#000; cursor:wait;}
-
-/* Container */
-#com-ays-simplemodal-container {height:300px; width:300px; color:#bbb; background-color:#333; border:4px solid #444; padding:12px;}
-#com-ays-simplemodal-container code {background:#141414; border-left:3px solid #65B43D; color:#bbb; display:block; margin-bottom:12px; padding:4px 6px 6px;}
-#com-ays-simplemodal-container a {color:#ddd;}
+#com-ays-simplemodal-overlay {background-color:#000;}
 #com-ays-simplemodal-container a.modalCloseImg {width:25px; height:29px; display:inline; z-index:3200; position:absolute; top:-15px; right:-16px; cursor:pointer;}
 #com-ays-simplemodal-container #com-ays-basic-modal-content {padding:8px;}
