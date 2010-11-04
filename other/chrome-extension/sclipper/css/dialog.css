@@ -57,12 +57,12 @@ a.com-ays-a:hover {
                                 
  }
  
-.com-ays-preview img {
+.com-ays-preview img.com-ays-img {
 	max-width: 100% !important;
 	
   }
   
-.com-ays-preview p {
+.com-ays-preview p.com-ays-p {
 	padding: 20px !important;
 	word-wrap: break-word;
 	font-family: Helvetica, Arial, sans-serif !important;

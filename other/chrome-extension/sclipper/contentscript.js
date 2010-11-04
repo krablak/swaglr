@@ -62,15 +62,15 @@ function prepareClipDetail(clip){
                 var text = "";
                 if(clip['src']!='null'){
                                 console.log("Is Image Clip");
-                                text = "<div class=\"com-ays-preview\"><img src=\""+clip['src']+"\"/></div>";
+                                text = "<div class=\"com-ays-preview\"><img class=\"com-ays-img\" src=\""+clip['src']+"\"/></div>";
                 }else if(clip['link']!='null'){
                                 console.log("Is Link Clip");
-                                text = "<div class=\"com-ays-preview\"><p>"+clip['link']+"</p></div>";
+                                text = "<div class=\"com-ays-preview\"><p class=\"com-ays-p\">"+clip['link']+"</p></div>";
                 }else if(clip['text']!='null'){
-                                text = "<div class=\"com-ays-preview\"><p>"+clip['text']+"</p></div>";
+                                text = "<div class=\"com-ays-preview\"><p class=\"com-ays-p\">"+clip['text']+"</p></div>";
                 }else if(clip['page']!='null'){
                                 console.log("Is Page Clip");
-                                text = "<div class=\"com-ays-preview\"><p>"+clip['page']+"</p></div>";
+                                text = "<div class=\"com-ays-preview\"><p class=\"com-ays-p\">"+clip['page']+"</p></div>";
                 }
                 $('#'+DLG_PREV_ID).empty();
                 $(text).appendTo('#'+DLG_PREV_ID);
