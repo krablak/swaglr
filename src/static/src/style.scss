@@ -203,6 +203,7 @@ ul.boxList li {
 	color: black;
 	background:$box-background;
 	@include box-shadow(rgb(120,120,120), 1px, 1px, 6px);
+	@include border-radius(2px);
 	
 	.imgbox{
 		margin:0px 0px 0px 0px;

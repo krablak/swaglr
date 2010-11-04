@@ -181,7 +181,13 @@ ul.boxList li {
   -moz-box-shadow: #787878 1px 1px 6px 0;
   -webkit-box-shadow: #787878 1px 1px 6px 0;
   -o-box-shadow: #787878 1px 1px 6px 0;
-  box-shadow: #787878 1px 1px 6px 0; }
+  box-shadow: #787878 1px 1px 6px 0;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -o-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -khtml-border-radius: 2px;
+  border-radius: 2px; }
 ul.boxList li .imgbox {
   margin: 0px 0px 0px 0px;
   overflow: hidden;
