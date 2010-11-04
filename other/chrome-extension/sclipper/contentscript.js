@@ -11,7 +11,7 @@ var POST_HTML = "<div id=\""+DLG_ID+"\">\
 <textarea class=\"com-ays-itextarea\" name=\"comment\" id=\"comment\"></textarea>\
 </form>\
 <p class=\"com-ays-button-area\">\
-<a class=\"com-ays-awesome\" id=\"btn_post\" onclick='"+DLG_POST_EVENT+"'>Post</a>\&nbsp;<a id=\"btn_cancel\" onclick='"+DLG_CANCEL_EVENT+"'>Cancel</a></p>\
+<a class=\"com-ays-awesome\" id=\"btn_post\" href=\"#\" onclick='"+DLG_POST_EVENT+"'>Post</a>\&nbsp;<a id=\"btn_cancel\" style=\"com-ays-a\" href=\"#\" onclick='"+DLG_CANCEL_EVENT+"'>Cancel</a></p>\
 </div>";
 
 //Response action method
