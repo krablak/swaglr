@@ -175,6 +175,7 @@ ul.boxList li {
   word-wrap: break-word;
   color: black;
   background: #f5f0e6;
+  text-align: center;
   -moz-box-shadow: #787878 1px 1px 6px 0;
   -webkit-box-shadow: #787878 1px 1px 6px 0;
   -o-box-shadow: #787878 1px 1px 6px 0;
@@ -191,7 +192,7 @@ ul.boxList li .imgbox {
   text-align: center; }
 ul.boxList li .imgbox img {
   vertical-align: middle;
-  width: 100%;
+  max-width: 100%;
   display: inline; }
 ul.boxList li .crop {
   height: 140px; }

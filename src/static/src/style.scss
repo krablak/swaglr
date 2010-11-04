@@ -203,6 +203,7 @@ ul.boxList li {
 	word-wrap: break-word;
 	color: black;
 	background:$box-background;
+	text-align: center;
 	@include box-shadow(rgb(120,120,120), 1px, 1px, 6px);
 	@include border-radius(2px);
 	
@@ -214,7 +215,7 @@ ul.boxList li {
 		img{
 			vertical-align: middle;
 			//opacity: 0.85;
-			width: 100%;
+			max-width: 100%;
 			display:inline;
 		}
 	}
