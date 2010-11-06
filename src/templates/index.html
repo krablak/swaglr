@@ -36,18 +36,18 @@
 
 						<div id="detail_{{clip.key.id}}" class="detail"> 
 							{% if clip|is_image_clip %}
-							<div class="imgbox"><img src="/images/tiny/{{ clip.image.key.id }}.jpg"/></div>
+							<div class="imgbox" onclick="closeClip({{ clip.key.id }});"><img src="/images/tiny/{{ clip.image.key.id }}.jpg"/></div>
 							{% endif %}
 							{% if clip|is_text_clip %}
-							<q class="full" cite="{{ clip.page }}">{{ clip.text|escape }}</q>
+							<q class="full" cite="{{ clip.page }}" onclick="closeClip({{ clip.key.id }});" >{{ clip.text|escape }}</q>
 							{% endif %}
 							
 							{% if clip|is_page_clip %}
-							<q cite="{{ clip.page }}">{{ clip.page|slice:"0:40"|escape }}...</q>
+							<q cite="{{ clip.page }}" onclick="closeClip({{ clip.key.id }});">{{ clip.page|slice:"0:40"|escape }}...</q>
 							{% endif %}
 							
 							{% if clip|is_link_clip %}
-							<q cite="{{ clip.link }}">{{ clip.link|slice:"0:40"|escape }}...</q>
+							<q cite="{{ clip.link }}" onclick="closeClip({{ clip.key.id }});">{{ clip.link|slice:"0:40"|escape }}...</q>
 							{% endif %}  
 							
 							<p>URL: <a class="page-url" target="_blank" href="{{ clip.page }}">{{ clip.page|slice:"0:40"|escape }}...</a></p>

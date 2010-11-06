@@ -24,7 +24,11 @@ function openClip(id){
 }
 
 function closeClip(id){
-	$("#clip_box_"+id).removeClass("open");
+	if(id!=-1){
+		$("#clip_box_"+id).removeClass("open");
+	}else if(OPEN_CLIP!=null){
+		$("#clip_box_"+OPEN_CLIP).removeClass(OPEN_CLIP);
+	}
 }
 
 /****************************************Clip comment*****************************************************/
