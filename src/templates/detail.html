@@ -1,43 +1,88 @@
 {% extends "based.html" %}
 
-{% block cliplist %}
-    			<div id="clip" class="{{ clip|clip_class }}">
-    				<span id="date">before {{ clip.date|timesince }} by </span>
-    				<span id="author"><a href="/user/{{ clip.user.user_id }}/page/0">{{ clip.user.user.nickname }}</a></span>
-    				{% ifnotequal clip.page "null" %}
-    				<span id="page">at <a href="{{ clip.page }}">{{ clip.page|slice:"0:100" }}...</a></span>
-    				{% endifnotequal %}    				
-    				{% if clip|is_text_clip %}
-    				<div id="text">"{{ clip.text|escape }}"</div>
-    				{% endif %}
-    				{% if clip|is_link_clip %}
-    					<div id="link"><a href="{{ clip.link }}">{{ clip.link|escape }}</a></div>
-    				{% endif %}
-    				{% if clip|is_page_clip %}
-    				<div id="link"><a href="{{ clip.page }}">{{ clip.page|escape }}</a></div>
-   					{% endif %}
-   					{% if clip|is_image_clip %}
-    				<div id="detail-image">
-    					<center>
-    					<a href="{{ clip.src }}"><img width="400px" src="{{ clip.src }}"/></a>
-    					</center>
-    				</div>
-    				{% endif %}
-    				<div id="controls">
-    					{% ifequal user.user_id clip.user.user_id %}
-    					<span id="delete"><a href="/delete/{{ clip.key.id }}">Delete</a></span>
-    					{% endifequal %}
-    					<span id="tweet">
-    						{% if clip|is_text_clip %}
-	    					<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://swagclip.appspot.com/clip/{{ clip.key.id }}" data-text='{{ clip.text|slice:"0:50" }}...' data-count="none">Tweet</a>
-	    					{% endif %} 
-	    					{% if clip|is_link_clip or clip|is_page_clip %}
-							<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://swagclip.appspot.com/clip/{{ clip.key.id }}" data-text='Swagged link...' data-count="none">Tweet</a>
-							{% endif %} 
+{% block container %}
+    			<li id="clip_box_{{clip.key.id}}" onclick="openClip({{ clip.key.id }});">
+						{% if clip|is_image_clip %}
+							<div class="imgbox crop"><img src="/images/tiny/{{ clip.image.key.id }}.jpg"/></div>
+						{% endif %}
+			
+						{% if clip|is_text_clip %}
+						<q class="crop" cite="{{ clip.page }}">{{ clip.text|slice:"0:75"|escape }}...</q>
+						{% endif %}
+						
+						{% if clip|is_page_clip %}
+						<q cite="{{ clip.page }}">{{ clip.page|slice:"0:40"|escape }}...</q>
+						{% endif %}
+						
+						{% if clip|is_link_clip %}
+						<q cite="{{ clip.link }}">{{ clip.link|slice:"0:40"|escape }}...</q>
+						{% endif %} 
+						
+            			{% if clip|is_commented_clip %} 
+						<div class="comment-ico"><img src="/static/img/comment-ico.png"></div>
+						{% endif %}
+						
+						<div class="page-url-box">{{ clip.page|slice:"0:30"|escape }}</div>
+
+						<div id="detail_{{clip.key.id}}" class="detail"> 
 							{% if clip|is_image_clip %}
-							<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://swagclip.appspot.com/clip/{{ clip.key.id }}" data-text='Swagged picture...' data-count="none">Tweet</a>
-	    					{% endif %}
-    					</span>
-    				</div>
-    			</div>
+							<div class="imgbox" onclick="closeClip({{ clip.key.id }});"><img src="/images/tiny/{{ clip.image.key.id }}.jpg"/></div>
+							{% endif %}
+							{% if clip|is_text_clip %}
+							<q class="full" cite="{{ clip.page }}" onclick="closeClip({{ clip.key.id }});" >{{ clip.text|escape }}</q>
+							{% endif %}
+							
+							{% if clip|is_page_clip %}
+							<q cite="{{ clip.page }}" onclick="closeClip({{ clip.key.id }});">{{ clip.page|slice:"0:40"|escape }}...</q>
+							{% endif %}
+							
+							{% if clip|is_link_clip %}
+							<q cite="{{ clip.link }}" onclick="closeClip({{ clip.key.id }});">{{ clip.link|slice:"0:40"|escape }}...</q>
+							{% endif %}  
+							
+							<p>URL: <a class="page-url" target="_blank" href="{{ clip.page }}">{{ clip.page|slice:"0:40"|escape }}...</a></p>
+							
+							{% if clip|is_commented_clip %}									
+								<div class="comment"> 
+									<p><strong><a href="/user/{{ clip.user.user_id }}/page/0"> {{ clip.user.nick }}</a></strong> says:</p>
+									<p id="clip-comment-view-{{ clip.key.id }}" class="text">{{  clip.comment|escape }}</p>
+									<span id="clip-comment-edit-{{ clip.key.id }}" style="display:none">
+										<textarea id="comment-textarea-{{ clip.key.id }}" rows="4" cols="30" ></textarea>
+										<p class="right">
+										<a id="comment-yes-{{ clip.key.id }}" class="awesome small">Save</a>
+										<a id="comment-no-{{ clip.key.id }}">Cancel</a>
+										</p>
+									</span>
+								{% if clip|is_my %}
+									<p class="right">
+										<a id="edit-comment-btn-{{ clip.key.id }}" onclick="showCommentDialog({{ clip.key.id }});" class="awesome small">Edit comment</a>
+									</p>
+								{% endif %}
+								</div>
+							{% else %}	
+								<div id="clip-comment-view-div-{{ clip.key.id }}" class="comment">
+									<p style="display:none" id="clip-comment-view-{{ clip.key.id }}" class="text">{{  clip.comment|escape }}</p>
+									<span id="clip-comment-edit-{{ clip.key.id }}" style="display:none">
+										<textarea id="comment-textarea-{{ clip.key.id }}" rows="4" cols="30" ></textarea>
+										<p class="right">
+										<a id="comment-yes-{{ clip.key.id }}" class="awesome small">Save</a>
+										<a id="comment-no-{{ clip.key.id }}">Cancel</a>
+										</p>
+									</span>
+								</div>
+								{% if clip|is_my %}
+								<p class="right">
+									<a href="#" id="add-comment-btn-{{ clip.key.id }}" onclick="showCommentDialog({{ clip.key.id }});" class="awesome small">Add comment</a>
+								</p>
+								{% endif %}
+							{% endif %}	<!-- /if clip|is_commented_clip-->							
+								
+							<p>More clips by&nbsp;<a href="/user/{{ clip.user.user_id }}/page/0"> {{ clip.user.nick }}</a></p>
+							{% if clip|is_my %} 
+							<p class="right"><a id="delete-comment-btn-{{ clip.key.id }}" onclick="showDeleteDialog({{ clip.key.id }});" class="awesome small blue">Delete clip</a></p>
+							{% endif %}
+							
+								
+						</div>	<!-- /detail-->		
+					</li> 
 {% endblock %}
