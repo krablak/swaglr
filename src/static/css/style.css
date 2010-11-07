@@ -50,6 +50,7 @@ h1, h2, h3, h4 {
 /*vychozi barva pisma*/
 /*cervena*/
 /*original tmave modra*/
+/*zluta zvyraznovaci*/
 /*$box-width:194px;       
 $box-height:140px;  */
 /*Dialogs - confirm dialogs, etc.*/
@@ -75,9 +76,9 @@ a:visited {
 a:focus {
   color: #2daebf; }
 a:hover {
-  color: #f71624; }
+  color: #2daebf; }
 a:active {
-  color: #f71624; }
+  color: #2daebf; }
 a:hover {
   text-decoration: underline; }
 
@@ -122,7 +123,7 @@ a:hover {
 #navigation a:focus {
   color: #2daebf; }
 #navigation a:hover {
-  color: #fbfaf9; }
+  color: #2daebf; }
 #navigation a:active {
   color: #2daebf; }
 #navigation a:hover {
@@ -162,6 +163,11 @@ a:hover {
 #footer a:hover {
   text-decoration: underline; }
 
+.username {
+  /*background-color: $color6;
+  padding: 1px; */
+  font-family: Arial Narrow; }
+
 /*DETAIL======================================================================*/
 ul.boxList {
   list-style: none;
@@ -170,6 +176,7 @@ ul.boxList {
   padding: 0; }
 
 ul.boxList li {
+  cursor: pointer;
   width: 210px;
   height: 150px;
   float: left;
@@ -201,11 +208,8 @@ ul.boxList li .imgbox img {
 ul.boxList li .crop {
   height: 150px;
   overflow: hidden; }
-ul.boxList li a.page-url {
-  font-size: 1.2em; }
 ul.boxList li p {
-  padding: 10px;
-  font-size: 1.2em; }
+  padding: 10px; }
 ul.boxList li q {
   font-size: 1.4em;
   line-height: 1.1em;
@@ -213,7 +217,8 @@ ul.boxList li q {
   word-wrap: break-word;
   padding: 10px;
   text-align: center;
-  display: block; }
+  display: block;
+  text-shadow: #ddd 1px 2px 1px; }
 ul.boxList li .comment-ico {
   position: absolute;
   bottom: 0px;
@@ -226,11 +231,11 @@ ul.boxList li .page-url-box {
   position: absolute;
   bottom: 0px;
   height: 12px;
-  width: 190px;
-  background: rgba(255, 250, 240, 0.75);
-  padding: 10px;
-  color: #292929;
-  font-size: 1.2em;
+  width: 194px;
+  background: rgba(255, 250, 240, 0.7);
+  padding: 8px;
+  color: #646464;
+  font-size: 1.1em;
   z-index: 99; }
 ul.boxList li .detail {
   position: absolute;
@@ -250,37 +255,46 @@ ul.boxList li .detail {
   -moz-box-shadow: #787878 1px 1px 6px 0;
   -webkit-box-shadow: #787878 1px 1px 6px 0;
   -o-box-shadow: #787878 1px 1px 6px 0;
-  box-shadow: #787878 1px 1px 6px 0; }
+  box-shadow: #787878 1px 1px 6px 0;
+  font-size: 1.4em; }
 ul.boxList li .detail q {
   margin-top: 0px;
   padding: 15px;
   margin-top: 10px;
-  text-shadow: #ddd 1px 2px 1px;
-  font-size: 1.6em;
-  background-color: #eeeeee;
-  -moz-border-radius: 4px;
-  -webkit-border-radius: 4px;
-  -o-border-radius: 4px;
-  -ms-border-radius: 4px;
-  -khtml-border-radius: 4px;
-  border-radius: 4px; }
-ul.boxList li .detail .comment .text {
   font-size: 1.3em;
+  background-color: #eeeeee;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -o-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -khtml-border-radius: 6px;
+  border-radius: 6px; }
+ul.boxList li .detail a.page-url {
+  margin: -10px 0 0 0; }
+ul.boxList li .detail .comment .text {
+  font-size: 1em;
   line-height: 120%;
   background: #D8F2F9;
   margin: 0px 0px 10px 0px;
-  -moz-border-radius: 4px;
-  -webkit-border-radius: 4px;
-  -o-border-radius: 4px;
-  -ms-border-radius: 4px;
-  -khtml-border-radius: 4px;
-  border-radius: 4px;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -o-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -khtml-border-radius: 6px;
+  border-radius: 6px;
   color: dark-gray; }
+ul.boxList li .detail .comment .comment-nib {
+  margin-top: -8px;
+  background: url(/static/img/comment-nib.png) no-repeat;
+  background-position: 20% 0;
+  height: 11px; }
 ul.boxList li .detail .comment textarea {
   margin-left: 10px;
   width: 90%;
   height: 100px; }
 
+ul.boxList li.open {
+  cursor: default; }
 ul.boxList li.open .detail {
   display: block;
   z-index: 999; }
@@ -308,7 +322,7 @@ ul.boxList li.open .detail {
   width: 300px;
   color: #000;
   background-color: #fbfaf9;
-  border: 2px solid #2e2a36;
+  border: 2px solid #fffccc;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   -o-border-radius: 4px;

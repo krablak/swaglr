@@ -55,7 +55,7 @@
 				
         	<div id="toolbar">
         	{% if user %}
-						<p><a href="/user/{{ user.user_id }}/page/0">{{ user|user_nick }}</a></p>
+						<p><a class="username" href="/user/{{ user.user_id }}/page/0">{{ user|user_nick }}</a></p>
 					{% endif %}
 		
 					<p>{{ greeting }}</p> <!-- MZ: Co to znamena greeting? -->   

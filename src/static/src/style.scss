@@ -66,6 +66,7 @@ $color3: #3AF5F5; /*tyrkysova*/
 $color4: #FbFaF9; /*bila*/     /*vychozi barva pisma*/
 $color5: #F71624; /*cervena*/
 $color6: #2E2A36;  /*original tmave modra*/
+$color6: #FFFCCC;  /*zluta zvyraznovaci*/
 
 
 
@@ -106,7 +107,7 @@ visited
 focus
 */	
 a {
-  @include link-colors($color2, $color5, $color5, $color2, $color2);  
+  @include link-colors($color2, $color2, $color2, $color2, $color2);  
   @include hover-link;
 
 }	
@@ -149,7 +150,7 @@ a {
 #navigation {
 
   a { /*Login, username*/
-			@include link-colors($color2, $color4, $color2, $color2, $color2);
+			@include link-colors($color2, $color2, $color2, $color2, $color2);
 			font-size: 1.2em;
 			@include hover-link;
 		}
@@ -188,6 +189,14 @@ a {
 	}
 }
 
+.username {
+      /*background-color: $color6;
+      padding: 1px; */
+      font-family: Arial Narrow;
+      
+
+}
+
 
 /*DETAIL======================================================================*/	
 ul.boxList{
@@ -199,6 +208,7 @@ ul.boxList{
 }
 	  
 ul.boxList li {
+  cursor: pointer;
   width:$box-width;
 	height:$box-height;
 	float:left;
@@ -225,14 +235,9 @@ ul.boxList li {
 		height: $box-height;
 		overflow: hidden;
 	}   
-
-	a.page-url{
-		font-size:1.2em;
-	}
 	
 	p {
 		padding: $general-padding;
-		font-size:1.2em;
 	}
 	
 	q{
@@ -243,6 +248,7 @@ ul.boxList li {
 		padding: $general-padding;
 		text-align:center;
 		display:block;
+		text-shadow: #ddd 1px 2px 1px;
 			
 	}
 	.comment-ico{
@@ -256,14 +262,15 @@ ul.boxList li {
   }
   
 	.page-url-box{
+	  //font-family: "Courier New";
     position: absolute;
     bottom: 0px;
     height: 12px;
-    width: $box-width - 2*$general-padding;
-    background: rgba(255, 250, 240, 0.75);
-    padding: $general-padding;
-    color: $color1;
-    font-size:1.2em;
+    width: $box-width - 2*$general-padding + 4px;
+    background: rgba(255, 250, 240, 0.70);
+    padding: $general-padding - 2px;
+    color: rgb(100,100,100);
+    font-size:1.1em;
     z-index: 99;
     }
 /*DETAIL======================================================================*/	
@@ -278,16 +285,20 @@ ul.boxList li {
 		background: $detail-background;
 		@include border-radius($default-radius); 
 		@include box-shadow(rgb(120,120,120), 1px, 1px, 6px);
+		font-size: 1.4em;
 
 		q{
 			margin-top: 0px;
 			padding: 15px;
 			margin-top: 10px;
-			text-shadow: #ddd 1px 2px 1px;
-			font-size:1.6em;
+			font-size:1.3em;
 			background-color: $box-background;
-			@include border-radius($default-radius); 
+			@include border-radius($default-radius + 2px); 
 		}
+		
+		a.page-url{    
+		    margin: -10px 0 0 0;     
+	 }
 		
 		.imgbox {
       
@@ -295,13 +306,20 @@ ul.boxList li {
     
     .comment{
   		.text {
-  	   	font-size:1.3em;
+  	   	font-size:1em;
   	   	line-height: 120%;
   			background: #D8F2F9;
   			margin: 0px 0px 10px 0px;
-  			@include border-radius($default-radius);
-  			color: dark-gray;
+  			@include border-radius($default-radius + 2px);
+  			color: dark-gray;	
   		}
+  		
+  		.comment-nib {   
+           margin-top: -8px;                                                                    
+  			   background:url(/static/img/comment-nib.png) no-repeat;
+  			   background-position: 20% 0;
+  			   height: 11px;
+        }
   		
   		textarea {
   			margin-left: 10px;
@@ -311,11 +329,16 @@ ul.boxList li {
 	}  
 		
 	}
+	
 	/*======================================================================/DETAIL*/
 	
 }
 
+
+
 ul.boxList li.open{
+    cursor: default;
+    
 		.detail {
 			display: block;
 			z-index: 999;
