@@ -91,7 +91,7 @@ a:hover {
   text-align: right;
   position: relative;
   top: 10px;
-  left: -905px;
+  left: -913px;
   color: #fbfaf9; }
 #clips #paging {
   padding: 5px 10px 0px 0px;
@@ -166,13 +166,14 @@ a:hover {
 .username {
   /*background-color: $color6;
   padding: 1px; */
-  font-family: Arial Narrow; }
+  font-family: Verdana;
+  font-size: 0.95em; }
 
 /*DETAIL======================================================================*/
 ul.boxList {
   list-style: none;
   margin: 0 auto;
-  margin-bottom: -10px;
+  margin-bottom: -12px;
   padding: 0; }
 
 ul.boxList li {
@@ -180,15 +181,11 @@ ul.boxList li {
   width: 210px;
   height: 150px;
   float: left;
-  margin: 0px 10px 10px 0;
+  margin: 0px 12px 12px 0;
   position: relative;
   word-wrap: break-word;
   color: black;
   background: #eeeeee;
-  -moz-box-shadow: #787878 1px 1px 6px 0;
-  -webkit-box-shadow: #787878 1px 1px 6px 0;
-  -o-box-shadow: #787878 1px 1px 6px 0;
-  box-shadow: #787878 1px 1px 6px 0;
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
   -o-border-radius: 2px;
@@ -252,10 +249,10 @@ ul.boxList li .detail {
   -ms-border-radius: 4px;
   -khtml-border-radius: 4px;
   border-radius: 4px;
-  -moz-box-shadow: #787878 1px 1px 6px 0;
-  -webkit-box-shadow: #787878 1px 1px 6px 0;
-  -o-box-shadow: #787878 1px 1px 6px 0;
-  box-shadow: #787878 1px 1px 6px 0;
+  -moz-box-shadow: #828282 1px 2px 6px 0;
+  -webkit-box-shadow: #828282 1px 2px 6px 0;
+  -o-box-shadow: #828282 1px 2px 6px 0;
+  box-shadow: #828282 1px 2px 6px 0;
   font-size: 1.4em; }
 ul.boxList li .detail q {
   margin-top: 0px;
@@ -286,7 +283,7 @@ ul.boxList li .detail .comment .text {
 ul.boxList li .detail .comment .comment-nib {
   margin-top: -8px;
   background: url(/static/img/comment-nib.png) no-repeat;
-  background-position: 20% 0;
+  background-position: 10% 0;
   height: 11px; }
 ul.boxList li .detail .comment textarea {
   margin-left: 10px;

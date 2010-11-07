@@ -80,7 +80,7 @@ $box-height:140px;  */
 $box-width:210px;       
 $box-height:150px;
 
-$box-margin:10px;
+$box-margin:12px;
 $box-background: #eee;
 //$detail-background: #f4f4f4; 
 $detail-background: $color4;
@@ -192,7 +192,8 @@ a {
 .username {
       /*background-color: $color6;
       padding: 1px; */
-      font-family: Arial Narrow;
+      font-family: Verdana;
+      font-size: 0.95em;
       
 
 }
@@ -217,7 +218,7 @@ ul.boxList li {
 	word-wrap: break-word;
 	color: black;
 	background:$box-background;
-	@include box-shadow(rgb(120,120,120), 1px, 1px, 6px);
+	//@include box-shadow(rgb(120,120,120), 1px, 1px, 6px);
 	@include border-radius(2px);
 	
 	.imgbox{
@@ -284,7 +285,7 @@ ul.boxList li {
 		display: none;
 		background: $detail-background;
 		@include border-radius($default-radius); 
-		@include box-shadow(rgb(120,120,120), 1px, 1px, 6px);
+		@include box-shadow(rgb(130,130,130), 1px, 2px, 6px);
 		font-size: 1.4em;
 
 		q{
@@ -317,7 +318,7 @@ ul.boxList li {
   		.comment-nib {   
            margin-top: -8px;                                                                    
   			   background:url(/static/img/comment-nib.png) no-repeat;
-  			   background-position: 20% 0;
+  			   background-position: 10% 0;
   			   height: 11px;
         }
   		
