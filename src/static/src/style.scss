@@ -63,7 +63,7 @@ h1, h2, h3, h4 {
 $color1: #292929;  /*tmave seda */    /*body background*/
 $color2: #2daebf;   /*tyrkysova tmavsi*/
 $color3: #3AF5F5; /*tyrkysova*/
-$color4: #FDFAF9; /*bila*/     /*vychozi barva pisma*/
+$color4: #FbFaF9; /*bila*/     /*vychozi barva pisma*/
 $color5: #F71624; /*cervena*/
 $color6: #2E2A36;  /*original tmave modra*/
 
@@ -71,13 +71,16 @@ $color6: #2E2A36;  /*original tmave modra*/
 
 $mainFont: "Anivers";
 $footer-link-color:#999;
-$general-padding:8px;
+$general-padding:10px;
 $default-radius:4px;
 
-$box-width:194px;       
-$box-height:140px;
+/*$box-width:194px;       
+$box-height:140px;  */
+$box-width:210px;       
+$box-height:150px;
+
 $box-margin:10px;
-$box-background: #F5F0E6;
+$box-background: #eee;
 //$detail-background: #f4f4f4; 
 $detail-background: $color4;
 
@@ -89,7 +92,7 @@ $detail-background: $color4;
 body{
 	padding:20px;
     font: normal normal 10px/10px $mainFont, Tahoma, Arial, Helvetica, Verdana, sans-serif; 
-	line-height: 110%;
+	line-height: 120%;
 	color: $color4;
 	background-color: $color1;
 	
@@ -186,6 +189,7 @@ a {
 }
 
 
+/*DETAIL======================================================================*/	
 ul.boxList{
 	list-style: none;
 	margin: 0 auto;
@@ -207,19 +211,18 @@ ul.boxList li {
 	@include border-radius(2px);
 	
 	.imgbox{
-		margin:0px 0px 0px 0px;
-		overflow: hidden;
+		margin:0;   
 		text-align: center;
-		text-align: center;
+		background-color: rgb(90,90,90);
+		vertical-align: middle; 
 	
 		img{
-			vertical-align: middle;
-			//opacity: 0.85;
 			max-width: 100%;
-			display:inline;
 		}
 	}
 	.crop {
+		height: $box-height;
+		overflow: hidden;
 		height: $box-height;
 	}   
 
@@ -249,13 +252,7 @@ ul.boxList li {
     height: 20px;
     border-left: 1px solid #ddd;
     padding: 6px 2px 2px 2px;
-    //background: $color4;
-    z-index: 100;
-
-    /*filter:alpha(opacity=90);
-	  -moz-opacity:0.9;
-	  -khtml-opacity: 0.9;
-  	opacity: 0.9; */             
+    z-index: 100;          
   }
   
 	.page-url-box{
@@ -263,34 +260,44 @@ ul.boxList li {
     bottom: 0px;
     height: 12px;
     width: $box-width - 2*$general-padding;
-    background: rgba(255, 250, 240, 0.65);
+    background: rgba(255, 250, 240, 0.75);
     padding: $general-padding;
     color: $color1;
     font-size:1.2em;
     z-index: 99;
     }
-	
+/*DETAIL======================================================================*/	
 	.detail { 
 		position: absolute; 
-		left: -20%; 
-		top: -20px;
-		padding: 0px 0px $general-padding 0px;
-		width: 140%;
+		left: -(30px + $general-padding/2 + 3px);
+		top: -10px;
+		padding: $general-padding + 6px;
+		padding-top: 30px;
+		width: $box-width + 60px;
 		display: none;
 		background: $detail-background;
 		@include border-radius($default-radius); 
 
 		q{
 			margin-top: 0px;
-			padding: 30px;
+			padding: 15px;
+			//margin: 15px;
 			text-shadow: #ddd 1px 2px 1px;
 			font-size:1.6em;
+			background-color: $box-background;
+			@include border-radius($default-radius); 
 		}
+		
+		.imgbox {
+      //margin: 10px;
+    }
     
     .comment{
   		.text {
+  	   	font-size:1.3em;
+  	   	line-height: 120%;
   			background: #D8F2F9;
-  			margin: 0px 10px 10px 10px;
+  			margin: 0px 0px 10px 0px;
   			@include border-radius($default-radius);
   			color: dark-gray;
   		}
@@ -302,17 +309,12 @@ ul.boxList li {
   		}
 	}  
 		
-		.imgbox {
-      margin: 10px;
-    }
 	}
+	/*======================================================================/DETAIL*/
 	
 }
 
 ul.boxList li.open{
-		img{
-			opacity: 1;
-		}
 		.detail {
 			display: block;
 			z-index: 999;
