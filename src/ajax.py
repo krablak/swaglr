@@ -65,3 +65,31 @@ class Comment(webapp.RequestHandler):
             message = fp.getvalue()
             logging.error("Problem during clip comment : %s" % (message) )
             self.error(500)
+            
+class Post(webapp.RequestHandler):
+    """
+    Handler for clips posting.
+    """    
+    
+    @log_errors
+    def post(self):
+        logging.debug("Posting clip start.")
+        try:
+            page = clips.validations.to_param(self.request.get('page'))
+            link = clips.validations.to_param(self.request.get('link'))
+            src = clips.validations.to_param(self.request.get('src'))
+            text = clips.validations.to_param(self.request.get('text'))
+            comment = clips.validations.to_param(self.request.get('comment'))
+            logging.debug("page:'%s' comment:'%s'" % (page,comment))
+            logging.debug("link:'%s' src:'%s'" % (link,src)) 
+            clips.api.store(page, link, src, text, comment)
+            logging.debug("Posted!")
+        except:
+            #Get exception trace
+            fp = StringIO.StringIO()
+            traceback.print_exc(file=fp)
+            message = fp.getvalue()
+            logging.error("Problem during post : %s" % (message) )
+            self.error(500)
+        finally:
+           logging.debug("Posting clip finised.") 

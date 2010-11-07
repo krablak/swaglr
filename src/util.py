@@ -19,11 +19,6 @@ def execute_template(path, values):
     """
     path = os.path.join(os.path.dirname(__file__), path)
     return template.render(path, values)
-
-def renderjson(path, values, response):
-    response.headers['Content-Type'] = 'application/json'
-    path = os.path.join(os.path.dirname(__file__), path)
-    response.out.write(template.render(path, values))
     
 def renderJPEG(image_data, response):
     response.headers['Content-Type'] = 'image/jpeg'

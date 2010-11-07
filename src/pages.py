@@ -33,7 +33,6 @@ class MainPage(webapp.RequestHandler):
             params['prev'] = "/page/%s" % (1)
             clips = clips[0:-1]
         params['day_clips'] = ui.models.to_day_clips(clips)
-        params['json_clips'] = util.execute_template("templates/json/clips.json",{'clips' : clips})
         util.render("templates/index.html", params, self.response)
         
 class Paging(webapp.RequestHandler):    
@@ -56,7 +55,6 @@ class Paging(webapp.RequestHandler):
         if page>0:
             params['next'] = "/page/%s" % (page-1)            
         params['day_clips'] = ui.models.to_day_clips(clips)
-        params['json_clips'] = util.execute_template("templates/json/clips.json",{'clips' : clips})
         util.render("templates/index.html", params, self.response)
         
 class User(webapp.RequestHandler):    
@@ -84,7 +82,6 @@ class User(webapp.RequestHandler):
         if page>0:
             params['next'] = "/user/%s/page/%s" % (user_id,page-1)            
         params['day_clips'] = ui.models.to_day_clips(clips)
-        params['json_clips'] = util.execute_template("templates/json/clips.json",{'clips' : clips})
         util.render("templates/index.html", params, self.response)
         
 
