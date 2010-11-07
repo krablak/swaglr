@@ -62,6 +62,19 @@ def user_nick(user):
         return False
     else:
         return dbo.UserInfo.getUserInfo(user).nick
+    
+def cut_url(url):
+    """
+    Creates short url by leaving only the domain name.
+    """
+    result = ""
+    if url:
+        if url.startswith("http://"):
+            result = url[7:]
+        if url.startswith("https://"):
+            result = url[8:]
+        result = result.split("/")[0]
+    return result
 
 
 register.filter(is_page_clip)
@@ -71,3 +84,4 @@ register.filter(is_text_clip)
 register.filter(is_commented_clip)
 register.filter(is_my)
 register.filter(user_nick)
+register.filter(cut_url)
