@@ -9,8 +9,8 @@ from google.appengine.api import images
 from dbo import Image
 import logging
 
-TINY_IMAGE_HEIGHT = 280;
-TINY_IMAGE_WIDTH = 280;
+TINY_IMAGE_HEIGHT = 270;
+TINY_IMAGE_WIDTH = 270;
 
 def thumbnail(url=None):
     logging.debug("Thumbnail start")
