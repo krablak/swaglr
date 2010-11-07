@@ -215,6 +215,7 @@ ul.boxList li {
 		text-align: center;
 		background-color: rgb(90,90,90);
 		vertical-align: middle; 
+		line-height: 1px;
 	
 		img{
 			max-width: 100%;
@@ -223,7 +224,6 @@ ul.boxList li {
 	.crop {
 		height: $box-height;
 		overflow: hidden;
-		height: $box-height;
 	}   
 
 	a.page-url{
@@ -270,18 +270,19 @@ ul.boxList li {
 	.detail { 
 		position: absolute; 
 		left: -(30px + $general-padding/2 + 3px);
-		top: -10px;
+		top: -20px;
 		padding: $general-padding + 6px;
 		padding-top: 30px;
 		width: $box-width + 60px;
 		display: none;
 		background: $detail-background;
 		@include border-radius($default-radius); 
+		@include box-shadow(rgb(120,120,120), 1px, 1px, 6px);
 
 		q{
 			margin-top: 0px;
 			padding: 15px;
-			//margin: 15px;
+			margin-top: 10px;
 			text-shadow: #ddd 1px 2px 1px;
 			font-size:1.6em;
 			background-color: $box-background;
@@ -289,7 +290,7 @@ ul.boxList li {
 		}
 		
 		.imgbox {
-      //margin: 10px;
+      
     }
     
     .comment{
