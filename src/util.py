@@ -6,6 +6,7 @@ Created on Feb 22, 2010
 from google.appengine.ext.webapp import template
 import os
 from google.appengine.ext import webapp
+from django.utils import simplejson
 
 def render(path, values, response):
     response.headers['Content-Type'] = 'text/html'
@@ -24,6 +25,13 @@ def renderJPEG(image_data, response):
     response.headers['Content-Type'] = 'image/jpeg'
     response.headers['Cache-Control'] = "public, max-age=315360000"
     response.out.write(image_data)
+    
+def renderJSON(values, response):
+    """
+    Renders given parameters as json response.
+    """
+    response.headers['Content-Type'] = 'application/json'
+    response.out.write(simplejson.dumps(values))
     
     
 html_escape_table = {

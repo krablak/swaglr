@@ -84,12 +84,13 @@ class Post(webapp.RequestHandler):
             logging.debug("link:'%s' src:'%s'" % (link,src)) 
             clips.api.store(page, link, src, text, comment)
             logging.debug("Posted!")
+            util.renderJSON({'code' : 'OK','desc' : 'Clip posted.'}, self.response)
         except:
             #Get exception trace
             fp = StringIO.StringIO()
             traceback.print_exc(file=fp)
             message = fp.getvalue()
             logging.error("Problem during post : %s" % (message) )
-            self.error(500)
+            util.renderJSON({'code' : 'ERROR','desc' : "Clip post failed on error : %s" % (message)}, self.response)
         finally:
-           logging.debug("Posting clip finised.") 
+            logging.debug("Posting clip finised.") 
