@@ -81,7 +81,7 @@ $box-width:210px;
 $box-height:150px;
 
 $box-margin:12px;
-$box-background: #eee;
+$box-background: #E7E7E8;
 //$detail-background: #f4f4f4; 
 $detail-background: $color4;
 
@@ -217,14 +217,14 @@ ul.boxList li {
 	position:relative;
 	word-wrap: break-word;
 	color: black;
-	background:$box-background;
+	background:$box-background;   
 	//@include box-shadow(rgb(120,120,120), 1px, 1px, 6px);
 	@include border-radius(2px);
 	
 	.imgbox{
 		margin:0;   
 		text-align: center;
-		background-color: rgb(90,90,90);
+		//background-color: rgb(90,90,90);
 		vertical-align: middle; 
 		line-height: 1px;
 	
@@ -242,7 +242,7 @@ ul.boxList li {
 	}
 	
 	q{
-		font-size:1.4em;
+		font-size:1.5em;
 		line-height:1.1em;
 		margin-top: 30px;
 		word-wrap: break-word;
@@ -255,20 +255,20 @@ ul.boxList li {
 	.comment-ico{
     position: absolute;
     bottom: 0px ;
-    right: 0px;
+    left: 0px;
     height: 20px;
-    border-left: 1px solid #ddd;
+    //border-left: 1px solid #ddd;
     padding: 6px 2px 2px 2px;
     z-index: 100;          
   }
   
 	.page-url-box{
-	  //font-family: "Courier New";
+	  text-align: right;
     position: absolute;
     bottom: 0px;
     height: 12px;
     width: $box-width - 2*$general-padding + 4px;
-    background: rgba(255, 250, 240, 0.70);
+    background: rgba(245, 245, 245, 0.75);
     padding: $general-padding - 2px;
     color: rgb(100,100,100);
     font-size:1.1em;
@@ -326,6 +326,7 @@ ul.boxList li {
   			margin-left: 10px;
   			width: 90%;
   			height: 100px;
+  			border: 2px  solid #D8F2F9;
   		}
 	}  
 		
@@ -421,6 +422,7 @@ ul.boxList li.open{
   text-decoration: none;
   font-weight: bold;
   line-height: 1;
+  text-align: center;
   @include border-radius($default-radius);
   -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
   -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
@@ -429,6 +431,7 @@ ul.boxList li.open{
   cursor: pointer;
   text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
   border-bottom: 1px solid rgba(0,0,0,0.25);	
+  min-width: 85px;
 }
 
 a.awesome:hover {

@@ -185,7 +185,7 @@ ul.boxList li {
   position: relative;
   word-wrap: break-word;
   color: black;
-  background: #eeeeee;
+  background: #e7e7e8;
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
   -o-border-radius: 2px;
@@ -197,7 +197,6 @@ ul.boxList li {
 ul.boxList li .imgbox {
   margin: 0;
   text-align: center;
-  background-color: #5a5a5a;
   vertical-align: middle;
   line-height: 1px; }
 ul.boxList li .imgbox img {
@@ -208,7 +207,7 @@ ul.boxList li .crop {
 ul.boxList li p {
   padding: 10px; }
 ul.boxList li q {
-  font-size: 1.4em;
+  font-size: 1.5em;
   line-height: 1.1em;
   margin-top: 30px;
   word-wrap: break-word;
@@ -219,17 +218,17 @@ ul.boxList li q {
 ul.boxList li .comment-ico {
   position: absolute;
   bottom: 0px;
-  right: 0px;
+  left: 0px;
   height: 20px;
-  border-left: 1px solid #ddd;
   padding: 6px 2px 2px 2px;
   z-index: 100; }
 ul.boxList li .page-url-box {
+  text-align: right;
   position: absolute;
   bottom: 0px;
   height: 12px;
   width: 194px;
-  background: rgba(255, 250, 240, 0.7);
+  background: rgba(245, 245, 245, 0.75);
   padding: 8px;
   color: #646464;
   font-size: 1.1em;
@@ -259,7 +258,7 @@ ul.boxList li .detail q {
   padding: 15px;
   margin-top: 10px;
   font-size: 1.3em;
-  background-color: #eeeeee;
+  background-color: #e7e7e8;
   -moz-border-radius: 6px;
   -webkit-border-radius: 6px;
   -o-border-radius: 6px;
@@ -288,7 +287,8 @@ ul.boxList li .detail .comment .comment-nib {
 ul.boxList li .detail .comment textarea {
   margin-left: 10px;
   width: 90%;
-  height: 100px; }
+  height: 100px;
+  border: 2px  solid #D8F2F9; }
 
 ul.boxList li.open {
   cursor: default; }
@@ -355,6 +355,7 @@ ul.boxList li.open .detail {
   text-decoration: none;
   font-weight: bold;
   line-height: 1;
+  text-align: center;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   -o-border-radius: 4px;
@@ -367,7 +368,8 @@ ul.boxList li.open .detail {
   position: relative;
   cursor: pointer;
   text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.25);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.25); }
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  min-width: 85px; }
 .awesome:visited {
   color: #fbfaf9; }
 .awesome:focus {
