@@ -29,27 +29,25 @@ function contextOnClick(info, tab) {
 		"src"  : NULL
 	};
 	
-	
-	//Page URL
-	if(info.pageUrl){
-		clip["page"] = shortIt(info.pageUrl);
-		clip["type"] = 'PAGE';
-	}
+	clip["page"] = shortIt(info.pageUrl);
 	//Selection text
 	if(info.selectionText){
 		clip["text"] = shortIt(info.selectionText);
 		clip["type"] = 'TEXT';
-	}
-	
-	//Link text
+	}else
+	//Selected image
+	if(info.srcUrl){
+			clip["src"] = shortIt(info.srcUrl);
+			clip["type"] = 'IMAGE';
+	}else	
+	//Link url
 	if(info.linkUrl){
 		clip["link"] = shortIt(info.linkUrl);
 		clip["type"] = 'LINK';
-	}	
-	//Selected image
-	if(info.srcUrl){
-		clip["src"] = shortIt(info.srcUrl);
-		clip["type"] = 'IMAGE';
+	}else
+	//Page URL
+	if(info.pageUrl){
+		clip["type"] = 'PAGE';
 	}
 	
 	chrome.tabs.getSelected(null, function(tab) {
