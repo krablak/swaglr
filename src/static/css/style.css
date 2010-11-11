@@ -248,10 +248,10 @@ ul.boxList li .detail {
   -ms-border-radius: 4px;
   -khtml-border-radius: 4px;
   border-radius: 4px;
-  -moz-box-shadow: #828282 1px 2px 6px 0;
-  -webkit-box-shadow: #828282 1px 2px 6px 0;
-  -o-box-shadow: #828282 1px 2px 6px 0;
-  box-shadow: #828282 1px 2px 6px 0;
+  -moz-box-shadow: #828282 1px 2px 6px;
+  -webkit-box-shadow: #828282 1px 2px 6px;
+  -o-box-shadow: #828282 1px 2px 6px;
+  box-shadow: #828282 1px 2px 6px;
   font-size: 1.4em; }
 ul.boxList li .detail q {
   margin-top: 0px;
@@ -364,7 +364,7 @@ ul.boxList li.open .detail {
   border-radius: 4px;
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-  text-shadow: 0 -1px 1px #222222;
+  text-shadow: 0 -1px 1px #222;
   position: relative;
   cursor: pointer;
   text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.25);

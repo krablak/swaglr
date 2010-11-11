@@ -6,7 +6,6 @@ import testpages
 
 
 application = webapp.WSGIApplication([('/', pages.MainPage), 
-                                      ('/post/', pages.Post), 
                                       ('/page/(.*)', pages.Paging),
                                       ('/user/(.*)/page/(.*)', pages.User),
                                       ('/clip/(.*)', pages.Detail),

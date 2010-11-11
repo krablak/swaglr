@@ -16,6 +16,8 @@ def load_data(filename):
      2: text
      3: link
      4: src
+     5: comment
+     6: title
     """
     result = []
     ifile  = open(filename, "rb")
@@ -41,6 +43,8 @@ def load_data(filename):
                     row_data['text'] =  col
                 if colnum==5:
                     row_data['comment'] =  col
+                if colnum==6:
+                    row_data['title'] =  col
                 colnum += 1
             result.append(row_data)           
         rownum += 1

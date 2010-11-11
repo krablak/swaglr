@@ -1,0 +1,33 @@
+{
+  "name": "Based swag clipper",
+  "version": "0.5",
+  "description": "Swag up the web pieces into swagclip web.",
+  "background_page": "background.html",
+  "browser_action": {
+    "default_title": "Text"
+  },
+  "permissions": [
+  	"tabs",
+  	"cookies",
+  	"contextMenus",
+  	"https://swagclip.appspo0t.com/*",
+  	"https://swagclip.appspot.com/post",
+  	"https://swagclip.appspot.com/_ah/OAuthGetRequestToken",
+  	"https://swagclip.appspot.com/_ah/OAuthAuthorizeToken",
+  	"https://swagclip.appspot.com/_ah/OAuthGetAccessToken",
+  	"http://*/*", 
+  	"https://*/*",
+  	"notifications"
+  ],
+  "content_scripts" : [
+    {
+      "matches" : [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js" : ["contentscript.js","jquery-1.4.2.min.js"],
+      "run_at" : "document_idle",
+      "all_frames" : false
+    }
+  ]
+}

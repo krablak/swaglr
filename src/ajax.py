@@ -79,10 +79,12 @@ class Post(webapp.RequestHandler):
             link = clips.validations.to_param(self.request.get('link'))
             src = clips.validations.to_param(self.request.get('src'))
             text = clips.validations.to_param(self.request.get('text'))
+            type = clips.validations.to_param(self.request.get('type'))
             comment = clips.validations.to_param(self.request.get('comment'))
+            title = clips.validations.to_param(self.request.get('title'))
             logging.debug("page:'%s' comment:'%s'" % (page,comment))
             logging.debug("link:'%s' src:'%s'" % (link,src)) 
-            clips.api.store(page, link, src, text, comment)
+            clips.api.store(type,page, link, src, text, comment,title)
             logging.debug("Posted!")
             util.renderJSON({'code' : 'OK','desc' : 'Clip posted.'}, self.response)
         except:

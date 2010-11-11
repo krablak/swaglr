@@ -49,11 +49,13 @@ class Clip(db.Model):
     page = db.StringProperty(required=True)
     text = db.StringProperty()
     comment = db.StringProperty()
+    title = db.StringProperty()
     link = db.StringProperty(required=False)
     src = db.StringProperty(required=False) 
     user = db.ReferenceProperty(UserInfo,required=True)
     date = db.DateTimeProperty(auto_now_add = True)
-    image = db.ReferenceProperty(Image)   
+    image = db.ReferenceProperty(Image)
+    likes = db.IntegerProperty(required=False)   
     
     @staticmethod
     def getPageByUser(page=0,page_size=5,user_id=None):

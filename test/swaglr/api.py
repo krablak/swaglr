@@ -23,7 +23,8 @@ def post(params={},server_url=DEV_URL,verbose=False):
         text (required for type TEXT) : post text.
         link (required for type LINK) : post link URL.
         src (required for type IMAGE) : post image URL. Image must be at public available url. 
-        page (required for type PAGE) : post web page URL.  
+        page (required for type PAGE) : post web page URL.
+        title (optional for type PAGE) : post web page Title.   
     
     server_url : URL of swaglr server.
     

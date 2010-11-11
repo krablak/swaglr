@@ -24,25 +24,33 @@ def validate_url(value,name,required=False):
     exception.
     """
     if (not value or value == NULL) and required:
-        raise ValidationError("Attribute %s is not defined but it's required." % (name))
+        raise ValidationError("Attribute '%s' is not defined but it's required." % (name))
     validate_str(value,name)
     #Check if url starts with http or https string
     if not (value.startswith("http://") or not value.startswith("https://")):
-        raise ValidationError("Attribute %s with value %s does not start with http:// or https://." % (name,value))
+        raise ValidationError("Attribute '%s' with value '%s' does not start with http:// or https://." % (name,value))
     
    
 def validate_str(value,name):
     """
     Perform validation for string property length.
     """
-    if not value:
-        raise ValidationError("Attribute %s is not defined but it's required." % (name))
+    if not value or value == NULL:
+        raise ValidationError("Attribute '%s' is not defined but it's required." % (name))
     try:
         str(value)
     except:
-        raise ValidationError("Attribute %s cannot be converted to string." % (name))
+        raise ValidationError("Attribute '%s' cannot be converted to string." % (name))
     if len(value)>=MAX_LEN:
-        raise ValidationError("Attribute %s is too long! It could have only 500 characters." % (name))
+        raise ValidationError("Attribute '%s' is too long! It could have only 500 characters." % (name))
+    
+def validate_null(value,name):
+    """
+    Checks if the value is not set.
+    """
+    if value and value != NULL:
+        raise ValidationError("Attribute '%s' is defined but should be not set." % (name))
+    
     
 def is_set(value):
     """
@@ -61,16 +69,23 @@ def is_one_set(*values):
             return True
     raise ValidationError("One of the required values is not set!" )
 
+def is_one_of_them(value,allowed):
+    """
+    Checks if value equals to one of the values.
+    """
+    if not value in allowed:
+        raise ValidationError("Value '%s' is not in allowed values '%s'."  % (value,allowed))
+
 def validate_int(value,name):
     """
     Perform validation for required integer property.
     """
     if not value:
-        raise ValidationError("Attribute %s is not defined but it's required." % (name))
+        raise ValidationError("Attribute '%s' is not defined but it's required." % (name))
     try:
         str(value)
     except:
-        raise ValidationError("Attribute %s cannot be converted to int." % (name))
+        raise ValidationError("Attribute '%s' cannot be converted to int." % (name))
 
 
 def to_param(value):

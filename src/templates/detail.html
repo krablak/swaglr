@@ -1,6 +1,6 @@
 {% extends "based.html" %}
 
-{% block container %}
+{% block main %}
     			<li id="clip_box_{{clip.key.id}}" onclick="openClip({{ clip.key.id }});">
 						{% if clip|is_image_clip %}
 							<div class="imgbox crop"><img src="/images/tiny/{{ clip.image.key.id }}.jpg"/></div>
