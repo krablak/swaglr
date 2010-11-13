@@ -89,4 +89,4 @@ function logout(){
 
 
 var contexts = ["page","selection","link","image"];
-chrome.contextMenus.create({"title": "Swag selected..", "contexts":contexts, "onclick": contextOnClick });
+chrome.contextMenus.create({"title": "Snip with swaglr", "contexts":contexts, "onclick": contextOnClick });
