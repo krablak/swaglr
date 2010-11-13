@@ -67,14 +67,30 @@ def cut_url(url):
     """
     Creates short url by leaving only the domain name.
     """
+    result = cut_http(url)
+    result = result.split("/")[0]
+    return result
+
+def cut_http(url):
+    """
+    Cuts http and https prefix from the url.
+    """
     result = ""
     if url:
         if url.startswith("http://"):
             result = url[7:]
         if url.startswith("https://"):
             result = url[8:]
-        result = result.split("/")[0]
     return result
+
+def swag_slice(value,length):
+    """
+    Creates slice from passed text and add the ... html character.
+    """
+    if len(value)>length:
+        return "%s&hellip;" % (value[:length]) 
+    else:
+        return value
 
 
 register.filter(is_page_clip)
@@ -85,3 +101,5 @@ register.filter(is_commented_clip)
 register.filter(is_my)
 register.filter(user_nick)
 register.filter(cut_url)
+register.filter(swag_slice)
+register.filter(cut_http)

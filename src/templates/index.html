@@ -51,7 +51,7 @@
 							{% endif %}  
 							
 												
-					    <p class="right"><a class="page-url" target="_blank" href="{{ clip.page }}">{{ clip.page|escape|cut_url|swag_slice:40 }}</a></p>
+					    <p class="right"><a class="page-url" target="_blank" href="{{ clip.page }}">{{ clip.page|escape|cut_http|swag_slice:30 }}</a></p>
 							
 							{% if clip|is_commented_clip %}									
 								<div class="comment"> 
