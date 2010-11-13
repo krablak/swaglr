@@ -17,22 +17,22 @@
 						{% endif %}
 			
 						{% if clip|is_text_clip %}
-						<q class="crop" cite="{{ clip.page }}">{{ clip.text|slice:"0:75"|escape }}...</q>
+						<q class="crop" cite="{{ clip.page }}">{{ clip.text|escape|swag_slice:75 }}</q>
 						{% endif %}
 						
 						{% if clip|is_page_clip %}
-						<q cite="{{ clip.page }}">{{ clip.page|slice:"0:40"|escape }}...</q>
+						<q cite="{{ clip.page }}">{{ clip.page|escape|swag_slice:40 }}</q>
 						{% endif %}
 						
 						{% if clip|is_link_clip %}
-						<q cite="{{ clip.link }}">{{ clip.link|slice:"0:40"|escape }}...</q>
+						<q cite="{{ clip.link }}">{{ clip.link|escape|swag_slice:40 }}</q>
 						{% endif %} 
 						
             			{% if clip|is_commented_clip %}                                                 
 						<div class="comment-ico"><img src="/static/img/comment-ico.png"></div>
 						{% endif %}
 						
-						<div class="page-url-box">{{ clip.page|cut_url|slice:"0:30"|escape }}</div>
+						<div class="page-url-box">{{ clip.page|cut_url|escape }}</div>
 
 						<div id="detail_{{clip.key.id}}" class="detail"> 
 							{% if clip|is_image_clip %}
@@ -43,15 +43,15 @@
 							{% endif %}
 							
 							{% if clip|is_page_clip %}
-							<q cite="{{ clip.page }}" onclick="closeClip({{ clip.key.id }});">{{ clip.page|slice:"0:40"|escape }}...</q>
+							<q cite="{{ clip.page }}" onclick="closeClip({{ clip.key.id }});">{{ clip.page|escape|swag_slice:40 }}</q>
 							{% endif %}
 							
 							{% if clip|is_link_clip %}
-							<q cite="{{ clip.link }}" onclick="closeClip({{ clip.key.id }});">{{ clip.link|slice:"0:40"|escape }}...</q>
+							<q cite="{{ clip.link }}" onclick="closeClip({{ clip.key.id }});">{{ clip.link|escape|swag_slice:40 }}</q>
 							{% endif %}  
 							
 												
-					    <p class="right"><a class="page-url" target="_blank" href="{{ clip.page }}">{{ clip.page|cut_url|slice:"0:40"|escape }}</a></p>
+					    <p class="right"><a class="page-url" target="_blank" href="{{ clip.page }}">{{ clip.page|escape|cut_url|swag_slice:40 }}</a></p>
 							
 							{% if clip|is_commented_clip %}									
 								<div class="comment"> 
