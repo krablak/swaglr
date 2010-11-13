@@ -1,88 +1,79 @@
 {% extends "based.html" %}
 
 {% block main %}
-    			<li id="clip_box_{{clip.key.id}}" onclick="openClip({{ clip.key.id }});">
-						{% if clip|is_image_clip %}
-							<div class="imgbox crop"><img src="/images/tiny/{{ clip.image.key.id }}.jpg"/></div>
-						{% endif %}
-			
-						{% if clip|is_text_clip %}
-						<q class="crop" cite="{{ clip.page }}">{{ clip.text|slice:"0:75"|escape }}...</q>
-						{% endif %}
-						
-						{% if clip|is_page_clip %}
-						<q cite="{{ clip.page }}">{{ clip.page|slice:"0:40"|escape }}...</q>
-						{% endif %}
-						
-						{% if clip|is_link_clip %}
-						<q cite="{{ clip.link }}">{{ clip.link|slice:"0:40"|escape }}...</q>
-						{% endif %} 
-						
-            			{% if clip|is_commented_clip %} 
-						<div class="comment-ico"><img src="/static/img/comment-ico.png"></div>
-						{% endif %}
-						
-						<div class="page-url-box">{{ clip.page|slice:"0:30"|escape }}</div>
 
-						<div id="detail_{{clip.key.id}}" class="detail"> 
-							{% if clip|is_image_clip %}
-							<div class="imgbox" onclick="closeClip({{ clip.key.id }});"><img src="/images/tiny/{{ clip.image.key.id }}.jpg"/></div>
-							{% endif %}
-							{% if clip|is_text_clip %}
-							<q class="full" cite="{{ clip.page }}" onclick="closeClip({{ clip.key.id }});" >{{ clip.text|escape }}</q>
-							{% endif %}
-							
-							{% if clip|is_page_clip %}
-							<q cite="{{ clip.page }}" onclick="closeClip({{ clip.key.id }});">{{ clip.page|slice:"0:40"|escape }}...</q>
-							{% endif %}
-							
-							{% if clip|is_link_clip %}
-							<q cite="{{ clip.link }}" onclick="closeClip({{ clip.key.id }});">{{ clip.link|slice:"0:40"|escape }}...</q>
-							{% endif %}  
-							
-							<p>URL: <a class="page-url" target="_blank" href="{{ clip.page }}">{{ clip.page|slice:"0:40"|escape }}...</a></p>
-							
-							{% if clip|is_commented_clip %}									
-								<div class="comment"> 
-									<p><strong><a href="/user/{{ clip.user.user_id }}/page/0"> {{ clip.user.nick }}</a></strong> says:</p>
-									<p id="clip-comment-view-{{ clip.key.id }}" class="text">{{  clip.comment|escape }}</p>
-									<span id="clip-comment-edit-{{ clip.key.id }}" style="display:none">
-										<textarea id="comment-textarea-{{ clip.key.id }}" rows="4" cols="30" ></textarea>
-										<p class="right">
-										<a id="comment-yes-{{ clip.key.id }}" class="awesome small">Save</a>
-										<a id="comment-no-{{ clip.key.id }}">Cancel</a>
-										</p>
-									</span>
-								{% if clip|is_my %}
-									<p class="right">
-										<a id="edit-comment-btn-{{ clip.key.id }}" onclick="showCommentDialog({{ clip.key.id }});" class="awesome small">Edit comment</a>
-									</p>
-								{% endif %}
-								</div>
-							{% else %}	
-								<div id="clip-comment-view-div-{{ clip.key.id }}" class="comment">
-									<p style="display:none" id="clip-comment-view-{{ clip.key.id }}" class="text">{{  clip.comment|escape }}</p>
-									<span id="clip-comment-edit-{{ clip.key.id }}" style="display:none">
-										<textarea id="comment-textarea-{{ clip.key.id }}" rows="4" cols="30" ></textarea>
-										<p class="right">
-										<a id="comment-yes-{{ clip.key.id }}" class="awesome small">Save</a>
-										<a id="comment-no-{{ clip.key.id }}">Cancel</a>
-										</p>
-									</span>
-								</div>
-								{% if clip|is_my %}
-								<p class="right">
-									<a href="#" id="add-comment-btn-{{ clip.key.id }}" onclick="showCommentDialog({{ clip.key.id }});" class="awesome small">Add comment</a>
-								</p>
-								{% endif %}
-							{% endif %}	<!-- /if clip|is_commented_clip-->							
-								
-							<p>More clips by&nbsp;<a href="/user/{{ clip.user.user_id }}/page/0"> {{ clip.user.nick }}</a></p>
-							{% if clip|is_my %} 
-							<p class="right"><a id="delete-comment-btn-{{ clip.key.id }}" onclick="showDeleteDialog({{ clip.key.id }});" class="awesome small blue">Delete clip</a></p>
-							{% endif %}
-							
-								
-						</div>	<!-- /detail-->		
-					</li> 
+<div  class="clip_pagedetail">
+	<p class="right" ><a href="#" onclick="closeClip({{ clip.key.id }});" ">[X]</a>  </p>
+	<div class="left_column">
+		{% if clip|is_image_clip %}
+		<div class="imgbox" onclick="closeClip({{ clip.key.id }});" ><img src="/images/tiny/{{ clip.image.key.id }}.jpg"/></div>
+		{% endif %}
+		{% if clip|is_text_clip %}
+		<q cite="{{ clip.page }}" onclick="closeClip({{ clip.key.id }});" >{{ clip.text|escape }}</q>
+		{% endif %}
+		
+		{% if clip|is_page_clip %}
+		<q cite="{{ clip.page }}" onclick="closeClip({{ clip.key.id }});">{{ clip.page|slice:"0:40"|escape }}...</q>
+		{% endif %}
+		
+		{% if clip|is_link_clip %}
+		<q cite="{{ clip.link }}" onclick="closeClip({{ clip.key.id }});">{{ clip.link|slice:"0:40"|escape }}...</q>
+		{% endif %}  
+				
+		<a class="page-url" target="_blank" href="{{ clip.page }}">{{ clip.page|cut_url|slice:"0:40"|escape }}</a>
+	</div>
+	<div class="right_column">
+		{% if clip|is_commented_clip %}									
+			<div class="comment"> 
+				<p><a href="/user/{{ clip.user.user_id }}/page/0" class="username"> {{ clip.user.nick }}</a> says:</p>
+				<div class="comment-nib"></div>
+				<p id="clip-comment-view-{{ clip.key.id }}" class="text">{{  clip.comment|escape }}</p>
+				<span id="clip-comment-edit-{{ clip.key.id }}" style="display:none">
+					<textarea id="comment-textarea-{{ clip.key.id }}" rows="4" cols="30" ></textarea>
+					<p class="right">
+					<a id="comment-yes-{{ clip.key.id }}" class="awesome small blue">Save</a>
+					<a id="comment-no-{{ clip.key.id }}">Cancel</a>
+					</p>
+				</span>
+			{% if clip|is_my %}
+				<p class="right">
+					<a id="edit-comment-btn-{{ clip.key.id }}" onclick="showCommentDialog({{ clip.key.id }});" class="awesome small blue">Edit comment</a>
+				</p>
+			{% endif %}
+			</div>
+		{% else %}	
+			<div id="clip-comment-view-div-{{ clip.key.id }}" class="comment">
+				<p style="display:none" id="clip-comment-view-{{ clip.key.id }}" class="text">{{  clip.comment|escape }}</p>
+				<span id="clip-comment-edit-{{ clip.key.id }}" style="display:none">
+					<textarea id="comment-textarea-{{ clip.key.id }}" rows="4" cols="30" ></textarea>
+					<p class="right">
+					<a id="comment-yes-{{ clip.key.id }}" class="awesome small blue">Save</a>
+					<a id="comment-no-{{ clip.key.id }}">Cancel</a>
+					</p>
+				</span>
+			</div>
+			{% if clip|is_my %}
+			<p class="right">
+				<a href="#" id="add-comment-btn-{{ clip.key.id }}" onclick="showCommentDialog({{ clip.key.id }});" class="awesome small blue">Add comment</a>
+			</p>
+			{% endif %}
+		{% endif %}	<!-- /if clip|is_commented_clip-->							
+			
+		<p>See more&nbsp;by&nbsp;<a class="username" href="/user/{{ clip.user.user_id }}/page/0">{{ clip.user.nick }}</a></p>
+		
+			
+	</div>
+	
+				
+	<div class="cleaner">
+		<hr />
+	</div>
+	
+	{% if clip|is_my %} 
+		<p class="right"><a id="delete-comment-btn-{{ clip.key.id }}" onclick="showDeleteDialog({{ clip.key.id }});" class="awesome small">Delete</a></p>
+		{% endif %}
+		
+</div>	<!-- /detail-->		
+
+	
 {% endblock %}

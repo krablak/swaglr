@@ -93,6 +93,7 @@
 							{% if clip|is_my %} 
 							<p class="right"><a id="delete-comment-btn-{{ clip.key.id }}" onclick="showDeleteDialog({{ clip.key.id }});" class="awesome small">Delete</a></p>
 							{% endif %}
+							    <a href="/clip/{{ clip.key.id}}">Detail</a>
 								<p class="right" ><a href="#" onclick="closeClip({{ clip.key.id }});" ">[X]</a>  </p>
 							
 								

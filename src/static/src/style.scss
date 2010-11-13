@@ -457,4 +457,80 @@ a.awesome:hover {
 }
 
 
+.clip_pagedetail{
 
+	background: $detail-background;
+    font-size: 1.6em;
+	color: black;
+	padding: 2 * $general-padding;
+	@include border-radius($default-radius + 2px);
+	@include box-shadow(rgb(130,130,130), 1px, 2px, 6px);
+	
+	
+	.left_column{
+		width: 48%;
+		float:left;
+	
+	}
+	
+	.right_column {
+		width: 50%;
+		float: right;
+	
+	}
+
+
+	
+	.imgbox{
+		text-align:center;
+	
+	}
+	
+	p{
+		padding: $general-padding;
+		
+	
+	}
+
+	q{
+		padding: 15px;
+		font-size:1.3em;
+		background-color: $box-background;
+		@include border-radius($default-radius + 2px); 
+		display: block;
+		word-wrap: break-word;
+		line-height: 1.2em;
+	}
+		
+	a.page-url{  
+		display: block;
+		margin-top: 10px;
+		text-align: center;
+	 }
+		
+    
+    .comment{
+  		.text {
+			font-size:1em;
+			line-height: 120%;
+  			background: #D8F2F9;
+  			@include border-radius($default-radius + 2px);
+  			color: dark-gray;	
+  		}
+  		
+  		.comment-nib {   
+           margin-top: -8px;                                                                    
+  			   background:url(/static/img/comment-nib.png) no-repeat;
+  			   background-position: 10% 0;
+  			   height: 11px;
+        }
+  		
+  		textarea {
+  			margin-left: 10px;
+  			width: 90%;
+  			height: 100px;
+  			border: 2px  solid #D8F2F9;
+  		}
+	} 
+} 
+ 
