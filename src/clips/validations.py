@@ -38,9 +38,9 @@ def validate_str(value,name):
     if not value or value == NULL:
         raise ValidationError("Attribute '%s' is not defined but it's required." % (name))
     try:
-        str(value)
+        unicode(value)
     except:
-        raise ValidationError("Attribute '%s' cannot be converted to string." % (name))
+        raise ValidationError("Attribute '%s' cannot be converted to unicode." % (name))
     if len(value)>=MAX_LEN:
         raise ValidationError("Attribute '%s' is too long! It could have only 500 characters." % (name))
     
@@ -95,6 +95,7 @@ def to_param(value):
     if not value:
         value = NULL
     else:
+        value = unicode(value)
         if len(value)>MAX_LEN:
             value = value[:499]
         value = value.replace('\n',' ').replace('\t',' ')
