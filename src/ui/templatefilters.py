@@ -91,6 +91,16 @@ def swag_slice(value,length):
         return "%s&hellip;" % (value[:length]) 
     else:
         return value
+    
+from google.appengine.ext.webapp import template
+import os
+
+def clip_template(clip,path):
+    """
+    Renders template with given clip as parameter.
+    """
+    path = os.path.join(os.path.dirname(__file__), path).replace("/ui","")
+    return template.render(path, { 'clip' :clip})
 
 
 register.filter(is_page_clip)
@@ -103,3 +113,4 @@ register.filter(user_nick)
 register.filter(cut_url)
 register.filter(swag_slice)
 register.filter(cut_http)
+register.filter(clip_template)
