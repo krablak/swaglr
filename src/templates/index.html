@@ -104,10 +104,17 @@
 							{% if clip|is_my %} 
 							<p class="right"><a id="delete-comment-btn-{{ clip.key.id }}" onclick="showDeleteDialog({{ clip.key.id }});" class="awesome small">Delete</a></p>
 							{% endif %}
-							    <a href="/clip/{{ clip.key.id}}">Detail</a>
-								<p class="right" ><a href="#" onclick="closeClip({{ clip.key.id }});" ">[X]</a>  </p>
-							{{ clip|clip_template:"templates/components/facebook.html" }}
-							{{ clip|clip_template:"templates/components/twitter.html" }}
+							<table class="social_buttons">
+								<tbody>
+									<tr>
+										<td>{{ clip|clip_template:"templates/components/facebook.html" }}</td>
+										<td>{{ clip|clip_template:"templates/components/twitter.html" }}</td>
+										<td><a href="/clip/{{ clip.key.id}}">Detail</a></td>
+									</tr>
+								</tbody>
+							</table>	
+							<p class="right" ><a href="#" onclick="closeClip({{ clip.key.id }});" ">[X]</a>  </p>
+							
 								
 						</div>	<!-- /detail-->		
 					</li>  

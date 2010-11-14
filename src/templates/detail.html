@@ -2,7 +2,7 @@
 
 {% block detail%}
 
-<div  class="clip_pagedetail">
+<div  class="clip_pagedetail" id="page_detail_{{clip.key.id}}">
 	<p class="right" ><a href="#" onclick="closeClip({{ clip.key.id }});" ">[X]</a>  </p>
 	<div class="left_column">
 		{% if clip|is_image_clip %}
