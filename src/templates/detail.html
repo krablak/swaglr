@@ -6,21 +6,21 @@
 	<p class="right" ><a href="#" onclick="closeClip({{ clip.key.id }});" ">[X]</a>  </p>
 	<div class="left_column">
 		{% if clip|is_image_clip %}
-		<div class="imgbox" onclick="closeClip({{ clip.key.id }});" ><img src="/images/tiny/{{ clip.image.key.id }}.jpg"/></div>
+		<div class="imgbox" ><img src="/images/tiny/{{ clip.image.key.id }}.jpg"/></div>
 		{% endif %}
 		{% if clip|is_text_clip %}
-		<q cite="{{ clip.page }}" onclick="closeClip({{ clip.key.id }});" >{{ clip.text|escape }}</q>
+		<q cite="{{ clip.page }}"  >{{ clip.text|escape }}</q>
 		{% endif %}
 		
 		{% if clip|is_page_clip %}
-		<q cite="{{ clip.page }}" onclick="closeClip({{ clip.key.id }});">{{ clip.page|slice:"0:40"|escape }}...</q>
+		<q cite="{{ clip.page }}" >{{ clip.page|slice:"0:40"|escape }}...</q>
 		{% endif %}
 		
 		{% if clip|is_link_clip %}
-		<q cite="{{ clip.link }}" onclick="closeClip({{ clip.key.id }});">{{ clip.link|slice:"0:40"|escape }}...</q>
+		<q cite="{{ clip.link }}" >{{ clip.link|slice:"0:40"|escape }}...</q>
 		{% endif %}  
 				
-		<a class="page-url" target="_blank" href="{{ clip.page }}">{{ clip.page|cut_url|slice:"0:40"|escape }}</a>
+		<a class="page-url" target="_blank" href="{{ clip.page }}">{{ clip.page|escape|cut_http|swag_slice:30 }}</a>
 	</div>
 	<div class="right_column">
 		{% if clip|is_commented_clip %}									

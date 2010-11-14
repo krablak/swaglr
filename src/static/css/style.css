@@ -55,7 +55,7 @@ h1, h2, h3, h4 {
 $box-height:140px;  */
 /*Dialogs - confirm dialogs, etc.*/
 body {
-  padding: 20px;
+  padding: 30px 20px 20px 20px;
   font: normal normal 10px/10px "Anivers", Tahoma, Arial, Helvetica, Verdana, sans-serif;
   line-height: 120%;
   color: #fbfaf9;
@@ -418,7 +418,8 @@ a.awesome:hover {
   width: 50%;
   float: right; }
 .clip_pagedetail .imgbox {
-  text-align: center; }
+  text-align: center;
+  background-color: #e7e7e8; }
 .clip_pagedetail p {
   padding: 10px; }
 .clip_pagedetail q {
@@ -437,7 +438,7 @@ a.awesome:hover {
 .clip_pagedetail a.page-url {
   display: block;
   margin-top: 10px;
-  text-align: center; }
+  text-align: right; }
 .clip_pagedetail .comment .text {
   font-size: 1em;
   line-height: 120%;

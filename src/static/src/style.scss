@@ -91,7 +91,7 @@ $detail-background: $color4;
 }
 
 body{
-	padding:20px;
+	padding: 30px 20px 20px 20px;
     font: normal normal 10px/10px $mainFont, Tahoma, Arial, Helvetica, Verdana, sans-serif; 
 	line-height: 120%;
 	color: $color4;
@@ -493,6 +493,7 @@ a.awesome:hover {
 	
 	.imgbox{
 		text-align:center;
+		background-color: $box-background;
 	
 	}
 	
@@ -515,7 +516,7 @@ a.awesome:hover {
 	a.page-url{  
 		display: block;
 		margin-top: 10px;
-		text-align: center;
+		text-align: right;
 	 }
 		
     
