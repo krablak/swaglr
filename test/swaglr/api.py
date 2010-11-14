@@ -34,7 +34,7 @@ def post(params={},server_url=DEV_URL,verbose=False):
     """
     try:
         data = urllib.urlencode(params)
-        req = urllib2.Request(DEV_URL, data)
+        req = urllib2.Request(server_url, data)
         response = urllib2.urlopen(req)
         data = response.read()
         parsed_date = simplejson.loads(data)
