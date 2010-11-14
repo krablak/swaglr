@@ -5,8 +5,8 @@
          
          <meta charset="utf-8"/>
          <meta name="robots" content="all" />
-         <meta name="rating" content="safe for kids" />
-         <meta name="description" content="Web clips"/>
+         <meta name="rating" content="General" />
+         <meta property="fb:admins" content="1518568101" />
         
          <link rel="Shortcut Icon" type="image/ico" href="/static/img/favicon.png"/>
          <link rel="stylesheet" href="/static/css/reset.css" type="text/css" media="screen"/>
@@ -37,7 +37,7 @@
         {% endblock %}
     </head>
     <body>    
-	{% block container %} <!-- MZ: Co to znamena ten container? -->   
+	{% block container %}
 		
 		<div id="contentWrap" class="container_18">
 
@@ -58,7 +58,7 @@
 						<p><a class="username" href="/user/{{ user.user_id }}/page/0">{{ user|user_nick }}</a></p>
 					{% endif %}
 		
-					<p>{{ greeting }}</p> <!-- MZ: Co to znamena greeting? -->   
+					<p>{{ greeting }}</p> 
         </div>
 				{% endblock %}
 				</div><!-- /navigation --> 

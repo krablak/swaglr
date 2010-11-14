@@ -5,10 +5,13 @@
 {% endblock %}
 
 {% block main %}
+	{% block detail %}
+	{% endblock %}
+	
 		<div id="clips">
 
-			{% for day in day_clips %}
 				<p class="dayId">{{ day.day }}</p>	
+			{% for day in day_clips %}
     			<ul class="boxList">
     		{% for clip in day.clips %}	
 	    			<li id="clip_box_{{clip.key.id}}" onclick="openClip({{ clip.key.id }});">
