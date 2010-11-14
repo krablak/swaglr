@@ -118,7 +118,7 @@ def clip_template(clip,path):
     """
     Renders template with given clip as parameter.
     """
-    path = os.path.join(os.path.dirname(__file__), path).replace("/ui","")
+    path = os.path.join(os.path.dirname(__file__), path).replace("%sui" % (os.sep),"")
     return template.render(path, { 'clip' :clip})
 
 
