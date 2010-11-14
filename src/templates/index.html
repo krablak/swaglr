@@ -21,7 +21,11 @@
 						{% endif %}
 						
 						{% if clip|is_page_clip %}
-						<q cite="{{ clip.page }}">{{ clip.page|escape|swag_slice:40 }}</q>
+							{% if clip|has_title %}
+								<q cite="{{ clip.page }}">{{ clip.title|escape|swag_slice:40 }}</q>
+							{% else %}
+								<q cite="{{ clip.page }}">{{ clip.page|escape|swag_slice:40 }}</q>
+							{% endif %}
 						{% endif %}
 						
 						{% if clip|is_link_clip %}
@@ -43,7 +47,11 @@
 							{% endif %}
 							
 							{% if clip|is_page_clip %}
-							<q cite="{{ clip.page }}" onclick="closeClip({{ clip.key.id }});">{{ clip.page|escape|swag_slice:40 }}</q>
+								{% if clip|has_title %}
+									<q cite="{{ clip.page }}" onclick="closeClip({{ clip.key.id }});">{{ clip.title|escape|swag_slice:40 }}</q>
+								{% else %}
+									<q cite="{{ clip.page }}" onclick="closeClip({{ clip.key.id }});">{{ clip.page|escape|swag_slice:40 }}</q>
+								{% endif %}
 							{% endif %}
 							
 							{% if clip|is_link_clip %}

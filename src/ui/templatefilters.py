@@ -64,6 +64,14 @@ def is_my(clip):
             return True
     return False
 
+def has_title(clip):
+    """
+    Checks if the clip has defined source page title.
+    """
+    if clip:
+        return clip.title and clip.title!=clips.validations.NULL
+    return False
+
 def user_nick(user):
     """
     Get user nic defined by user settings.
@@ -125,3 +133,4 @@ register.filter(cut_url)
 register.filter(swag_slice)
 register.filter(cut_http)
 register.filter(clip_template)
+register.filter(has_title)
