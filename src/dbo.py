@@ -43,6 +43,11 @@ class UserInfo(db.Model):
     @staticmethod
     def getUserInfoById(user_id):
         return UserInfo.all().filter('user_id = ', user_id).fetch(1)
+    
+    @staticmethod
+    def getUserInfoByNick(nick):
+        return UserInfo.all().filter('nick = ', nick).fetch(1)
+    
 
 class Clip(db.Model):
     type = db.StringProperty(required=True)

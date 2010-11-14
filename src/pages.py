@@ -57,14 +57,21 @@ class Paging(webapp.RequestHandler):
             params['next'] = "/page/%s" % (page-1)            
         params['day_clips'] = ui.models.to_day_clips(clips)
         util.render("templates/index.html", params, self.response)
-        
+
+import ui.routing
+
 class User(webapp.RequestHandler):    
     
     @log_errors
     def get(self,user_id_val,page_val):
         user_id = ""
         try:
-            user_id = str(user_id_val)
+            #Get id or nick from request
+            user_id = unicode(user_id_val)
+            #Load user info by given parameter
+            user_info = ui.routing.user_id(user_id_val)
+            if user_info:
+                user_id = user_info.user_id 
         except:
             pass
         page = 0    
@@ -99,6 +106,15 @@ class Detail(webapp.RequestHandler):
         params = {}
         params['greeting'] = get_greeting()   
         params['user'] = users.get_current_user()
+        
+        #Get all events
+        clips = Clip.getPage(0,PAGING)
+        if len(clips)>PAGING:
+            params['prev'] = "/page/%s" % (1)
+            clips = clips[0:-1]
+        params['day_clips'] = ui.models.to_day_clips(clips)
+        
+        #Current clip
         clip = Clip.getClip(clip_id)
         params['clip'] = clip
         util.render("templates/detail.html", params, self.response)
@@ -123,6 +139,7 @@ class Delete(webapp.RequestHandler):
             clip_id = int(clip_id_val)
         except:
             pass
+        page = 0    
         user = users.get_current_user()
         clip = Clip.getClip(clip_id)
         if clip and clip.user.user_id == user.user_id():
