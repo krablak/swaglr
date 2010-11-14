@@ -75,5 +75,7 @@ class Clip(db.Model):
     
     @staticmethod
     def getClip(clip_id):
-        return Clip.get_by_id(clip_id)
+        if clip_id:
+            return Clip.get_by_id(clip_id)
+        return None
     

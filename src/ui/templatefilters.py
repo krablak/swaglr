@@ -16,41 +16,52 @@ def is_page_clip(clip):
     """
     Return true in case that only page is defined on clip
     """
-    return clips.api.PAGE == clip.type
+    if clip:
+        return clips.api.PAGE == clip.type
+    return False
 
 def is_image_clip(clip):
     """
     Return true in case of image clip.
     """
-    return clips.api.IMAGE == clip.type
+    if clip:
+        return clips.api.IMAGE == clip.type
+    return False
 
 def is_link_clip(clip):
     """
     Return true in case of link clip.
     """
-    return clips.api.LINK == clip.type
+    if clip:
+        return clips.api.LINK == clip.type
+    return False
 
 def is_text_clip(clip):
     """
     Return true in case of text clip.
     """
-    return clips.api.TEXT == clip.type
+    if clip:
+        return clips.api.TEXT == clip.type
+    return False
 
 def is_commented_clip(clip):
     """
     Returns true in case that clip is commented.
     """
-    return clip.comment and clip.comment!=clips.validations.NULL
+    if clip:
+        return clip.comment and clip.comment!=clips.validations.NULL
+    return False
 
 def is_my(clip):
     """
     Checks if the clip belongs to the current logged user.
     """
-    user = users.get_current_user()
-    if not user:
-        return False
-    if user.user_id() == clip.user.user_id:
-        return True
+    if clip:
+        user = users.get_current_user()
+        if not user:
+            return False
+        if user.user_id() == clip.user.user_id:
+            return True
     return False
 
 def user_nick(user):
