@@ -328,7 +328,16 @@ ul.boxList li {
   			height: 100px;
   			border: 2px  solid #D8F2F9;
   		}
-	}  
+	} 
+
+	table.social_buttons tr td {
+	
+		vertical-align: middle;
+		
+	
+	}
+	
+	
 		
 	}
 	
@@ -463,8 +472,9 @@ a.awesome:hover {
     font-size: 1.6em;
 	color: black;
 	padding: 2 * $general-padding;
-	@include border-radius($default-radius + 2px);
-	@include box-shadow(rgb(130,130,130), 1px, 2px, 6px);
+	margin: 0 14px $box-margin 0;
+	@include border-radius($default-radius);
+	//@include box-shadow(rgb(130,130,130), 1px, 2px, 6px);
 	
 	
 	.left_column{
