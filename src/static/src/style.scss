@@ -46,6 +46,9 @@ h1, h2, h3, h4 {
 .left{
 	text-align:left;
 }
+.center{
+	text-align:center;
+}
 
 
 /* For when a <br /> just ain't enough */
@@ -61,28 +64,32 @@ h1, h2, h3, h4 {
 
  
 $color1: #292929;  /*tmave seda */    /*body background*/
-$color2: #2daebf;   /*tyrkysova tmavsi*/
+$color2: #4DABE1;   /*tyrkysova tmavsi*/
 $color3: #3AF5F5; /*tyrkysova*/
-$color4: #FbFaF9; /*bila*/     /*vychozi barva pisma*/
+$color4: #FbFaF9; /*bila*/    
 $color5: #F71624; /*cervena*/
 $color6: #2E2A36;  /*original tmave modra*/
-$color6: #FFFCCC;  /*zluta zvyraznovaci*/
+$color6: #FFFEB7;  /*zluta zvyraznovaci*/
+
+$body-color: #bbb;
 
 
 
+
+
+
+$link-color: $color2;
 $mainFont: "Anivers";
 $footer-link-color:#999;
 $general-padding:10px;
 $default-radius:4px;
 
-/*$box-width:194px;       
-$box-height:140px;  */
+
 $box-width:210px;       
 $box-height:150px;
 
 $box-margin:12px;
 $box-background: #E7E7E8;
-//$detail-background: #f4f4f4; 
 $detail-background: $color4;
 
 /*Dialogs - confirm dialogs, etc.*/
@@ -94,10 +101,14 @@ body{
 	padding: 30px 20px 20px 20px;
     font: normal normal 10px/10px $mainFont, Tahoma, Arial, Helvetica, Verdana, sans-serif; 
 	line-height: 120%;
-	color: $color4;
+	color: $body-color;
 	background-color: $color1;
 	
 	}
+	
+.padding {
+	padding:$general-padding;
+}	
 
 /*
 normal
@@ -107,8 +118,7 @@ visited
 focus
 */	
 a {
-  @include link-colors($color2, $color2, $color2, $color2, $color2);  
-  @include hover-link;
+  @include link-colors($link-color, $link-color, $link-color,$link-color, $link-color);  
 
 }	
 
@@ -117,54 +127,42 @@ a {
 
 }	
 
-/**
-* Box list
-*/
-#clips {
 
-	.dayId{
-		font-size: 1.6em;
-		font-weight:bold;
-		text-align: right;
-		position:relative;                                   
-		top: 10px;
-		left: -4*$box-width - 4*$box-margin - 25px;
-		color: $color4;
-	}
-	
-	#paging{
-		padding:5px 10px 0px 0px;
-		position:relative;
-		top:10px;
-		text-align: center;
-		a {
-			@include link-colors($color4, $color4, $color4, $color4, $color4);
-			font-size: 1.4em;
-			@include hover-link;
-
-		}
-	}
-
-}
 
 #navigation {
 
+	margin-top:$general-padding;
+
   a { /*Login, username*/
-			@include link-colors($color2, $color2, $color2, $color2, $color2);
+			//@include link-colors($color2, $color2, $color2, $color2, $color2);
 			font-size: 1.2em;
-			@include hover-link;
+			
 		}
 
 	#logo{
-		font-size: 3em;
-		text-shadow: rgb(130,130,130) 1px 2px 4px;
-		margin-top:0px;
-		//text-align: right;
-
-		a{   /*LOGO*/
-			@include link-colors($color4, $color4, $color4, $color4, $color4);
-			text-decoration: none;
+		margin-bottom:30px;
+		
+		
+		h1{
+			font-size: 2.8em;
+			margin:0px 0px 0px 0px;
+			
+			a{
+				@include link-colors($color4, $color4, $color4, $color4, $color4);
+				text-decoration: none;
+			}
+			img {
+			
+				vertical-align:bottom;
+				margin-right: 3px;
+				width: 34px;
+				height: 34px;
+			
+			}
 		}
+		
+
+		
 		
 	}
 	
@@ -184,22 +182,57 @@ a {
 	
 	a{
 		@include link-colors($footer-link-color, $footer-link-color, $footer-link-color, $footer-link-color, $footer-link-color);
-		@include hover-link;
 	
 	}
 }
 
 .username {
-      /*background-color: $color6;
-      padding: 1px; */
-      font-family: Verdana;
-      font-size: 0.95em;
+	  display: inline-block;
+	  $username-color:$body-color;
+	  @include link-colors($username-color, $username-color, $username-color, $username-color, $username-color);
+	  text-decoration: none;
+
+	  padding: 4px 4px;
+	  background-position:center;
+	  background: $color1 url(/static/img/user-ico.png) 4px center no-repeat;
+	  padding-left: 20px;
+	  margin-right: 2px;
+	  @include border-radius($default-radius);
       
 
 }
 
 
-/*DETAIL======================================================================*/	
+/**
+* Box list
+*/
+#clips {
+
+	.dayId{
+		font-size: 1.6em;
+		font-weight:bold;
+		text-align: right;
+		position:relative;                                   
+		top: 10px;
+		left: -4*$box-width - 4*$box-margin - 25px;
+	}
+	
+	#paging{
+		padding:5px 10px 0px 0px;
+		position:relative;
+		top:10px;
+		text-align: center;
+		a {
+			@include link-colors($body-color, $body-color, $body-color, $body-color, $body-color);
+			font-size: 2em;
+			@include hover-link;
+
+		}
+	}
+
+}
+
+
 ul.boxList{
 	list-style: none;
 	margin: 0 auto;
@@ -207,7 +240,8 @@ ul.boxList{
 	padding: 0;
 	
 }
-	  
+/*****************************************************/	
+/*Swag***********************************************/	  
 ul.boxList li {
   cursor: pointer;
   width:$box-width;
@@ -218,8 +252,6 @@ ul.boxList li {
 	word-wrap: break-word;
 	color: black;
 	background:$box-background;   
-	//@include box-shadow(rgb(120,120,120), 1px, 1px, 6px);
-	@include border-radius(2px);
 	
 	.imgbox{
 		margin:0;   
@@ -239,6 +271,7 @@ ul.boxList li {
 	
 	p {
 		padding: $general-padding;
+		
 	}
 	
 	q{
@@ -249,7 +282,7 @@ ul.boxList li {
 		padding: $general-padding;
 		text-align:center;
 		display:block;
-		text-shadow: #ddd 1px 2px 1px;
+		font-family: Verdana;
 			
 	}
 	.comment-ico{
@@ -263,7 +296,7 @@ ul.boxList li {
   }
   
 	.page-url-box{
-	  text-align: right;
+	text-align: right;
     position: absolute;
     bottom: 0px;
     height: 12px;
@@ -277,11 +310,11 @@ ul.boxList li {
 /*DETAIL======================================================================*/	
 	.detail { 
 		position: absolute; 
-		left: -(30px + $general-padding/2 + 3px);
+		left: -(40px + $general-padding/2 + 3px);
 		top: -20px;
 		padding: $general-padding + 6px;
 		padding-top: 30px;
-		width: $box-width + 60px;
+		width: $box-width + 80px;
 		display: none;
 		background: $detail-background;
 		@include border-radius($default-radius); 
@@ -307,12 +340,12 @@ ul.boxList li {
     
     .comment{
   		.text {
-  	   	font-size:1em;
-  	   	line-height: 120%;
-  			background: #D8F2F9;
-  			margin: 0px 0px 10px 0px;
-  			@include border-radius($default-radius + 2px);
-  			color: dark-gray;	
+			font-size:1.1em;
+			line-height: 120%;
+			background: #AAD6EF;
+			margin: 0 $general-padding 10px $general-padding;
+			@include border-radius($default-radius + 2px);
+			color: dark-gray;	
   		}
   		
   		.comment-nib {   
@@ -326,13 +359,17 @@ ul.boxList li {
   			margin-left: 10px;
   			width: 90%;
   			height: 100px;
-  			border: 2px  solid #D8F2F9;
+  			border: 2px  solid #AAD6EF;
   		}
 	} 
 
-	table.social_buttons tr td {
 	
+	table.social_buttons {
+		margin-left: $general-padding;
+		tr td {
 		vertical-align: middle;
+
+		}
 		
 	
 	}
@@ -462,7 +499,7 @@ a.awesome:hover {
 	padding: 8px 14px 9px;
 }
 .blue.awesome {
-	background-color: #2daebf;
+	background-color: $color2;
 }
 
 
@@ -472,10 +509,14 @@ a.awesome:hover {
     font-size: 1.6em;
 	color: black;
 	padding: 2 * $general-padding;
+	//padding-top: $general-padding;
 	margin: 0 14px $box-margin 0;
 	@include border-radius($default-radius);
-	//@include box-shadow(rgb(130,130,130), 1px, 2px, 6px);
+	@include box-shadow(rgb(130,130,130), 1px, 2px, 6px);
 	
+	div.close{
+		text-align:right;
+	}
 	
 	.left_column{
 		width: 48%;
@@ -498,7 +539,7 @@ a.awesome:hover {
 	}
 	
 	p{
-		padding: $general-padding;
+		//padding: $general-padding;
 		
 	
 	}
@@ -511,12 +552,12 @@ a.awesome:hover {
 		display: block;
 		word-wrap: break-word;
 		line-height: 1.2em;
+		font-family: Verdana;
 	}
 		
 	a.page-url{  
 		display: block;
 		margin-top: 10px;
-		text-align: right;
 	 }
 		
     
@@ -524,13 +565,15 @@ a.awesome:hover {
   		.text {
 			font-size:1em;
 			line-height: 120%;
-  			background: #D8F2F9;
+  			background: #AAD6EF;
   			@include border-radius($default-radius + 2px);
-  			color: dark-gray;	
+  			color: dark-gray;
+			margin: 0 $general-padding 0 $general-padding;
+			padding: $general-padding;
   		}
   		
   		.comment-nib {   
-           margin-top: -8px;                                                                    
+           //margin-top: -8px;                                                                    
   			   background:url(/static/img/comment-nib.png) no-repeat;
   			   background-position: 10% 0;
   			   height: 11px;
@@ -540,8 +583,12 @@ a.awesome:hover {
   			margin-left: 10px;
   			width: 90%;
   			height: 100px;
-  			border: 2px  solid #D8F2F9;
+  			border: 2px  solid #AAD6EF;
   		}
 	} 
 } 
+
+.detail-more-by{
+	margin: 2*$general-padding 0 0 0;
+}
  

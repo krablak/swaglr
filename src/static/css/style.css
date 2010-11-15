@@ -34,6 +34,9 @@ h1, h2, h3, h4 {
 .left {
   text-align: left; }
 
+.center {
+  text-align: center; }
+
 /* For when a <br /> just ain't enough */
 .separator {
   clear: both;
@@ -47,19 +50,19 @@ h1, h2, h3, h4 {
 /*tyrkysova tmavsi*/
 /*tyrkysova*/
 /*bila*/
-/*vychozi barva pisma*/
 /*cervena*/
 /*original tmave modra*/
 /*zluta zvyraznovaci*/
-/*$box-width:194px;       
-$box-height:140px;  */
 /*Dialogs - confirm dialogs, etc.*/
 body {
   padding: 30px 20px 20px 20px;
   font: normal normal 10px/10px "Anivers", Tahoma, Arial, Helvetica, Verdana, sans-serif;
   line-height: 120%;
-  color: #fbfaf9;
+  color: #bbbbbb;
   background-color: #292929; }
+
+.padding {
+  padding: 10px; }
 
 /*
 normal
@@ -69,18 +72,81 @@ visited
 focus
 */
 a {
-  color: #2daebf;
-  text-decoration: none; }
+  color: #4dabe1; }
 a:visited {
-  color: #2daebf; }
+  color: #4dabe1; }
 a:focus {
-  color: #2daebf; }
+  color: #4dabe1; }
 a:hover {
-  color: #2daebf; }
+  color: #4dabe1; }
 a:active {
-  color: #2daebf; }
-a:hover {
-  text-decoration: underline; }
+  color: #4dabe1; }
+
+#navigation {
+  margin-top: 10px; }
+#navigation a {
+  /*Login, username*/
+  font-size: 1.2em; }
+#navigation #logo {
+  margin-bottom: 30px; }
+#navigation #logo h1 {
+  font-size: 2.8em;
+  margin: 0px 0px 0px 0px; }
+#navigation #logo h1 a {
+  color: #fbfaf9;
+  text-decoration: none; }
+#navigation #logo h1 a:visited {
+  color: #fbfaf9; }
+#navigation #logo h1 a:focus {
+  color: #fbfaf9; }
+#navigation #logo h1 a:hover {
+  color: #fbfaf9; }
+#navigation #logo h1 a:active {
+  color: #fbfaf9; }
+#navigation #logo h1 img {
+  vertical-align: bottom;
+  margin-right: 3px;
+  width: 34px;
+  height: 34px; }
+
+#footer {
+  margin-top: 30px;
+  padding: 10px;
+  height: 100px; }
+#footer a {
+  color: #999999; }
+#footer a:visited {
+  color: #999999; }
+#footer a:focus {
+  color: #999999; }
+#footer a:hover {
+  color: #999999; }
+#footer a:active {
+  color: #999999; }
+
+.username {
+  display: inline-block;
+  color: #bbbbbb;
+  text-decoration: none;
+  padding: 4px 4px;
+  background-position: center;
+  background: #292929 url(/static/img/user-ico.png) 4px center no-repeat;
+  padding-left: 20px;
+  margin-right: 2px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -o-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -khtml-border-radius: 4px;
+  border-radius: 4px; }
+.username:visited {
+  color: #bbbbbb; }
+.username:focus {
+  color: #bbbbbb; }
+.username:hover {
+  color: #bbbbbb; }
+.username:active {
+  color: #bbbbbb; }
 
 /**
 * Box list
@@ -91,91 +157,35 @@ a:hover {
   text-align: right;
   position: relative;
   top: 10px;
-  left: -913px;
-  color: #fbfaf9; }
+  left: -913px; }
 #clips #paging {
   padding: 5px 10px 0px 0px;
   position: relative;
   top: 10px;
   text-align: center; }
 #clips #paging a {
-  color: #fbfaf9;
-  font-size: 1.4em;
+  color: #bbbbbb;
+  font-size: 2em;
   text-decoration: none; }
 #clips #paging a:visited {
-  color: #fbfaf9; }
+  color: #bbbbbb; }
 #clips #paging a:focus {
-  color: #fbfaf9; }
+  color: #bbbbbb; }
 #clips #paging a:hover {
-  color: #fbfaf9; }
+  color: #bbbbbb; }
 #clips #paging a:active {
-  color: #fbfaf9; }
+  color: #bbbbbb; }
 #clips #paging a:hover {
   text-decoration: underline; }
 
-#navigation a {
-  /*Login, username*/
-  color: #2daebf;
-  font-size: 1.2em;
-  text-decoration: none; }
-#navigation a:visited {
-  color: #2daebf; }
-#navigation a:focus {
-  color: #2daebf; }
-#navigation a:hover {
-  color: #2daebf; }
-#navigation a:active {
-  color: #2daebf; }
-#navigation a:hover {
-  text-decoration: underline; }
-#navigation #logo {
-  font-size: 3em;
-  text-shadow: #828282 1px 2px 4px;
-  margin-top: 0px; }
-#navigation #logo a {
-  /*LOGO*/
-  color: #fbfaf9;
-  text-decoration: none; }
-#navigation #logo a:visited {
-  color: #fbfaf9; }
-#navigation #logo a:focus {
-  color: #fbfaf9; }
-#navigation #logo a:hover {
-  color: #fbfaf9; }
-#navigation #logo a:active {
-  color: #fbfaf9; }
-
-#footer {
-  margin-top: 30px;
-  padding: 10px;
-  height: 100px; }
-#footer a {
-  color: #999999;
-  text-decoration: none; }
-#footer a:visited {
-  color: #999999; }
-#footer a:focus {
-  color: #999999; }
-#footer a:hover {
-  color: #999999; }
-#footer a:active {
-  color: #999999; }
-#footer a:hover {
-  text-decoration: underline; }
-
-.username {
-  /*background-color: $color6;
-  padding: 1px; */
-  font-family: Verdana;
-  font-size: 0.95em; }
-
-/*DETAIL======================================================================*/
 ul.boxList {
   list-style: none;
   margin: 0 auto;
   margin-bottom: -12px;
   padding: 0; }
 
+/*****************************************************/
+/*Swag***********************************************/
 ul.boxList li {
   cursor: pointer;
   width: 210px;
@@ -186,12 +196,6 @@ ul.boxList li {
   word-wrap: break-word;
   color: black;
   background: #e7e7e8;
-  -moz-border-radius: 2px;
-  -webkit-border-radius: 2px;
-  -o-border-radius: 2px;
-  -ms-border-radius: 2px;
-  -khtml-border-radius: 2px;
-  border-radius: 2px;
   /*DETAIL======================================================================*/
   /*======================================================================/DETAIL*/ }
 ul.boxList li .imgbox {
@@ -214,7 +218,7 @@ ul.boxList li q {
   padding: 10px;
   text-align: center;
   display: block;
-  text-shadow: #ddd 1px 2px 1px; }
+  font-family: Verdana; }
 ul.boxList li .comment-ico {
   position: absolute;
   bottom: 0px;
@@ -235,11 +239,11 @@ ul.boxList li .page-url-box {
   z-index: 99; }
 ul.boxList li .detail {
   position: absolute;
-  left: -38px;
+  left: -48px;
   top: -20px;
   padding: 16px;
   padding-top: 30px;
-  width: 270px;
+  width: 290px;
   display: none;
   background: #fbfaf9;
   -moz-border-radius: 4px;
@@ -268,10 +272,10 @@ ul.boxList li .detail q {
 ul.boxList li .detail a.page-url {
   margin: -10px 0 0 0; }
 ul.boxList li .detail .comment .text {
-  font-size: 1em;
+  font-size: 1.1em;
   line-height: 120%;
-  background: #D8F2F9;
-  margin: 0px 0px 10px 0px;
+  background: #AAD6EF;
+  margin: 0 10px 10px 10px;
   -moz-border-radius: 6px;
   -webkit-border-radius: 6px;
   -o-border-radius: 6px;
@@ -288,7 +292,9 @@ ul.boxList li .detail .comment textarea {
   margin-left: 10px;
   width: 90%;
   height: 100px;
-  border: 2px  solid #D8F2F9; }
+  border: 2px  solid #AAD6EF; }
+ul.boxList li .detail table.social_buttons {
+  margin-left: 10px; }
 ul.boxList li .detail table.social_buttons tr td {
   vertical-align: middle; }
 
@@ -321,7 +327,7 @@ ul.boxList li.open .detail {
   width: 300px;
   color: #000;
   background-color: #fbfaf9;
-  border: 2px solid #fffccc;
+  border: 2px solid #fffeb7;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   -o-border-radius: 4px;
@@ -397,7 +403,7 @@ a.awesome:hover {
   padding: 8px 14px 9px; }
 
 .blue.awesome {
-  background-color: #2daebf; }
+  background-color: #4dabe1; }
 
 .clip_pagedetail {
   background: #fbfaf9;
@@ -410,7 +416,13 @@ a.awesome:hover {
   -o-border-radius: 4px;
   -ms-border-radius: 4px;
   -khtml-border-radius: 4px;
-  border-radius: 4px; }
+  border-radius: 4px;
+  -moz-box-shadow: #828282 1px 2px 6px 0;
+  -webkit-box-shadow: #828282 1px 2px 6px 0;
+  -o-box-shadow: #828282 1px 2px 6px 0;
+  box-shadow: #828282 1px 2px 6px 0; }
+.clip_pagedetail div.close {
+  text-align: right; }
 .clip_pagedetail .left_column {
   width: 48%;
   float: left; }
@@ -420,8 +432,6 @@ a.awesome:hover {
 .clip_pagedetail .imgbox {
   text-align: center;
   background-color: #e7e7e8; }
-.clip_pagedetail p {
-  padding: 10px; }
 .clip_pagedetail q {
   padding: 15px;
   font-size: 1.3em;
@@ -434,24 +444,25 @@ a.awesome:hover {
   border-radius: 6px;
   display: block;
   word-wrap: break-word;
-  line-height: 1.2em; }
+  line-height: 1.2em;
+  font-family: Verdana; }
 .clip_pagedetail a.page-url {
   display: block;
-  margin-top: 10px;
-  text-align: right; }
+  margin-top: 10px; }
 .clip_pagedetail .comment .text {
   font-size: 1em;
   line-height: 120%;
-  background: #D8F2F9;
+  background: #AAD6EF;
   -moz-border-radius: 6px;
   -webkit-border-radius: 6px;
   -o-border-radius: 6px;
   -ms-border-radius: 6px;
   -khtml-border-radius: 6px;
   border-radius: 6px;
-  color: dark-gray; }
+  color: dark-gray;
+  margin: 0 10px 0 10px;
+  padding: 10px; }
 .clip_pagedetail .comment .comment-nib {
-  margin-top: -8px;
   background: url(/static/img/comment-nib.png) no-repeat;
   background-position: 10% 0;
   height: 11px; }
@@ -459,4 +470,7 @@ a.awesome:hover {
   margin-left: 10px;
   width: 90%;
   height: 100px;
-  border: 2px  solid #D8F2F9; }
+  border: 2px  solid #AAD6EF; }
+
+.detail-more-by {
+  margin: 20px 0 0 0; }

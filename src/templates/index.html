@@ -62,11 +62,11 @@
 							{% endif %}  
 							
 												
-					    <p class="right"><a class="page-url" target="_blank" href="{{ clip.page }}">{{ clip.page|escape|cut_http|swag_slice:30 }}</a></p>
+					    <p><a class="page-url" target="_blank" href="{{ clip.page }}">{{ clip.page|escape|cut_http|swag_slice:30 }}</a></p>
 							
 							{% if clip|is_commented_clip %}									
 								<div class="comment"> 
-									<p><a href="/user/{{ clip.user.user_id }}/page/0" class="username"> {{ clip.user.nick }}</a> says:</p>
+									<p><a href="/user/{{ clip.user.user_id }}/page/0" class="username">{{ clip.user.nick }}</a>says:</p>
 									<div class="comment-nib"></div>
 									<p id="clip-comment-view-{{ clip.key.id }}" class="text">{{  clip.comment|escape }}</p>
 									<span id="clip-comment-edit-{{ clip.key.id }}" style="display:none">
@@ -80,9 +80,10 @@
 									<p class="right">
 										<a id="edit-comment-btn-{{ clip.key.id }}" onclick="showCommentDialog({{ clip.key.id }});" class="awesome small blue">Edit comment</a>
 									</p>
-								{% endif %}
+								{% endif %} <!-- /if clip|is_my-->	
 								</div>
-							{% else %}	
+								{% else %}	<!-- /if clip|is_commented_clip-->	
+								<p><a href="/user/{{ clip.user.user_id }}/page/0" class="username"> {{ clip.user.nick }}</a></p>
 								<div id="clip-comment-view-div-{{ clip.key.id }}" class="comment">
 									<p style="display:none" id="clip-comment-view-{{ clip.key.id }}" class="text">{{  clip.comment|escape }}</p>
 									<span id="clip-comment-edit-{{ clip.key.id }}" style="display:none">
@@ -97,10 +98,9 @@
 								<p class="right">
 									<a href="#" id="add-comment-btn-{{ clip.key.id }}" onclick="showCommentDialog({{ clip.key.id }});" class="awesome small blue">Add comment</a>
 								</p>
-								{% endif %}
+								{% endif %} <!-- /if clip|is_my-->	
 							{% endif %}	<!-- /if clip|is_commented_clip-->							
 								
-							<p>See more&nbsp;by&nbsp;<a class="username" href="/user/{{ clip.user.user_id }}/page/0">{{ clip.user.nick }}</a></p>
 							{% if clip|is_my %} 
 							<p class="right"><a id="delete-comment-btn-{{ clip.key.id }}" onclick="showDeleteDialog({{ clip.key.id }});" class="awesome small">Delete</a></p>
 							{% endif %}
@@ -112,7 +112,8 @@
 										<td><a href="/clip/{{ clip.key.id}}">Detail</a></td>
 									</tr>
 								</tbody>
-							</table>	
+							</table>
+							
 							<p class="right" ><a href="#" onclick="closeClip({{ clip.key.id }});" ">[X]</a>  </p>
 							
 								
@@ -123,7 +124,7 @@
 
 					<div class="cleaner">
 				    <hr />	
-           </div> 	
+					</div> 	
     			</ul>
     			<div class="cleaner">
 				    <hr />
