@@ -3,6 +3,14 @@
  */
 var sclipAPI = new SclipAPI();
 
+/****************************************Close Clip detail*****************************************************/
+function closeClipDetail(id) {
+	$("#page_detail_"+id).fadeOut('slow', function() {
+		$("#page_detail_"+id).remove();
+	});
+	return false;
+}
+
 /****************************************Clip open*****************************************************/
 var OPEN_CLIP = null;
 
