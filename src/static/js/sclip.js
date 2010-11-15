@@ -190,6 +190,9 @@ function onDeletedClip(id) {
 	$("#clip_box_"+id).fadeOut('slow', function() {
 		$("#clip_box_"+id).remove();
 	});
+	$("#page_detail_"+id).fadeOut('slow', function() {
+		$("#page_detail_"+id).remove();
+	});
 }
 
 function onDeleteError(){
