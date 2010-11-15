@@ -51,9 +51,9 @@
 							
 							{% if clip|is_page_clip %}
 								{% if clip|has_title %}
-									<q cite="{{ clip.page }}" onclick="closeClip({{ clip.key.id }});">{{ clip.title|escape|swag_slice:40 }}</q>
+									<q cite="{{ clip.page }}" onclick="closeClip({{ clip.key.id }});">{{ clip.title|escape}}</q>
 								{% else %}
-									<q cite="{{ clip.page }}" onclick="closeClip({{ clip.key.id }});">{{ clip.page|escape|swag_slice:40 }}</q>
+									<q cite="{{ clip.page }}" onclick="closeClip({{ clip.key.id }});">{{ clip.page|escape}}</q>
 								{% endif %}
 							{% endif %}
 							
