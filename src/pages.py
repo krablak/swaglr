@@ -107,16 +107,17 @@ class Detail(webapp.RequestHandler):
         params['greeting'] = get_greeting()   
         params['user'] = users.get_current_user()
         
+                #Current clip
+        clip = Clip.getClip(clip_id)
+        params['clip'] = clip
+        
         #Get all events
-        clips = Clip.getPage(0,PAGING)
+        clips = Clip.getPageByUser(0, PAGING, clip.user.user_id)
         if len(clips)>PAGING:
             params['prev'] = "/page/%s" % (1)
             clips = clips[0:-1]
         params['day_clips'] = ui.models.to_day_clips(clips)
         
-        #Current clip
-        clip = Clip.getClip(clip_id)
-        params['clip'] = clip
         util.render("templates/detail.html", params, self.response)
         
 class About(webapp.RequestHandler):    
