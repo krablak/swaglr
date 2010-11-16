@@ -53,7 +53,7 @@
 								{% if clip|has_title %}
 									<q cite="{{ clip.page }}" onclick="closeClip({{ clip.key.id }});">{{ clip.title|escape}}</q>
 								{% else %}
-									<q cite="{{ clip.page }}" onclick="closeClip({{ clip.key.id }});">{{ clip.page|escape}}</q>
+									<q cite="{{ clip.page }}" onclick="closeClip({{ clip.key.id }});">{{ clip.page|escape|swag_slice:40}}</q>
 								{% endif %}
 							{% endif %}
 							
@@ -102,7 +102,7 @@
 							{% endif %}	<!-- /if clip|is_commented_clip-->							
 								
 							{% if clip|is_my %} 
-							<p class="right"><a id="delete-comment-btn-{{ clip.key.id }}" onclick="showDeleteDialog({{ clip.key.id }});" class="awesome small">Delete</a></p>
+							<p class="right"><a id="delete-comment-btn-{{ clip.key.id }}" onclick="showDeleteDialog({{ clip.key.id }});" class="awesome small">Delete post</a></p>
 							{% endif %}
 							<table class="social_buttons">
 								<tbody>

@@ -106,9 +106,24 @@ body{
 	
 	}
 	
-.padding {
-	padding:$general-padding;
-}	
+	
+.margin.t {
+	margin-top:$general-padding; 
+}
+	
+.margin.r {
+	margin-right:$general-padding; 
+}
+
+.margin.b{
+	margin-bottom:$general-padding; 
+}
+
+.margin.l {
+	margin-left:$general-padding; 
+}
+
+	
 
 /*
 normal
@@ -395,17 +410,6 @@ ul.boxList li.open{
 	
 	
 	
-.pressed {
-
-}	
- 
-.clips {
-
-}
-
-
-
-
 .cleaner {
 	clear: both;
 	height: 0;
@@ -477,7 +481,7 @@ ul.boxList li.open{
   cursor: pointer;
   text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
   border-bottom: 1px solid rgba(0,0,0,0.25);	
-  min-width: 85px;
+  min-width: 70px;
 }
 
 a.awesome:hover {
@@ -568,7 +572,7 @@ a.awesome:hover {
   			background: #AAD6EF;
   			@include border-radius($default-radius + 2px);
   			color: dark-gray;
-			margin: 0 $general-padding 0 $general-padding;
+			//margin: 0 $general-padding 0 0;
 			padding: $general-padding;
   		}
   		
