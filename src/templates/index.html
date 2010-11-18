@@ -69,13 +69,13 @@
 									<p><a href="/user/{{ clip.user.user_id }}/page/0" class="username">{{ clip.user.nick }}</a>says:</p>
 									<div class="comment-nib"></div>
 									<p id="clip-comment-view-{{ clip.key.id }}" class="text">{{  clip.comment|escape }}</p>
-									<span id="clip-comment-edit-{{ clip.key.id }}" style="display:none">
+									<div id="clip-comment-edit-{{ clip.key.id }}" style="display:none">
 										<textarea id="comment-textarea-{{ clip.key.id }}" rows="4" cols="30" ></textarea>
 										<p class="right">
 										<a id="comment-yes-{{ clip.key.id }}" class="awesome small blue">Save</a>
 										<a id="comment-no-{{ clip.key.id }}">Cancel</a>
 										</p>
-									</span>
+									</div>
 								{% if clip|is_my %}
 									<p class="right">
 										<a id="edit-comment-btn-{{ clip.key.id }}" onclick="showCommentDialog({{ clip.key.id }});" class="awesome small blue">Edit comment</a>
@@ -86,13 +86,13 @@
 								<p><a href="/user/{{ clip.user.user_id }}/page/0" class="username"> {{ clip.user.nick }}</a></p>
 								<div id="clip-comment-view-div-{{ clip.key.id }}" class="comment">
 									<p style="display:none" id="clip-comment-view-{{ clip.key.id }}" class="text">{{  clip.comment|escape }}</p>
-									<span id="clip-comment-edit-{{ clip.key.id }}" style="display:none">
+									<div id="clip-comment-edit-{{ clip.key.id }}" style="display:none">
 										<textarea id="comment-textarea-{{ clip.key.id }}" rows="4" cols="30" ></textarea>
 										<p class="right">
 										<a id="comment-yes-{{ clip.key.id }}" class="awesome small blue">Save</a>
 										<a id="comment-no-{{ clip.key.id }}">Cancel</a>
 										</p>
-									</span>
+									</div>
 								</div>
 								{% if clip|is_my %}
 								<p class="right">
@@ -114,7 +114,7 @@
 								</tbody>
 							</table>
 							
-							<p class="right" ><a href="#" onclick="closeClip({{ clip.key.id }});" ">[X]</a>  </p>
+							<p class="right" ><a href="#" onclick="closeClip({{ clip.key.id }});">[X]</a>  </p>
 							
 								
 						</div>	<!-- /detail-->		
@@ -122,9 +122,7 @@
     		{% endfor %}  <!-- /for clip in day.clips  --> 		
         
 
-					<div class="cleaner">
-				    <hr />	
-					</div> 	
+						
     			</ul>
     			<div class="cleaner">
 				    <hr />
