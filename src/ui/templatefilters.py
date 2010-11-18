@@ -6,6 +6,8 @@ Created on Sep 23, 2010
 
 from google.appengine.ext import webapp
 from google.appengine.api import users
+from google.appengine.ext.webapp import template
+import os
 import clips.api
 import clips.validations
 import dbo
@@ -111,15 +113,15 @@ def swag_slice(value,length):
     else:
         return value
     
-from google.appengine.ext.webapp import template
-import os
-
 def clip_template(clip,path):
     """
     Renders template with given clip as parameter.
     """
     path = os.path.join(os.path.dirname(__file__), path).replace("%sui" % (os.sep),"")
     return template.render(path, { 'clip' :clip})
+
+def os_environ(name='HTTP_HOST'):
+    return os.environ[name]
 
 
 register.filter(is_page_clip)
@@ -134,3 +136,4 @@ register.filter(swag_slice)
 register.filter(cut_http)
 register.filter(clip_template)
 register.filter(has_title)
+register.filter(os_environ)

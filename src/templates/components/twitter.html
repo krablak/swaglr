@@ -1,1 +1,1 @@
-<a href="http://twitter.com/share" class="twitter-share-button" data-text="Seen on swaglr.com"  data-url="http://swagclip.appspot.com/clip/{{ clip.key.id }}" data-count="none">Tweet</a>
+<a href="http://twitter.com/share" class="twitter-share-button" data-text="Seen on swaglr.com"  data-url="{{ "HTTP_HOST"|os_environ }}/swag/{{ clip.key.id }}" data-count="none">Tweet</a>

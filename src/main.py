@@ -8,7 +8,6 @@ import testpages
 application = webapp.WSGIApplication([('/', pages.MainPage), 
                                       ('/page/(.*)', pages.Paging),
                                       ('/user/(.*)/page/(.*)', pages.User),
-                                      ('/clip/(.*)', pages.Detail),
                                       ('/swag/(.*)', pages.Detail),
                                       ('/api/clip/delete/', ajax.Delete),
                                       ('/api/clip/comment/', ajax.Comment),
