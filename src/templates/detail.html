@@ -1,5 +1,9 @@
 {% extends "index.html" %}
 
+{% block title %}
+         <title>Swaglr #{{ clip.key.id }}</title>
+{% endblock %}
+
 {% block detail%}
 
 <div  class="clip_pagedetail" id="page_detail_{{clip.key.id}}">
