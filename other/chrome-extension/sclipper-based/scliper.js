@@ -2,7 +2,7 @@ CLIP_TYPE_TEXT="text";
 CLIP_TYPE_LINK="link";
 CLIP_TYPE_IMAGE="image";
 
-SERVER_URL='https://swagclip.appspot.com/';
+SERVER_URL='http://www.swaglr.com/';
 
 NULL = "null";
 
@@ -13,7 +13,7 @@ var oauth = ChromeExOAuth.initBackgroundPage({
 			'consumer_key': 'anonymous',
 	  		'consumer_secret': 'anonymous',
 			'scope': SERVER_URL,
-			'app_name': 'SClip Chrome extension'
+			'app_name': 'Swaglr Chrome extension'
 		});	
 
 
@@ -68,12 +68,7 @@ function contextOnClick(info, tab) {
                                                                                     }                                                
                                                             };
                                                             console.log("Sending request to server : " + request);
-                                                            try{
-                                                            	oauth.sendSignedRequest(url, published, request);
-                                                            }catch(ex){
-                                                            	console.log("Clip post failed and will be done again.");
-                                                            	oauth.sendSignedRequest(url, published, request);
-                                                            }
+                                                           	oauth.sendSignedRequest(url, published, request);
                                                             var type_text = "What?!"
                                                             if(clip["type"]=="IMAGE"){
                                                             	type_text = "Image '" + clip["src"] + "'"
@@ -127,4 +122,4 @@ function logout(){
 
 
 var contexts = ["page","selection","link","image"];
-chrome.contextMenus.create({"title": "Swag selected..", "contexts":contexts, "onclick": contextOnClick });
+chrome.contextMenus.create({"title": "Quote on swaglr", "contexts":contexts, "onclick": contextOnClick });

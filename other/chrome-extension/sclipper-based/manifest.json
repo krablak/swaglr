@@ -1,7 +1,7 @@
 {
-  "name": "Based swag clipper",
-  "version": "0.5",
-  "description": "Swag up the web pieces into swagclip web.",
+  "name": "Based Swaglr clipper",
+  "version": "0.6",
+  "description": "Swag up the web pieces into Swaglr web.",
   "background_page": "background.html",
   "browser_action": {
     "default_title": "Text"
@@ -10,11 +10,10 @@
   	"tabs",
   	"cookies",
   	"contextMenus",
-  	"https://swagclip.appspo0t.com/*",
-  	"https://swagclip.appspot.com/post",
-  	"https://swagclip.appspot.com/_ah/OAuthGetRequestToken",
-  	"https://swagclip.appspot.com/_ah/OAuthAuthorizeToken",
-  	"https://swagclip.appspot.com/_ah/OAuthGetAccessToken",
+  	"http://www.swaglr.com/*",
+  	"https://www.swaglr.com/*",
+  	"https://www.swaglr.com/post",
+  	"https://www.swaglr.com/_ah/OAuthGetRequestToken",
   	"http://*/*", 
   	"https://*/*",
   	"notifications"
