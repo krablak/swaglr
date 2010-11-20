@@ -21,7 +21,7 @@
 						{% endif %}
 			
 						{% if clip|is_text_clip %}
-						<q class="crop" cite="{{ clip.page }}">{{ clip.text|escape|swag_slice:75 }}</q>
+						<q cite="{{ clip.page }}">{{ clip.text|escape|swag_slice:75 }}</q>
 						{% endif %}
 						
 						{% if clip|is_page_clip %}
