@@ -11,7 +11,8 @@
 		<div id="clips">
 
 			{% for day in day_clips %}
-				<p class="dayId">{{ day.day }}</p>
+			<div class="day-wrap">
+				<h2 class="dayId">{{ day.day }}</h2>
     			<ul class="boxList">
     		{% for clip in day.clips %}	
 	    			<li id="clip_box_{{clip.key.id}}" onclick="openClip({{ clip.key.id }});">
@@ -119,17 +120,13 @@
 						</div>	<!-- /detail-->		
 					</li>  
     		{% endfor %}  <!-- /for clip in day.clips  --> 		
-        
-
-						
+        	
     			</ul>
+				</div><!-- /day-wrap  --> 
     			<div class="cleaner">
 				    <hr />
 		    	</div>
 		    {% endfor %}   <!-- /for day in day_clips   -->	
-			<div class="cleaner">
-				<hr />
-			</div>
 			
 			<div id="paging"> 
 		      {% if next %}

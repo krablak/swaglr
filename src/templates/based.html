@@ -25,14 +25,15 @@
          <script type="text/javascript" src="/static/js/sclip.js"></script>
          
          <script type="text/javascript">
-			  var _gaq = _gaq || [];
-			  _gaq.push(['_setAccount', 'UA-19444109-1']);
+			 var _gaq = _gaq || [];
+			  _gaq.push(['_setAccount', 'UA-19444109-2']);
+			  _gaq.push(['_setDomainName', '.swaglr.com']);
 			  _gaq.push(['_trackPageview']);
-			
+
 			  (function() {
-			    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-			    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-			    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 			  })();
 		</script>
 		{% block head %}
@@ -42,33 +43,31 @@
 	{% block container %}
 		
 		<div id="contentWrap" class="container_18">
+		
+			<div class="grid_3  push_15 omega"><!--right -->
+			
+				<div id="logo">
+					<h1><a href="/">swaglr</a></h1>
+					<p class="betastamp">preview</p>
+					<p>Swagler: A hott, cool, amazing<br/>person [Urban Dictionary]</p>
+				</div> <!-- /logo -->	
+				
+				<div id="toolbar">
+					{% if user %}
+					<p><a class="username" href="/user/{{ user.user_id }}/page/0">{{ user|user_nick }}</a></p>
+					{% endif %}
+					<p>{{ greeting }}</p>
+				</div><!-- /toolbar -->	
+			</div><!-- /right -->	
 
-			<div id="column1 alpha" class="grid_15">
+			<div class="grid_15 pull_3"><!-- /left -->
 				<div id="main">
 				{% block main %}
 				{% endblock %}
 				</div><!-- /main -->
-			</div> <!-- /column1 --> 
+			</div> <!-- /left --> 
 
-			<div id="column2 omega" class="grid_3">
-				<div id="navigation">
-				{% block navigation %}
-				<div id="logo">
-				
-					<h1><a href="/"><img src="/static/img/logo.png" alt="Swaglr logo" />swaglr</a></h1>
-					
-				</div>	
-				
-        	<div id="toolbar">
-        	{% if user %}
-						<p><a class="username" href="/user/{{ user.user_id }}/page/0">{{ user|user_nick }}</a></p>
-					{% endif %}
-		
-					<p>{{ greeting }}</p> 
-        </div>
-				{% endblock %}
-				</div><!-- /navigation --> 
-			</div><!-- /column2 -->	
+
 		</div><!-- /content --> 
 
 		<div id="footerWrap" class="container_18">

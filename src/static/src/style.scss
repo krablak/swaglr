@@ -63,8 +63,8 @@ h1, h2, h3, h4 {
 /* Project specifics =========================================================== */
 
  
-$color1: #292929;  /*tmave seda */    /*body background*/
-$color2: #4DABE1;   /*tyrkysova tmavsi*/
+$color1: #181818;  /*tmave seda */    /*body background*/
+$color2: #389BF7;   /*tyrkysova tmavsi*/
 $color3: #3AF5F5; /*tyrkysova*/
 $color4: #FbFaF9; /*bila*/    
 $color5: #F71624; /*cervena*/
@@ -143,50 +143,50 @@ a {
 }	
 
 
-
-#navigation {
-
-	margin-top:$general-padding;
-
-  a { /*Login, username*/
-			//@include link-colors($color2, $color2, $color2, $color2, $color2);
-			font-size: 1.2em;
-			
-		}
-
-	#logo{
-		margin-bottom:30px;
-		
-		
-		h1{
-			font-size: 2.8em;
-			margin:0px 0px 0px 0px;
-			
-			a{
-				@include link-colors($color4, $color4, $color4, $color4, $color4);
-				text-decoration: none;
-			}
-			img {
-			
-				vertical-align:bottom;
-				margin-right: 3px;
-				width: 34px;
-				height: 34px;
-			
-			}
-		}
-		
-
-		
-		
-	}
+#logo{
+	margin-bottom:30px;
 	
-	#toolbar{
+	
+	h1{
+		font-size: 3.6em;
+		margin:0px 0px 0px 0px;
+		
+		a{
+			@include link-colors($color4, $color4, $color4, $color4, $color4);
+			text-decoration: none;
+		}
+		
+
+		img {
+		
+			vertical-align:top;
+			margin-right: 3px;
+			width: 40px;
+			height: 50px;
+		
+		}
 		
 	}
-
+		.betastamp{
+			text-align: right;
+			color: black;
+			font-size: 1.1em;
+			padding: 0px 2px;
+			margin:0;
+			position: relative;
+			top: -8px;
+			left: 82px;
+			//z-index:1000;
+			background:#D7D123;
+			display:inline;
+		}	
+	
 }
 
+#toolbar{
+		font-size: 1.2em;
+		
+	}
 
 
 #footer {
@@ -221,15 +221,23 @@ a {
 /**
 * Box list
 */
+.day-wrap{
+
+	position:relative;
+
+} 
+
 #clips {
 
 	.dayId{
-		font-size: 1.6em;
-		font-weight:bold;
+		font-size: 16px;
 		text-align: right;
-		position:relative;                                   
-		top: 10px;
-		left: -4*$box-width - 4*$box-margin - 25px;
+		position:absolute;                                   
+		top: -5px;
+		left: - 87 px;
+		width: 75px; 
+		margin: 0;
+		padding: 0;
 	}
 	
 	#paging{
@@ -251,7 +259,7 @@ a {
 ul.boxList{
 	list-style: none;
 	margin: 0 auto;
-	margin-bottom: - $box-margin;
+	//margin-bottom: - $box-margin;
 	padding: 0;
 	
 }
