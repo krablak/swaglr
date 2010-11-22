@@ -67,7 +67,7 @@
 							
 							{% if clip|is_commented_clip %}									
 								<div class="comment"> 
-									<p><a href="/user/{{ clip.user.user_id }}/page/0" class="username">{{ clip.user.nick }}</a>says:</p>
+									<p><a href="/user/{{ clip.user.nick|escape }}/page/0" class="username">{{ clip.user.nick }}</a>says:</p>
 									<div class="comment-nib"></div>
 									<p id="clip-comment-view-{{ clip.key.id }}" class="text">{{  clip.comment|escape }}</p>
 									<div id="clip-comment-edit-{{ clip.key.id }}" style="display:none">
@@ -84,7 +84,7 @@
 								{% endif %} <!-- /if clip|is_my-->	
 								</div>
 								{% else %}	<!-- /if clip|is_commented_clip-->	
-								<p><a href="/user/{{ clip.user.user_id }}/page/0" class="username"> {{ clip.user.nick }}</a></p>
+								<p><a href="/user/{{ clip.user.nick|escape }}/page/0" class="username"> {{ clip.user.nick }}</a></p>
 								<div id="clip-comment-view-div-{{ clip.key.id }}" class="comment">
 									<p style="display:none" id="clip-comment-view-{{ clip.key.id }}" class="text">{{  clip.comment|escape }}</p>
 									<div id="clip-comment-edit-{{ clip.key.id }}" style="display:none">
