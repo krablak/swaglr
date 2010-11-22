@@ -142,6 +142,7 @@ a {
 
 	  
 #main {
+	min-height: 350px;
 
 }	
 
@@ -160,7 +161,8 @@ a {
 		}	
 	}
 		.urban{
-				font-size: 1.1em;
+				font-size: 1.2em;
+				line-height: 1.2em;
 			
 			}
 		.betastamp{
@@ -195,10 +197,16 @@ a {
 	padding: $general-padding;
 	font-size: 1.2em;
 	position: relative;
-	top: -110px;
-	line-height: 1.3em;
+	top: -115px;
+	line-height: 1.6em;
+	
+	#get-extension{
+		padding: 60px 0 20px 0;
+		background: url(/static/img/down-arrow.png) center 0px no-repeat;
+}
 	
 }
+
 
 .username {
 	  display: inline-block;
@@ -600,4 +608,12 @@ a.awesome:hover {
 .detail-more-by{
 	margin: 2*$general-padding 0 0 0;
 }
+
+
+
+
+
+
+
+
  
