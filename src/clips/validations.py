@@ -99,4 +99,17 @@ def to_param(value):
         if len(value)>MAX_LEN:
             value = value[:499]
         value = value.replace('\n',' ').replace('\t',' ')
+    return value
+
+def to_int_param(value):
+    """
+    Helper function for update of the input values into clips API allowed style.
+    """       
+    if not value:
+        value = 0
+    else:
+        try:
+            value = int(value)
+        except:
+            value = 0
     return value 

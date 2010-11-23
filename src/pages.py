@@ -25,37 +25,24 @@ class MainPage(webapp.RequestHandler):
     
     @log_errors
     def get(self):
-        params = {}
-        params['greeting'] = get_greeting()
-        params['user'] = users.get_current_user()
+        params = ui.models.page_params()
         #Get all events
-        clips = Clip.getPage(0,PAGING)
-        if len(clips)>PAGING:
-            params['prev'] = "/page/%s" % (1)
-            clips = clips[0:-1]
-        params['day_clips'] = ui.models.to_day_clips(clips)
+        page_clips = Clip.getPage(0,PAGING)
+        ui.models.paging(params,page_clips,0,PAGING) 
+        params['day_clips'] = ui.models.to_day_clips(page_clips)
         util.render("templates/index.html", params, self.response)
         
 class Paging(webapp.RequestHandler):    
     
     @log_errors
     def get(self,page_val):
-        page = 0    
-        try:
-            page = int(page_val)
-        except:
-            pass
-        params = {}
-        params['greeting'] = get_greeting()
-        params['user'] = users.get_current_user()
+        #Read page value
+        page = clips.validations.to_int_param(page_val)
+        params = ui.models.page_params()
         #Get all events
-        clips = Clip.getPage(page, PAGING)
-        if len(clips)>PAGING:
-            params['prev'] = "/page/%s" % (page+1)
-            clips = clips[0:-1]
-        if page>0:
-            params['next'] = "/page/%s" % (page-1)            
-        params['day_clips'] = ui.models.to_day_clips(clips)
+        page_clips = Clip.getPage(page, PAGING)
+        ui.models.paging(params,page_clips,page,PAGING)            
+        params['day_clips'] = ui.models.to_day_clips(page_clips)
         util.render("templates/index.html", params, self.response)
 
 import ui.routing
@@ -64,32 +51,19 @@ class User(webapp.RequestHandler):
     
     @log_errors
     def get(self,user_id_val,page_val):
-        user_id = ""
-        try:
-            #Get id or nick from request
-            user_id = unicode(user_id_val)
-            #Load user info by given parameter
-            user_info = ui.routing.user_id(user_id_val)
-            if user_info:
-                user_id = user_info.user_id 
-        except:
-            pass
-        page = 0    
-        try:
-            page = int(page_val)
-        except:
-            pass
-        params = {}
-        params['greeting'] = get_greeting()
-        params['user'] = users.get_current_user()
+        #Get id or nick from request
+        user_id = clips.validations.to_param(user_id_val)
+        #Load user info by given parameter
+        user_info = ui.routing.user_id(user_id_val)
+        if user_info:
+            user_id = user_info.user_id 
+        #Read page value
+        page = clips.validations.to_int_param(page_val)
+        params = ui.models.page_params()
         #Get all events
-        clips = Clip.getPageByUser(page, PAGING, user_id)
-        if len(clips)>PAGING:
-            params['prev'] = "/user/%s/page/%s" % (user_id,page+1)
-            clips = clips[0:-1]
-        if page>0:
-            params['next'] = "/user/%s/page/%s" % (user_id,page-1)            
-        params['day_clips'] = ui.models.to_day_clips(clips)
+        page_clips = Clip.getPageByUser(page, PAGING, user_id)
+        ui.models.paging(params,page_clips,page,PAGING,user_id)          
+        params['day_clips'] = ui.models.to_day_clips(page_clips)
         util.render("templates/index.html", params, self.response)
         
 
@@ -98,36 +72,16 @@ class Detail(webapp.RequestHandler):
     
     @log_errors
     def get(self,clip_id_val):
-        clip_id = 0
-        try:
-            clip_id = int(clip_id_val)
-        except:
-            pass
-        params = {}
-        params['greeting'] = get_greeting()   
-        params['user'] = users.get_current_user()
-        
-                #Current clip
+        clip_id = clips.validations.to_int_param(clip_id_val)
+        params = ui.models.page_params()
+        #Current clip
         clip = Clip.getClip(clip_id)
         params['clip'] = clip
-        
         #Get all events
-        clips = Clip.getPageByUser(0, PAGING, clip.user.user_id)
-        if len(clips)>PAGING:
-            params['prev'] = "/page/%s" % (1)
-            clips = clips[0:-1]
-        params['day_clips'] = ui.models.to_day_clips(clips)
-        
+        page_clips = Clip.getPageByUser(0, PAGING, clip.user.user_id)
+        ui.models.paging(params,page_clips,0,PAGING,clip.user.user_id) 
+        params['day_clips'] = ui.models.to_day_clips(page_clips)
         util.render("templates/detail.html", params, self.response)
-        
-class About(webapp.RequestHandler):    
-    
-    @log_errors
-    def get(self):
-        params = {}
-        params['greeting'] = get_greeting()   
-        params['user'] = users.get_current_user()
-        util.render("templates/about.html", params, self.response)
 
         
 class Delete(webapp.RequestHandler):    
@@ -135,19 +89,12 @@ class Delete(webapp.RequestHandler):
     @log_errors
     @login_required
     def get(self,clip_id_val):
-        clip_id = 0
-        try:
-            clip_id = int(clip_id_val)
-        except:
-            pass
-        page = 0    
+        clip_id = clips.validations.to_int_param(clip_id_val)
         user = users.get_current_user()
         clip = Clip.getClip(clip_id)
         if clip and clip.user.user_id == user.user_id():
             clip.delete()
-        params = {}
-        params['greeting'] = get_greeting()
-        params['user'] = users.get_current_user()
+        params = ui.models.page_params()
         util.render("templates/deleted.html", params, self.response)        
 
         
@@ -169,13 +116,7 @@ class Images(webapp.RequestHandler):
                     result = image.tiny
                 util.renderJPEG(result, self.response)
                        
-
-def get_greeting():
-    user = users.get_current_user()
-    if user:
-        return ("<a href=\"%s\">Sign out</a>" % (users.create_logout_url("/")))
-    else:
-        return ("<a href=\"%s\">Sign in</a>" % users.create_login_url("/"))   
+   
             
         
 

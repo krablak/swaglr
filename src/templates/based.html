@@ -55,7 +55,7 @@
 				
 				<div id="toolbar">
 					{% if user %}
-					<p><a class="username" href="/user/{{ clip.user.nick|escape }}/page/0">{{ user|user_nick }}</a></p>
+					<p><a class="username" href="/user/{{ user_info.nick|escape }}/page/0">{{ user|user_nick }}</a></p>
 					{% endif %}
 					<p>{{ greeting }}</p>
 				</div><!-- /toolbar -->	
