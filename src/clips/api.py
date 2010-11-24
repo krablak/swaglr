@@ -129,7 +129,7 @@ def comment(id=0,comment=""):
     #Validate clip id
     validations.validate_int(id, "Clip id")
     #Validate comment
-    validations.validate_str(comment, "comment")
+    comment = validations.to_param(comment)
     #Get clip from datastore
     clip = Clip.getClip(id)
     #Check clip ownership

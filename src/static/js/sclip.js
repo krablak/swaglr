@@ -99,15 +99,33 @@ function onCommentedClip(id,comment){
 	$('#clip-comment-edit-'+id).hide();
 	$('#clip-comment-view-'+id).html(comment);
 	$('#comment-textarea-'+id).html(comment);
-	$('#clip-comment-view-'+id).fadeIn('fast');
-	$('#edit-comment-btn-'+id).fadeIn('fast');
-	var addBtn = $('#add-comment-btn-'+id);
-	if(addBtn.length>0){
-		addBtn.html("Edit comment");
+	if(comment!=""){
+		$('#clip-comment-view-'+id).fadeIn('fast');
+		changeEditButtonText(id,"Edit comment");
+	}else{
+		$('#comment-nib-view-'+id).fadeOut('fast');
+		changeEditButtonText(id,"Add comment");
 	}
+	$('#edit-comment-btn-'+id).fadeIn('fast');
 	showEditButtons(id,true);
 	
 	EDITED_CLIP = null;
+}
+
+/**
+ * Changes text on both edit buttons(edit-add)
+ * @param id id of active clip
+ * @param text text of comment button.
+ */
+function changeEditButtonText(id,text){
+	var addBtn = $('#add-comment-btn-'+id);
+	if(addBtn.length>0){
+		addBtn.html(text);
+	}
+	var editBtn = $('#edit-comment-btn-'+id);
+	if(editBtn.length>0){
+		editBtn.html(text);
+	}
 }
 
 /**

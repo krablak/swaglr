@@ -68,7 +68,7 @@
 							{% if clip|is_commented_clip %}									
 								<div class="comment"> 
 									<p><a href="/user/{{ clip.user.nick|escape }}/page/0" class="username">{{ clip.user.nick }}</a>says:</p>
-									<div class="comment-nib"></div>
+									<div class="comment-nib" id="comment-nib-view-{{ clip.key.id }}"></div>
 									<p id="clip-comment-view-{{ clip.key.id }}" class="text">{{  clip.comment|escape }}</p>
 									<div id="clip-comment-edit-{{ clip.key.id }}" style="display:none">
 										<textarea id="comment-textarea-{{ clip.key.id }}" rows="4" cols="30" ></textarea>
