@@ -403,11 +403,6 @@ ul.boxList li {
 	
 	}
 	
-	.like-button{
-		text-align: center;
-		margin: 10px 0;
-	}
-	
 	
 		
 	}
@@ -613,6 +608,16 @@ a.awesome:hover {
 .detail-more-by{
 	margin: 2*$general-padding 0 0 0;
 }
+
+	.like-button{
+		text-align: center;
+		margin: 10px 0;
+		
+		img{
+			width: 59px;
+			height: 59px;
+		}
+	}
 
 
 
