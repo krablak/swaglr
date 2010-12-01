@@ -92,7 +92,7 @@ $box-width:210px;
 $box-height:150px;
 
 $box-margin:12px;
-$box-background: #E7E7E8;
+$box-background: #efefef;
 $detail-background: $color4;
 
 /*Dialogs - confirm dialogs, etc.*/
@@ -401,6 +401,11 @@ ul.boxList li {
 		}
 		
 	
+	}
+	
+	.like-button{
+		text-align: center;
+		margin: 10px 0;
 	}
 	
 	
