@@ -585,7 +585,6 @@ a.awesome:hover {
   			background: #AAD6EF;
   			@include border-radius($default-radius + 2px);
   			color: dark-gray;
-			//margin: 0 $general-padding 0 0;
 			padding: $general-padding;
   		}
   		
@@ -611,7 +610,7 @@ a.awesome:hover {
 
 	.like-button{
 		text-align: center;
-		margin: 10px 0;
+		margin: 0 0 $general-padding 0;
 		
 		img{
 			width: 59px;
