@@ -5,8 +5,7 @@ Module defines interface for clips.
 
 @author: michalracek
 '''
-from google.appengine.api import users
-from google.appengine.api import oauth
+from google.appengine.api import users,oauth
 import validations
 from image import thumbnail
 from dbo import Clip,UserInfo
@@ -105,6 +104,7 @@ def store(type,page,link,src,text,comment,title):
         image = thumbnail(src)
         clip.image = image
     clip.put()
+    return clip
     
 def delete(id=0):
     """
@@ -136,6 +136,7 @@ def comment(id=0,comment=""):
     if clip and clip.user.user_id == user.user_id():
         clip.comment = comment
         clip.put()
+    return clip
     
     
     

@@ -2,6 +2,58 @@
  * Provides interface to server functions.
  */
 var sclipAPI = new SclipAPI();
+/****************************************Page init actions*****************************************************/
+$(document).ready(initUI);
+
+function initUI(){
+	enableLikeButtons();
+}
+
+/****************************************Clip like*****************************************************/
+
+
+/**
+ * Get all like buttons and checks if they are enabled. For enabled buttons displays them.
+ */
+function enableLikeButtons(){
+	var likeBtns = $(".like-button");
+	for(var i=0;i<likeBtns.length;i++){
+		var like_div = likeBtns[i];
+		var like_div_id = like_div.getAttribute("id");
+		var clip_id = like_div_id.substring("like-button-div-".length, like_div_id.length);
+		if($.cookie("liked-clip-"+clip_id)==null){
+			$("#"+like_div_id).show();
+		}
+	}
+}
+
+/**
+ * Calls the like for given clip id on server.
+ */
+function like(id){
+	sclipAPI.likeClip(id,onLikedClip,onLikeError);
+}
+
+/**
+ * Called in case of successful like.
+ */
+function onLikedClip(id){
+	//Hide the like button
+	$("#like-button-div-"+id).fadeOut('fast');
+	//Check if cookie for this like is already set
+	var cookieId = "liked-clip-"+id;
+	if($.cookie(cookieId)==null){
+		$.cookie(cookieId, "liked", { expires: 7 });
+	}
+}
+
+/**
+ * Called in case of failed like server call.
+ */
+function onLikeError(){
+}
+
+
 
 /****************************************Close Clip detail*****************************************************/
 function closeClipDetail(id) {

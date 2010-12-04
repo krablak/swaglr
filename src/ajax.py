@@ -12,15 +12,17 @@ from django.utils import simplejson
 from google.appengine.api import users
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import login_required
-import clips.api
-import clips.validations 
-import ui.models
 from ui.error_logging import log_errors
-from dbo import *
 import dbo
 import logging
 import traceback
 import StringIO
+
+import clips.api
+import clips.validations 
+import ui.models
+import clips.likes.api
+
 
 
 
@@ -96,3 +98,18 @@ class Post(webapp.RequestHandler):
             util.renderJSON({'code' : 'ERROR','desc' : "Clip post failed on error : %s" % (message)}, self.response)
         finally:
             logging.debug("Posting clip finised.") 
+            
+class Like(webapp.RequestHandler):
+    """
+    Handler for clip like.
+    """    
+    
+    @log_errors
+    def post(self):
+        logging.debug("Like clip start.")
+        try:
+            clip_id = clips.validations.to_int_param(self.request.get('id'))
+            logging.debug("Like clip id : %s" % clip_id)
+            clips.likes.api.like(clip_id)
+        finally:
+            logging.debug("Like clip finised.")
