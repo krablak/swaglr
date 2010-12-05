@@ -12,6 +12,7 @@ from google.appengine.api import users,oauth
 from dbo import Clip,UserInfo
 from like_dbo import ClipLike,UserClipLike
 import clips.validations
+from operator import itemgetter, attrgetter
 
 
 def like(id):
@@ -38,6 +39,21 @@ def like(id):
             ClipLike.increment(clip)
         else:
             logging.debug("Clip with id %s was not found and cannot be liked." % (clip_id))
+            
+     
+def get_popular_clips(clips_count=4):
+    """
+    Returns some most liked clips in last time.
+    """
+    #Get last likes
+    likes = ClipLike.latest(count=10*clips_count)
+    #Sort likes by the likes number
+    sorted_likes = sorted(likes, key=attrgetter('likes'),reverse=True)
+    #Create list of clips
+    clips = []
+    for i in range(0,len(sorted_likes)):
+        clips.append(sorted_likes[i].clip)
+    return clips
 
 
 def __get_user():

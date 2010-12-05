@@ -72,3 +72,10 @@ class ClipLike(db.Model):
         else:
             logging.error("Someone try to like None clip!")
         return None
+    
+    @staticmethod
+    def latest(count=30): 
+        """
+        Returns latest likes.
+        """
+        return ClipLike.all().order("-last_like_date").fetch(limit=count)
