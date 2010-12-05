@@ -118,6 +118,12 @@ def delete(id=0):
     clip = Clip.getClip(id)
     #Check clip ownership
     if clip and clip.user.user_id == user.user_id():
+        user_likes = clip.user_clip_like.fetch(limit=1000)
+        for user_like in user_likes:
+            user_like.delete()
+        clip_likes = clip.clip_likes.fetch(limit=1000)
+        for clip_like in clip_likes:
+            clip_like.delete()
         clip.delete()
         
 def comment(id=0,comment=""):
