@@ -15,10 +15,6 @@ def to_day_clips(clips):
     days_order = []
     #Go over each clip and add it into days model according to humanized date.
     for clip in clips:
-        #Temporary likes check
-        if not clip.likes:
-            clip.likes = 0
-            clip.put()
         #Create humanized date string
         str_date = __to_humanized_date(clip.date)
         print "Humanized date: %s" % (str_date)

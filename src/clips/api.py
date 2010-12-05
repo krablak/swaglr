@@ -99,7 +99,7 @@ def store(type,page,link,src,text,comment,title):
     #Check clip data object
     __validate_by_type(type,page,link,src,text,title)
     #Create clip DO
-    clip = Clip(type=type,page=page,comment=comment,link=link,src=src,text=text,user=UserInfo.getUserInfo(user),title=title)
+    clip = Clip(type=type,page=page,comment=comment,link=link,src=src,text=text,user=UserInfo.getUserInfo(user),title=title,likes=0)
     if src:
         image = thumbnail(src)
         clip.image = image

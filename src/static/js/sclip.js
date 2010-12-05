@@ -33,6 +33,8 @@ function enableLikeButtons(){
  * Calls the like for given clip id on server.
  */
 function like(id){
+	//Hide the like button
+	$("#like-button-div-"+id).fadeOut('fast');
 	sclipAPI.likeClip(id,onLikedClip,onLikeError);
 }
 
@@ -40,8 +42,6 @@ function like(id){
  * Called in case of successful like.
  */
 function onLikedClip(id){
-	//Hide the like button
-	$("#like-button-div-"+id).fadeOut('fast');
 	//Check if cookie for this like is already set
 	var cookieId = "liked-clip-"+id;
 	if($.cookie(cookieId)==null){

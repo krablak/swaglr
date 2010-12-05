@@ -67,7 +67,4 @@ def __get_user():
     """
     #Get logged user
     user = users.get_current_user()
-    if not user:
-        #Try to get user from oauth
-        user = oauth.get_current_user()
     return user
