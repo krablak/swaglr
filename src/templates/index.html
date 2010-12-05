@@ -40,7 +40,7 @@
 						<div class="comment-ico"><img src="/static/img/comment-ico.png"></div>
 						{% endif %}
 						
-						<div class="page-url-box">{{ clip.page|cut_url|escape }}</div>
+						<div class="page-url-box">{{ clip.page|cut_url|escape }} &nbsp;|&nbsp; {{clip.likes}} &nbsp;likes</div>
 
 						<div id="detail_{{clip.key.id}}" class="detail"> 
 							{% if clip|is_image_clip %}
@@ -63,7 +63,7 @@
 							{% endif %}  
 							
 												
-					    <p><a class="page-url" target="_blank" href="{{ clip.page }}">{% if clip|has_title %}{{ clip.title|escape|swag_slice:40 }}{% else %}{{ clip.page|escape|cut_http|swag_slice:30 }}{% endif %}</a></p>
+					    <p class="page-url"><a target="_blank" href="{{ clip.page }}">{% if clip|has_title %}{{ clip.title|escape|swag_slice:100 }}{% else %}{{ clip.page|escape|cut_http|swag_slice:100 }}{% endif %}</a></p>
 							
 							{% if clip|is_commented_clip %}									
 								<div class="comment"> 
@@ -105,18 +105,21 @@
 							{% if clip|is_my %} 
 							<p class="right"><a id="delete-comment-btn-{{ clip.key.id }}" onclick="showDeleteDialog({{ clip.key.id }});" class="awesome small">Delete post</a></p>
 							{% endif %}
-							<div id="like-button-div-{{ clip.key.id }}" style="display: none" onclick="like({{ clip.key.id }});return false;" class="like-button"><a href="#"><img alt="Like button" src="/static/img/like.png"></a></div>
-							<table class="social_buttons">
-								<tbody>
-									<tr>
-									    <td>{{ clip|clip_template:"templates/components/twitter.html" }}</td>
-										<td>{{ clip|clip_template:"templates/components/facebook.html" }}</td>
-										
-									</tr>
-								</tbody>
-							</table>
+							<div id="like-button-div-{{ clip.key.id }}" style="display: none" onclick="like({{ clip.key.id }});return false;" class="like-button {% if clip|is_my %}own{% endif %}"><a href="#"><img alt="Like button" src="/static/img/like.png"></a></div>
+							<div class="bottom_toolbar">
+								<table>
+									<tbody>
+										<tr>
+											
+											<td>{{ clip|clip_template:"templates/components/twitter.html" }}</td>
+											<td>{{ clip|clip_template:"templates/components/facebook.html" }}</td>
+											<td class="right"><a href="#" onclick="closeClip({{ clip.key.id }});">[X]</a></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
 							
-							<p class="right" ><a href="#" onclick="closeClip({{ clip.key.id }});">[X]</a>  </p>
+
 							
 								
 						</div>	<!-- /detail-->		

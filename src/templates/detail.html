@@ -27,8 +27,9 @@
 		{% if clip|is_link_clip %}
 		<q cite="{{ clip.link }}" >{{ clip.link|slice:"0:40"|escape }}...</q>
 		{% endif %}  
-				
-		<a class="page-url" target="_blank" href="{{ clip.page }}">{% if clip|has_title %}{{ clip.title|escape|swag_slice:30 }}{% else %}{{ clip.page|escape|cut_http|swag_slice:40 }}{% endif %}</a>
+		
+		<p class="page-url"><a target="_blank" href="{{ clip.page }}">{% if clip|has_title %}{{ clip.title|escape|swag_slice:100 }}{% else %}{{ clip.page|escape|cut_http|swag_slice:100 }}{% endif %}</a></p>
+								
 	</div>
 	<div class="right_column">
 		{% if clip|is_commented_clip %}									
@@ -73,14 +74,14 @@
 		{% endif %}		
 			
 		<div class="like-button"><a href="#"><img alt="Like button" src="/static/img/like.png"></a></div>
-		<table class="social_buttons">
-								<tbody>
-									<tr>
-										<td>{{ clip|clip_template:"templates/components/twitter.html" }}</td>
-										<td>{{ clip|clip_template:"templates/components/facebook.html" }}</td>
-									</tr>
-								</tbody>
-							</table>
+		<table >
+			<tbody>
+				<tr>
+					<td>{{ clip|clip_template:"templates/components/twitter.html" }}</td>
+					<td>{{ clip|clip_template:"templates/components/facebook.html" }}</td>
+				</tr>
+			</tbody>
+		</table>
 			
 	</div>
 	
