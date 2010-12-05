@@ -37,6 +37,11 @@ def like(id):
                 UserClipLike.get_or_create(clip, user_info)
             #Increase clip like
             ClipLike.increment(clip)
+            #Increase clip count
+            if not clip.likes:
+                clip.likes = 0;
+            clip.likes = clip.likes + 1
+            clip.put()    
         else:
             logging.debug("Clip with id %s was not found and cannot be liked." % (clip_id))
             
