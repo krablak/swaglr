@@ -73,7 +73,7 @@
 		<p class="right margin t d"><a id="delete-comment-btn-{{ clip.key.id }}" onclick="showDeleteDialog({{ clip.key.id }});" class="awesome small">Delete post</a></p>
 		{% endif %}		
 			
-		<div class="like-button"><a href="#"><img alt="Like button" src="/static/img/like.png"></a></div>
+		<div id="like-button-div-{{ clip.key.id }}"  class="like-button" style="display: none" onclick="like({{ clip.key.id }});return false;"><a href="#"><img alt="Like button" src="/static/img/like.png"></a></div>
 		<table >
 			<tbody>
 				<tr>

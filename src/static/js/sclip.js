@@ -20,9 +20,11 @@ function enableLikeButtons(){
 	for(var i=0;i<likeBtns.length;i++){
 		var like_div = likeBtns[i];
 		var like_div_id = like_div.getAttribute("id");
-		var clip_id = like_div_id.substring("like-button-div-".length, like_div_id.length);
-		if($.cookie("liked-clip-"+clip_id)==null){
-			$("#"+like_div_id).show();
+		if(like_div_id!=null){
+			var clip_id = like_div_id.substring("like-button-div-".length, like_div_id.length);
+			if($.cookie("liked-clip-"+clip_id)==null){
+				$("#"+like_div_id).show();
+			}
 		}
 	}
 }
