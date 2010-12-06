@@ -40,7 +40,7 @@
 						<div class="comment-ico"><img src="/static/img/comment-ico.png"></div>
 						{% endif %}
 						
-						<div class="page-url-box">{{ clip.page|cut_url|escape|swag_slice:25}} &nbsp;|&nbsp; {{clip.likes}} &nbsp;likes</div>
+						<div class="page-url-box">{{ clip.page|cut_url|escape|swag_slice:25}} &nbsp;|&nbsp; <span id="like-num-{{ clip.key.id }}">{{clip.likes}}</span> &nbsp;likes</div>
 
 						<div id="detail_{{clip.key.id}}" class="detail"> 
 							{% if clip|is_image_clip %}

@@ -35,7 +35,17 @@ function enableLikeButtons(){
 function like(id){
 	//Hide the like button
 	$("#like-button-div-"+id).fadeOut('fast');
+	incLikeNum(id);
 	sclipAPI.likeClip(id,onLikedClip,onLikeError);
+}
+
+/**
+ * Increments number of likes on clip element. 
+ */
+function incLikeNum(id){
+	var like = parseInt($("#like-num-"+id).html());
+	like++;
+	$("#like-num-"+id).html(like)
 }
 
 /**
