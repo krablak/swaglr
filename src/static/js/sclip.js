@@ -152,6 +152,7 @@ function openCommentEditor(id){
 	$('#clip-comment-view-div-'+id).show();
 	$('#clip-comment-view-'+id).hide();
 	$('#clip-comment-edit-'+id).fadeIn('fast');
+	$('#comment-textarea-'+id).focus();
 	//Hide edit buttons.
 	showEditButtons(id,false);
 }
