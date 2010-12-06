@@ -9,8 +9,8 @@ from google.appengine.api import images
 from dbo import Image
 import logging
 
-TINY_IMAGE_HEIGHT = 270;
-TINY_IMAGE_WIDTH = 270;
+TINY_IMAGE_HEIGHT = 290;
+TINY_IMAGE_WIDTH = 290;
 
 def thumbnail(url=None):
     logging.debug("Thumbnail start")
@@ -39,19 +39,15 @@ def __downloadImage(url=None):
 def __to_thumbnail(image,image_do):
     img_tiny = images.Image(image)
     __log_image(img_tiny)
-    resized = False
     #Check if the image is large and should be resized
     if img_tiny.width > TINY_IMAGE_WIDTH:
         img_tiny.resize(width=TINY_IMAGE_WIDTH)
-        resized = True
         logging.debug("Image was is large and will be resized.")
     else:
+        img_tiny.resize(width=img_tiny.width,height=img_tiny.height)
         logging.debug("Image was is not large and will be not resized.")
-    if resized:
-        tiny = img_tiny.execute_transforms(output_encoding=images.JPEG)
-        image_do.tiny = db.Blob(tiny)
-    else:        
-        image_do.tiny = db.Blob(image)
+    tiny = img_tiny.execute_transforms(output_encoding=images.JPEG)
+    image_do.tiny = db.Blob(tiny)
     
 def __is_large(image):
     """
