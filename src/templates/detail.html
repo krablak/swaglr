@@ -9,24 +9,28 @@
 <div  class="clip_pagedetail" id="page_detail_{{clip.key.id}}">
 	<div class="close" ><a href="#" onclick="closeClipDetail({{ clip.key.id }});return false;">[X]</a>  </div>
 	<div class="left_column">
-		{% if clip|is_image_clip %}
-		<div class="imgbox" ><img src="/images/tiny/{{ clip.image.key.id }}.jpg"/></div>
-		{% endif %}
-		{% if clip|is_text_clip %}
-		<q cite="{{ clip.page }}"  >{{ clip.text|escape }}</q>
-		{% endif %}
-		
-		{% if clip|is_page_clip %}
-			{% if clip|has_title %}
-				<q cite="{{ clip.page }}" onclick="closeClip({{ clip.key.id }});">{{ clip.title|escape}}</q>
-			{% else %}
-				<q cite="{{ clip.page }}" onclick="closeClip({{ clip.key.id }});">{{ clip.page|escape}}</q>
+		{% if clip|is_embed_content %}
+			{{ clip|get_embed_content }}
+		{% else %}
+			{% if clip|is_image_clip %}
+			<div class="imgbox" ><img src="/images/tiny/{{ clip.image.key.id }}.jpg"/></div>
 			{% endif %}
-		{% endif %}
+			{% if clip|is_text_clip %}
+			<q cite="{{ clip.page }}"  >{{ clip.text|escape }}</q>
+			{% endif %}
 		
-		{% if clip|is_link_clip %}
-		<q cite="{{ clip.link }}" >{{ clip.link|slice:"0:40"|escape }}...</q>
-		{% endif %}  
+			{% if clip|is_page_clip %}
+				{% if clip|has_title %}
+					<q cite="{{ clip.page }}" onclick="closeClip({{ clip.key.id }});">{{ clip.title|escape}}</q>
+				{% else %}
+					<q cite="{{ clip.page }}" onclick="closeClip({{ clip.key.id }});">{{ clip.page|escape}}</q>
+				{% endif %}
+			{% endif %}
+		
+			{% if clip|is_link_clip %}
+			<q cite="{{ clip.link }}" >{{ clip.link|slice:"0:40"|escape }}...</q>
+			{% endif %} 
+		{% endif %} 
 		
 		<p class="page-url"><a target="_blank" href="{{ clip.page }}">{% if clip|has_title %}{{ clip.title|escape|swag_slice:100 }}{% else %}{{ clip.page|escape|cut_http|swag_slice:100 }}{% endif %}</a></p>
 								
