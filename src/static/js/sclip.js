@@ -166,9 +166,11 @@ function onCommentedClip(id,comment){
 	$('#comment-textarea-'+id).html(comment);
 	if(comment!=""){
 		$('#clip-comment-view-'+id).fadeIn('fast');
+		$('#comment-ico-'+id).show();
 		changeEditButtonText(id,"Edit comment");
 	}else{
 		$('#comment-nib-view-'+id).fadeOut('fast');
+		$('#comment-ico-'+id).hide();
 		changeEditButtonText(id,"Add comment");
 	}
 	$('#edit-comment-btn-'+id).fadeIn('fast');

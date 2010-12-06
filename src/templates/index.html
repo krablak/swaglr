@@ -37,7 +37,9 @@
 						{% endif %} 
 						
             			{% if clip|is_commented_clip %}                                                 
-						<div class="comment-ico"><img src="/static/img/comment-ico.png"></div>
+						<div id="comment-ico-{{ clip.key.id }}" class="comment-ico"><img src="/static/img/comment-ico.png"></div>
+						{% else %}
+						<div id="comment-ico-{{ clip.key.id }}" style="display: none" class="comment-ico"><img src="/static/img/comment-ico.png"></div>
 						{% endif %}
 						
 						<div class="page-url-box">{{ clip.page|cut_url|escape|swag_slice:25}} &nbsp;|&nbsp; <span id="like-num-{{ clip.key.id }}">{{clip.likes}}</span> &nbsp;likes</div>
