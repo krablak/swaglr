@@ -7,6 +7,7 @@ Created on Aug 18, 2010
 
 from google.appengine.ext import db
 from google.appengine.api import memcache
+import datetime
 import logging
 
 TRACER = logging.getLogger("sclip.dbo")
@@ -71,6 +72,19 @@ class Clip(db.Model):
         q.filter('user = ', user_info[0])
         q.order("-date")
         return q.fetch(page_size+1,page*page_size) 
+    
+
+    @staticmethod
+    def getPageByUserAndDate(user_id=None,date=None,max_count=200):
+        user_info = UserInfo.getUserInfoById(user_id)
+        if not user_info or not date:
+            return []
+        q = Clip.all()
+        q.filter('date >',date - datetime.timedelta(days=+1))
+        q.filter('date <',date - datetime.timedelta(days=-1))
+        q.filter('user = ', user_info[0])
+        q.order("-date")
+        return q.fetch(max_count) 
     
     @staticmethod
     def getPage(page=0,page_size=5):

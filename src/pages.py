@@ -115,7 +115,36 @@ class Images(webapp.RequestHandler):
                 if "tiny" == image_type:
                     result = image.tiny
                 util.renderJPEG(result, self.response)
-                       
+                
+                
+import datetime
+                
+class DayReport(webapp.RequestHandler):
+    """
+    Displays clips for given day and user.
+    """
+    
+    @log_errors
+    def get(self,user_id_val,date_val):
+        #Get id or nick from request
+        user_id = clips.validations.to_param(user_id_val)
+        #Load user info by given parameter
+        user_info = ui.routing.user_id(user_id_val)
+        if user_info:
+            user_id = user_info.user_id 
+        #Read day date param value
+        page_clips = []
+        date_val = clips.validations.to_param(date_val)
+        try:
+            date = datetime.datetime.strptime(date_val,"%d-%m-%y")
+            page_clips = Clip.getPageByUserAndDate(user_id,date)
+        except:
+            logging.error("Cannot load clips for date from value %s" % (date_val))
+        params = ui.models.page_params()
+        #Get today events
+        #ui.models.paging(params,page_clips,0,PAGING,user_id)          
+        params['day_clips'] = ui.models.to_day_clips(page_clips)
+        util.render("templates/index.html", params, self.response)        
    
             
         
