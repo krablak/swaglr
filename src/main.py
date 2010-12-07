@@ -19,6 +19,7 @@ application = webapp.WSGIApplication([('/', pages.MainPage),
                                      , debug=True)
 
 webapp.template.register_template_library('ui.templatefilters')
+webapp.template.register_template_library('ui.embedfilters')
 
 def main():
     run_wsgi_app(application)
