@@ -80,8 +80,8 @@ class Clip(db.Model):
         if not user_info or not date:
             return []
         q = Clip.all()
-        q.filter('date >',date - datetime.timedelta(days=+1))
-        q.filter('date <',date - datetime.timedelta(days=-1))
+        q.filter('date >',date)
+        q.filter('date <',date + datetime.timedelta(hours=23,minutes=59))
         q.filter('user = ', user_info[0])
         q.order("-date")
         return q.fetch(max_count) 
