@@ -14,6 +14,7 @@ application = webapp.WSGIApplication([('/', pages.MainPage),
                                       ('/api/clip/comment/', ajax.Comment),
                                       ('/api/clip/post/', ajax.Post),
                                       ('/api/clip/like/', ajax.Like),
+                                      ('/api/clip/delete/', ajax.Delete),
                                       #('/test/', testpages.Test),
                                       ('/images/(.*)/(.*)', pages.Images),
                                      ]
