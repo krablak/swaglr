@@ -75,13 +75,13 @@
 									<div id="clip-comment-edit-{{ clip.key.id }}" style="display:none">
 										<textarea id="comment-textarea-{{ clip.key.id }}" rows="4" cols="30" ></textarea>
 										<p class="right">
-										<a id="comment-yes-{{ clip.key.id }}" class="awesome small blue">Save</a>
-										<a id="comment-no-{{ clip.key.id }}">Cancel</a>
+										<a href="#" id="comment-yes-{{ clip.key.id }}" class="awesome small blue">Save</a>
+										<a href="#" id="comment-no-{{ clip.key.id }}">Cancel</a>
 										</p>
 									</div>
 								{% if clip|is_my %}
 									<p class="right">
-										<a id="edit-comment-btn-{{ clip.key.id }}" onclick="showCommentDialog({{ clip.key.id }});" class="awesome small blue">Edit comment</a>
+										<a href="#" id="edit-comment-btn-{{ clip.key.id }}" onclick="showCommentDialog({{ clip.key.id }});" class="awesome small blue">Edit comment</a>
 									</p>
 								{% endif %} <!-- /if clip|is_my-->	
 								</div>
@@ -92,8 +92,8 @@
 									<div id="clip-comment-edit-{{ clip.key.id }}" style="display:none">
 										<textarea id="comment-textarea-{{ clip.key.id }}" rows="4" cols="30" ></textarea>
 										<p class="right">
-										<a id="comment-yes-{{ clip.key.id }}" class="awesome small blue">Save</a>
-										<a id="comment-no-{{ clip.key.id }}">Cancel</a>
+										<a href="#" id="comment-yes-{{ clip.key.id }}" class="awesome small blue">Save</a>
+										<a href="#" id="comment-no-{{ clip.key.id }}">Cancel</a>
 										</p>
 									</div>
 								</div>
@@ -105,14 +105,14 @@
 							{% endif %}	<!-- /if clip|is_commented_clip-->							
 								
 							{% if clip|is_my %} 
-							<p class="right"><a id="delete-comment-btn-{{ clip.key.id }}" onclick="showDeleteDialog({{ clip.key.id }});" class="awesome small">Delete post</a></p>
+							<p class="right"><a href="#" id="delete-comment-btn-{{ clip.key.id }}" onclick="showDeleteDialog({{ clip.key.id }});" class="awesome small">Delete post</a></p>
 							{% endif %}
 							<div id="like-button-div-{{ clip.key.id }}" style="display: none" onclick="like({{ clip.key.id }});return false;" class="like-button {% if clip|is_my %}own{% endif %}"><a href="#"><img alt="Like button" src="/static/img/like.png"></a></div>
 							<div class="bottom_toolbar">
 								<table>
 									<tbody>
 										<tr>
-											
+											<td><a href="/swag/{{ clip.key.id }}" class="link-button"><img src='/static/img/link-button.png' alt='Direct link' /> </a></td>
 											<td>{{ clip|clip_template:"templates/components/twitter.html" }}</td>
 											<td>{{ clip|clip_template:"templates/components/facebook.html" }}</td>
 											<td class="right"><a href="#" onclick="closeClip({{ clip.key.id }});">[X]</a></td>

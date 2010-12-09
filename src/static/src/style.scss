@@ -356,7 +356,7 @@ ul.boxList li {
 
 		q{
 			margin: 0;             
-			color: #D6CB00;
+			color: #555;
 			margin-top: 10px;                                       
 			font-size:1.35em;   
 			line-height: 1.2em;
@@ -633,17 +633,16 @@ a.awesome:hover {
 
 .like-button{
 	text-align: center;
-	margin: 0 0 $general-padding 0;
+	margin: 0 0 $general-padding/2 0;
 	
 	img{
-		width: 59px;
-		height: 59px;
+		width: 43px;
+		height: 43px;        
 	}
 }
 
 .like-button.own{
-
-	margin-top: -70px;
+	margin-top: -50px;
 
 }
 
