@@ -93,6 +93,12 @@ class Clip(db.Model):
         return q.fetch(page_size+1,page*page_size) 
     
     @staticmethod
+    def getPagingQuery():
+        q = Clip.all()
+        q.order("-date")
+        return q 
+    
+    @staticmethod
     def getClip(clip_id):
         if clip_id:
             return Clip.get_by_id(clip_id)

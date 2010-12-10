@@ -5,6 +5,7 @@ Created on Aug 18, 2010
 '''
 
 import util
+import datetime
 from django.utils import simplejson
 from google.appengine.api import users
 from google.appengine.ext import webapp
@@ -18,6 +19,7 @@ import logging
 import traceback
 import StringIO
 import clips.validations 
+import thirdparty.paging
 
 PAGING = 20
 
@@ -27,8 +29,9 @@ class MainPage(webapp.RequestHandler):
     def get(self):
         params = ui.models.page_params()
         #Get all events
-        page_clips = Clip.getPage(0,PAGING)
-        ui.models.paging(params,page_clips,0,PAGING) 
+        thirdparty.paging.PagedQuery
+        #Get paging content
+        page_clips = ui.models.paging(params,Clip.getPagingQuery(),0,PAGING) 
         params['day_clips'] = ui.models.to_day_clips(page_clips)
         util.render("templates/index.html", params, self.response)
         
@@ -40,8 +43,7 @@ class Paging(webapp.RequestHandler):
         page = clips.validations.to_int_param(page_val)
         params = ui.models.page_params()
         #Get all events
-        page_clips = Clip.getPage(page, PAGING)
-        ui.models.paging(params,page_clips,page,PAGING)            
+        page_clips = ui.models.paging(params,Clip.getPagingQuery(),page,PAGING) 
         params['day_clips'] = ui.models.to_day_clips(page_clips)
         util.render("templates/index.html", params, self.response)
 
@@ -61,8 +63,7 @@ class User(webapp.RequestHandler):
         page = clips.validations.to_int_param(page_val)
         params = ui.models.page_params()
         #Get all events
-        page_clips = Clip.getPageByUser(page, PAGING, user_id)
-        ui.models.paging(params,page_clips,page,PAGING,user_id)          
+        page_clips = ui.models.paging(params,Clip.getPagingQuery(),page,PAGING,user_id)
         params['day_clips'] = ui.models.to_day_clips(page_clips)
         util.render("templates/index.html", params, self.response)
         
@@ -78,8 +79,7 @@ class Detail(webapp.RequestHandler):
         clip = Clip.getClip(clip_id)
         params['clip'] = clip
         #Get all events
-        page_clips = Clip.getPageByUser(0, PAGING, clip.user.user_id)
-        ui.models.paging(params,page_clips,0,PAGING,clip.user.user_id) 
+        page_clips = ui.models.paging(params,Clip.getPagingQuery(),0,PAGING,clip.user.user_id)
         params['day_clips'] = ui.models.to_day_clips(page_clips)
         util.render("templates/detail.html", params, self.response)
 
@@ -116,8 +116,6 @@ class Images(webapp.RequestHandler):
                     result = image.tiny
                 util.renderJPEG(result, self.response)
                 
-                
-import datetime
                 
 class DayReport(webapp.RequestHandler):
     """

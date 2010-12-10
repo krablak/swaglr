@@ -4,6 +4,11 @@ Created on Oct 12, 2010
 @author: michalracek
 '''
 from datetime import date
+import thirdparty.paging
+
+from google.appengine.api import users
+from dbo import UserInfo
+
 
 def to_day_clips(clips):
     """
@@ -56,9 +61,6 @@ def __to_humanized_date(robotic_date):
             pass
     return UNKNOWN_DATE_TEXT
 
-from google.appengine.api import users
-from dbo import UserInfo
-
 def page_params():
     """
     Prepares default parameters for page:
@@ -81,19 +83,21 @@ def paging(params,clips,page,max_items,user_id=None):
     """
     Prepares paging links according to loaded clips and current page number.
     """
-    if len(clips)>max_items:
+    page_query = thirdparty.paging.PagedQuery(clips,max_items)
+    if page>0 and page_query.has_page(page):
             if user_id:
-                params['prev'] = "/user/%s/page/%s" % (user_id,page+1)
+                params['prev'] = "/user/%s/page/%s" % (user_id,page-1)
             else:
-                params['prev'] = "/page/%s" % (page+1)
-            clips = clips[0:-1]
+                params['prev'] = "/page/%s" % (page-1)
+    if  page_query.has_page(page+1):
+            if user_id:
+                params['next'] = "/user/%s/page/%s" % (user_id,page+1)
+            else:
+                params['next'] = "/page/%s" % (page+1)
     if page>0:
-            if user_id:
-                params['next'] = "/user/%s/page/%s" % (user_id,page-1)
-            else:
-                params['next'] = "/page/%s" % (page-1)
-            if len(clips)>0:
-                clips = clips[0:-1]
+        return page_query.fetch_page(page+1)
+    else:
+        return page_query.fetch(max_items)
     
     
 def __get_greeting(user):

@@ -136,12 +136,12 @@
 		    {% endfor %}   <!-- /for day in day_clips   -->	
 			
 			<div id="paging"> 
-		      {% if next %}
-    				<a id="next" href="{{ next }}">&lt;&nbsp;Previous&nbsp;</a>
-    			{% endif %}			
-			    {% if prev %}
-    				<a id="prev" href="{{ prev }}">Next&nbsp;&gt;</a>
+				{% if prev %}
+    				<a id="prev" href="{{ prev }}">&lt;&nbsp;Previous&nbsp;</a>
     			{% endif %} 
+		        {% if next %}
+    				<a id="next" href="{{ next }}">Next&nbsp;&gt;</a>
+    			{% endif %}			
 
 			</div>	<!-- /paging-->
 		    </div> <!-- /clips-->
