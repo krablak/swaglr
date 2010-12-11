@@ -599,12 +599,15 @@ a.awesome:hover {
     
     .comment{
   		.text {
-			font-size:1em;
-			line-height: 120%;
-  			background: #AAD6EF;
-  			@include border-radius($default-radius + 2px);
-  			color: dark-gray;
-			padding: $general-padding;
+			font-size:1.1em;
+  			line-height: 120%;                            
+  			background:  rgb(85,85,85);
+  			padding: $general-padding;
+  			margin: 0 0 $general-padding 0;
+  			@include border-radius($default-radius + 6px);
+  			color: white;	
+  			position:relative;
+  			z-index: 0;
   		}
   		
   		.comment-nib {   
