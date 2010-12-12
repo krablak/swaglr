@@ -55,7 +55,7 @@
 			{% endif %}
 			</div>
 		{% else %}	
-			<a href="/user/{{ clip.user.user_id }}/page/0" class="username"> {{ clip.user.nick }}</a>
+			By <a href="/user/{{ clip.user.user_id }}/page/0" class="username">{{ clip.user.nick }}</a>
 			<div id="clip-comment-view-div-{{ clip.key.id }}" class="comment">
 				<p style="display:none" id="clip-comment-view-{{ clip.key.id }}" class="text">{{  clip.comment|escape }}</p>
 				<span id="clip-comment-edit-{{ clip.key.id }}" style="display:none">

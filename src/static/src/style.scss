@@ -356,11 +356,14 @@ ul.boxList li {
 
 		q{
 			margin: 0;             
-			color: #555;
-			margin-top: 10px;                                       
+			
+			margin-top: 10px; 
+                                            
 			font-size:1.35em;   
 			line-height: 1.2em;
 			font-family: Tahoma;
+			font-weight: bold;
+			color: #555;
 		}
 		
 		
@@ -543,7 +546,7 @@ a.awesome:hover {
 .clip_pagedetail{
 
 	background: $detail-background;
-    font-size: 1.6em;
+  font-size: 1.4em;
 	color: black;
 	padding: 2 * $general-padding;
 	//padding-top: $general-padding;
@@ -586,20 +589,19 @@ a.awesome:hover {
 		
 
 	q{
-		padding: 15px;
-		font-size:1.3em;
-		background-color: $box-background;
-		@include border-radius($default-radius + 2px); 
-		display: block;
+      font-size:1.35em;   
+			line-height: 1.2em;
+			font-family: Tahoma;
+			font-weight: bold;
+			color: #555;
 		word-wrap: break-word;
-		line-height: 1.2em;
-		font-family: Verdana;
+     
 	}
 		
     
     .comment{
-  		.text {
-			font-size:1.1em;
+      .text {
+  			font-size:1.1em;
   			line-height: 120%;                            
   			background:  rgb(85,85,85);
   			padding: $general-padding;
@@ -611,11 +613,15 @@ a.awesome:hover {
   		}
   		
   		.comment-nib {   
-           //margin-top: -8px;                                                                    
+           margin-top: 0px;        
+           margin-bottom: -1px;                                                                   
   			   background:url(/static/img/comment-nib.png) no-repeat;
   			   background-position: 10% 0;
   			   height: 11px;
-        }
+  			   position:relative;
+  			   z-index: 100;
+
+        }   
   		
   		textarea {
   			margin-left: 10px;
