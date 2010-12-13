@@ -96,6 +96,16 @@ class Clip(db.Model):
     def getPagingQuery():
         q = Clip.all()
         q.order("-date")
+        return q
+    
+    @staticmethod
+    def getPageByUserQuery(user_id=None):
+        user_info = UserInfo.getUserInfoById(user_id)
+        if not user_info:
+            return []
+        q = Clip.all()
+        q.filter('user = ', user_info[0])
+        q.order("-date")
         return q 
     
     @staticmethod

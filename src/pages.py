@@ -63,7 +63,7 @@ class User(webapp.RequestHandler):
         page = clips.validations.to_int_param(page_val)
         params = ui.models.page_params()
         #Get all events
-        page_clips = ui.models.paging(params,Clip.getPagingQuery(),page,PAGING,user_id)
+        page_clips = ui.models.paging(params,Clip.getPageByUserQuery(user_id=user_id),page,PAGING,user_id)
         params['day_clips'] = ui.models.to_day_clips(page_clips)
         util.render("templates/index.html", params, self.response)
         
