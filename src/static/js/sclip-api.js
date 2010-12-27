@@ -53,5 +53,21 @@ var SclipAPI = function() {
 			} 
 		});
 	}
-	
+
+	/**
+	 * Calls server to switch user follow.
+	 */
+	this.followSwitch = function followSwitch(user,onSuccess,onError) {
+		$.ajax( {
+			type : "POST",
+			url : "/api/user/switch_follow/",
+			data: "user="+user,
+			success : function(response){
+				onSuccess(user);
+			},
+			error: function(xhr, ajaxOptions, thrownError){
+				onError();
+			} 
+		});
+	}	
 }

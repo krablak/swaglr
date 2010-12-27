@@ -18,18 +18,19 @@ def to_day_clips(clips):
     days_model = {}
     #Holds order of the days- instead of dict keys
     days_order = []
-    #Go over each clip and add it into days model according to humanized date.
-    for clip in clips:
-        #Create humanized date string
-        str_date = __to_humanized_date(clip.date)
-        print "Humanized date: %s" % (str_date)
-        #Check if model has record for this date.
-        if not days_model.has_key(str_date):
-            days_model[str_date] = []
-            #Add day into ordered list
-            days_order.insert(0,str_date)
-        #Append clip into model by date
-        days_model[str_date].append(clip)
+    if clips:
+        #Go over each clip and add it into days model according to humanized date.
+        for clip in clips:
+            #Create humanized date string
+            str_date = __to_humanized_date(clip.date)
+            print "Humanized date: %s" % (str_date)
+            #Check if model has record for this date.
+            if not days_model.has_key(str_date):
+                days_model[str_date] = []
+                #Add day into ordered list
+                days_order.insert(0,str_date)
+            #Append clip into model by date
+            days_model[str_date].append(clip)
     #Covert to list- due to Django templates 0.96 which is not able to iterate over dict :(
     days_model_list = []
     for day in days_order:
@@ -79,7 +80,7 @@ def page_params():
             params['user_info'] = user_info[0]
     return params
 
-def paging(params,clips,page,max_items,user_id=None):
+def paging(params,clips,page,max_items,user_id=None,url_prefix=None):
     """
     Prepares paging links according to loaded clips and current page number.
     """
@@ -88,12 +89,18 @@ def paging(params,clips,page,max_items,user_id=None):
             if user_id:
                 params['prev'] = "/user/%s/page/%s" % (user_id,page-1)
             else:
-                params['prev'] = "/page/%s" % (page-1)
+                if url_prefix:
+                    params['prev'] = "/%s/%s" % (url_prefix,page-1)
+                else:
+                    params['prev'] = "/page/%s" % (page-1)
     if  page_query.has_page(page+1):
             if user_id:
                 params['next'] = "/user/%s/page/%s" % (user_id,page+1)
             else:
-                params['next'] = "/page/%s" % (page+1)
+                if url_prefix:
+                    params['next'] = "/%s/%s" % (url_prefix,page+1)
+                else:
+                    params['next'] = "/page/%s" % (page+1)
     if page>0:
         return page_query.fetch_page(page+1)
     else:
@@ -103,7 +110,7 @@ def paging(params,clips,page,max_items,user_id=None):
 def __get_greeting(user):
     user = users.get_current_user()
     if user:
-        return ("<a href=\"%s\">Sign out</a>" % (users.create_logout_url("/")))
+        return ("<a class=\"awesome small\" href=\"%s\">Sign out</a>" % (users.create_logout_url("/")))
     else:
-        return ("<a href=\"%s\">Sign in</a>" % users.create_login_url("/"))
+        return ("<a class=\"awesome small blue\" href=\"%s\">Sign in</a>" % users.create_login_url("/"))
     

@@ -11,6 +11,7 @@ from google.appengine.api import users
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import login_required
 import clips.api
+import clips.likes.api
 import ui.models
 from ui.error_logging import log_errors
 from dbo import *
@@ -20,6 +21,7 @@ import traceback
 import StringIO
 import clips.validations 
 import thirdparty.paging
+import ui.routing
 
 PAGING = 20
 
@@ -27,13 +29,64 @@ class MainPage(webapp.RequestHandler):
     
     @log_errors
     def get(self):
+        user = users.get_current_user()
         params = ui.models.page_params()
-        #Get all events
-        thirdparty.paging.PagedQuery
+        if user:
+            user_info = UserInfo.getUserInfo(user)
+            follow_query = clips.follow.api.get_followers_query(user_info)
+            page_followers = ui.models.paging(params,follow_query,0,PAGING)
+            page_clips = clips.follow.api.get_clips_by_followers(page_followers)
+            params['day_clips'] = ui.models.to_day_clips(page_clips)
+            util.render("templates/index.html", params, self.response)
+        else:
+            #Get paging content
+            page_clips = ui.models.paging(params,Clip.getPagingQuery(),0,PAGING) 
+            params['day_clips'] = ui.models.to_day_clips(page_clips)
+            util.render("templates/index.html", params, self.response)
+            
+            
+class AllPage(webapp.RequestHandler):    
+    
+    @log_errors
+    def get(self,page_val):
+        params = ui.models.page_params()
+        #Read page value
+        page = clips.validations.to_int_param(page_val)
         #Get paging content
-        page_clips = ui.models.paging(params,Clip.getPagingQuery(),0,PAGING) 
+        page_clips = ui.models.paging(params,Clip.getPagingQuery(),page,PAGING,url_prefix="swags/all/page") 
         params['day_clips'] = ui.models.to_day_clips(page_clips)
-        util.render("templates/index.html", params, self.response)
+        util.render("templates/all.html", params, self.response)
+        
+class Popular(webapp.RequestHandler):    
+    
+    @log_errors
+    def get(self):
+        params = ui.models.page_params()
+        #Get paging content
+        page_clips = clips.likes.api.get_popular_clips(clips_count=20)
+        params['day_clips'] = [{'day':"" , 'clips': page_clips}]
+        util.render("templates/popular.html", params, self.response)
+        
+class LikedByCurrentUser(webapp.RequestHandler):    
+    
+    @log_errors
+    def get(self,user_id_val,page_val):
+        params = ui.models.page_params()
+        page_clips = []
+        #Get id or nick from request
+        user_id = clips.validations.to_param(user_id_val)
+        #Load user info by given parameter
+        user_info = ui.routing.user_id(user_id)
+        if user_info:
+            #Read page value
+            page = clips.validations.to_int_param(page_val)
+            #Get paged user likes
+            user_likes = ui.models.paging(params,clips.likes.api.get_liked_by_query(user_info),page,PAGING,url_prefix="swags/liked/by/%s/page" % (user_info.nick))
+            #Get clips by user likes
+            found_clips = clips.likes.api.get_clips_by_user_likes(user_likes)
+            page_clips = [{'day':"" , 'clips': found_clips}]
+        params['day_clips'] = page_clips 
+        util.render("templates/liked.html", params, self.response)
         
 class Paging(webapp.RequestHandler):    
     
@@ -41,13 +94,21 @@ class Paging(webapp.RequestHandler):
     def get(self,page_val):
         #Read page value
         page = clips.validations.to_int_param(page_val)
+        #get user and check if only followed clips should be displayed.
+        user = users.get_current_user()
         params = ui.models.page_params()
-        #Get all events
-        page_clips = ui.models.paging(params,Clip.getPagingQuery(),page,PAGING) 
-        params['day_clips'] = ui.models.to_day_clips(page_clips)
-        util.render("templates/index.html", params, self.response)
-
-import ui.routing
+        if user:
+            user_info = UserInfo.getUserInfo(user)
+            follow_query = clips.follow.api.get_followers_query(user_info)
+            page_followers = ui.models.paging(params,follow_query,page,PAGING)
+            page_clips = clips.follow.api.get_clips_by_followers(page_followers)
+            params['day_clips'] = ui.models.to_day_clips(page_clips)
+            util.render("templates/index.html", params, self.response)
+        else:
+            #Get all events
+            page_clips = ui.models.paging(params,Clip.getPagingQuery(),page,PAGING) 
+            params['day_clips'] = ui.models.to_day_clips(page_clips)
+            util.render("templates/index.html", params, self.response)
 
 class User(webapp.RequestHandler):    
     
@@ -62,10 +123,12 @@ class User(webapp.RequestHandler):
         #Read page value
         page = clips.validations.to_int_param(page_val)
         params = ui.models.page_params()
+        #Set displayed user
+        params['detail_user_info'] = user_info
         #Get all events
         page_clips = ui.models.paging(params,Clip.getPageByUserQuery(user_id=user_id),page,PAGING,user_id)
         params['day_clips'] = ui.models.to_day_clips(page_clips)
-        util.render("templates/index.html", params, self.response)
+        util.render("templates/user.html", params, self.response)
         
 
         

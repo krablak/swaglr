@@ -151,7 +151,7 @@ a {
 
 
 #logo{
-	margin-bottom:30px;
+	margin-bottom: 0px;
 	
 	
 	h1{
@@ -192,20 +192,27 @@ a {
 
 #toolbar{
 		font-size: 1.3em;
+		padding: $general-padding;
+		line-height: 2.6em;
 		
+		.navigation {
+			font-size: 1.8em;
+			font-weight: bold;
+			margin-bottom: $general-padding;
+			text-decoration:none;
+		}
 	}
 
 
 #footer {
 	padding: $general-padding;
-	font-size: 1.2em;
+	font-size: 1.3em;
 	position: relative;
-	top: -115px;
+	top: -15px;
 	line-height: 1.6em;
 	
 	#get-extension{
-		padding: 60px 0 20px 0;
-		background: url(/static/img/down-arrow.png) center 0px no-repeat;
+		//padding: 60px 0 20px 0;
 }
 	
 }
@@ -525,6 +532,11 @@ a.awesome:hover {
   }
 
 /* Sizes ---------- */
+.thin.awesome {
+	font-size: 11px;
+	padding: 1px 8px 0px;
+}
+
 .small.awesome {
 	font-size: 11px;
 	padding: 4px 8px 5px;
@@ -636,6 +648,16 @@ a.awesome:hover {
 	}
 } 
 
+.report-name {
+	font-size: 3.8em;
+  	line-height: 120%;
+  	margin-bottom:$general-padding;
+  	.follow-button{
+  		top: -0.8em;
+  		margin-left: $general-padding;
+  	}
+}
+
 .detail-more-by{
 	margin: 2*$general-padding 0 0 0;
 }
@@ -646,7 +668,7 @@ a.awesome:hover {
 	
 	img{
 		width: 43px;
-		height: 43px;        
+		height: 43px;
 	}
 }
 

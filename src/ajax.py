@@ -22,6 +22,7 @@ import clips.api
 import clips.validations 
 import ui.models
 import clips.likes.api
+import clips.follow.api
 
 
 
@@ -65,7 +66,7 @@ class Comment(webapp.RequestHandler):
             fp = StringIO.StringIO()
             traceback.print_exc(file=fp)
             message = fp.getvalue()
-            logging.error("Problem during clip comment : %s" % (message) )
+            logging.error("Problem during clip comment : %s" % (message))
             self.error(500)
             
 class Post(webapp.RequestHandler):
@@ -84,20 +85,20 @@ class Post(webapp.RequestHandler):
             type = clips.validations.to_param(self.request.get('type'))
             comment = clips.validations.to_param(self.request.get('comment'))
             title = clips.validations.to_param(self.request.get('title'))
-            logging.debug("page:'%s' comment:'%s'" % (page,comment))
-            logging.debug("link:'%s' src:'%s'" % (link,src)) 
-            clips.api.store(type,page, link, src, text, comment,title)
+            logging.debug("page:'%s' comment:'%s'" % (page, comment))
+            logging.debug("link:'%s' src:'%s'" % (link, src)) 
+            clips.api.store(type, page, link, src, text, comment, title)
             logging.debug("Posted!")
-            util.renderJSON({'code' : 'OK','desc' : 'Clip posted.'}, self.response)
+            util.renderJSON({'code' : 'OK', 'desc' : 'Clip posted.'}, self.response)
         except:
             #Get exception trace
             fp = StringIO.StringIO()
             traceback.print_exc(file=fp)
             message = fp.getvalue()
-            logging.error("Problem during post : %s" % (message) )
-            util.renderJSON({'code' : 'ERROR','desc' : "Clip post failed on error : %s" % (message)}, self.response)
+            logging.error("Problem during post : %s" % (message))
+            util.renderJSON({'code' : 'ERROR', 'desc' : "Clip post failed on error : %s" % (message)}, self.response)
         finally:
-            logging.debug("Posting clip finised.") 
+            logging.debug("Posting clip finished.") 
             
 class Like(webapp.RequestHandler):
     """
@@ -113,3 +114,30 @@ class Like(webapp.RequestHandler):
             clips.likes.api.like(clip_id)
         finally:
             logging.debug("Like clip finised.")
+
+class FollowSwitch(webapp.RequestHandler):
+    """
+    Handler for user follow/unfollow.
+    """    
+    
+    @log_errors
+    def post(self):
+        logging.debug("User follow switch start.")
+        try:
+            #clips.follow.api
+            user_id_val = clips.validations.to_param(self.request.get('user'))
+            #Load user info by given parameter
+            user_info = ui.routing.user_id(user_id_val)
+            if user_info:
+                logging.debug("User follow switch for user %s." % (user_id_val))    
+                clips.follow.api.switch_follow(user_info)
+        except:
+            #Get exception trace
+            fp = StringIO.StringIO()
+            traceback.print_exc(file=fp)
+            message = fp.getvalue()
+            logging.error("Problem during user follow switch : %s" % (message))
+            util.renderJSON({'code' : 'ERROR', 'desc' : "User follow switch failed on error : %s" % (message)}, self.response)
+        finally:
+            logging.debug("User follow switch finished.")           
+        

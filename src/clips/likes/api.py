@@ -51,15 +51,34 @@ def get_popular_clips(clips_count=4):
     Returns some most liked clips in last time.
     """
     #Get last likes
-    likes = ClipLike.latest(count=10*clips_count)
+    likes = ClipLike.latest(count=clips_count)
     #Sort likes by the likes number
     sorted_likes = sorted(likes, key=attrgetter('likes'),reverse=True)
     #Create list of clips
     clips = []
     for i in range(0,len(sorted_likes)):
-        clips.append(sorted_likes[i].clip)
+        try:
+            clips.append(sorted_likes[i].clip)
+        except:
+            logging.error("Canno read clip reference from user like %s" %(sorted_likes[i]))
     return clips
 
+def get_liked_by_query(user_info):
+    """
+    Returns likes liked by passed user.
+    """
+    if user_info:
+        return UserClipLike.get_user_likes_query(user_info)
+    return None
+
+def get_clips_by_user_likes(user_likes):
+    """
+    Returns clips liked by passed user.
+    """
+    if user_likes:
+        clip_keys = [ user_like.clip.key() for user_like in user_likes]
+        return Clip.get(clip_keys)
+    return None
 
 def __get_user():
     """

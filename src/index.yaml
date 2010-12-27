@@ -14,29 +14,16 @@ indexes:
   properties:
   - name: user
   - name: date
-
-- kind: Clip
-  properties:
-  - name: user
-  - name: date
     direction: desc
 
-- kind: Clip
+- kind: Followers
   properties:
-  - name: user.key().id()
-  - name: date
+  - name: users
+  - name: order_date
+    direction: desc
 
-- kind: Clip
+- kind: UserClipLike
   properties:
-  - name: user.key().user_id
-  - name: date
-
-- kind: Clip
-  properties:
-  - name: user.key.user_id
-  - name: date
-
-- kind: Clip
-  properties:
-  - name: user.user_id
-  - name: date
+  - name: user
+  - name: like_date
+    direction: desc

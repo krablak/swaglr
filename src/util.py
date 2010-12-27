@@ -7,6 +7,7 @@ from google.appengine.ext.webapp import template
 import os
 from google.appengine.ext import webapp
 from django.utils import simplejson
+from google.appengine.api import users, oauth
 
 def render(path, values, response):
     response.headers['Content-Type'] = 'text/html'
@@ -52,5 +53,24 @@ def unescape(s):
     s = s.replace("&apos;", "'")
     return s
 
+def get_user():
+    """
+    Helper function to get currently logged user.
+    """
+    #Get logged user
+    user = suppress_exeptions(users.get_current_user)
+    if not user:
+        #Try to get user from oauth
+        user = suppress_exeptions(oauth.get_current_user)
+    return user
 
+def suppress_exeptions(function):
+    """
+    Helper function for hiding or exceptions. 
+    Use it only when you really know what you are doing.
+    """
+    try:
+        return function()
+    except:
+        return None
     

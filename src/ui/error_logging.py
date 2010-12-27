@@ -31,5 +31,5 @@ def log_errors(handler_method):
                 user_nick = users.get_current_user().nickname()
             #Log error
             logger.error("Error occured to user (%s) during request : (%s)" % (user_nick,message))
-            util.render("templates/error.html", {}, self.response)
+            util.render("templates/error.html", {'error' : message}, self.response)
     return execute

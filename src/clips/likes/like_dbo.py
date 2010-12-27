@@ -41,6 +41,13 @@ class UserClipLike(db.Model):
             return user_like
         else:
             logging.error("Someone try to like None clip or use user_info!")
+            
+    @staticmethod
+    def get_user_likes_query(user_info):
+        """
+        Returns passed user likes query
+        """
+        return UserClipLike.all().filter("user =", user_info).order("-like_date")
     
 
 class ClipLike(db.Model):

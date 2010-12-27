@@ -7,6 +7,7 @@ Module defines interface for clips.
 '''
 from google.appengine.api import users,oauth
 import validations
+import clips.api_handlers
 from image import thumbnail
 from dbo import Clip,UserInfo
 
@@ -104,6 +105,8 @@ def store(type,page,link,src,text,comment,title):
         image = thumbnail(src)
         clip.image = image
     clip.put()
+    #Call handlers for clip delete.
+    clips.api_handlers.clip_created(clip)
     return clip
     
 def delete(id=0):
@@ -124,6 +127,7 @@ def delete(id=0):
         clip_likes = clip.clip_likes.fetch(limit=1000)
         for clip_like in clip_likes:
             clip_like.delete()
+        clips.api_handlers.clip_deleted(clip)
         clip.delete()
         
 def comment(id=0,comment=""):
@@ -143,6 +147,5 @@ def comment(id=0,comment=""):
         clip.comment = comment
         clip.put()
     return clip
-    
-    
+
     

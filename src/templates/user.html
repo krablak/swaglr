@@ -1,0 +1,9 @@
+{% extends "index.html" %}
+
+
+{% block detail %}
+	<div class="report-name">LATEST BY <a href="/user/{{ detail_user_info.nick|escape }}/page/0" class="username">{{ detail_user_info.nick|escape }}</a>{{ detail_user_info|follow_button }}</div>
+{% endblock %}
+			
+
+{% debug %} 

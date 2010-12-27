@@ -109,6 +109,13 @@ class Clip(db.Model):
         return q 
     
     @staticmethod
+    def getPageByUserInfoQuery(user_info):
+        q = Clip.all()
+        q.filter('user = ', user_info)
+        q.order("-date")
+        return q
+    
+    @staticmethod
     def getClip(clip_id):
         if clip_id:
             return Clip.get_by_id(clip_id)
