@@ -37,6 +37,9 @@ def to_day_clips(clips):
         days_model_list.insert(0,{'day':day , 'clips': days_model[day]})    
     return days_model_list
 
+def to_united_clips(clips):
+    return [{'day':"" , 'clips': clips}]
+
 def __to_page_clip(clip):
     return None
 
