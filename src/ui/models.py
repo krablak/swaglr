@@ -4,11 +4,16 @@ Created on Oct 12, 2010
 @author: michalracek
 '''
 from datetime import date
+from clips.api import DAY
 import thirdparty.paging
 
 from google.appengine.api import users
-from dbo import UserInfo
+from dbo import UserInfo, Clip
 
+UNKNOWN_DATE_TEXT = "in the year one";
+TODAY = "today"
+YESTERDAY = "yesterday"
+OLDER = "%s days ago"
 
 def to_day_clips(clips):
     """
@@ -23,7 +28,6 @@ def to_day_clips(clips):
         for clip in clips:
             #Create humanized date string
             str_date = __to_humanized_date(clip.date)
-            print "Humanized date: %s" % (str_date)
             #Check if model has record for this date.
             if not days_model.has_key(str_date):
                 days_model[str_date] = []
@@ -32,19 +36,18 @@ def to_day_clips(clips):
             #Append clip into model by date
             days_model[str_date].append(clip)
     #Covert to list- due to Django templates 0.96 which is not able to iterate over dict :(
-    days_model_list = []
     for day in days_order:
-        days_model_list.insert(0,{'day':day , 'clips': days_model[day]})    
-    return days_model_list
+        if days_model[day]:
+            if not day==TODAY:
+                days_model[day][0].day = day
+    result_list = []
+    for day in days_order:
+        result_list = days_model[day] + result_list
+    return [{'day':"" , 'clips': result_list}]
 
 def to_united_clips(clips):
     return [{'day':"" , 'clips': clips}]
 
-def __to_page_clip(clip):
-    return None
-
-
-UNKNOWN_DATE_TEXT = "in the year one";
 def __to_humanized_date(robotic_date):
     """
     Converts date time into human readable string.
@@ -54,11 +57,11 @@ def __to_humanized_date(robotic_date):
             delta = date(robotic_date.year, robotic_date.month, robotic_date.day) - date.today()
             days = delta.days
             if days == 0:
-                return "today"
+                return TODAY
             if days == -1:
-                return "yesterday"
+                return YESTERDAY
             else:
-                return "%s days ago" % (days*-1)
+                return OLDER % (days*-1)
         except AttributeError:
             pass
         except ValueError:

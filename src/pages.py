@@ -36,12 +36,12 @@ class MainPage(webapp.RequestHandler):
             follow_query = clips.follow.api.get_followers_query(user_info)
             page_followers = ui.models.paging(params,follow_query,0,PAGING)
             page_clips = clips.follow.api.get_clips_by_followers(page_followers)
-            params['day_clips'] = ui.models.to_united_clips(page_clips)
+            params['day_clips'] = ui.models.to_day_clips(page_clips)
             util.render("templates/index.html", params, self.response)
         else:
             #Get paging content
             page_clips = ui.models.paging(params,Clip.getPagingQuery(),0,PAGING) 
-            params['day_clips'] = ui.models.to_united_clips(page_clips)
+            params['day_clips'] = ui.models.to_day_clips(page_clips)
             util.render("templates/index.html", params, self.response)
             
             
@@ -54,7 +54,7 @@ class AllPage(webapp.RequestHandler):
         page = clips.validations.to_int_param(page_val)
         #Get paging content
         page_clips = ui.models.paging(params,Clip.getPagingQuery(),page,PAGING,url_prefix="swags/all/page") 
-        params['day_clips'] = ui.models.to_united_clips(page_clips)
+        params['day_clips'] = ui.models.to_day_clips(page_clips)
         util.render("templates/all.html", params, self.response)
         
 class Popular(webapp.RequestHandler):    
@@ -102,12 +102,12 @@ class Paging(webapp.RequestHandler):
             follow_query = clips.follow.api.get_followers_query(user_info)
             page_followers = ui.models.paging(params,follow_query,page,PAGING)
             page_clips = clips.follow.api.get_clips_by_followers(page_followers)
-            params['day_clips'] = ui.models.to_united_clips(page_clips)
+            params['day_clips'] = ui.models.to_day_clips(page_clips)
             util.render("templates/index.html", params, self.response)
         else:
             #Get all events
             page_clips = ui.models.paging(params,Clip.getPagingQuery(),page,PAGING) 
-            params['day_clips'] = ui.models.to_united_clips(page_clips)
+            params['day_clips'] = ui.models.to_day_clips(page_clips)
             util.render("templates/index.html", params, self.response)
 
 class User(webapp.RequestHandler):    
@@ -127,7 +127,7 @@ class User(webapp.RequestHandler):
         params['detail_user_info'] = user_info
         #Get all events
         page_clips = ui.models.paging(params,Clip.getPageByUserQuery(user_id=user_id),page,PAGING,user_id)
-        params['day_clips'] = ui.models.to_united_clips(page_clips)
+        params['day_clips'] = ui.models.to_day_clips(page_clips)
         util.render("templates/user.html", params, self.response)
         
 
@@ -143,7 +143,7 @@ class Detail(webapp.RequestHandler):
         params['clip'] = clip
         #Get all events
         page_clips = ui.models.paging(params,Clip.getPagingQuery(),0,PAGING,clip.user.user_id)
-        params['day_clips'] = ui.models.to_united_clips(page_clips)
+        params['day_clips'] = ui.models.to_day_clips(page_clips)
         util.render("templates/detail.html", params, self.response)
 
         

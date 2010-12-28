@@ -46,6 +46,12 @@ def is_text_clip(clip):
         return clips.api.TEXT == clip.type
     return False
 
+def is_day_clip(clip):
+    """
+    Return true in case of day clip.
+    """
+    return hasattr(clip,"day")
+
 def is_commented_clip(clip):
     """
     Returns true in case that clip is commented.
@@ -128,6 +134,7 @@ register.filter(is_page_clip)
 register.filter(is_image_clip)
 register.filter(is_link_clip)
 register.filter(is_text_clip)
+register.filter(is_day_clip)
 register.filter(is_commented_clip)
 register.filter(is_my)
 register.filter(user_nick)

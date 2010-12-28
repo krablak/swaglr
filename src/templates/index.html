@@ -15,7 +15,11 @@
 				<h2 class="dayId">{{ day.day }}</h2>
     			<ul class="boxList">
     		{% for clip in day.clips %}	
-	    			<li id="clip_box_{{clip.key.id}}" onclick="openClip({{ clip.key.id }});">
+						<li id="clip_box_{{clip.key.id}}" onclick="openClip({{ clip.key.id }});">
+						{% if clip|is_day_clip %}
+	    					<div class="day-box">{{ clip.day|escape }}</div>
+						{% endif %}
+						
 						{% if clip|is_image_clip %}
 							<div class="imgbox crop"><img src="/images/tiny/{{ clip.image.key.id }}.jpg"/></div>
 						{% endif %}
@@ -118,13 +122,9 @@
 										</tr>
 									</tbody>
 								</table>
-							</div>
-							
-
-							
-								
-						</div>	<!-- /detail-->		
-					</li>  
+							</div>								
+						</div>	<!-- /detail-->
+						</li>
     		{% endfor %}  <!-- /for clip in day.clips  --> 		
         	
     			</ul>

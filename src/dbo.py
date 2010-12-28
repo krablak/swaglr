@@ -46,6 +46,10 @@ class UserInfo(db.Model):
         return UserInfo.all().filter('user_id = ', user_id).fetch(1)
     
     @staticmethod
+    def getUserInfoFirst():
+        return UserInfo.all().fetch(1)[0]
+    
+    @staticmethod
     def getUserInfoByNick(nick):
         return UserInfo.all().filter('nick = ', nick).fetch(1)
     

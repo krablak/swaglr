@@ -55,7 +55,8 @@ def __get_user():
 PAGE = "PAGE"
 LINK = "LINK"
 IMAGE = "IMAGE"
-TEXT = "TEXT" 
+TEXT = "TEXT"
+DAY = "DAY"
 UNKNOWN = "UNKNOWN"
        
 def __validate_by_type(type,page,link,src,text,title):
