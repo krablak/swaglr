@@ -1,0 +1,9 @@
+{% extends "index.html" %}
+
+
+{% block detail %}
+	<div class="report-name">SWAGS BY <a href="/user/{{ user_info.nick|escape }}/page/0" class="username">{{ user_info.nick|escape }}</a> ON {{ report_date|date:"j.m.Y" }}</div>
+{% endblock %}
+			
+
+{% debug %} 

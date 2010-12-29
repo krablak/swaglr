@@ -49,6 +49,18 @@ class UserClipLike(db.Model):
         """
         return UserClipLike.all().filter("user =", user_info).order("-like_date")
     
+    @staticmethod
+    def get_user_day_likes(user_info,day_date,max_clips=100):
+        """
+        Returns passed user likes for given day.
+        """
+        q = UserClipLike.all()
+        q.filter('like_date >',day_date)
+        q.filter('like_date <',day_date + datetime.timedelta(hours=23,minutes=59))
+        q.filter('user = ', user_info)
+        q.order("-like_date")
+        return q.fetch(limit=max_clips)
+    
 
 class ClipLike(db.Model):
     """

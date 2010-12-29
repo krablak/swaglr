@@ -60,7 +60,7 @@ def get_popular_clips(clips_count=4):
         try:
             clips.append(sorted_likes[i].clip)
         except:
-            logging.error("Canno read clip reference from user like %s" %(sorted_likes[i]))
+            logging.error("Cannot read clip reference from user like %s" %(sorted_likes[i]))
     return clips
 
 def get_liked_by_query(user_info):
@@ -78,6 +78,20 @@ def get_clips_by_user_likes(user_likes):
     if user_likes:
         clip_keys = [ user_like.clip.key() for user_like in user_likes]
         return Clip.get(clip_keys)
+    return None
+
+def get_day_clips_by_user_likes(user_info,day_date):
+    """
+    Returns clips liked by passed user in specified date.
+    """
+    if user_info and day_date:
+        #Get user likes for given date
+        user_likes = UserClipLike.get_user_day_likes(user_info, day_date)
+        #Get clip keys and load clips by the found user likes
+        clip_keys = [ user_like.clip.key() for user_like in user_likes]
+        return Clip.get(clip_keys)
+    else:
+        logging.error("Cannot get user likes for user '%s' and date '%s'" % (user_info,day_date))
     return None
 
 def __get_user():

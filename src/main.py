@@ -2,6 +2,7 @@ from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 import pages
 import ajax
+import reports
 import testpages
 
 
@@ -10,10 +11,11 @@ application = webapp.WSGIApplication([('/', pages.MainPage),
                                       ('/user/(.*)/page/(.*)', pages.User),
                                       ('/swag/(.*)', pages.Detail),
                                       ('/swag/(.*)', pages.Detail),
-                                      ('/swags/by/(.*)/on/(.*)', pages.DayReport),
                                       ('/swags/all/page/(.*)', pages.AllPage),
                                       ('/swags/popular/', pages.Popular),
                                       ('/swags/liked/by/(.*)/page/(.*)', pages.LikedByCurrentUser),
+                                      ('/swags/by/(.*)/on/(.*)', reports.UserDay),
+                                      ('/swags/liked/by/(.*)/on/(.*)', reports.UserLikesDay),
                                       ('/api/clip/comment/', ajax.Comment),
                                       ('/api/clip/post/', ajax.Post),
                                       ('/api/clip/like/', ajax.Like),

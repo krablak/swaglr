@@ -19,7 +19,7 @@ def follow_button(user_info):
     """
     Renders follow button according to follow state of the passed user. Button is displayed only for 
     logged users.
-    """    
+    """
     user = users.get_current_user()
     cur_user_info = UserInfo.getUserInfo(user)
     if user and user_info and (cur_user_info.key() != user_info.key()):

@@ -22,7 +22,7 @@ class Followers(db.Model):
         if clip:
             followers = Followers.get_by_clip(clip)
             if followers:
-                followers.delete()
+                followers[0].delete()
         else:
             logging.debug("Cannot delete followers for None clip.")
             

@@ -34,7 +34,7 @@ class UserInfo(db.Model):
     @staticmethod
     def getUserInfo(user):
         user_info = UserInfo.all().filter('user =', user).fetch(1)
-        if not user_info:
+        if not user_info and user:
             user_info = UserInfo(user=user,user_id=user.user_id(),nick=user.nickname())
             user_info.put()
             return user_info
@@ -79,7 +79,7 @@ class Clip(db.Model):
     
 
     @staticmethod
-    def getPageByUserAndDate(user_id=None,date=None,max_count=200):
+    def getPageByUserAndDate(user_id=None,date=None,max_count=100):
         user_info = UserInfo.getUserInfoById(user_id)
         if not user_info or not date:
             return []

@@ -354,11 +354,11 @@ ul.boxList li {
     height: 10px;
     width: $box-width - 2*$general-padding + 4px;
     padding: 2px $general-padding - 2px $general-padding - 2px;
-    @include linear-gradient(color-stops(rgba(157, 157, 157, 1.00),rgba(245, 245, 245, 0.0)), left top);
-   	color: rgba(255, 255, 255, 1.00);
+    @include linear-gradient(color-stops(rgba(187, 187, 187, 1.00),rgba(245, 245, 245, 0.0)), left top);
+   	color: #646464;   	
    	text-align: left;
-	font-size: 16px;
-	font-weight:bold;    
+	font-size: 14px;
+	//font-weight:bold;    
     z-index: 99;
     }
 /*DETAIL======================================================================*/	
