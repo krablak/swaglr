@@ -39,7 +39,10 @@ class UserInfo(db.Model):
             user_info.put()
             return user_info
         else:
-            return user_info[0]
+            if user_info:
+                return user_info[0]
+            else:
+                return None
     
     @staticmethod
     def getUserInfoById(user_id):
