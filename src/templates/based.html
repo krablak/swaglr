@@ -54,15 +54,17 @@
 				</div> <!-- /logo -->	
 				
 				<div id="toolbar">
-					<div id="navigation">
+					<ul id="navigation">
 					{% if user %}
-						<p><a class="navigation" href="/">HOME</a></p>
-						<p><a class="navigation" href="/user/{{ user_info.nick|escape }}/page/0">MY</a></p>
-						<p><a class="navigation" href="/swags/liked/by/{{ user_info.nick|escape }}/page/0">I LIKED</a></p>
+						<li><a href="/">HOME</a></li>
+						<li><a href="/user/{{ user_info.nick|escape }}/page/0">OWN</a></li>
+						<li><a  href="/swags/liked/by/{{ user_info.nick|escape }}/page/0">I LIKE</a></li>
 					{% endif %}
-						<p><a class="navigation" href="/swags/all/page/0">ALL</a></p>
-						<p><a class="navigation" href="/swags/popular/">POPULAR</a></p>
-					</div>
+				  	<li><a  href="/swags/popular/">POPULAR</a></li>
+						<li><a  href="/swags/all/page/0">ALL</a></li>
+						
+					</ul>
+					
 					<div id="user">
 						<p>{{ greeting }}</p>
 					</div>

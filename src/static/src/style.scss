@@ -2,10 +2,42 @@
 @import "compass/css3";
 @import "compass/utilities";
    
-@font-face {
+/*@font-face {
 	font-family: 'Anivers';
 	src: url('../fonts/Anivers_Regular.otf');
-	}
+	}    */
+	
+@font-face {
+	font-family: 'CMUSansSerif';
+	src: url('cmunsx-webfont.eot');
+	src: local('?'), url('../fonts/cmunsx-webfont.woff') format('woff'), url('../fonts/cmunsx-webfont.ttf') format('truetype'), url('../fonts/cmunsx-webfont.svg#webfontfVhP92Br') format('svg');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'CMUSansSerif';
+	src: url('cmunss-webfont.eot');
+	src: local('?'), url('../fonts/cmunss-webfont.woff') format('woff'), url('../fonts/cmunss-webfont.ttf') format('truetype'), url('../fonts/cmunss-webfont.svg#webfonthB2Lb1BD') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'CMUSansSerif';
+	src: url('cmunso-webfont.eot');
+	src: local('?'), url('../fonts/cmunso-webfont.woff') format('woff'), url('../fonts/cmunso-webfont.ttf') format('truetype'), url('../fonts/cmunso-webfont.svg#webfontbVsr24KE') format('svg');
+	font-weight: bold;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'CMUSansSerif';
+	src: url('cmunsi-webfont.eot');
+	src: local('?'), url('../fonts/cmunsi-webfont.woff') format('woff'), url('../fonts/cmunsi-webfont.ttf') format('truetype'), url('../fonts/cmunsi-webfont.svg#webfontrBRPQ5i2') format('svg');
+	font-weight: normal;
+	font-style: italic;
+}	
 	
 /* Fibonacci based heading scale ratio */
 h1 {
@@ -76,7 +108,7 @@ $color5: #F71624; /*cervena*/
 $color6: #2E2A36;  /*original tmave modra*/
 $color6: #FFFEB7;  /*zluta zvyraznovaci*/
 
-$body-color: #bbb;
+$body-color: #fff;
 $yellow: #D7D123;
 $comment-background: #AAD6EF;
 
@@ -86,7 +118,7 @@ $comment-background: #AAD6EF;
 
 
 $link-color: $color2;
-$mainFont: "Anivers";
+$mainFont: "CMUSansSerif";
 $general-padding:10px;
 $default-radius:4px;
 
@@ -151,11 +183,11 @@ a {
 
 
 #logo{
-	margin-bottom: 0px;
+	margin-bottom: 3*$general-padding;
 	
 	
 	h1{
-		font-size: 4em;
+		font-size: 5em;
 		margin:0px 0px 0px 0px;
 		
 		a{
@@ -171,61 +203,59 @@ a {
 		.betastamp{
 			text-align: right;
 			color: black;
-			font-size: 1.1em;
-			padding: 0px 2px;
+			font-size: 1.5em;
+			padding: 0px 2px 3px 0px;
 			margin:0;
 			position: relative;
 			top: -6px;
 			left: 75px;
-			//z-index:1000;
 			background:$yellow;
-			display:inline;
+			display:inline-block;
 		}	
 		.subtitle{
-				font-size: 1.6em;
-				margin-bottom: 2*$general-padding;
-				text-align: right;
+				font-size: 1.6em;                       
+				margin: -5px 0px 0px 30px;
 			
 			}
 	
 }
 
 #toolbar{
-		font-size: 1.3em;
-		padding: $general-padding;
-		line-height: 2.6em;
-		
-		.navigation {
-			font-size: 1.8em;
-			font-weight: bold;
-			margin-bottom: $general-padding;
-			text-decoration:none;
-		}
-	}
+}
+
+ul#navigation {
+  margin: 0 0 2*$general-padding 0;
+  
+  li {
+    list-style: none;
+    margin-bottom: 10px; 
+    display: block;       
+    
+    a {
+      font-size: 2em;
+    	font-weight: bold;
+	    text-decoration:none;
+	    color: white;
+    }   /*a*/
+  } /*li*/
+}
 
 
 #footer {
 	padding: $general-padding;
 	font-size: 1.3em;
 	position: relative;
-	top: -15px;
+	top: -120px;
 	line-height: 1.6em;
-	
-	#get-extension{
-		//padding: 60px 0 20px 0;
-}
 	
 }
 
 
 .username {
-	  //display: inline-block;
-	  $username-color: rgb(85,85,85);
-	  @include link-colors($username-color, $username-color, $username-color, $username-color, $username-color);
-	  text-decoration: none;      
-    font-family:  Tahoma;
-    font-weight: bold;
-	  @include border-radius($default-radius);
+	 /* $username-color: rgb(85,85,85);
+	  @include link-colors($username-color, $username-color, $username-color, $username-color, $username-color);      */  
+	  text-decoration: none;                 
+    font-weight: bold;  
       
 
 }
@@ -257,11 +287,12 @@ a {
 		padding:5px 10px 0px 0px;
 		margin: $general-padding 0 30px 0;
 		text-align: center;
-		font-size: 16px;
+		font-size: 2em;
 		font-weight:bold;
+		
 		a {
-			@include link-colors($body-color, $body-color, $body-color, $body-color, $body-color);
-			@include hover-link;
+			@include link-colors(white, white, white, white, white);
+			text-decoration: none; 
 
 		}
 	}
@@ -354,11 +385,11 @@ ul.boxList li {
     height: 10px;
     width: $box-width - 2*$general-padding + 4px;
     padding: 2px $general-padding - 2px $general-padding - 2px;
-    @include linear-gradient(color-stops(rgba(187, 187, 187, 1.00),rgba(245, 245, 245, 0.0)), left top);
-   	color: #646464;   	
+    background: rgba(245, 245, 245, 0.75);
+   	color: rgb(100,100,100);  	
    	text-align: left;
-	font-size: 14px;
-	//font-weight:bold;    
+	  font-size: 14px;
+  
     z-index: 99;
     }
 /*DETAIL======================================================================*/	
@@ -577,8 +608,7 @@ a.awesome:hover {
   font-size: 1.4em;
 	color: black;
 	padding: 2 * $general-padding;
-	//padding-top: $general-padding;
-	margin: 0 14px $box-margin 0;
+	margin: 0 14px 2*$general-padding 0;
 	@include border-radius($default-radius);
 	
 	div.close{
@@ -665,13 +695,16 @@ a.awesome:hover {
 } 
 
 .report-name {
-	font-size: 3.8em;
-  	line-height: 120%;
-  	margin-bottom:$general-padding;
+	font-size: 3.3em;
+  margin-bottom:$general-padding;
   	.follow-button{
   		top: -0.8em;
   		margin-left: $general-padding;
   	}
+  	
+  	.username{                    
+  	  font-weight: normal;
+    }
 }
 
 .detail-more-by{
