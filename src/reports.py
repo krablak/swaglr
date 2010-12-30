@@ -16,6 +16,7 @@ import clips.api
 import clips.likes.api
 import ui.models
 from ui.error_logging import log_errors
+from util import handle_robots
 from dbo import *
 import dbo
 import logging
@@ -32,6 +33,7 @@ class UserDay(webapp.RequestHandler):
     """
     
     @log_errors
+    @handle_robots
     def get(self,user_id_val,date_val):
         #Get id or nick from request
         user_id = clips.validations.to_param(user_id_val)
@@ -61,6 +63,7 @@ class UserLikesDay(webapp.RequestHandler):
     """
     
     @log_errors
+    @handle_robots
     def get(self,user_id_val,date_val):
         #Get id or nick from request
         user_id = clips.validations.to_param(user_id_val)

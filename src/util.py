@@ -73,4 +73,16 @@ def suppress_exeptions(function):
         return function()
     except:
         return None
-    
+        
+ROBOTS_PATH = "templates/misc/robots.txt"
+
+def handle_robots(handler_method):
+    """
+    A decorator handle raised exception, log it and display error page.
+    """
+    def execute(self, *args):
+        if self.request.path.endswith("/robots.txt"):
+            render(ROBOTS_PATH, {}, self.response)
+        else:
+            handler_method(self, *args)
+    return execute
