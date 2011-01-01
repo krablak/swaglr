@@ -160,6 +160,17 @@ class Delete(webapp.RequestHandler):
         params = ui.models.page_params()
         util.render("templates/deleted.html", params, self.response)        
 
+
+class Share(webapp.RequestHandler):    
+    
+    @log_errors
+    @login_required
+    def get(self):
+        params = ui.models.page_params()
+        params['today_date'] = datetime.datetime.now()
+        params['before_date'] = datetime.datetime.now() - datetime.timedelta(days=7)
+        util.render("templates/share.html", params, self.response)  
+
         
 class Images(webapp.RequestHandler):
     """

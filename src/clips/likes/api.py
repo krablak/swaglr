@@ -80,13 +80,17 @@ def get_clips_by_user_likes(user_likes):
         return Clip.get(clip_keys)
     return None
 
-def get_day_clips_by_user_likes(user_info,day_date):
+def get_day_clips_by_user_likes(user_info,day_date=None,date_to=None):
     """
     Returns clips liked by passed user in specified date.
     """
     if user_info and day_date:
         #Get user likes for given date
-        user_likes = UserClipLike.get_user_day_likes(user_info, day_date)
+        user_likes = []
+        if not date_to:
+            user_likes = UserClipLike.get_user_day_likes(user_info, day_date)
+        else:        
+            user_likes = UserClipLike.get_user_date_likes(user_info, day_date,date_to)
         #Get clip keys and load clips by the found user likes
         clip_keys = [ user_like.clip.key() for user_like in user_likes]
         return Clip.get(clip_keys)

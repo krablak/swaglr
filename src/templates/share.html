@@ -1,0 +1,34 @@
+{% extends "based.html" %}
+
+
+{% block head %}
+{% endblock %}
+
+{% block main %}
+	{% block detail %}
+		<div class="report-name">SWAG SHARE</div>
+	{% endblock %}
+	 	<div id="share">
+	 		<p>Your swags today 
+	 		<a target="_blank" href="/swags/by/{{ user_info.nick }}/on/{{ today_date|date:"j-m-y" }}">Preview</a>
+	 		<a href="http://twitter.com/share" class="twitter-share-button" data-text="Seen on swaglr" data-url="http://{{ "HTTP_HOST"|os_environ }}/swags/by/{{ user_info.nick }}/on/{{ today_date|date:"j-m-y" }}" data-count="none">Tweet</a>
+	 		<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2F{{ "HTTP_HOST"|os_environ }}%2Fswags%2Fby%2F{{ user_info.nick }}%2Fon%2F{{ today_date|date:"j-m-y" }}&amp;layout=button_count&amp;show_faces=true&amp;action=recommend&amp;colorscheme=light&amp; scrolling="no" frameborder="0" style="border:none; overflow:hidden;  height:20px;  width:200px;" allowTransparency="true"></iframe>
+	 		</p>
+	 		<p>Your swags in last seven days 
+	 		<a target="_blank" href="/swags/by/{{ user_info.nick }}/from/{{ before_date|date:"j-m-y" }}/to/{{ today_date|date:"j-m-y" }}">Preview</a>
+	 		<a href="http://twitter.com/share" class="twitter-share-button" data-text="Seen on swaglr" data-url="http://{{ "HTTP_HOST"|os_environ }}/swags/by/{{ user_info.nick }}/from/{{ today_date|date:"j-m-y" }}/to/{{ before_date|date:"j-m-y" }}" data-count="none">Tweet</a>
+	 		<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2F{{ "HTTP_HOST"|os_environ }}%2Fswags%2Fby%2F{{ user_info.nick }}%2Ffrom%2F{{ before_date|date:"j-m-y" }}%2Fto%2F&{{ today_date|date:"j-m-y" }}amp;layout=button_count&amp;show_faces=true&amp;action=recommend&amp;colorscheme=light&amp; scrolling="no" frameborder="0" style="border:none; overflow:hidden;  height:20px;  width:200px;" allowTransparency="true"></iframe>
+	 		</p>
+	 		<p>Swags you liked today 
+	 		<a target="_blank" href="/swags/liked/by/{{ user_info.nick }}/on/{{ today_date|date:"j-m-y" }}">Preview</a>
+	 		<a href="http://twitter.com/share" class="twitter-share-button" data-text="Seen on swaglr" data-url="http://{{ "HTTP_HOST"|os_environ }}/swags/liked/by/{{ user_info.nick }}/on/{{ today_date|date:"j-m-y" }}" data-count="none">Tweet</a>
+	 		<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2F{{ "HTTP_HOST"|os_environ }}%2Fswags%2Fliked%2Fby%2F{{ user_info.nick }}%2Fon%2F{{ today_date|date:"j-m-y" }}&amp;layout=button_count&amp;show_faces=true&amp;action=recommend&amp;colorscheme=light&amp; scrolling="no" frameborder="0" style="border:none; overflow:hidden;  height:20px;  width:200px;" allowTransparency="true"></iframe>
+	 		</p>
+	 		<p>Swags you liked in last seven days 
+	 		<a target="_blank" href="/swags/liked/by/{{ user_info.nick }}/from/{{ before_date|date:"j-m-y" }}/to/{{ today_date|date:"j-m-y" }}">Preview</a>
+	 		<a href="http://twitter.com/share" class="twitter-share-button" data-text="Seen on swaglr" data-url="http://{{ "HTTP_HOST"|os_environ }}/swags/liked/by/{{ user_info.nick }}/from/{{ today_date|date:"j-m-y" }}/to/{{ before_date|date:"j-m-y" }}" data-count="none">Tweet</a>
+	 		<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2F{{ "HTTP_HOST"|os_environ }}%2Fswags%2Fliked%2Fby%2F{{ user_info.nick }}%2Ffrom%2F{{ before_date|date:"j-m-y" }}%2Fto%2F&{{ today_date|date:"j-m-y" }}amp;layout=button_count&amp;show_faces=true&amp;action=recommend&amp;colorscheme=light&amp; scrolling="no" frameborder="0" style="border:none; overflow:hidden;  height:20px;  width:200px;" allowTransparency="true"></iframe>
+	 		</p>
+	 	</div>			
+{% endblock %}
+{% debug %} 

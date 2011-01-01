@@ -82,13 +82,17 @@ class Clip(db.Model):
     
 
     @staticmethod
-    def getPageByUserAndDate(user_id=None,date=None,max_count=100):
+    def getPageByUserAndDate(user_id=None,date=None,date_from=None,max_count=100):
         user_info = UserInfo.getUserInfoById(user_id)
         if not user_info or not date:
             return []
         q = Clip.all()
-        q.filter('date >',date)
-        q.filter('date <',date + datetime.timedelta(hours=23,minutes=59))
+        if not date_from:
+            q.filter('date >',date)
+            q.filter('date <',date + datetime.timedelta(hours=23,minutes=59))
+        else:
+            q.filter('date >',date)
+            q.filter('date <',date_from)
         q.filter('user = ', user_info[0])
         q.order("-date")
         return q.fetch(max_count) 
