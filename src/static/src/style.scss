@@ -9,7 +9,7 @@
 	
 @font-face {
 	font-family: 'CMUSansSerif';
-	src: url('cmunsx-webfont.eot');
+	src: url('../fonts/cmunsx-webfont.eot');
 	src: local('?'), url('../fonts/cmunsx-webfont.woff') format('woff'), url('../fonts/cmunsx-webfont.ttf') format('truetype'), url('../fonts/cmunsx-webfont.svg#webfontfVhP92Br') format('svg');
 	font-weight: bold;
 	font-style: normal;
@@ -17,7 +17,7 @@
 
 @font-face {
 	font-family: 'CMUSansSerif';
-	src: url('cmunss-webfont.eot');
+	src: url('../fonts/cmunss-webfont.eot');
 	src: local('?'), url('../fonts/cmunss-webfont.woff') format('woff'), url('../fonts/cmunss-webfont.ttf') format('truetype'), url('../fonts/cmunss-webfont.svg#webfonthB2Lb1BD') format('svg');
 	font-weight: normal;
 	font-style: normal;
@@ -25,7 +25,7 @@
 
 @font-face {
 	font-family: 'CMUSansSerif';
-	src: url('cmunso-webfont.eot');
+	src: url('../fonts/cmunso-webfont.eot');
 	src: local('?'), url('../fonts/cmunso-webfont.woff') format('woff'), url('../fonts/cmunso-webfont.ttf') format('truetype'), url('../fonts/cmunso-webfont.svg#webfontbVsr24KE') format('svg');
 	font-weight: bold;
 	font-style: italic;
@@ -33,11 +33,57 @@
 
 @font-face {
 	font-family: 'CMUSansSerif';
-	src: url('cmunsi-webfont.eot');
+	src: url('../fonts/cmunsi-webfont.eot');
 	src: local('?'), url('../fonts/cmunsi-webfont.woff') format('woff'), url('../fonts/cmunsi-webfont.ttf') format('truetype'), url('../fonts/cmunsi-webfont.svg#webfontrBRPQ5i2') format('svg');
 	font-weight: normal;
 	font-style: italic;
 }	
+
+
+@font-face {
+  font-family: 'IconicStroke';
+    src: url('../fonts/iconic_stroke.eot');
+    src: local('?'), url('../fonts/iconic_stroke.ttf') format('truetype'), url('../fonts/iconic_stroke.svg#iconic') format('svg'), url('../fonts/iconic_stroke.otf') format('opentype');
+}
+
+.iconic {
+  display:inline-block;
+  font-family: 'IconicStroke';
+  font-size: 1.2em;;
+}
+
+.iconic.home:before {
+  content: '!';
+}
+
+.iconic.like:before {
+  content: 'h';
+}
+
+.iconic.share:before {
+  content: '/';
+}
+
+.iconic.add:before, .iconic.follow:before {
+  content: '+';
+}
+
+.iconic.remove:before, .iconic.unfollow:before, .iconic.unlike:before {
+  content: '-';
+}
+
+.iconic.close:before {
+  content: 'x';
+}
+
+.iconic.trash:before {
+  content: 't';
+}
+
+.iconic.edit:before {
+  content: 'P';
+}
+
 	
 /* Fibonacci based heading scale ratio */
 h1 {
@@ -189,6 +235,8 @@ a {
 	h1{
 		font-size: 5em;
 		margin:0px 0px 0px 0px;
+		font-weight: bold;
+		//text-shadow: #EEE 2px 1px;
 		
 		a{
 			@include link-colors($color4, $color4, $color4, $color4, $color4);
@@ -463,28 +511,20 @@ ul.boxList li {
   			border: 2px  solid #AAD6EF;
   		}
 	} 
-
-	
-.bottom_toolbar {
-		
-		table{
-			width: 100%;
-			td {
-				vertical-align: middle;
-			}
-			a{white-space:nowrap;}
-		}
-		
-	
-	}
-	
-	
-		
+				
 	}
 	
 	/*======================================================================/DETAIL*/
 	
 }
+
+/*DETAIL */
+.bottom-toolbar {
+	text-align: right;	
+	margin: $general-padding 0 0 0;               
+	
+	
+	}
 
 
 
@@ -571,7 +611,7 @@ ul.boxList li.open{
   cursor: pointer;
   text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
   border-bottom: 1px solid rgba(0,0,0,0.25);	
-  min-width: 70px;
+  //min-width: 70px;
 }
 
 a.awesome:hover {
@@ -611,8 +651,11 @@ a.awesome:hover {
 	margin: 0 14px 2*$general-padding 0;
 	@include border-radius($default-radius);
 	
-	div.close{
+	.close-button{
 		text-align:right;
+		a {
+		  text-decoration: none;
+    }
 	}
 	
 	.left_column{
@@ -627,7 +670,9 @@ a.awesome:hover {
 	
 	}
 
-
+  .social-buttons {
+       margin: 0 0 $general-padding 0;
+  }
 	
 	.imgbox{
 		text-align:center;
@@ -687,10 +732,6 @@ a.awesome:hover {
   			height: 100px;
   			border: 2px  solid #AAD6EF;
   		}
-	}
-	.like-button{
-		margin-top:$general-padding;
-	
 	}
 } 
 
