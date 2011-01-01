@@ -118,5 +118,5 @@ def __get_greeting(user):
     if user:
         return ("<a class=\"awesome small\" href=\"%s\">Sign out</a>" % (users.create_logout_url("/")))
     else:
-        return ("<a class=\"awesome small\" href=\"%s\">Sign in</a>" % users.create_login_url("/"))
+        return ("<a class=\"awesome small\" href=\"%s\">Sign in</a> </br> (A Google account required)" % users.create_login_url("/"))
     
