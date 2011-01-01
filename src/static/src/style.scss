@@ -84,6 +84,22 @@
   content: 'P';
 }
 
+.iconic.down:before {
+  content: '5';
+}
+
+.iconic.right-arrow:before {
+  content: '4';
+}
+
+.iconic.left-arrow:before {
+  content: '6';
+}
+
+
+.smaller {
+  font-size: 0.9em;
+}
 	
 /* Fibonacci based heading scale ratio */
 h1 {
