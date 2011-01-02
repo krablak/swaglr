@@ -141,9 +141,13 @@ class Detail(webapp.RequestHandler):
         #Current clip
         clip = Clip.getClip(clip_id)
         params['clip'] = clip
-        #Get all events
-        page_clips = ui.models.paging(params,Clip.getPagingQuery(),0,PAGING,clip.user.user_id)
-        params['day_clips'] = ui.models.to_day_clips(page_clips)
+        #Get use events events
+        clips_query = Clip.getPageByUserQuery(user_id=clip.user.user_id)
+        if clips_query:
+            page_clips = ui.models.paging(params,clips_query,0,PAGING,clip.user.nick)
+            params['day_clips'] = ui.models.to_day_clips(page_clips)
+        else:
+            params['day_clips'] = []
         util.render("templates/detail.html", params, self.response)
 
         
