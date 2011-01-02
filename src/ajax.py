@@ -23,6 +23,7 @@ import clips.validations
 import ui.models
 import clips.likes.api
 import clips.follow.api
+import clips.hashtag.api
 
 
 
@@ -45,6 +46,7 @@ class Delete(webapp.RequestHandler):
             logging.error("Problem during clip delete.")
             self.error(500)
             
+import ui.templatefilters
             
 class Comment(webapp.RequestHandler):
     """
@@ -59,7 +61,9 @@ class Comment(webapp.RequestHandler):
             clip_id = int(self.request.get('id'))
             comment = clips.validations.to_param(self.request.get('comment'))
             clips.api.comment(clip_id, comment)
+            clips.hashtag.api.update_hashtag_by_clip_id(clip_id)
             self.response.headers['Content-Type'] = 'text/html'
+            result['comment'] = ui.templatefilters.to_tag_comment(comment)
             self.response.out.write(simplejson.dumps(result))
         except:
             #Get exception trace

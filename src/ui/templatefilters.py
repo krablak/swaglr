@@ -118,6 +118,23 @@ def swag_slice(value,length):
         return "%s&hellip;" % (value[:length]) 
     else:
         return value
+
+import clips.hashtag.api
+    
+def to_tag_comment(comment):
+    """
+    Replace hashtags with liks to tag reports.
+    """
+    if comment:
+        result = []
+        words = comment.split()
+        for word in words:
+            if clips.hashtag.api.is_tag(word):
+                result.append("<a href=\"/swags/tagged/as/%s/page/0\">%s</a>" % ("%23"+word[1:],word))
+            else:
+                result.append(word)
+        return " ".join(result)
+    return comment
     
 def clip_template(clip,path):
     """
@@ -144,3 +161,4 @@ register.filter(cut_http)
 register.filter(clip_template)
 register.filter(has_title)
 register.filter(os_environ)
+register.filter(to_tag_comment)

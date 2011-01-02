@@ -48,9 +48,9 @@ def unfollow(unfollow_user_info):
     if user:
         #Get current user info
         user_info = UserInfo.getUserInfo(user)
-        #Get follow settgins for current user
+        #Get follow settings for current user
         follow_settings = FollowedUsers.get_follow_setting(unfollow_user_info)
-        #Remove from followe users 
+        #Remove from followed users 
         follow_settings.followed_users.remove(user_info.key())
         follow_settings.put()
         #Remove unfollowed user from clips

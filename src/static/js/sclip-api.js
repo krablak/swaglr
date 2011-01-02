@@ -29,7 +29,8 @@ var SclipAPI = function() {
 			url : "/api/clip/comment/",
 			data: "id="+id+"&comment="+comment,
 			success : function(response){
-				onSuccess(id,comment);
+				var parsed_response = jQuery.parseJSON(response);
+				onSuccess(id,parsed_response['comment']);
 			},
 			error: function(xhr, ajaxOptions, thrownError){
 				onError();

@@ -34,7 +34,8 @@ function enableFollowButtons() {
 						$(this).text("Follow");
 						$(this).attr('follow', "yes");
 					}
-					sclipAPI.followSwitch($(this).attr('user'),onSwitchedFollow, onSwitchFollowError);
+					sclipAPI.followSwitch($(this).attr('user'),
+							onSwitchedFollow, onSwitchFollowError);
 				}
 				return false;
 			});
@@ -174,7 +175,7 @@ function showCommentDialog(id) {
 	openCommentEditor(id);
 	$('#comment-no-' + id).bind('click', {
 		elid : id,
-		origcomment : $('#clip-comment-view-' + id).html()
+		origcomment : $('#clip-comment-view-' + id).text()
 	}, function(event) {
 		cancelCommentEditor(event.data.elid);
 	});
@@ -193,7 +194,7 @@ function showCommentDialog(id) {
 }
 
 function cancelCommentEditor(id) {
-	var originalComment = $('#clip-comment-view-' + id).html();
+	var originalComment = $('#clip-comment-view-' + id).text();
 	$('#clip-comment-edit-' + id).hide();
 	if (originalComment != "null" && originalComment != "") {
 		$('#clip-comment-view-' + id).html(originalComment);
@@ -208,7 +209,7 @@ function cancelCommentEditor(id) {
 }
 
 function openCommentEditor(id) {
-	var originalComment = $('#clip-comment-view-' + id).html();
+	var originalComment = $('#clip-comment-view-' + id).text();
 	if (originalComment != "null") {
 		$('#comment-textarea-' + id).html(originalComment);
 	}
