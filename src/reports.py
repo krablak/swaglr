@@ -151,4 +151,4 @@ class UserLikesDate(webapp.RequestHandler):
             logging.error("Cannot load clips for date from value %s to %s" % (date_from,date_to))
         #Get today events
         params['day_clips'] = ui.models.to_united_clips(page_clips)
-        util.render("templates/user_day_likes.html", params, self.response)
+        util.render("templates/user_date_likes.html", params, self.response)
