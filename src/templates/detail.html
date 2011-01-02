@@ -58,7 +58,7 @@
 				</span>
 			{% if clip|is_my %}
 				<p class="right margin t d">
-					<a id="edit-comment-btn-{{ clip.key.id }}" onclick="showCommentDialog({{ clip.key.id }});" class="awesome small blue"><span class="iconic edit"></span>Edit comment</a>
+					<a id="edit-comment-btn-{{ clip.key.id }}" onclick="showCommentDialog({{ clip.key.id }});" class="awesome small blue"><span class="iconic edit">&nbsp;</span>Edit comment</a>
 				</p>
 			{% endif %}
 			</div>
@@ -76,7 +76,7 @@
 			</div>
 			{% if clip|is_my %}
 			<p class="right margin t d">
-				<a href="#" id="add-comment-btn-{{ clip.key.id }}" onclick="showCommentDialog({{ clip.key.id }});" class="awesome small blue"><span class="iconic add"></span>Add comment</a>
+				<a href="#" id="add-comment-btn-{{ clip.key.id }}" onclick="showCommentDialog({{ clip.key.id }});" class="awesome small blue"><span class="iconic add">&nbsp;</span>Add comment</a>
 			</p>
 			{% endif %}
 		{% endif %}	<!-- /if clip|is_commented_clip-->		
@@ -84,9 +84,9 @@
 
 		
 		<div class="bottom-toolbar">
-							   <a href="#" id="like-button-div-{{ clip.key.id }}" style="display: none" onclick="like({{ clip.key.id }});return false;" class="like-button awesome small"><span class="iconic like"></span>Like</a>
+							   <a href="#" id="like-button-div-{{ clip.key.id }}" style="display: none" onclick="like({{ clip.key.id }});return false;" class="like-button awesome small"><span class="iconic like">&nbsp;</span>Like</a>
                  {% if clip|is_my %} 
-						     <a href="#" id="delete-comment-btn-{{ clip.key.id }}" onclick="showDeleteDialog({{ clip.key.id }});" class="awesome small"><span class="iconic trash"></span>Delete</a>
+						     <a href="#" id="delete-comment-btn-{{ clip.key.id }}" onclick="showDeleteDialog({{ clip.key.id }});" class="awesome small"><span class="iconic trash">&nbsp;</span>Delete</a>
 							   {% endif %}
 		</div>	
 			

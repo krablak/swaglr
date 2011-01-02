@@ -85,7 +85,7 @@
 									</div>
 								{% if clip|is_my %}
 									<div class="right">
-										<a href="#" id="edit-comment-btn-{{ clip.key.id }}" onclick="showCommentDialog({{ clip.key.id }});" class="awesome small blue"><span class="iconic edit"></span>Edit comment</a>
+										<a href="#" id="edit-comment-btn-{{ clip.key.id }}" onclick="showCommentDialog({{ clip.key.id }});" class="awesome small blue"><span class="iconic edit">&nbsp;</span>Edit comment</a>
 									</div>
 								{% endif %} <!-- /if clip|is_my-->	
 								</div>
@@ -103,17 +103,17 @@
 								</div>
 								{% if clip|is_my %}
 								<p class="right">
-									<a href="#" id="add-comment-btn-{{ clip.key.id }}" onclick="showCommentDialog({{ clip.key.id }});" class="awesome small blue"><span class="iconic add"></span>Add comment</a>
+									<a href="#" id="add-comment-btn-{{ clip.key.id }}" onclick="showCommentDialog({{ clip.key.id }});" class="awesome small blue"><span class="iconic add">&nbsp;</span>Add comment</a>
 								</p>
 								{% endif %} <!-- /if clip|is_my-->	
 							{% endif %}	<!-- /if clip|is_commented_clip-->							
 								
 
 							<div class="bottom-toolbar">
-							   <a href="#" id="like-button-div-{{ clip.key.id }}" style="display: none" onclick="like({{ clip.key.id }});return false;" class="like-button awesome small"><span class="iconic like"></span>Like</a>
-                 <a href="/swag/{{ clip.key.id }}" class="awesome small"><span class="iconic share"></span>Share</a>
+							   <a href="#" id="like-button-div-{{ clip.key.id }}" style="display: none" onclick="like({{ clip.key.id }});return false;" class="like-button awesome small"><span class="iconic like">&nbsp;</span>Like</a>
+                 <a href="/swag/{{ clip.key.id }}" class="awesome small"><span class="iconic share">&nbsp;</span>Share</a>
                  {% if clip|is_my %} 
-						     <a href="#" id="delete-comment-btn-{{ clip.key.id }}" onclick="showDeleteDialog({{ clip.key.id }});" class="awesome small"><span class="iconic trash"></span>Delete</a>
+						     <a href="#" id="delete-comment-btn-{{ clip.key.id }}" onclick="showDeleteDialog({{ clip.key.id }});" class="awesome small"><span class="iconic trash">&nbsp;</span>Delete</a>
 							   {% endif %}
 							</div>								
 						</div>	<!-- /detail-->
