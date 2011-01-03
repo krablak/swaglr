@@ -26,9 +26,9 @@ def follow_button(user_info):
         cur_user_info = UserInfo.getUserInfo(user)
         if user and user_info and (cur_user_info.key() != user_info.key()):
             if clips.follow.api.is_followed(user_info):
-                return "<a id=\"follow-btn\" user=\"%s\" follow=\"no\" href=\"#\" class=\"awesome small red follow-button\"><span class=\"iconic unfollow\"></span>Unfollow</a>" % (user_info.nick)
+                return "<a id=\"follow-btn\" user=\"%s\" follow=\"no\" href=\"#\" class=\"awesome small red follow-button\"><span class=\"iconic unfollow\">&nbsp;</span>Unfollow</a>" % (user_info.nick)
             else:
-                return "<a id=\"follow-btn\" user=\"%s\" follow=\"yes\" href=\"#\" class=\"awesome small blue follow-button\"><span class=\"iconic follow\"></span>Follow</a>" % (user_info.nick)
+                return "<a id=\"follow-btn\" user=\"%s\" follow=\"yes\" href=\"#\" class=\"awesome small blue follow-button\"><span class=\"iconic follow\">&nbsp;</span>Follow</a>" % (user_info.nick)
         else:
             return ""
     except:
