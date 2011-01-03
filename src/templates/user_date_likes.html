@@ -2,7 +2,7 @@
 
 
 {% block detail %}
-	<div class="report-name">SWAGS LIKED BY <a href="/user/{{ user_info.nick|escape }}/page/0" class="username">{{ user_info.nick|escape }}</a> ON {{ report_date|date:"j.n.Y" }}-{{ report_date_to|date:"j.n.Y" }}</div>
+	<div class="report-name">Posts liked by <a href="/user/{{ user_info.nick|escape }}/page/0" class="username">{{ user_info.nick|escape }}</a> on {{ report_date|date:"j.n.Y" }}-{{ report_date_to|date:"j.n.Y" }}</div>
 {% endblock %}
 			
 
