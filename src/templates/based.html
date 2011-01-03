@@ -9,6 +9,7 @@
          <meta name="robots" content="all" />
          <meta name="rating" content="General" />
          <meta property="fb:page_id" content="161688560536365" />
+         <meta name="description" content="Swaglr is an amazing tool for easy sharing images, text quotes and links." />
         
          <link rel="Shortcut Icon" type="image/ico" href="/static/img/favicon.png"/>
          <link rel="stylesheet" href="/static/css/reset.css" type="text/css" media="screen"/>
@@ -45,14 +46,14 @@
 		
 		<div id="contentWrap" class="container_18">
 		
-			<div class="grid_3  push_15 omega"><!--right -->
-			
+			<div class="grid_3  push_15 omega">
+			  <div id="right-content"><!--right -->
 				<div id="logo">
-					<h1><a href="/">swaglr</a></h1>
+					<h1><a href="/" title="Swaglr is an amazing tool for easy sharing images, text quotes and links.">swaglr</a></h1>
 					<p class="betastamp">preview</p>
 					<p class="subtitle">...quote anything!</p>
-				</div> <!-- /logo -->	
-				
+				</div> <!-- /logo -->
+
 				<div id="toolbar">
 					<ul id="navigation">
 					{% if user %}
@@ -69,7 +70,10 @@
 						<p>{{ greeting }}</p>
 					</div>
 				</div><!-- /toolbar -->	
-			</div><!-- /right -->	
+				
+				<p class="hint">Hint: Install the browser extension, select an element on any web page and click <i>Quote on swaglr</i> to create your own posts.</p>
+				</div> <!-- /right -->
+			</div>	
 
 			<div class="grid_15 pull_3"><!-- /left -->
 				<div id="main">
