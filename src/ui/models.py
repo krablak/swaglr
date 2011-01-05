@@ -6,6 +6,7 @@ Created on Oct 12, 2010
 from datetime import date
 from clips.api import DAY
 import thirdparty.paging
+import urllib
 
 from google.appengine.api import users
 from dbo import UserInfo, Clip
@@ -93,20 +94,20 @@ def paging(params,clips,page,max_items,user_id=None,url_prefix=None):
     page_query = thirdparty.paging.PagedQuery(clips,max_items)
     if page>0 and page_query.has_page(page):
             if user_id:
-                params['prev'] = "/user/%s/page/%s" % (user_id,page-1)
+                params['prev'] = urllib.quote("/user/%s/page/%s" % (user_id,page-1))
             else:
                 if url_prefix:
-                    params['prev'] = "/%s/%s" % (url_prefix,page-1)
+                    params['prev'] = urllib.quote("/%s/%s" % (url_prefix,page-1))
                 else:
-                    params['prev'] = "/page/%s" % (page-1)
+                    params['prev'] = urllib.quote("/page/%s" % (page-1))
     if  page_query.has_page(page+1):
             if user_id:
-                params['next'] = "/user/%s/page/%s" % (user_id,page+1)
+                params['next'] = urllib.quote("/user/%s/page/%s" % (user_id,page+1))
             else:
                 if url_prefix:
-                    params['next'] = "/%s/%s" % (url_prefix,page+1)
+                    params['next'] = urllib.quote("/%s/%s" % (url_prefix,page+1))
                 else:
-                    params['next'] = "/page/%s" % (page+1)
+                    params['next'] = urllib.quote("/page/%s" % (page+1))
     if page>0:
         return page_query.fetch_page(page+1)
     else:
