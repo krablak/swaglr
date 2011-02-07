@@ -46,7 +46,10 @@ def get_tag_query(tag):
 
 def get_clips_by_tags(tags_keys):
     if tags_keys:
-        clip_keys = [ key.parent().key() for key in tags_keys]
+        clip_keys = []
+        for key in tags_keys:
+            if key.parent():
+                clip_keys.append(key.parent().key())
         return Clip.get(clip_keys)
 
 def __get_tags(comment=""):
