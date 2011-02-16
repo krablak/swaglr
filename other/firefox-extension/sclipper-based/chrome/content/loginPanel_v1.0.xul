@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+
+<dialog id="soundcloud_loginDialog" 
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"    
+        buttons="accept,cancel"
+        buttonlabelaccept="I'am done authorizing"
+        buttonaccesskeyaccept="A"
+        ondialogaccept="doneAuthorizing();"
+        buttonlabelcancel="Cancel"
+		    buttonaccesskeycancel="n"
+        ondialogcancel="return closeWindow();"
+        onload="loadLoginFrame();"
+	      title="Login/Authorization Panel"
+	      style="margin:5px 5px 5px 5px">
+
+	<script type="application/x-javascript">
+	<![CDATA[
+
+		function closeWindow ()
+		{
+		  window.arguments[1].call(null, false,null);		
+		  window.close();
+		}
+
+		function doneAuthorizing()
+		{
+		  //Get Auth callback url containing oauth_verifier parameter
+		  var callback_url = document.getElementById("soundcloud_loginFrame").currentURI.path;
+		  window.close();
+		  window.arguments[1].call(null, true,callback_url);		  		
+		}
+
+		function loadLoginFrame()
+		{
+		  var url = window.arguments[0];
+		  if (url != ""){
+			  document.getElementById("soundcloud_loginFrame").setAttribute("src", url);
+			 }
+		}
+  ]]>
+	
+	</script>
+	
+	<vbox flex="1">
+	  <caption label="oAuth authentication dialog"/>
+		<browser type="content" src="" id="soundcloud_loginFrame" flex="1"/>
+		<spacer height="5" />
+	</vbox>
+
+</dialog>
+

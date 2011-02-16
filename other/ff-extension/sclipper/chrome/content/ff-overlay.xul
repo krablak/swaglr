@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://sclipper/skin/overlay.css" type="text/css"?>
+<!DOCTYPE overlay SYSTEM "chrome://sclipper/locale/overlay.dtd">
+<overlay id="sclipper-overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <script src="overlay.js"/>
+  <script src="ff-overlay.js"/>
+
+  <stringbundleset id="stringbundleset">
+    <stringbundle id="sclipper-strings" src="chrome://sclipper/locale/overlay.properties"/>
+  </stringbundleset>
+
+  <popup id="contentAreaContextMenu">
+    <menuitem id="context-sclipper" label="&sclipperContext.label;"
+              accesskey="&sclipperContext.accesskey;"
+              insertafter="context-stop"
+              oncommand="sclipper.onMenuItemCommand(event)"/>
+  </popup>
+
+
+
+
+</overlay>
