@@ -7,7 +7,7 @@ AJAX API
 
 '''
 
-import util
+import swg_util
 from django.utils import simplejson
 from google.appengine.api import users
 from google.appengine.ext import webapp
@@ -93,14 +93,14 @@ class Post(webapp.RequestHandler):
             logging.debug("link:'%s' src:'%s'" % (link, src)) 
             clips.api.store(type, page, link, src, text, comment, title)
             logging.debug("Posted!")
-            util.renderJSON({'code' : 'OK', 'desc' : 'Clip posted.'}, self.response)
+            swg_util.renderJSON({'code' : 'OK', 'desc' : 'Clip posted.'}, self.response)
         except:
             #Get exception trace
             fp = StringIO.StringIO()
             traceback.print_exc(file=fp)
             message = fp.getvalue()
             logging.error("Problem during post : %s" % (message))
-            util.renderJSON({'code' : 'ERROR', 'desc' : "Clip post failed on error : %s" % (message)}, self.response)
+            swg_util.renderJSON({'code' : 'ERROR', 'desc' : "Clip post failed on error : %s" % (message)}, self.response)
         finally:
             logging.debug("Posting clip finished.") 
             
@@ -141,7 +141,7 @@ class FollowSwitch(webapp.RequestHandler):
             traceback.print_exc(file=fp)
             message = fp.getvalue()
             logging.error("Problem during user follow switch : %s" % (message))
-            util.renderJSON({'code' : 'ERROR', 'desc' : "User follow switch failed on error : %s" % (message)}, self.response)
+            swg_util.renderJSON({'code' : 'ERROR', 'desc' : "User follow switch failed on error : %s" % (message)}, self.response)
         finally:
             logging.debug("User follow switch finished.")           
         

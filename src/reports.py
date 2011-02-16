@@ -6,7 +6,7 @@ Created on Dec 28, 2010
 Handlers for swag reports used for sharing out of swagler.
 '''
 
-import util
+import swg_util
 import datetime
 from django.utils import simplejson
 from google.appengine.api import users
@@ -16,7 +16,6 @@ import clips.api
 import clips.likes.api
 import ui.models
 from ui.error_logging import log_errors
-from util import handle_robots
 from dbo import *
 import dbo
 import logging
@@ -27,6 +26,7 @@ import clips.validations
 import thirdparty.paging
 import ui.routing
 import clips.hashtag.api
+from swg_util import handle_robots
 
 PAGING = 20
 
@@ -58,7 +58,7 @@ class UserDay(webapp.RequestHandler):
             logging.error("Cannot load clips for date from value %s" % (date_val))
         #Get today events
         params['day_clips'] = ui.models.to_united_clips(page_clips)
-        util.render("templates/user_day_clips.html", params, self.response)
+        swg_util.render("templates/user_day_clips.html", params, self.response)
         
 class UserDate(webapp.RequestHandler):
     """
@@ -91,7 +91,7 @@ class UserDate(webapp.RequestHandler):
             logging.error("Cannot load clips for date from value %s to %s" % (date_from,date_to))
         #Get today events
         params['day_clips'] = ui.models.to_united_clips(page_clips)
-        util.render("templates/user_date_clips.html", params, self.response) 
+        swg_util.render("templates/user_date_clips.html", params, self.response) 
         
         
 class UserLikesDay(webapp.RequestHandler):
@@ -121,7 +121,7 @@ class UserLikesDay(webapp.RequestHandler):
             logging.error("Cannot load clips for date from value %s" % (date_val))
         #Get today events
         params['day_clips'] = ui.models.to_united_clips(page_clips)
-        util.render("templates/user_day_likes.html", params, self.response)
+        swg_util.render("templates/user_day_likes.html", params, self.response)
         
         
 class UserLikesDate(webapp.RequestHandler):
@@ -154,7 +154,7 @@ class UserLikesDate(webapp.RequestHandler):
             logging.error("Cannot load clips for date from value %s to %s" % (date_from,date_to))
         #Get today events
         params['day_clips'] = ui.models.to_united_clips(page_clips)
-        util.render("templates/user_date_likes.html", params, self.response)
+        swg_util.render("templates/user_date_likes.html", params, self.response)
         
         
 class TaggedClips(webapp.RequestHandler):
@@ -179,7 +179,7 @@ class TaggedClips(webapp.RequestHandler):
         if tag:
             params['tag'] = tag[1:]
         params['day_clips'] = ui.models.to_day_clips(page_clips)
-        util.render("templates/tag_clips.html", params, self.response)      
+        swg_util.render("templates/tag_clips.html", params, self.response)      
 
         
     

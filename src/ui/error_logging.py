@@ -8,7 +8,7 @@ Module for logging of request errors.
 import logging
 import traceback
 import StringIO
-import util
+import swg_util
 from google.appengine.api import users
 
 logger = logging.getLogger()
@@ -31,5 +31,5 @@ def log_errors(handler_method):
                 user_nick = users.get_current_user().nickname()
             #Log error
             logger.error("Error occured to user (%s) during request : (%s)" % (user_nick,message))
-            util.render("templates/error.html", {'error' : message}, self.response)
+            swg_util.render("templates/error.html", {'error' : message}, self.response)
     return execute

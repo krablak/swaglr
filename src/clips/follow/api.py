@@ -9,7 +9,7 @@ Provides all functionality required for following
 from dbo import UserInfo,Clip
 from follow_dbo import FollowedUsers,Followers
 from google.appengine.api import users
-import util
+import swg_util
 
 
 def switch_follow(follow_user_info):
@@ -25,7 +25,7 @@ def follow(follow_user_info):
     """
     Follow user by nick or id
     """
-    user = util.get_user()
+    user = swg_util.get_user()
     #Follow could be done only for
     if user:
         #Get current user info
@@ -43,7 +43,7 @@ def unfollow(unfollow_user_info):
     """
     Follow user by nick or id
     """
-    user = util.get_user()
+    user = swg_util.get_user()
     #Follow could be done only for
     if user:
         #Get current user info
@@ -60,7 +60,7 @@ def is_followed(follow_user_info):
     """
     Checks if passed user is followed by the current user.
     """
-    user = util.get_user()
+    user = swg_util.get_user()
     #Follow could be done only for
     if user and follow_user_info:
         #Get current user info
@@ -93,7 +93,7 @@ def on_clip_created(clip):
     """
     Should be called after clip storing into DS. Followers information will be added to clip.
     """
-    user = util.get_user()
+    user = swg_util.get_user()
     #Follow could be done only for
     if user:
         #Get current user info
@@ -120,7 +120,7 @@ def get_followers_query(user_info):
     Should be used to get query for paging purposes.
     """
     if not user_info:
-        user = util.get_user()
+        user = swg_util.get_user()
         if user:
             user_info = UserInfo.getUserInfo(user)
     if user_info:

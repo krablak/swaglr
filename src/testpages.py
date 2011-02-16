@@ -3,7 +3,7 @@ Created on Nov 2, 2010
 
 @author: michalracek
 '''
-import util
+import swg_util
 from django.utils import simplejson
 from google.appengine.api import users
 from google.appengine.ext import webapp

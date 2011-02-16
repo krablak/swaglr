@@ -4,7 +4,7 @@ Created on Aug 18, 2010
 @author: michalracek
 '''
 
-import util
+import swg_util
 import datetime
 from django.utils import simplejson
 from google.appengine.api import users
@@ -37,12 +37,12 @@ class MainPage(webapp.RequestHandler):
             page_followers = ui.models.paging(params,follow_query,0,PAGING)
             page_clips = clips.follow.api.get_clips_by_followers(page_followers)
             params['day_clips'] = ui.models.to_day_clips(page_clips)
-            util.render("templates/index.html", params, self.response)
+            swg_util.render("templates/index.html", params, self.response)
         else:
             #Get paging content
             page_clips = ui.models.paging(params,Clip.getPagingQuery(),0,PAGING) 
             params['day_clips'] = ui.models.to_day_clips(page_clips)
-            util.render("templates/index.html", params, self.response)
+            swg_util.render("templates/index.html", params, self.response)
             
             
 class AllPage(webapp.RequestHandler):    
@@ -55,7 +55,7 @@ class AllPage(webapp.RequestHandler):
         #Get paging content
         page_clips = ui.models.paging(params,Clip.getPagingQuery(),page,PAGING,url_prefix="swags/all/page") 
         params['day_clips'] = ui.models.to_day_clips(page_clips)
-        util.render("templates/all.html", params, self.response)
+        swg_util.render("templates/all.html", params, self.response)
         
 class Popular(webapp.RequestHandler):    
     
@@ -65,7 +65,7 @@ class Popular(webapp.RequestHandler):
         #Get paging content
         page_clips = clips.likes.api.get_popular_clips(clips_count=20)
         params['day_clips'] = ui.models.to_united_clips(page_clips)
-        util.render("templates/popular.html", params, self.response)
+        swg_util.render("templates/popular.html", params, self.response)
         
 class LikedByCurrentUser(webapp.RequestHandler):    
     
@@ -86,7 +86,7 @@ class LikedByCurrentUser(webapp.RequestHandler):
             found_clips = clips.likes.api.get_clips_by_user_likes(user_likes)
             page_clips = ui.models.to_united_clips(found_clips)
         params['day_clips'] = page_clips 
-        util.render("templates/liked.html", params, self.response)
+        swg_util.render("templates/liked.html", params, self.response)
         
 class Paging(webapp.RequestHandler):    
     
@@ -103,12 +103,12 @@ class Paging(webapp.RequestHandler):
             page_followers = ui.models.paging(params,follow_query,page,PAGING)
             page_clips = clips.follow.api.get_clips_by_followers(page_followers)
             params['day_clips'] = ui.models.to_day_clips(page_clips)
-            util.render("templates/index.html", params, self.response)
+            swg_util.render("templates/index.html", params, self.response)
         else:
             #Get all events
             page_clips = ui.models.paging(params,Clip.getPagingQuery(),page,PAGING) 
             params['day_clips'] = ui.models.to_day_clips(page_clips)
-            util.render("templates/index.html", params, self.response)
+            swg_util.render("templates/index.html", params, self.response)
 
 class User(webapp.RequestHandler):    
     
@@ -128,7 +128,7 @@ class User(webapp.RequestHandler):
         #Get all events
         page_clips = ui.models.paging(params,Clip.getPageByUserQuery(user_id=user_id),page,PAGING,user_id)
         params['day_clips'] = ui.models.to_day_clips(page_clips)
-        util.render("templates/user.html", params, self.response)
+        swg_util.render("templates/user.html", params, self.response)
         
 
         
@@ -148,7 +148,7 @@ class Detail(webapp.RequestHandler):
             params['day_clips'] = ui.models.to_day_clips(page_clips)
         else:
             params['day_clips'] = []
-        util.render("templates/detail.html", params, self.response)
+        swg_util.render("templates/detail.html", params, self.response)
 
         
 class Delete(webapp.RequestHandler):    
@@ -162,7 +162,7 @@ class Delete(webapp.RequestHandler):
         if clip and clip.user.user_id == user.user_id():
             clip.delete()
         params = ui.models.page_params()
-        util.render("templates/deleted.html", params, self.response)        
+        swg_util.render("templates/deleted.html", params, self.response)        
 
 
 class Share(webapp.RequestHandler):    
@@ -173,9 +173,10 @@ class Share(webapp.RequestHandler):
         params = ui.models.page_params()
         params['today_date'] = datetime.datetime.now()
         params['before_date'] = datetime.datetime.now() - datetime.timedelta(days=7)
-        util.render("templates/share.html", params, self.response)  
+        swg_util.render("templates/share.html", params, self.response)
 
-        
+
+       
 class Images(webapp.RequestHandler):
     """
     Finds image in datastore and returns it as response.
@@ -192,9 +193,48 @@ class Images(webapp.RequestHandler):
                 result = None
                 if "tiny" == image_type:
                     result = image.tiny
-                util.renderJPEG(result, self.response)
+                swg_util.renderJPEG(result, self.response)
                 
                 
+import urllib        
+        
+class WebPost(webapp.RequestHandler):    
+    
+    @log_errors
+    def get(self):        
+        user = users.get_current_user()
+        if user:
+            swg_util.render("templates/post/webpost.html", {}, self.response)
+        else:
+            self.redirect(users.create_login_url("/web-api/clip/post/"))
+            
+    def post(self):
+        logging.debug("Posting clip start.")
+        user = users.get_current_user()
+        if user:        
+            try:
+                page = clips.validations.to_param(self.request.get('page'))
+                link = clips.validations.to_param(self.request.get('link'))
+                src = clips.validations.to_param(self.request.get('src'))
+                text = clips.validations.to_param(self.request.get('text'))
+                type = clips.validations.to_param(self.request.get('type'))
+                comment = clips.validations.to_param(self.request.get('comment'))
+                title = clips.validations.to_param(self.request.get('title'))
+                logging.debug("page:'%s' comment:'%s'" % (page, comment))
+                logging.debug("link:'%s' src:'%s'" % (link, src)) 
+                clips.api.store(type, page, link, src, text, comment, title)
+                logging.debug("Posted!")
+            except:
+                #Get exception trace
+                fp = StringIO.StringIO()
+                traceback.print_exc(file=fp)
+                message = fp.getvalue()
+                logging.error("Problem during post : %s" % (message))
+            finally:
+                logging.debug("Posting clip finished.")
+        else:
+            logging.debug("User was not logged in and clip post was canceled.")
+        swg_util.render("templates/post/posted.html", {}, self.response)
    
             
         
