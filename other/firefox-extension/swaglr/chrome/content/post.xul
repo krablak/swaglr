@@ -124,12 +124,12 @@
       
       <spacer height="5" style="background-color: white;"/>
       <vbox style="color: black; font-weight: bold;">
-        <caption id="comment_caption" label="Add comment to your post: " style="color: black; font-weight: bold;"/>
+        <caption id="comment_caption" label="Add comment to your post: " style="color: black; font-weight: bold; background-color: white;"/>
         <textbox id="post_comment" multiline="true" value="" hidden="false" style=""/>
       </vbox>
       <spacer height="5" style="background-color: white;" />
     </vbox>
-    
+
     <hbox style="background-color: white;">
       <spacer width="150" style="background-color: white;" />
       <html:a class="awesome large" onclick="cancel();">Cancel</html:a>
