@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://Swaglr/skin/overlay.css" type="text/css"?>
+<!DOCTYPE overlay SYSTEM "chrome://Swaglr/locale/overlay.dtd">
+<overlay id="Swaglr-overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <script src="common.js"/>
+  <script src="overlay.js"/>
+  <script src="ff-overlay.js"/>
+
+
+  <stringbundleset id="stringbundleset">
+    <stringbundle id="Swaglr-strings" src="chrome://Swaglr/locale/overlay.properties"/>
+  </stringbundleset>
+
+  <popup id="contentAreaContextMenu">
+    <menuitem id="context-Swaglr" position="after_start" label="&SwaglrContext.label;"
+              insertafter="contentAreaContextMenu"
+              oncommand="Swaglr.onMenuItemCommand(event)"/>
+  </popup>
+
+
+
+
+</overlay>

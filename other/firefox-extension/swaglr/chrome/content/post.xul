@@ -1,0 +1,143 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css" ?>
+<?xml-stylesheet href="swaglr.css" type="text/css"?>
+<window id="quote-window"
+        title="Quote on Swaglr.com"
+        orient="horizontal"
+        height="400"
+        width="530"
+        style="none; margin:5px 5px 5px 5px; background-color: white;"
+        onload="loadPostFrame();"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        xmlns:html="http://www.w3.org/1999/xhtml"
+        >
+        
+        
+        <script type="application/x-javascript">
+            <![CDATA[                 
+              //Load arguments passed to the window
+              var swaglr = window.arguments[0];
+              
+              var browser_doc = null;
+          
+              //Prepare post window
+              function loadPostFrame(){                 
+                setCaption("Loading...");
+                
+                var post_browser = document.getElementById("post_browser");
+                post_browser.setAttribute("src", swaglr.getPostURL());
+                
+                post_browser.addEventListener("DOMContentLoaded", onPostBrowserLoad, false); 
+              }
+              
+              //When browser is loaded fill the displayed post form.
+              function onPostBrowserLoad(event){
+                setCaption("Quote on Swaglr.com");
+                //Get window browser loaded document.
+                browser_doc = event.originalTarget;
+                //Try to find ready element - it meant form is ready to be filled
+                var readyElement = browser_doc.getElementById("yes");
+                
+                //Check if the form with post dialog was displayed
+                if(readyElement!=null){
+                  //Add values into form fields.
+                  browser_doc.getElementById("swg_text").setAttribute("value",swaglr.swag.text);
+                  browser_doc.getElementById("swg_type").setAttribute("value",swaglr.swag.type);
+                  browser_doc.getElementById("swg_link").setAttribute("value",swaglr.swag.link);
+                  browser_doc.getElementById("swg_page").setAttribute("value",swaglr.swag.page);
+                  browser_doc.getElementById("swg_title").setAttribute("value",swaglr.swag.title);
+                  browser_doc.getElementById("swg_src").setAttribute("value",swaglr.swag.src);
+                  
+                  fillXULForm(swaglr.swag);
+                  document.getElementById("post_browser").setAttribute("hidden","true");
+                  document.getElementById("post_link").setAttribute("style","visibility: visible;");
+                }else{
+                  //Otherwise the login page was displayed.
+                  setCaption("Please, login to swaglr.com");  
+                }                
+              }
+              
+              //Fills xul form components with swag content
+              function fillXULForm(swag){
+                document.getElementById("post_form_box").setAttribute("hidden","false");
+                if(swag.type=="IMAGE"){
+                  document.getElementById("post_image").setAttribute("hidden","false");
+                  document.getElementById("post_image").setAttribute("src",swag.src);
+                }else{
+                  document.getElementById("post_cited").setAttribute("hidden","false");
+                  if(swag.type=="TEXT"){
+                    var textNode = document.createTextNode("\""+swag.text+"\"");
+                    document.getElementById("post_cited").appendChild(textNode);
+                  }else if(swag.type=="PAGE"){
+                    var textNode = document.createTextNode("Web page : \""+swag.page+"\"");
+                    document.getElementById("post_cited").appendChild(textNode);
+                  }else if(swag.type=="LINK"){
+                    var textNode = document.createTextNode("Link : \""+swag.link+"\"");
+                    document.getElementById("post_cited").appendChild(textNode);
+                  }                  
+                }
+              }
+              
+              function post(){
+                if(browser_doc!=null){
+                  browser_doc.getElementById("swg_comment").setAttribute("value",shortIt(document.getElementById("post_comment").value));
+                  browser_doc.getElementById("post").submit();
+                }
+                window.close();
+              }
+              
+              function cancel(){
+                window.close();
+              }
+              
+              function setCaption(str){
+                document.getElementById("post_caption").setAttribute("label", str);
+              }
+              
+              function shortIt(string){
+                        if(string.length > 480) {
+                          string = string.substring(0,480)+"...";
+                        }
+                        return string.replace('\n',' ').replace('\t',' ');
+              }
+            ]]>
+    </script>
+
+  <vbox flex="1" height="400" width="450" style="background-color: white; border: 5px;">
+    <hbox>
+      <image height="50" width="50" src="logo.png"/>
+      <spacer width="20" style="background-color: white;" />
+      <caption id="post_caption" label="Quote on Swaglr.com" style="background-color: white; font-weight: bold; font-size: large;" align="center" pack="center"/>
+    </hbox>
+    
+    <browser id="post_browser" type="content" flex="1" style="background-color: #181818;"/>
+    
+    <spacer height="5" style="background-color: white;" />
+    <vbox id="post_form_box" hidden="true" style="background-color: white;">
+      <hbox height="190" style="overflow: hidden; background-color: white;" align="center" pack="center">
+        <vbox maxwidth="510" style="overflow: auto;"> 
+          <image id="post_image"/>
+        </vbox>
+        <label style="width: 400px; font-weight: bold; font-size: larger;" id="post_cited"></label>
+      </hbox>
+      
+      
+      <spacer height="5" style="background-color: white;"/>
+      <vbox style="color: black; font-weight: bold;">
+        <caption id="comment_caption" label="Add comment to your post: " style="color: black; font-weight: bold;"/>
+        <textbox id="post_comment" multiline="true" value="" hidden="false" style=""/>
+      </vbox>
+      <spacer height="5" style="background-color: white;" />
+    </vbox>
+    
+    <hbox style="background-color: white;">
+      <spacer width="150" style="background-color: white;" />
+      <html:a class="awesome large" onclick="cancel();">Cancel</html:a>
+      <spacer width="50" style="background-color: white;" />
+      <html:a id="post_link" style="visibility: hidden;" class="awesome large" onclick="post();">Post!</html:a>
+      <spacer width="150" style="background-color: white;" />
+    </hbox>
+    
+  </vbox>
+
+</window>
