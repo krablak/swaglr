@@ -1,7 +1,0 @@
-content   Swaglr                 chrome/content/
-skin      Swaglr   classic/1.0   chrome/skin/
-locale    Swaglr   en-US         chrome/locale/en-US/
-
-
-overlay   chrome://browser/content/browser.xul   chrome://Swaglr/content/ff-overlay.xul
-

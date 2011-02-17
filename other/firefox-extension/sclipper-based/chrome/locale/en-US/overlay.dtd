@@ -1,8 +1,0 @@
-<!ENTITY Swaglr.label "Quote on Swaglr">
-<!ENTITY SwaglrContext.label "Quote on Swaglr">
-<!ENTITY SwaglrContext.accesskey "Y">
-<!ENTITY SwaglrToolbarButton.label "Your Toolbar Button">
-<!ENTITY SwaglrToolbarButton.tooltip "This is your toolbar button!">
-<!ENTITY SwaglrSidebar.label "Your Sidebar">
-<!ENTITY SwaglrToolbar.name  "example">
-<!ENTITY SwaglrToolbar.label "This is an example toolbar. You can hide it under View &gt; toolbars &gt; &SwaglrToolbar.name;">
