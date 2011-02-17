@@ -1,6 +1,0 @@
-content   sclipper                 chrome/content/
-skin      sclipper   classic/1.0   chrome/skin/
-locale    sclipper   en-US         chrome/locale/en-US/
-
-
-overlay   chrome://browser/content/browser.xul   chrome://sclipper/content/ff-overlay.xul

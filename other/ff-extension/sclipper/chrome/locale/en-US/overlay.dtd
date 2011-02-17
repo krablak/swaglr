@@ -1,8 +1,0 @@
-<!ENTITY sclipper.label "Your localized menuitem">
-<!ENTITY sclipperContext.label "Your Menuitem">
-<!ENTITY sclipperContext.accesskey "Y">
-<!ENTITY sclipperToolbarButton.label "Your Toolbar Button">
-<!ENTITY sclipperToolbarButton.tooltip "This is your toolbar button!">
-<!ENTITY sclipperSidebar.label "Your Sidebar">
-<!ENTITY sclipperToolbar.name  "example">
-<!ENTITY sclipperToolbar.label "This is an example toolbar. You can hide it under View &gt; toolbars &gt; &sclipperToolbar.name;">
