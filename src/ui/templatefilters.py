@@ -126,6 +126,8 @@ def to_tag_comment(comment):
     Replace hashtags with liks to tag reports.
     """
     if comment:
+        if comment == "null":
+            comment = ""
         result = []
         words = comment.split()
         for word in words:

@@ -88,18 +88,22 @@ def validate_int(value,name):
         raise ValidationError("Attribute '%s' cannot be converted to int." % (name))
 
 
-def to_param(value):
+def to_param(value,not_null=False):
     """
     Helper function for update of the input values into clips API allowed style.
     """       
     if not value:
-        value = NULL
+        if not_null:
+            value = NULL
+        else:
+            value = ""
     else:
         value = unicode(value)
         if len(value)>MAX_LEN:
             value = value[:499]
         value = value.replace('\n',' ').replace('\t',' ')
     return value
+
 
 def to_int_param(value):
     """

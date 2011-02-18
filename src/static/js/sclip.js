@@ -196,7 +196,7 @@ function showCommentDialog(id) {
 function cancelCommentEditor(id) {
 	var originalComment = $('#clip-comment-view-' + id).text();
 	$('#clip-comment-edit-' + id).hide();
-	if (originalComment != "null" && originalComment != "") {
+	if (jQuery.trim(originalComment) != "") {
 		$('#clip-comment-view-' + id).html(originalComment);
 	} else {
 		$('#clip-comment-view-' + id).html("");
@@ -210,13 +210,19 @@ function cancelCommentEditor(id) {
 
 function openCommentEditor(id) {
 	var originalComment = $('#clip-comment-view-' + id).text();
-	if (originalComment != "null") {
+	if (jQuery.trim(originalComment)!="") {
 		$('#comment-textarea-' + id).html(originalComment);
+		$('#comment-textarea-' + id).val(originalComment);
+	}else{
+		$('#comment-textarea-' + id).html("");
+		$('#comment-textarea-' + id).val("");
 	}
+	
 	$('#clip-comment-view-div-' + id).show();
 	$('#clip-comment-view-' + id).hide();
 	$('#clip-comment-edit-' + id).fadeIn('fast');
 	$('#comment-textarea-' + id).focus();
+	
 	// Hide edit buttons.
 	showEditButtons(id, false);
 }
@@ -228,7 +234,7 @@ function onCommentedClip(id, comment) {
 	$('#clip-comment-edit-' + id).hide();
 	$('#clip-comment-view-' + id).html(comment);
 	$('#comment-textarea-' + id).html(comment);
-	if (comment != "") {
+	if (jQuery.trim(comment)!="") {
 		$('#clip-comment-view-' + id).fadeIn('fast');
 		$('#comment-ico-' + id).show();
 		changeEditButtonText(id, "Edit comment");
