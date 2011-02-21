@@ -9,6 +9,7 @@ from google.appengine.api import users
 from google.appengine.ext.webapp import template
 import os
 import clips.api
+import clips.likes.api
 import clips.validations
 import dbo
 register = webapp.template.create_template_register()
@@ -137,6 +138,12 @@ def to_tag_comment(comment):
                 result.append(word)
         return " ".join(result)
     return comment
+
+def is_liked(clip):
+    """
+    Returns True in case that clip is liked by current user.
+    """
+    return clips.likes.api.is_liked(None, clip)
     
 def clip_template(clip,path):
     """
@@ -164,3 +171,4 @@ register.filter(clip_template)
 register.filter(has_title)
 register.filter(os_environ)
 register.filter(to_tag_comment)
+register.filter(is_liked)

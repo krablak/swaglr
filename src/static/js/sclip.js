@@ -9,7 +9,6 @@ var sclipAPI = new SclipAPI();
 $(document).ready(initUI);
 
 function initUI() {
-	enableLikeButtons();
 	enableFollowButtons();
 
 }
@@ -53,24 +52,6 @@ function onSwitchFollowError(user) {
  * like****************************************************
  */
 
-/**
- * Get all like buttons and checks if they are enabled. For enabled buttons
- * displays them.
- */
-function enableLikeButtons() {
-	var likeBtns = $(".like-button");
-	for ( var i = 0; i < likeBtns.length; i++) {
-		var like_div = likeBtns[i];
-		var like_div_id = like_div.getAttribute("id");
-		if (like_div_id != null) {
-			var clip_id = like_div_id.substring("like-button-div-".length,
-					like_div_id.length);
-			if ($.cookie("liked-clip-" + clip_id) == null) {
-				$("#" + like_div_id).show();
-			}
-		}
-	}
-}
 
 /**
  * Calls the like for given clip id on server.
@@ -95,13 +76,7 @@ function incLikeNum(id) {
  * Called in case of successful like.
  */
 function onLikedClip(id) {
-	// Check if cookie for this like is already set
-	var cookieId = "liked-clip-" + id;
-	if ($.cookie(cookieId) == null) {
-		$.cookie(cookieId, "liked", {
-			expires : 7
-		});
-	}
+
 }
 
 /**

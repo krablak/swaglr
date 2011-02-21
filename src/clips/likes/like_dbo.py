@@ -28,7 +28,7 @@ class UserClipLike(db.Model):
         """
         if clip and user_info:
             #Get user like from DS
-            user_like = clip.user_clip_like.fetch(1)
+            user_like = clip.user_clip_like.filter("user =", user_info).fetch(1)
             #check if some user-like exists - if not, create new one
             if not user_like:
                 #Create new user like do
@@ -72,6 +72,21 @@ class UserClipLike(db.Model):
         q.filter('user = ', user_info)
         q.order("-like_date")
         return q.fetch(limit=max_clips)
+    
+    
+    @staticmethod
+    def get_clip_likes(clip,max_likes=100):
+        """
+        Returns passed user likes query
+        """
+        return UserClipLike.all().filter("clip =", clip).order("-like_date").fetch(max_likes)
+    
+    @staticmethod
+    def get_clip_user_likes(clip,user_info):
+        """
+        Returns passed user likes query
+        """
+        return UserClipLike.all().filter("clip =", clip).filter("user =", user_info).fetch(1)
     
 
 class ClipLike(db.Model):

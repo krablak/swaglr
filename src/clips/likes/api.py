@@ -45,6 +45,16 @@ def like(id):
         else:
             logging.debug("Clip with id %s was not found and cannot be liked." % (clip_id))
             
+def is_liked(user_info,clip):
+    """
+    Checks if passed clip is liked by the passed user.
+    """
+    if not user_info:
+        user_info = UserInfo.getUserInfo(__get_user())
+    if clip and user_info:
+        return UserClipLike.get_clip_user_likes(clip, user_info)
+    return True
+            
      
 def get_popular_clips(clips_count=4):
     """
@@ -97,6 +107,15 @@ def get_day_clips_by_user_likes(user_info,day_date=None,date_to=None):
     else:
         logging.error("Cannot get user likes for user '%s' and date '%s'" % (user_info,day_date))
     return None
+
+def get_user_likes_by_clip(clip):
+    """
+    Returns user likes for given clip.
+    """
+    if clip:
+        return UserClipLike.get_clip_likes(clip)
+    else:
+        return []
 
 def __get_user():
     """

@@ -141,6 +141,9 @@ class Detail(webapp.RequestHandler):
         #Current clip
         clip = Clip.getClip(clip_id)
         params['clip'] = clip
+        #Add likers to clip details
+        if clip:
+            params['likers'] = clips.likes.api.get_user_likes_by_clip(clip)
         #Get use events events
         clips_query = Clip.getPageByUserQuery(user_id=clip.user.user_id)
         if clips_query:

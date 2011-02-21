@@ -84,19 +84,30 @@
 
 		
 		<div class="bottom-toolbar">
-							   <a href="#" id="like-button-div-{{ clip.key.id }}" style="display: none" onclick="like({{ clip.key.id }});return false;" class="like-button awesome small"><span class="iconic like">&nbsp;</span>Like</a>
+								{% if user %}
+								{% if clip|is_liked %}	 
+								{% else %}
+								<a href="#" id="like-button-div-{{ clip.key.id }}" onclick="like({{ clip.key.id }});return false;" class="like-button awesome small"><span class="iconic like">&nbsp;</span>Like</a>
+								{% endif %}
+							{% endif %}
                  {% if clip|is_my %} 
 						     <a href="#" id="delete-comment-btn-{{ clip.key.id }}" onclick="showDeleteDialog({{ clip.key.id }});" class="awesome small"><span class="iconic trash">&nbsp;</span>Delete</a>
 							   {% endif %}
 		</div>	
-			
 	</div>
-	
 				
 	<div class="cleaner">
 		<hr />
 	</div>
-		
+	
+	<div>
+		{% if likers %}
+		Liked by
+		{% for liker in likers %}	
+			<a href="" class="username">{{ liker.user.nick|escape }}</a>&nbsp;
+		{% endfor %}
+		{% endif %}
+	</div>
 </div>	<!-- /detail-->		                   
 <div class="report-name">Latest by&nbsp;<a href="/user/{{clip.user.nick}}/page/0" class="username">{{clip.user.nick}}</a></div>
 	
