@@ -301,6 +301,7 @@ function showDeleteDialog(id) {
 	});
 	// Open delete dialog
 	$("#delete-dialog").modal({
+		minWidth:300,
 		onOpen : function(dialog) {
 			dialog.overlay.fadeIn('fast', function() {
 				dialog.data.show();
@@ -349,5 +350,38 @@ function onDeleteError() {
 function showDetail(clipId) {
 	$('#detail_' + clipId).modal({
 		overlayClose : true
+	});
+}
+
+/**
+ * **************************************Browser extension dialog
+ ****************************************************
+ */
+
+function showExtensionDialog() {
+	$('#ext-close').bind('click', function() {
+		$.modal.close();
+		return false;
+	});
+	
+	// Open extension download dialog
+	$("#extension-dialog").modal({
+		minWidth:410,
+		maxWidth:410,
+		onOpen : function(dialog) {
+			dialog.overlay.fadeIn('fast', function() {
+				dialog.data.show();
+				dialog.container.fadeIn('fast');
+			});
+		},
+		onClose : function(dialog) {
+			dialog.data.fadeOut('fast', function() {
+				dialog.container.fadeOut('fast', function() {
+					dialog.overlay.fadeOut('fast', function() {
+						$.modal.close();
+					});
+				});
+			});
+		}
 	});
 }
