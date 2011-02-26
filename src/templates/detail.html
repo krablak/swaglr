@@ -93,21 +93,26 @@
                  {% if clip|is_my %} 
 						     <a href="#" id="delete-comment-btn-{{ clip.key.id }}" onclick="showDeleteDialog({{ clip.key.id }});" class="awesome small"><span class="iconic trash">&nbsp;</span>Delete</a>
 							   {% endif %}
+		</div>
+		{% if likers %}
+		<div id="liked-by-box">
+			Liked by
+			<ul>
+			{% for liker in likers %}
+				<li><a href="/user/{{ liker.user.user_id }}/page/0" class="username light">{{ liker.user.nick|escape }}</a></li>
+			{% endfor %}
+			</ul>
 		</div>	
-	</div>
+		{% endif %}<!-- /likers-->		
+	</div><!-- /right column-->		
+	
+
 				
 	<div class="cleaner">
 		<hr />
 	</div>
 	
-	<div>
-		{% if likers %}
-		Liked by
-		{% for liker in likers %}	
-			<a href="" class="username">{{ liker.user.nick|escape }}</a>&nbsp;
-		{% endfor %}
-		{% endif %}
-	</div>
+
 </div>	<!-- /detail-->		                   
 <div class="report-name">Latest by&nbsp;<a href="/user/{{clip.user.nick}}/page/0" class="username">{{clip.user.nick}}</a></div>
 	
