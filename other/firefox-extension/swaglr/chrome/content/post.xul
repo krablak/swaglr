@@ -113,8 +113,8 @@
     <browser id="post_browser" type="content" flex="1" style="background-color: #181818;"/>
     
     <spacer height="10" />
-    <vbox id="post_form_box" height="300" hidden="true">
-      <html:div style="overflow: hidden; text-align: center;" >
+    <vbox id="post_form_box" height="250" hidden="true">
+      <html:div style="overflow: hidden; text-align: center; width: 350px; height:250px;" >
           <html:img id="post_image"/>
           
         <label style="width: 350px; font-weight: bold; font-size: larger;" id="post_cited"></label>
