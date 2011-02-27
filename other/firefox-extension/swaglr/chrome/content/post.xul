@@ -2,11 +2,11 @@
 <?xml-stylesheet href="chrome://global/skin/" type="text/css" ?>
 <?xml-stylesheet href="swaglr.css" type="text/css"?>
 <window id="quote-window"
-        title="Quote on swaglr"
+        title="Quote on SWAGLR"
         orient="vertical"
-        height="520"
-        width="370"
-        style="none; margin:10px 10px 10px 10px; background-color: #fff;"
+        height="460"
+        width="320"
+        style="margin:10px 10px 10px 10px; background-color: #fff;"
         onload="loadPostFrame();"
         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
         xmlns:html="http://www.w3.org/1999/xhtml"
@@ -32,7 +32,7 @@
               
               //When browser is loaded fill the displayed post form.
               function onPostBrowserLoad(event){
-                setCaption("Quote on swaglr");
+                setCaption("Quote on SWAGLR");
                 //Get window browser loaded document.
                 browser_doc = event.originalTarget;
                 //Try to find ready element - it meant form is ready to be filled
@@ -103,39 +103,34 @@
             ]]>
     </script>
 
-  <vbox flex="1">
     <hbox>
       <image height="50" width="50" src="logo.png"/>
-      <spacer width="10"/>
-      <caption id="post_caption" label="Quote on swaglr" style="font-weight: bold; font-size: 20px; background-color: #fff;" align="left" pack="center"/>
+      <caption id="post_caption" label="Quote on SWAGLR" style="font-weight: bold; font-size: 20px; background-color: #fff;" align="left"/>
     </hbox>
     
     <browser id="post_browser" type="content" flex="1" style="background-color: #181818;"/>
     
-    <spacer height="10" />
-    <vbox id="post_form_box" height="250" hidden="true">
-      <html:div style="overflow: hidden; text-align: center; width: 350px; height:250px;" >
+    <vbox id="post_form_box" pack="center" align="center" style="margin-left:-10px;">
+    
+      <html:div style="overflow: hidden; vertical-align:middle; text-align: center; height:190px; width: 290px;" >
           <html:img id="post_image"/>
-          
-        <label style="width: 350px; font-weight: bold; font-size: larger;" id="post_cited"></label>
+          <label style="font-size: 14px; font-weight: bold; color:#555; margin-top: 10px;" id="post_cited"></label>
       </html:div>
-      
-      
-      <spacer height="10"/>
-      <vbox>
-        <caption id="comment_caption" label="Your comment" style="color: black; font-weight: bold; background-color: #fff;"/>
-        <textbox id="post_comment" multiline="true" value="" hidden="false" style=""/>
-      </vbox>
-      <spacer height="5"  />
-    </vbox>
 
-    <hbox >
-      <spacer width="100" />
-      <html:a class="awesome large" onclick="cancel();">Cancel</html:a>
-      <spacer width="20" />
+      <vbox>
+        <label value="Your comment" style="font-weight: bold; font-size: larger; margin-top:10px;"/>     
+        <textbox id="post_comment"   multiline="true" rows="4" value="" width="280" style="font-size: larger;"/>
+      </vbox>
+  </vbox>     
+    
+
+    <hbox pack="center" style="margin-top:5px; margin-left:-10px;"> 
       <html:a id="post_link" style="visibility: hidden;" class="awesome large" onclick="post();">Post</html:a>
+      <html:a class="awesome large" style="margin-left:10px;" onclick="cancel();">Cancel</html:a>
     </hbox>
     
-  </vbox>
+ 
+    
+
 
 </window>
