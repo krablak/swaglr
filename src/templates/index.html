@@ -116,7 +116,7 @@
 								<a href="#" id="like-button-div-{{ clip.key.id }}" onclick="like({{ clip.key.id }});return false;" class="like-button awesome small"><span class="iconic like">&nbsp;</span>Like</a>
 								{% endif %}
 							{% endif %}
-                 <a href="/swag/{{ clip.key.id }}" class="awesome small"><span class="iconic share">&nbsp;</span>More</a>
+                 <a href="/swag/{{ clip.key.id }}" class="awesome small"><span class="iconic star">&nbsp;</span>More&hellip;</a>
                  {% if clip|is_my %} 
 						     <a href="#" id="delete-comment-btn-{{ clip.key.id }}" onclick="showDeleteDialog({{ clip.key.id }});" class="awesome small"><span class="iconic trash">&nbsp;</span>Delete</a>
 							   {% endif %}

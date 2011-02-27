@@ -75,6 +75,10 @@
   content: '/';
 }
 
+.iconic.star:before {
+  content: 's';
+}
+
 .iconic.add:before, .iconic.follow:before {
   content: '+';
 }
@@ -337,8 +341,10 @@ ul#navigation {
 	  @include link-colors($username-color, $username-color, $username-color, $username-color, $username-color);      */  
 	  text-decoration: none;                 
     font-weight: bold;  
-      
+}
 
+.username.light {
+      font-weight: normal; 
 }
 
 
@@ -799,6 +805,17 @@ a.awesome:hover {
 .like-button.own{
 	margin-top: -50px;
 
+}
+
+#liked-by-box {
+  background-color: $box-background;
+  padding: $general-padding; 
+  line-height: 110%;
+  @include border-radius($default-radius);
+  
+  ul {
+      @include inline-list;
+  }
 }
 
 
