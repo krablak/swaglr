@@ -110,7 +110,7 @@
     
     <browser id="post_browser" type="content" flex="1" style="background-color: #181818;"/>
     
-    <vbox id="post_form_box" pack="center" align="center" style="margin-left:-10px;">
+    <vbox id="post_form_box" hidden="true" pack="center" align="center" style="margin-left:-10px;">
     
       <html:div style="overflow: hidden; vertical-align:middle; text-align: center; height:190px; width: 290px;" >
           <html:img id="post_image"/>
