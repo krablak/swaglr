@@ -7,17 +7,12 @@
                    em:name="Swaglr"
                    em:version="0.1"
                    em:creator="Krab"
-                   em:description="Post to swaglr! Stay based."
-                   em:aboutURL="chrome://Swaglr/content/about.xul">
+                   em:description="Post to swaglr! Stay based."                   
     <em:description>Extension for posting On Swaglr.</em:description>
     <em:targetApplication RDF:resource="rdf:#$NLBkO3"/>
     <em:iconURL>chrome://Swaglr/skin/icon.png</em:iconURL>
     <em:icon64URL>chrome://Swaglr/icon.png</em:icon64URL>
     <em:homepageURL>http://www.swaglr.com</em:homepageURL>
   </RDF:Description>
-  <RDF:Description RDF:about="rdf:#$NLBkO3"
-                   em:id="{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
-                   em:minVersion="3.6"
-                   em:maxVersion="4.0.*">
-   </RDF:Description>
+
 </RDF:RDF>
