@@ -12,6 +12,7 @@ import clips.api
 import clips.likes.api
 import clips.validations
 import dbo
+import cgi
 register = webapp.template.create_template_register()
 
 
@@ -130,6 +131,7 @@ def to_tag_comment(comment):
         if comment == "null":
             comment = ""
         result = []
+        comment = cgi.escape(comment)
         words = comment.split()
         for word in words:
             if clips.hashtag.api.is_tag(word):
