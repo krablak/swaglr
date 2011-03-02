@@ -116,6 +116,7 @@ def swag_slice(value,length):
     """
     Creates slice from passed text and add the ... html character.
     """
+    value = cgi.escape(value)
     if len(value)>length:
         return "%s&hellip;" % (value[:length]) 
     else:
@@ -157,6 +158,18 @@ def clip_template(clip,path):
 def os_environ(name='HTTP_HOST'):
     return os.environ[name]
 
+def is_user_home(request):
+    """
+    Return true in case that user is logged in and is on his home page.
+    """
+    user = users.get_current_user()
+    if not user:
+        return False
+    else:
+        return request.path == "/"
+
+
+
 
 register.filter(is_page_clip)
 register.filter(is_image_clip)
@@ -174,3 +187,5 @@ register.filter(has_title)
 register.filter(os_environ)
 register.filter(to_tag_comment)
 register.filter(is_liked)
+register.filter(is_user_home)
+

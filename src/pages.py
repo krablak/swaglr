@@ -30,7 +30,7 @@ class MainPage(webapp.RequestHandler):
     @log_errors
     def get(self):
         user = users.get_current_user()
-        params = ui.models.page_params()
+        params = ui.models.page_params(req=self.request)
         if user:
             user_info = UserInfo.getUserInfo(user)
             follow_query = clips.follow.api.get_followers_query(user_info)
@@ -49,7 +49,7 @@ class AllPage(webapp.RequestHandler):
     
     @log_errors
     def get(self,page_val):
-        params = ui.models.page_params()
+        params = ui.models.page_params(req=self.request)
         #Read page value
         page = clips.validations.to_int_param(page_val)
         #Get paging content
@@ -61,7 +61,7 @@ class Popular(webapp.RequestHandler):
     
     @log_errors
     def get(self):
-        params = ui.models.page_params()
+        params = ui.models.page_params(req=self.request)
         #Get paging content
         page_clips = clips.likes.api.get_popular_clips(clips_count=20)
         params['day_clips'] = ui.models.to_united_clips(page_clips)
@@ -71,7 +71,7 @@ class LikedByCurrentUser(webapp.RequestHandler):
     
     @log_errors
     def get(self,user_id_val,page_val):
-        params = ui.models.page_params()
+        params = ui.models.page_params(req=self.request)
         page_clips = []
         #Get id or nick from request
         user_id = clips.validations.to_param(user_id_val)
@@ -96,7 +96,7 @@ class Paging(webapp.RequestHandler):
         page = clips.validations.to_int_param(page_val)
         #get user and check if only followed clips should be displayed.
         user = users.get_current_user()
-        params = ui.models.page_params()
+        params = ui.models.page_params(req=self.request)
         if user:
             user_info = UserInfo.getUserInfo(user)
             follow_query = clips.follow.api.get_followers_query(user_info)
@@ -122,7 +122,7 @@ class User(webapp.RequestHandler):
             user_id = user_info.user_id 
         #Read page value
         page = clips.validations.to_int_param(page_val)
-        params = ui.models.page_params()
+        params = ui.models.page_params(req=self.request)
         #Set displayed user
         params['detail_user_info'] = user_info
         #Get all events
@@ -137,7 +137,7 @@ class Detail(webapp.RequestHandler):
     @log_errors
     def get(self,clip_id_val):
         clip_id = clips.validations.to_int_param(clip_id_val)
-        params = ui.models.page_params()
+        params = ui.models.page_params(req=self.request)
         #Current clip
         clip = Clip.getClip(clip_id)
         params['clip'] = clip
@@ -164,7 +164,7 @@ class Delete(webapp.RequestHandler):
         clip = Clip.getClip(clip_id)
         if clip and clip.user.user_id == user.user_id():
             clip.delete()
-        params = ui.models.page_params()
+        params = ui.models.page_params(req=self.request)
         swg_util.render("templates/deleted.html", params, self.response)        
 
 
@@ -173,7 +173,7 @@ class Share(webapp.RequestHandler):
     @log_errors
     @login_required
     def get(self):
-        params = ui.models.page_params()
+        params = ui.models.page_params(req=self.request)
         params['today_date'] = datetime.datetime.now()
         params['before_date'] = datetime.datetime.now() - datetime.timedelta(days=7)
         swg_util.render("templates/share.html", params, self.response)

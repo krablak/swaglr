@@ -9,8 +9,11 @@
 	{% endblock %}
 	
 		<div id="clips">
-
+		
 			{% for day in day_clips %}
+				{% if request|is_user_home and day.clips|length == 0 %}
+					{% include "components/no_swags.html" %}
+				{% endif %}
 			<div class="day-wrap">
 				<h2 class="dayId">{{ day.day }}</h2>
     			<ul class="boxList">
@@ -25,7 +28,7 @@
 						{% endif %}
 			
 						{% if clip|is_text_clip %}
-						<q cite="{{ clip.page }}">{{ clip.text|escape|swag_slice:75 }}</q>
+						<q cite="{{ clip.page }}">{{ clip.text|swag_slice:75|safe }}</q>
 						{% endif %}
 						
 						{% if clip|is_page_clip %}
@@ -58,18 +61,18 @@
 							
 							{% if clip|is_page_clip %}
 								{% if clip|has_title %}
-									<q cite="{{ clip.page }}" onclick="closeClip({{ clip.key.id }});">{{ clip.title|escape}}</q>
+									<q cite="{{ clip.page }}" onclick="closeClip({{ clip.key.id }});">{{ clip.title}}</q>
 								{% else %}
-									<q cite="{{ clip.page }}" onclick="closeClip({{ clip.key.id }});">{{ clip.page|escape|swag_slice:40}}</q>
+									<q cite="{{ clip.page }}" onclick="closeClip({{ clip.key.id }});">{{ clip.page|swag_slice:40|safe}}</q>
 								{% endif %}
 							{% endif %}
 							
 							{% if clip|is_link_clip %}
-							<q cite="{{ clip.link }}" onclick="closeClip({{ clip.key.id }});">{{ clip.link|escape|swag_slice:40 }}</q>
+							<q cite="{{ clip.link }}" onclick="closeClip({{ clip.key.id }});">{{ clip.link|swag_slice:40|safe }}</q>
 							{% endif %}  
 							
 												
-					    <p class="page-url"><a target="_blank" href="{{ clip.page }}">{% if clip|has_title %}{{ clip.title|escape|swag_slice:100 }}{% else %}{{ clip.page|escape|cut_http|swag_slice:100 }}{% endif %}</a></p>
+					    <p class="page-url"><a target="_blank" href="{{ clip.page }}">{% if clip|has_title %}{{ clip.title|swag_slice:100|safe }}{% else %}{{ clip.page|cut_http|swag_slice:100|safe }}{% endif %}</a></p>
 							
 							{% if clip|is_commented_clip %}									
 								<div class="comment"> 

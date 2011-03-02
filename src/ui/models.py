@@ -69,7 +69,7 @@ def __to_humanized_date(robotic_date):
             pass
     return UNKNOWN_DATE_TEXT
 
-def page_params():
+def page_params(req=None):
     """
     Prepares default parameters for page:
     
@@ -85,6 +85,8 @@ def page_params():
         user_info = UserInfo.getUserInfoById(user.user_id())
         if user_info:
             params['user_info'] = user_info[0]
+    if req:
+        params['request'] = req    
     return params
 
 def paging(params,clips,page,max_items,user_id=None,url_prefix=None):
