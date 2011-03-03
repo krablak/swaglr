@@ -167,7 +167,12 @@ def is_user_home(request):
         return False
     else:
         return request.path == "/"
-
+    
+def is_main_page(request):
+    """
+    Returns true in case of ain page url
+    """
+    return request.path == "/"
 
 
 
@@ -188,4 +193,5 @@ register.filter(os_environ)
 register.filter(to_tag_comment)
 register.filter(is_liked)
 register.filter(is_user_home)
+register.filter(is_main_page)
 
