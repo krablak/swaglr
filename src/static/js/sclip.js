@@ -21,29 +21,33 @@ function initUI() {
 function showLandingPage(){
 	if($("#landingpage").length > 0 && $.cookie("old_swagler")==null){
 		$.cookie("old_swagler","yeah", {expires: 365});
-		// Open landing page dialog
-		$("#landingpage").modal({
-			minHeight:510,
-			maxHeight:510,
-			minWidth:610,
-			maxWidth:610,
-			onOpen : function(dialog) {
-				dialog.overlay.fadeIn('fast', function() {
-					dialog.data.show();
-					dialog.container.fadeIn('fast');
-				});
-			},
-			onClose : function(dialog) {
-				dialog.data.fadeOut('fast', function() {
-					dialog.container.fadeOut('fast', function() {
-						dialog.overlay.fadeOut('fast', function() {
-							$.modal.close();
-						});
+		showLandingPageNoCookie();
+	}	
+}
+
+function showLandingPageNoCookie(){
+	// Open landing page dialog
+	$("#landingpage").modal({
+		minHeight:510,
+		maxHeight:510,
+		minWidth:610,
+		maxWidth:610,
+		onOpen : function(dialog) {
+			dialog.overlay.fadeIn('fast', function() {
+				dialog.data.show();
+				dialog.container.fadeIn('fast');
+			});
+		},
+		onClose : function(dialog) {
+			dialog.data.fadeOut('fast', function() {
+				dialog.container.fadeOut('fast', function() {
+					dialog.overlay.fadeOut('fast', function() {
+						$.modal.close();
 					});
 				});
-			}
-		});
-	}	
+			});
+		}
+	});
 }
 
 /**

@@ -69,9 +69,8 @@
 					<div id="user">
 						<p>{{ greeting|safe }}</p>
 					</div>
-				</div><!-- /toolbar -->	
+				</div><!-- /toolbar -->			
 				
-				<p class="hint">Hint: Install the browser extension, select an element on any web page and click <i>Quote on swaglr</i> to create your own posts.</p>
 				</div> <!-- /right -->
 			</div>	
 
@@ -86,13 +85,14 @@
 		</div><!-- /content --> 
 
 		<div id="footerWrap" class="container_18">
-			<div id="footer" class="grid_3 push_15">
+			<div id="footer" class="grid_3 push_15">				
 				<a href="#" hresf="/static/crx/sclipper-based.crx" onclick="showExtensionDialog();return false;" id="get-extension"><span class="iconic down">&nbsp;</span><b>Get browser extension</b></a>  <br/>
+				<a href="#" onclick="showLandingPageNoCookie();">About</a>&nbsp;
 				<a href="http://blog.swaglr.com" target="_blank">Blog</a>&nbsp;<a href="http://twitter.com/#!/swaglr" target="_blank">Twitter</a> <a href="http://www.facebook.com/pages/swaglrcom/161688560536365" target="_blank">Facebook</a><br/>
         <a href="http://blog.swaglr.com/ask" target="_blank">Contact us</a>
 				
 			</div>
-		</div><!-- /footer --> 
+		</div><!-- /footer -->
 			
 			
 		<!-- Extension download dialog --> 
@@ -101,6 +101,7 @@
 			<a href="/static/crx/sclipper-based.crx" id="get-extension-ff"><img src="/static/img/chrome.png"/></a>
 			<a href="/static/crx/swaglr.xpi" id="get-extension=chrome"><img src="/static/img/firefox.png"/></a>
 		</div>	
-	{% endblock %}<!-- /block container --> 
+	{% endblock %}<!-- /block container -->
+		{% include "components/landingpage_dialog.html" %}
     </body>
 </html>

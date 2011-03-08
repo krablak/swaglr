@@ -159,10 +159,6 @@
 				</p> 		
 			</div>
 			
-			{% if not user and request|is_main_page %} 
-				{% include "components/landingpage_dialog.html" %}
-			{% endif %}
-			
 			<!-- preload the images --> 
 			<div style='display:none'> 
 				<img src='/static/img/x.png' alt='' /> 
