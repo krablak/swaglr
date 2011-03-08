@@ -4,6 +4,8 @@ Created on Oct 15, 2010
 @author: michalracek
 '''
 
+import cgi
+
 #Defines default null value provided by clients
 NULL = "null"
 #Maximal allowed length of input values.
@@ -88,7 +90,7 @@ def validate_int(value,name):
         raise ValidationError("Attribute '%s' cannot be converted to int." % (name))
 
 
-def to_param(value,not_null=False):
+def to_param(value,not_null=False,escape=True):
     """
     Helper function for update of the input values into clips API allowed style.
     """       
@@ -98,6 +100,7 @@ def to_param(value,not_null=False):
         else:
             value = ""
     else:
+        value = cgi.escape(value)
         value = unicode(value)
         if len(value)>MAX_LEN:
             value = value[:499]

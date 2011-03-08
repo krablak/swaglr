@@ -33,9 +33,9 @@
 						
 						{% if clip|is_page_clip %}
 							{% if clip|has_title %}
-								<q cite="{{ clip.page }}">{{ clip.title|escape|swag_slice:40 }}</q>
+								<q cite="{{ clip.page }}">{{ clip.title|swag_slice:40|safe }}</q>
 							{% else %}
-								<q cite="{{ clip.page }}">{{ clip.page|escape|swag_slice:40 }}</q>
+								<q cite="{{ clip.page }}">{{ clip.page|swag_slice:40|safe }}</q>
 							{% endif %}
 						{% endif %}
 						

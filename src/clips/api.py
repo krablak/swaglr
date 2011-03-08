@@ -10,7 +10,6 @@ import validations
 import clips.api_handlers
 from image import thumbnail
 from dbo import Clip,UserInfo
-import cgi
 
 class UserError(Exception):
     """
