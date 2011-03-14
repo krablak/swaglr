@@ -1,0 +1,9 @@
+<meta property="og:title" content="{{ clip|share_text }}"/>
+<meta property="og:type" content="article"/>
+<meta property="og:url" content="http://{{ "HTTP_HOST"|os_environ }}/swag/{{ clip.key.id }}"/>
+{% if clip|is_image_clip %}
+	<meta property="og:image" content="http://{{ "HTTP_HOST"|os_environ }}/images/tiny/{{ clip.image.key.id }}.jpg"/>
+{% else %}
+	<meta property="og:image" content="http://{{ "HTTP_HOST"|os_environ }}/static/img/logo.png"/>
+{% endif %}
+<meta property="og:site_name" content="Swaglr"/>
