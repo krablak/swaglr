@@ -117,10 +117,7 @@ def swag_slice(value,length):
     Creates slice from passed text and add the ... html character.
     """
     value = cgi.escape(value)
-    if len(value)>length:
-        return "%s&hellip;" % (value[:length]) 
-    else:
-        return value
+    return __short_value(value,length,"&hellip;")
 
 import clips.hashtag.api
     
@@ -174,6 +171,47 @@ def is_main_page(request):
     """
     return request.path == "/"
 
+def share_text(clip):
+    """
+    Returns text used for sharing created by following rules:
+        1) If the clip is commented the shorted comment is returned.
+        2) If clip is text the  shorted text is returned.
+        3) If clip is page the shorted title is returned.
+        4) If clip is link the cut url is returned.
+        5) If clip is image the cut url is returned.
+    """
+    if clip:
+        if is_commented_clip(clip):
+            value = cgi.escape(clip.comment)
+            return __short_value(value,100,"...")
+        if is_text_clip(clip):
+            value = cgi.escape(clip.text)
+            value = __short_value(value,100,"...")
+            return "\"%s\"" % (value)
+        if is_page_clip(clip):
+            value = cgi.escape(clip.title)
+            value = __short_value(value,100,"...")
+            return "check the page %s" % (value)
+        if is_link_clip(clip):
+            value = cgi.escape(clip.link)
+            value = cut_url(value)
+            value = __short_value(value,50,"...")
+            return "nice link to %s" % (value)
+        if is_image_clip(clip):
+            value = cgi.escape(clip.page)
+            value = cut_url(value)
+            return "nice pic at %s" % (value)
+    return "Something quoted on SWAGLR"
+
+def __short_value(value,length,endchar):
+    """
+    Helper function to short values.
+    """
+    value = cgi.escape(value)
+    if len(value)>length:
+        return "%s%s" % (value[:length],endchar) 
+    else:
+        return value
 
 
 register.filter(is_page_clip)
@@ -194,4 +232,5 @@ register.filter(to_tag_comment)
 register.filter(is_liked)
 register.filter(is_user_home)
 register.filter(is_main_page)
+register.filter(share_text)
 
