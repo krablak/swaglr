@@ -1,7 +1,7 @@
 {% extends "index.html" %}
 
 {% block title %}
-         <title>SWAGLR - {{ clip|share_text }}</title>
+         <title>Swaglr - {{ clip|share_text }}</title>
 {% endblock %}
 
 {% block detail%}
@@ -10,7 +10,7 @@
 	<div class="close-button"><a href="#" onclick="closeClipDetail({{ clip.key.id }});return false;"><span class="iconic close"></span></a></div>
 	<div class="left_column">
 		{% if clip|is_embed_content %}
-			{{ clip|get_embed_content }}
+			{{ clip|get_embed_content|safe }}
 		{% else %}
 			{% if clip|is_image_clip %}
 			<div class="imgbox" ><img src="/images/tiny/{{ clip.image.key.id }}.jpg"/></div>
