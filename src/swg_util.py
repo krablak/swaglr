@@ -27,6 +27,14 @@ def renderJPEG(image_data, response):
     response.headers['Cache-Control'] = "public, max-age=315360000"
     response.out.write(image_data)
     
+def readFile(path):
+    try:
+        path = os.path.join(os.path.split(__file__)[0], path)
+        return open(path,"r").read()
+    except:
+        pass    
+
+    
 def renderJSON(values, response):
     """
     Renders given parameters as json response.

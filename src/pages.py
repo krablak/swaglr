@@ -196,8 +196,11 @@ class Images(webapp.RequestHandler):
                 result = None
                 if "tiny" == image_type:
                     result = image.tiny
+                    if not result:
+                        result = swg_util.readFile("templates/no-image.png")
                 swg_util.renderJPEG(result, self.response)
-                
+            else:
+                swg_util.renderJPEG(swg_util.readFile("templates/no-image.png"), self.response)
                 
 import urllib        
         

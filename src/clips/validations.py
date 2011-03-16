@@ -100,7 +100,8 @@ def to_param(value,not_null=False,escape=True):
         else:
             value = ""
     else:
-        value = cgi.escape(value)
+        if escape:
+            value = cgi.escape(value)
         value = unicode(value)
         if len(value)>MAX_LEN:
             value = value[:499]

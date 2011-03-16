@@ -84,7 +84,7 @@ class Post(webapp.RequestHandler):
         try:
             page = clips.validations.to_param(self.request.get('page'))
             link = clips.validations.to_param(self.request.get('link'))
-            src = clips.validations.to_param(self.request.get('src'))
+            src = clips.validations.to_param(self.request.get('src'),escape=False)
             text = clips.validations.to_param(self.request.get('text'))
             type = clips.validations.to_param(self.request.get('type'))
             comment = clips.validations.to_param(self.request.get('comment'))
