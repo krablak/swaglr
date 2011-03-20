@@ -59,10 +59,10 @@ function showLandingPage(){
 function showLandingPageNoCookie(){
 	// Open landing page dialog
 	$("#landingpage").modal({
-		minHeight:510,
-		maxHeight:510,
-		minWidth:610,
-		maxWidth:610,
+		minHeight:450,
+		maxHeight:450,
+		minWidth:450,
+		maxWidth:450,
 		onOpen : function(dialog) {
 			dialog.overlay.fadeIn('fast', function() {
 				dialog.data.show();
