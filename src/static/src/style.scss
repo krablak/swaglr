@@ -359,7 +359,20 @@ ul#navigation {
 
 #clips {
 
-
+	.newSwag{
+		font-size: 56px;
+		color: $color2;
+		text-align: right;
+		position:absolute;                                   
+		top: -5px;
+		left: - 85px;
+		width: 75px; 
+		margin: 0;
+		padding: 0;
+		a {
+			text-decoration: none;
+		}
+	}
 
 	.dayId{
 		font-size: 16px;

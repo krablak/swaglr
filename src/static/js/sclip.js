@@ -11,6 +11,37 @@ $(document).ready(initUI);
 function initUI() {
 	enableFollowButtons();
 	showLandingPage();
+	setAutocheck();
+}
+
+/**
+ * **************************************Checking for new swags.
+ * ****************************************************
+ */
+
+function setAutocheck(){
+	if(PAGE_STATE.autocheck=="enabled"){
+		//Set automatic check of new content
+		setInterval(hasNew,180000);
+	}
+	
+}
+
+function hasNew(){
+	if(PAGE_STATE.autocheck=="enabled"){
+		sclipAPI.hasNew(PAGE_STATE.last_clip_id,PAGE_STATE.last_clip_date,onHasNew,onHasNewError);
+	}
+}
+
+function onHasNew(response){
+	if(response!=null && response.count>1){
+		$("#newSwag").fadeIn('slow');
+		PAGE_STATE.autocheck="disabled";
+	}
+}
+
+function onHasNewError(){
+	
 }
 
 

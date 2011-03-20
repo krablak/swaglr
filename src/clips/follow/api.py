@@ -126,6 +126,18 @@ def get_followers_query(user_info):
     if user_info:
         return Followers.all().filter("users =",user_info.key()).order("-order_date")
     
+def has_new_swag(user_info,date,max_cnt=10):
+    """
+    Returns query for finding clip follower containing given user info.
+    Should be used to get query for paging purposes.
+    """
+    if not user_info:
+        user = swg_util.get_user()
+        if user:
+            user_info = UserInfo.getUserInfo(user)
+    if user_info and date:
+        return Followers.all().filter("users =",user_info.key()).filter("order_date >",date).fetch(max_cnt)
+    
 def get_clips_by_followers(followers_keys):
     if followers_keys:
         clip_keys = [ key.parent().key() for key in followers_keys]

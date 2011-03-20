@@ -15,7 +15,7 @@
 					{% include "components/no_swags.html" %}
 				{% endif %}
 			<div class="day-wrap">
-				<h2 class="dayId">{{ day.day }}</h2>
+				<h2 id="newSwag" class="newSwag" style="display:none;"><a title="New swags!" href="/">*</a></h2>
     			<ul class="boxList">
     		{% for clip in day.clips %}	
 						<li id="clip_box_{{clip.key.id}}" onclick="openClip({{ clip.key.id }});">

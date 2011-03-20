@@ -36,6 +36,8 @@ class MainPage(webapp.RequestHandler):
             follow_query = clips.follow.api.get_followers_query(user_info)
             page_followers = ui.models.paging(params,follow_query,0,PAGING)
             page_clips = clips.follow.api.get_clips_by_followers(page_followers)
+            if page_clips:
+                params['last_clip'] = page_clips[0]
             params['day_clips'] = ui.models.to_day_clips(page_clips)
             swg_util.render("templates/index.html", params, self.response)
         else:

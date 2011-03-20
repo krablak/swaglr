@@ -30,7 +30,8 @@ application = webapp.WSGIApplication([('/', pages.MainPage),
                                       ('/api/clip/like/', ajax.Like),
                                       ('/api/clip/delete/', ajax.Delete),
                                       ('/api/user/switch_follow/', ajax.FollowSwitch),
-                                      ('/images/(.*)/(.*)', pages.Images),
+                                      ('/api/user/has_new/', ajax.HasNew),
+                                      ('/images/(.*)/(.*)', pages.Images)
                                      ]
                                      , debug=True)
 

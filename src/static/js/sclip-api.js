@@ -70,5 +70,23 @@ var SclipAPI = function() {
 				onError();
 			} 
 		});
-	}	
+	}
+	
+	
+	/**
+	 * Calls server to check if exist some new swag.
+	 */
+	this.hasNew = function hasNew(id,date,onSuccess,onError) {
+		$.ajax( {
+			type : "POST",
+			url : "/api/user/has_new/",
+			data: "id="+id+"&date="+date,
+			success : function(response){
+				onSuccess(response);
+			},
+			error: function(xhr, ajaxOptions, thrownError){
+				onError();
+			} 
+		});
+	}
 }

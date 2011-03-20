@@ -19,6 +19,16 @@ indexes:
 - kind: Followers
   properties:
   - name: users
+  - name: date
+
+- kind: Followers
+  properties:
+  - name: users
+  - name: order_date
+
+- kind: Followers
+  properties:
+  - name: users
   - name: order_date
     direction: desc
 

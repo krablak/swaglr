@@ -17,7 +17,9 @@ import dbo
 import logging
 import traceback
 import StringIO
+from datetime import datetime
 
+from dbo import *
 import clips.api
 import clips.validations 
 import ui.models
@@ -143,5 +145,33 @@ class FollowSwitch(webapp.RequestHandler):
             logging.error("Problem during user follow switch : %s" % (message))
             swg_util.renderJSON({'code' : 'ERROR', 'desc' : "User follow switch failed on error : %s" % (message)}, self.response)
         finally:
-            logging.debug("User follow switch finished.")           
+            logging.debug("User follow switch finished.")  
+            
+
+class HasNew(webapp.RequestHandler):
+    """
+    Handler checks if there are some new swags for logged users.
+    """    
+    
+    @log_errors
+    def post(self):
+        logging.debug("HasNew clip start.")
+        try:
+            #Get params
+            last_clip_id = str(self.request.get('id'))
+            last_clip_date = str(self.request.get('date'))
+            user = users.get_current_user()
+            params = ui.models.page_params(req=self.request)
+            new_clips_count = 0;
+            if user and last_clip_id and last_clip_date:
+                #Convert date string to date
+                date = datetime.datetime.strptime(last_clip_date,"%y-%m-%d-%H-%M-%S")
+                user_info = UserInfo.getUserInfo(user)
+                new_clips = clips.follow.api.has_new_swag(user_info,date)
+                swg_util.renderJSON({'code' : 'OK','count' : len(new_clips)}, self.response)
+            else:
+                swg_util.renderJSON({'code' : 'OK','count' : new_clips_count}, self.response)
+        except:
+            swg_util.renderJSON({'code' : 'ERROR','count' : 0}, self.response)
+                 
         
