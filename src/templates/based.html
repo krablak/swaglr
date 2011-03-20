@@ -119,8 +119,6 @@
 			<a href="/static/crx/swaglr.xpi" id="get-extension=chrome"><img src="/static/img/firefox.png"/></a>
 		</div>	
 	{% endblock %}<!-- /block container -->
-	{% if not user %}
-		{% include "components/landingpage_dialog.html" %}
-	{% endif %}
+	{% include "components/landingpage_dialog.html" %}
     </body>
 </html>
