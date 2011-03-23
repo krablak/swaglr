@@ -52,7 +52,7 @@ function onHasNewError(){
 function showLandingPage(){
 	if($("#landingpage").length > 0 && $.cookie("old_swagler")==null){
 		$.cookie("old_swagler","yeah", {expires: 365});
-		showLandingPageNoCookie();
+		//showLandingPageNoCookie();
 	}	
 }
 
