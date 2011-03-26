@@ -36,6 +36,7 @@ function hasNew(){
 function onHasNew(response){
 	if(response!=null && response.count>1){
 		$("#newSwag").fadeIn('slow');
+		$("title").html("Swaglr - New swags!");
 		PAGE_STATE.autocheck="disabled";
 	}
 }

@@ -11,8 +11,10 @@ import os
 import clips.api
 import clips.likes.api
 import clips.validations
+import clips.hashtag.api
 import dbo
 import cgi
+import urllib
 register = webapp.template.create_template_register()
 
 
@@ -118,8 +120,6 @@ def swag_slice(value,length):
     """
     return __short_value(value,length,"...")
 
-import clips.hashtag.api
-    
 def to_tag_comment(comment):
     """
     Replace hashtags with liks to tag reports.
@@ -129,13 +129,13 @@ def to_tag_comment(comment):
             comment = ""
         result = []
         comment = cgi.escape(comment)
-        words = comment.split()
+        words = clips.hashtag.api.to_words(comment)
         for word in words:
-            if clips.hashtag.api.is_tag(word):
-                result.append("<a href=\"/swags/tagged/as/%s/page/0\">%s</a>" % ("%23"+word[1:],word))
+            if clips.hashtag.api.is_tag(word["word"]):
+                result.append("<a href=\"/swags/tagged/as/%s/page/0\">%s</a>%s" % (urllib.quote(word["word"]),word["word"],word["post"]))
             else:
-                result.append(word)
-        return " ".join(result)
+                result.append(word["word"]+word["post"])
+        return "".join(result)
     return comment
 
 def is_liked(clip):
