@@ -240,12 +240,12 @@ function cancelCommentEditor(id) {
 	var originalComment = $('#clip-comment-view-' + id).text();
 	$('#clip-comment-edit-' + id).hide();
 	if (jQuery.trim(originalComment) != "") {
-		$('#clip-comment-view-' + id).html(originalComment);
+		$('#clip-comment-view-' + id).val(originalComment);
 	} else {
 		$('#clip-comment-view-' + id).html("");
 		$('#clip-comment-view-div-' + id).hide();
 	}
-	$('#comment-textarea-' + id).html(originalComment);
+	$('#comment-textarea-' + id).val(originalComment);
 	$('#clip-comment-view-' + id).fadeIn('fast');
 	// Show edit buttons.
 	showEditButtons(id, true);
@@ -254,10 +254,8 @@ function cancelCommentEditor(id) {
 function openCommentEditor(id) {
 	var originalComment = $('#clip-comment-view-' + id).text();
 	if (jQuery.trim(originalComment)!="") {
-		$('#comment-textarea-' + id).html(originalComment);
 		$('#comment-textarea-' + id).val(originalComment);
 	}else{
-		$('#comment-textarea-' + id).html("");
 		$('#comment-textarea-' + id).val("");
 	}
 	

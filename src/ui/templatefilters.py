@@ -116,8 +116,7 @@ def swag_slice(value,length):
     """
     Creates slice from passed text and add the ... html character.
     """
-    value = cgi.escape(value)
-    return __short_value(value,length,"&hellip;")
+    return __short_value(value,length,"...")
 
 import clips.hashtag.api
     
@@ -182,23 +181,23 @@ def share_text(clip):
     """
     if clip:
         if is_commented_clip(clip):
-            value = cgi.escape(clip.comment)
+            value = clip.comment
             return __short_value(value,100,"...")
         if is_text_clip(clip):
-            value = cgi.escape(clip.text)
+            value = clip.text
             value = __short_value(value,100,"...")
             return "\"%s\"" % (value)
         if is_page_clip(clip):
-            value = cgi.escape(clip.title)
+            value = clip.title
             value = __short_value(value,100,"...")
             return "check the page %s" % (value)
         if is_link_clip(clip):
-            value = cgi.escape(clip.link)
+            value = clip.link
             value = cut_url(value)
             value = __short_value(value,50,"...")
             return "nice link to %s" % (value)
         if is_image_clip(clip):
-            value = cgi.escape(clip.page)
+            value = clip.page
             value = cut_url(value)
             return "nice pic at %s" % (value)
     return "Something quoted on SWAGLR"
@@ -207,7 +206,6 @@ def __short_value(value,length,endchar):
     """
     Helper function to short values.
     """
-    value = cgi.escape(value)
     if len(value)>length:
         return "%s%s" % (value[:length],endchar) 
     else:

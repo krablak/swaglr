@@ -61,7 +61,7 @@ class Comment(webapp.RequestHandler):
         result = {}
         try:
             clip_id = int(self.request.get('id'))
-            comment = clips.validations.to_param(self.request.get('comment'))
+            comment = clips.validations.to_param(self.request.get('comment'),escape=False)
             clips.api.comment(clip_id, comment)
             clips.hashtag.api.update_hashtag_by_clip_id(clip_id)
             self.response.headers['Content-Type'] = 'text/html'
@@ -84,13 +84,13 @@ class Post(webapp.RequestHandler):
     def post(self):
         logging.debug("Posting clip start.")
         try:
-            page = clips.validations.to_param(self.request.get('page'))
-            link = clips.validations.to_param(self.request.get('link'))
+            page = clips.validations.to_param(self.request.get('page'),escape=False)
+            link = clips.validations.to_param(self.request.get('link'),escape=False)
             src = clips.validations.to_param(self.request.get('src'),escape=False)
-            text = clips.validations.to_param(self.request.get('text'))
+            text = clips.validations.to_param(self.request.get('text'),escape=False)
             type = clips.validations.to_param(self.request.get('type'))
-            comment = clips.validations.to_param(self.request.get('comment'))
-            title = clips.validations.to_param(self.request.get('title'))
+            comment = clips.validations.to_param(self.request.get('comment'),escape=False)
+            title = clips.validations.to_param(self.request.get('title'),escape=False)
             logging.debug("page:'%s' comment:'%s'" % (page, comment))
             logging.debug("link:'%s' src:'%s'" % (link, src)) 
             clips.api.store(type, page, link, src, text, comment, title)

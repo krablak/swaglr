@@ -70,7 +70,7 @@ def __validate_by_type(type,page,link,src,text,title):
     #Validate if required value is set
     validations.validate_str(page,"Page")
     #Convert optional title param
-    title = validations.to_param(title)
+    title = validations.to_param(title,escape=False)
     #Check values according to defined type
     if type == PAGE:
         pass
@@ -140,7 +140,7 @@ def comment(id=0,comment=""):
     #Validate clip id
     validations.validate_int(id, "Clip id")
     #Validate comment
-    comment = validations.to_param(comment,not_null=True)
+    comment = validations.to_param(comment,not_null=True,escape=False)
     #Get clip from datastore
     clip = Clip.getClip(id)
     #Check clip ownership

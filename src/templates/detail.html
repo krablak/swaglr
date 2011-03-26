@@ -17,19 +17,19 @@
 			<div class="imgbox" ><img src="/images/tiny/{{ clip.image.key.id }}.jpg"/></div>
 			{% endif %}
 			{% if clip|is_text_clip %}
-			<q cite="{{ clip.page }}"  >{{ clip.text|escape }}</q>
+			<q cite="{{ clip.page }}" >{{ clip.text }}</q>
 			{% endif %}
 		
 			{% if clip|is_page_clip %}
 				{% if clip|has_title %}
-					<q cite="{{ clip.page }}" onclick="closeClip({{ clip.key.id }});">{{ clip.title|escape}}</q>
+					<q cite="{{ clip.page }}" onclick="closeClip({{ clip.key.id }});">{{ clip.title}}</q>
 				{% else %}
-					<q cite="{{ clip.page }}" onclick="closeClip({{ clip.key.id }});">{{ clip.page|escape}}</q>
+					<q cite="{{ clip.page }}" onclick="closeClip({{ clip.key.id }});">{{ clip.page}}</q>
 				{% endif %}
 			{% endif %}
 		
 			{% if clip|is_link_clip %}
-			<q cite="{{ clip.link }}" >{{ clip.link|slice:"0:40"|escape }}...</q>
+			<q cite="{{ clip.link }}" >{{ clip.link }}</q>
 			{% endif %} 
 		{% endif %} 
 		
@@ -100,7 +100,7 @@
 			Liked by
 			<ul>
 			{% for liker in likers %}
-				<li><a href="/user/{{ liker.user.user_id }}/page/0" class="username light">{{ liker.user.nick|escape }}</a></li>
+				<li><a href="/user/{{ liker.user.user_id }}/page/0" class="username light">{{ liker.user.nick }}</a></li>
 			{% endfor %}
 			</ul>
 		</div>	
