@@ -231,9 +231,23 @@ function showCommentDialog(id) {
 			function(event) {
 				var updatedComment = $('#comment-textarea-' + event.data.elid)
 						.val();
+				beforeCommentedClip(event.data.elid, updatedComment );
 				sclipAPI.commentClip(event.data.elid, updatedComment,
 						onCommentedClip, onCommentedError);
 			});
+	//Bind handler for save and canceling comment dialog.
+	$('#comment-textarea-' + id).bind(
+			'keydown',
+			{
+				elid : id
+			}, 
+			function(event){
+				if(event.which == 13){
+					$('#comment-yes-'+event.data.elid).click();
+				}else if(event.which == 27){
+					$('#comment-no-'+event.data.elid).click();
+				}
+			});	
 	return false;
 }
 
@@ -248,6 +262,10 @@ function cancelCommentEditor(id) {
 	}
 	$('#comment-textarea-' + id).val(originalComment);
 	$('#clip-comment-view-' + id).fadeIn('fast');
+	//Un bind editor buttons
+	$('#comment-textarea-' + id).unbind('keyup');
+	$('#comment-yes-' + id).unbind('click');
+	$('#comment-no-' + id).unbind('click');	
 	// Show edit buttons.
 	showEditButtons(id, true);
 }
@@ -270,15 +288,16 @@ function openCommentEditor(id) {
 }
 
 /**
- * Function called after clip save. Stores updated text into clip comment area.
+ * Function called before the server returns response with server commend value. 
  */
-function onCommentedClip(id, comment) {
+function beforeCommentedClip(id, comment){
 	$('#clip-comment-edit-' + id).hide();
 	$('#clip-comment-view-' + id).html(comment);
 	$('#comment-textarea-' + id).html(comment);
 	if (jQuery.trim(comment)!="") {
 		$('#clip-comment-view-' + id).fadeIn('fast');
 		$('#comment-ico-' + id).show();
+		$('#comment-nib-view-' + id).show();
 		changeEditButtonText(id, "Edit comment");
 	} else {
 		$('#comment-nib-view-' + id).fadeOut('fast');
@@ -286,7 +305,15 @@ function onCommentedClip(id, comment) {
 		changeEditButtonText(id, "Add comment");
 	}
 	$('#edit-comment-btn-' + id).fadeIn('fast');
-	showEditButtons(id, true);
+	showEditButtons(id, true);	
+}
+
+/**
+ * Function called after clip save. Stores updated text into clip comment area.
+ */
+function onCommentedClip(id, comment) {
+	$('#clip-comment-view-' + id).html(comment);
+	$('#comment-textarea-' + id).html(comment);
 
 	EDITED_CLIP = null;
 }
@@ -338,7 +365,7 @@ function showEditButtons(id, show) {
  * Called in case of problem during comment save.
  */
 function onCommentedError() {
-	alert('Sorry but clip commenting ends with unexpected error.');
+	//alert('Sorry but clip commenting ends with unexpected error.');
 	EDITED_CLIP = null;
 }
 
