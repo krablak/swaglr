@@ -1,6 +1,6 @@
 {
   "name": "Based Swaglr clipper",
-  "version": "0.6",
+  "version": "0.7",
   "description": "Swag up the web pieces into Swaglr web.",
   "background_page": "background.html",
   "browser_action": {
@@ -18,6 +18,9 @@
   	"https://*/*",
   	"notifications"
   ],
+  "icons": { "16": "logo16.png",
+           "48": "logo48.png",
+          "128": "logo128.png" },
   "content_scripts" : [
     {
       "matches" : [

@@ -82,11 +82,17 @@ function contextOnClick(info, tab) {
                                                             var notification_text = type_text + ' was posted!';
                                                             //Show posted notification.
                                                             var post_not = webkitNotifications.createNotification(
-                                                              '', 
+                                                              'logo48.png', 
                                                               'Posted!',
                                                               notification_text
                                                             );
                                                             post_not.show();
+                                                            
+                                                            setTimeout(function() {
+                                                            	post_not.cancel();
+                                                	  			}, 
+                                                	  			3 * 1000);
+                                                            
                                                             console.log(post_not);
                                                             console.log("Request sent.");
                                     });
