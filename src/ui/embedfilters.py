@@ -35,5 +35,21 @@ def get_embed_content(clip):
         pass
     return clip.page
 
+def get_embed_preview_url(clip):
+    """
+    Returns clip embed preview url or None in case that preview image does not exist.
+    """
+    try:
+        #Check if url match to youtube video
+        if embed.youtube.is_embed_content(clip):
+            return embed.youtube.get_preview_url(clip)
+        if embed.vimeo.is_embed_content(clip):
+            return None
+    except:
+        pass
+    return None
+    
+
 register.filter(is_embed_content)
 register.filter(get_embed_content)
+register.filter(get_embed_preview_url)

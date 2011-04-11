@@ -32,10 +32,14 @@
 						{% endif %}
 						
 						{% if clip|is_page_clip %}
-							{% if clip|has_title %}
-								<q cite="{{ clip.page }}">{{ clip.title|swag_slice:40 }}</q>
+							{% if clip|is_embed_content and clip|get_embed_preview_url %}
+									<div class="imgbox crop"><img src="{{ clip|get_embed_preview_url }}"/></div>
 							{% else %}
-								<q cite="{{ clip.page }}">{{ clip.page|swag_slice:40 }}</q>
+								{% if clip|has_title %}
+									<q cite="{{ clip.page }}">{{ clip.title|swag_slice:40 }}</q>
+								{% else %}
+									<q cite="{{ clip.page }}">{{ clip.page|swag_slice:40 }}</q>
+								{% endif %}
 							{% endif %}
 						{% endif %}
 						
@@ -60,10 +64,14 @@
 							{% endif %}
 							
 							{% if clip|is_page_clip %}
-								{% if clip|has_title %}
-									<q cite="{{ clip.page }}" onclick="closeClip({{ clip.key.id }});">{{ clip.title}}</q>
+								{% if clip|is_embed_content and clip|get_embed_preview_url %}
+									<div class="imgbox" onclick="closeClip({{ clip.key.id }});" ><img src="{{ clip|get_embed_preview_url }}"/></div>
 								{% else %}
-									<q cite="{{ clip.page }}" onclick="closeClip({{ clip.key.id }});">{{ clip.page|swag_slice:40}}</q>
+									{% if clip|has_title %}
+										<q cite="{{ clip.page }}" onclick="closeClip({{ clip.key.id }});">{{ clip.title}}</q>
+									{% else %}
+										<q cite="{{ clip.page }}" onclick="closeClip({{ clip.key.id }});">{{ clip.page|swag_slice:40}}</q>
+									{% endif %}
 								{% endif %}
 							{% endif %}
 							
