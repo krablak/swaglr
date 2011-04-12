@@ -4,6 +4,10 @@
 {% if clip|is_image_clip %}
 	<meta property="og:image" content="http://{{ "HTTP_HOST"|os_environ }}/images/tiny/{{ clip.image.key.id }}.jpg"/>
 {% else %}
-	<meta property="og:image" content="http://{{ "HTTP_HOST"|os_environ }}/static/img/logo.png"/>
+	{% if clip|is_page_clip and clip|is_embed_content and clip|get_embed_preview_url %}
+		<meta property="og:image" content="{{ clip|get_embed_preview_url }}"/>
+	{% else %}
+		<meta property="og:image" content="http://{{ "HTTP_HOST"|os_environ }}/static/img/logo.png"/>
+	{% endif %}
 {% endif %}
 <meta property="og:site_name" content="Swaglr"/>
