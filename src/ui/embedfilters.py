@@ -48,8 +48,23 @@ def get_embed_preview_url(clip):
     except:
         pass
     return None
+
+def get_embed_preview_share_text(clip):
+    """
+    Returns clip embed share text or None in case that its not embed content.
+    """
+    try:
+        #Check if url match to youtube video
+        if embed.youtube.is_embed_content(clip):
+            return embed.youtube.get_embed_preview_share_text(clip)
+        if embed.vimeo.is_embed_content(clip):
+            return None
+    except:
+        pass
+    return None
     
 
 register.filter(is_embed_content)
 register.filter(get_embed_content)
 register.filter(get_embed_preview_url)
+register.filter(get_embed_preview_share_text)

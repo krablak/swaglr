@@ -12,9 +12,12 @@ import clips.api
 import clips.likes.api
 import clips.validations
 import clips.hashtag.api
+import ui.embedfilters
 import dbo
 import cgi
 import urllib
+
+
 register = webapp.template.create_template_register()
 
 
@@ -189,9 +192,16 @@ def share_text(clip):
             value = __short_value(value,100,"...")
             return "\"%s\"" % (value)
         if is_page_clip(clip):
-            value = clip.title
-            value = __short_value(value,100,"...")
-            return "check the page %s" % (value)
+            value = ""
+            if ui.embedfilters.is_embed_content(clip):
+                text = ui.embedfilters.get_embed_preview_share_text(clip)
+                value = clip.title
+                value = __short_value(value,100,"...")
+                return "%s %s" % (text,value)
+            else:
+                value = clip.title
+                value = __short_value(value,100,"...")
+                return "check the page %s" % (value)
         if is_link_clip(clip):
             value = clip.link
             value = cut_url(value)

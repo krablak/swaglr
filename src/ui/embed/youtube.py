@@ -39,6 +39,12 @@ def get_preview_url(clip):
             return "http://img.youtube.com/vi/%s/0.jpg" % (video_id)
     return None
 
+def get_embed_preview_share_text(clip):
+    """
+    Returns share text for embed youtube video.
+    """
+    return "Nice video at"
+
 def __get_video_id(url):
     """
     Helper method returns id of the youtube video from url.
