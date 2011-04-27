@@ -78,9 +78,10 @@
 						<li><a href="/user/{{ user_info.nick|escape }}/page/0">OWN</a></li>
 						<li><a  href="/swags/liked/by/{{ user_info.nick|escape }}/page/0">I LIKE</a></li>
 					{% endif %}
-				  	<li><a  href="/swags/popular/">POPULAR</a></li>
-						<li><a  href="/swags/all/page/0">ALL</a></li>
-						
+				  		<li><a href="/swags/popular/">POPULAR</a></li>
+						<li><a href="/swags/all/page/0">ALL</a></li>
+						<li><a href="http://blog.swaglr.com/">BLOG</a></li>
+						<li><a href="/about">ABOUT</a></li>						
 					</ul>
 					
 					<div id="user">
@@ -103,9 +104,8 @@
 
 		<div id="footerWrap" class="container_18">
 			<div id="footer" class="grid_3 push_15">				
-				<a href="#" onclick="showExtensionDialog();return false;" id="get-extension"><span class="iconic down">&nbsp;</span><b>Get browser extension</b></a>  <br/>
-				<a href="#" onclick="showLandingPageNoCookie();">About</a>&nbsp;
-				<a href="http://blog.swaglr.com" target="_blank">Blog</a>&nbsp;<a href="http://twitter.com/#!/swaglr" target="_blank">Twitter</a> <a href="http://www.facebook.com/pages/swaglrcom/161688560536365" target="_blank">Facebook</a><br/>
+				<a href="#" onclick="showExtensionDialog();return false;" id="get-extension"><span class="iconic down">&nbsp;</span><b>Get browser extension</b></a>  <br/>				
+&nbsp;<a href="http://twitter.com/#!/swaglr" target="_blank">Twitter</a> <a href="http://www.facebook.com/pages/swaglrcom/161688560536365" target="_blank">Facebook</a><br/>
         <a href="http://blog.swaglr.com/ask" target="_blank">Contact us</a>
 				
 			</div>
@@ -119,6 +119,5 @@
 			<a href="/static/crx/swaglr.xpi" id="get-extension=chrome"><img src="/static/img/firefox.png"/></a>
 		</div>	
 	{% endblock %}<!-- /block container -->
-	{% include "components/landingpage_dialog.html" %}
     </body>
 </html>

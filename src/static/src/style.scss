@@ -318,11 +318,14 @@ ul#navigation {
     display: block;       
     
     a {
-      font-size: 2em;
+      	font-size: 2em;
     	font-weight: bold;
 	    text-decoration:none;
 	    color: white;
     }   /*a*/
+   a:hover {
+   		color: $color2;
+   }
   } /*li*/
 }
 
@@ -615,7 +618,6 @@ ul.boxList li.open{
 	}
 }
 #landingpage {
-	display:none;
 	font-family: Tahoma;
 	h1{
 		margin: 20px 0 20px 0;

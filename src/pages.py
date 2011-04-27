@@ -180,7 +180,12 @@ class Share(webapp.RequestHandler):
         params['before_date'] = datetime.datetime.now() - datetime.timedelta(days=7)
         swg_util.render("templates/share.html", params, self.response)
 
-
+class About(webapp.RequestHandler):    
+    
+    @log_errors
+    def get(self):
+        params = ui.models.page_params(req=self.request)
+        swg_util.render("templates/about.html", params, self.response)
        
 class Images(webapp.RequestHandler):
     """
