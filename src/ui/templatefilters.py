@@ -136,7 +136,7 @@ def to_tag_comment(comment):
         for word in words:
             if clips.hashtag.api.is_tag(word["word"]):
                 escaped_word = cgi.escape(word["word"])
-                result.append("<a href=\"/swags/tagged/as/%s/page/0\">%s</a>%s" % (urllib.quote(escaped_word),escaped_word,word["post"]))
+                result.append("<a href=\"/swags/tagged/as/%s/page/0\">%s</a>%s" % (urllib.quote(escaped_word).lower(),escaped_word,word["post"]))
             else:
                 result.append(word["word"]+word["post"])
         return "".join(result)

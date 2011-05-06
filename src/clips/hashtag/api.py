@@ -62,7 +62,7 @@ def __get_tags(comment_words=""):
     if comment_words:
         for word in comment_words:
             if is_tag(word["word"]):
-                tags.append(word["word"])
+                tags.append(word["word"].lower())
     return tags
 
 

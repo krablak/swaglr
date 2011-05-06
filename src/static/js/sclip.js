@@ -22,7 +22,7 @@ function initUI() {
 function setAutocheck(){
 	if(PAGE_STATE.autocheck=="enabled"){
 		//Set automatic check of new content
-		setInterval(hasNew,45000);
+		setInterval(hasNew,30000);
 	}
 	
 }

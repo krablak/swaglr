@@ -33,8 +33,8 @@ application = webapp.WSGIApplication([('/', pages.MainPage),
                                       ('/api/clip/delete/', ajax.Delete),
                                       ('/api/user/switch_follow/', ajax.FollowSwitch),
                                       ('/api/user/has_new/', ajax.HasNew),
-                                      ('/images/(.*)/(.*)', pages.Images)
-                                     ]
+                                      ('/images/(.*)/(.*)', pages.Images)                                      
+                                     ] 
                                      , debug=True)
 
 webapp.template.register_template_library('ui.templatefilters')
