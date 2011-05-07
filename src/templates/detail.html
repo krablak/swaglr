@@ -47,7 +47,7 @@
 		</table>
 		{% if clip|is_commented_clip %}									
 			<div class="comment"> 
-				<p><a href="/user/{{ clip.user.user_id }}/page/0" class="username"> {{ clip.user.nick }}</a> says:</p>
+				<p><a href="/user/{{ clip.user.user_id }}/" class="username"> {{ clip.user.nick }}</a> says:</p>
 				<div class="comment-nib"></div>
 				<p id="clip-comment-view-{{ clip.key.id }}" class="text">{{  clip.comment|to_tag_comment|safe }}</p>
 				<span id="clip-comment-edit-{{ clip.key.id }}" style="display:none">
@@ -64,7 +64,7 @@
 			{% endif %}
 			</div>
 		{% else %}	
-			By <a href="/user/{{ clip.user.user_id }}/page/0" class="username">{{ clip.user.nick }}</a>
+			By <a href="/user/{{ clip.user.user_id }}/" class="username">{{ clip.user.nick }}</a>
 			<div id="clip-comment-view-div-{{ clip.key.id }}" class="comment">
 				<p style="display:none" id="clip-comment-view-{{ clip.key.id }}" class="text">{{  clip.comment|to_tag_comment|safe }}</p>
 				<span id="clip-comment-edit-{{ clip.key.id }}" style="display:none">
@@ -100,7 +100,7 @@
 			Liked by
 			<ul>
 			{% for liker in likers %}
-				<li><a href="/user/{{ liker.user.user_id }}/page/0" class="username light">{{ liker.user.nick }}</a></li>
+				<li><a href="/user/{{ liker.user.nick }}/" class="username light">{{ liker.user.nick }}</a></li>
 			{% endfor %}
 			</ul>
 		</div>	
@@ -115,6 +115,6 @@
 	
 
 </div>	<!-- /detail-->		                   
-<div class="report-name">Latest by&nbsp;<a href="/user/{{clip.user.nick}}/page/0" class="username">{{clip.user.nick}}</a></div>
+<div class="report-name">Latest by&nbsp;<a href="/user/{{clip.user.nick}}/" class="username">{{clip.user.nick}}</a></div>
 	
 {% endblock %}
