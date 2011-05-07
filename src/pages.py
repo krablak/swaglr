@@ -40,12 +40,12 @@ class MainPage(webapp.RequestHandler):
             page_clips = clips.follow.api.get_clips_by_followers(page_followers)
             if page_clips:
                 params['last_clip'] = page_clips[0]
-            params['day_clips'] = ui.models.to_day_clips(page_clips)
+            params['day_clips'] = ui.models.to_united_clips(page_clips)
             swg_util.render("templates/index.html", params, self.response)
         else:
             #Get paging content
             page_clips = ui.models.paging(params,Clip.getPagingQuery(),0,PAGING) 
-            params['day_clips'] = ui.models.to_day_clips(page_clips)
+            params['day_clips'] = ui.models.to_united_clips(page_clips)
             swg_util.render("templates/index.html", params, self.response)
             
             
@@ -59,7 +59,7 @@ class AllPage(webapp.RequestHandler):
         page = clips.validations.to_int_param(page_val)
         #Get paging content
         page_clips = ui.models.paging(params,Clip.getPagingQuery(),page,PAGING,url_prefix="swags/all") 
-        params['day_clips'] = ui.models.to_day_clips(page_clips)
+        params['day_clips'] = ui.models.to_united_clips(page_clips)
         swg_util.render("templates/all.html", params, self.response)        
       
         
@@ -115,7 +115,7 @@ class Paging(webapp.RequestHandler):
         else:
             #Get all events
             page_clips = ui.models.paging(params,Clip.getPagingQuery(),page,PAGING) 
-            params['day_clips'] = ui.models.to_day_clips(page_clips)
+            params['day_clips'] = ui.models.to_united_clips(page_clips)
             swg_util.render("templates/index.html", params, self.response)
 
 class User(webapp.RequestHandler):    
@@ -136,7 +136,7 @@ class User(webapp.RequestHandler):
             params['detail_user_info'] = user_info
             #Get all events
             page_clips = ui.models.paging(params,Clip.getPageByUserQuery(user_id=user_id),page,PAGING,user_info.nick)
-            params['day_clips'] = ui.models.to_day_clips(page_clips)
+            params['day_clips'] = ui.models.to_united_clips(page_clips)
             swg_util.render("templates/user.html", params, self.response)
         else:
             params = {}
@@ -161,7 +161,7 @@ class Detail(webapp.RequestHandler):
         clips_query = Clip.getPageByUserQuery(user_id=clip.user.user_id)
         if clips_query:
             page_clips = ui.models.paging(params,clips_query,0,PAGING,clip.user.nick)
-            params['day_clips'] = ui.models.to_day_clips(page_clips)
+            params['day_clips'] = ui.models.to_united_clips(page_clips)
         else:
             params['day_clips'] = []
         swg_util.render("templates/detail.html", params, self.response)
