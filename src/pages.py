@@ -14,6 +14,7 @@ import clips.api
 import clips.likes.api
 import ui.models
 from ui.error_logging import log_errors
+from ui.routing import fill_page_arg
 from dbo import *
 import dbo
 import logging
@@ -28,6 +29,7 @@ PAGING = 20
 class MainPage(webapp.RequestHandler):    
     
     @log_errors
+    @fill_page_arg
     def get(self):
         user = users.get_current_user()
         params = ui.models.page_params(req=self.request)
@@ -50,14 +52,16 @@ class MainPage(webapp.RequestHandler):
 class AllPage(webapp.RequestHandler):    
     
     @log_errors
+    @fill_page_arg
     def get(self,page_val):
         params = ui.models.page_params(req=self.request)
         #Read page value
         page = clips.validations.to_int_param(page_val)
         #Get paging content
-        page_clips = ui.models.paging(params,Clip.getPagingQuery(),page,PAGING,url_prefix="swags/all/page") 
+        page_clips = ui.models.paging(params,Clip.getPagingQuery(),page,PAGING,url_prefix="swags/all") 
         params['day_clips'] = ui.models.to_day_clips(page_clips)
-        swg_util.render("templates/all.html", params, self.response)
+        swg_util.render("templates/all.html", params, self.response)        
+      
         
 class Popular(webapp.RequestHandler):    
     
@@ -72,6 +76,7 @@ class Popular(webapp.RequestHandler):
 class LikedByCurrentUser(webapp.RequestHandler):    
     
     @log_errors
+    @fill_page_arg
     def get(self,user_id_val,page_val):
         params = ui.models.page_params(req=self.request)
         page_clips = []
@@ -83,7 +88,7 @@ class LikedByCurrentUser(webapp.RequestHandler):
             #Read page value
             page = clips.validations.to_int_param(page_val)
             #Get paged user likes
-            user_likes = ui.models.paging(params,clips.likes.api.get_liked_by_query(user_info),page,PAGING,url_prefix="swags/liked/by/%s/page" % (user_info.nick))
+            user_likes = ui.models.paging(params,clips.likes.api.get_liked_by_query(user_info),page,PAGING,url_prefix="swags/liked/by/%s" % (user_info.nick))
             #Get clips by user likes
             found_clips = clips.likes.api.get_clips_by_user_likes(user_likes)
             page_clips = ui.models.to_united_clips(found_clips)
@@ -93,6 +98,7 @@ class LikedByCurrentUser(webapp.RequestHandler):
 class Paging(webapp.RequestHandler):    
     
     @log_errors
+    @fill_page_arg
     def get(self,page_val):
         #Read page value
         page = clips.validations.to_int_param(page_val)
@@ -115,22 +121,27 @@ class Paging(webapp.RequestHandler):
 class User(webapp.RequestHandler):    
     
     @log_errors
+    @fill_page_arg
     def get(self,user_id_val,page_val):
         #Get id or nick from request
         user_id = clips.validations.to_param(user_id_val)
         #Load user info by given parameter
         user_info = ui.routing.user_id(user_id_val)
         if user_info:
-            user_id = user_info.user_id 
-        #Read page value
-        page = clips.validations.to_int_param(page_val)
-        params = ui.models.page_params(req=self.request)
-        #Set displayed user
-        params['detail_user_info'] = user_info
-        #Get all events
-        page_clips = ui.models.paging(params,Clip.getPageByUserQuery(user_id=user_id),page,PAGING,user_id)
-        params['day_clips'] = ui.models.to_day_clips(page_clips)
-        swg_util.render("templates/user.html", params, self.response)
+            user_id = user_info.user_id
+            #Read page value
+            page = clips.validations.to_int_param(page_val)
+            params = ui.models.page_params(req=self.request)
+            #Set displayed user
+            params['detail_user_info'] = user_info
+            #Get all events
+            page_clips = ui.models.paging(params,Clip.getPageByUserQuery(user_id=user_id),page,PAGING,user_info.nick)
+            params['day_clips'] = ui.models.to_day_clips(page_clips)
+            swg_util.render("templates/user.html", params, self.response)
+        else:
+            params = {}
+            params['day_clips'] = []
+            swg_util.render("templates/user.html", params, self.response)
         
 
         

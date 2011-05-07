@@ -96,18 +96,30 @@ def paging(params,clips,page,max_items,user_id=None,url_prefix=None):
     page_query = thirdparty.paging.PagedQuery(clips,max_items)
     if page>0 and page_query.has_page(page):
             if user_id:
-                params['prev'] = urllib.quote("/user/%s/page/%s" % (user_id,page-1))
+                #In case that previous page is the first page, remove the page numbering from url
+                if page == 1:
+                    params['prev'] = urllib.quote("/user/%s/" % (user_id))
+                else:
+                    params['prev'] = urllib.quote("/user/%s/page/%s" % (user_id,page-1))
             else:
                 if url_prefix:
-                    params['prev'] = urllib.quote("/%s/%s" % (url_prefix,page-1))
+                    #In case that previous page is the first page, remove the page numbering from url
+                    if page == 1:
+                        params['prev'] = urllib.quote("/%s/" % (url_prefix))
+                    else:
+                        params['prev'] = urllib.quote("/%s/page/%s" % (url_prefix,page-1))
                 else:
-                    params['prev'] = urllib.quote("/page/%s" % (page-1))
-    if  page_query.has_page(page+1):
+                    #In case that previous page is the first page, remove the page numbering from url                    
+                    if page == 1:
+                        params['prev'] = urllib.quote("/")
+                    else:
+                        params['prev'] = urllib.quote("/page/%s" % (page-1))
+    if  page_query.has_page(page+2):
             if user_id:
                 params['next'] = urllib.quote("/user/%s/page/%s" % (user_id,page+1))
             else:
                 if url_prefix:
-                    params['next'] = urllib.quote("/%s/%s" % (url_prefix,page+1))
+                    params['next'] = urllib.quote("/%s/page/%s" % (url_prefix,page+1))
                 else:
                     params['next'] = urllib.quote("/page/%s" % (page+1))
     if page>0:

@@ -16,6 +16,7 @@ import clips.api
 import clips.likes.api
 import ui.models
 from ui.error_logging import log_errors
+from ui.routing import fill_page_arg
 from dbo import *
 import dbo
 import logging
@@ -164,6 +165,7 @@ class TaggedClips(webapp.RequestHandler):
     
     @log_errors
     @handle_robots
+    @fill_page_arg
     def get(self,tag_val,page_val):
         #Read page value
         page = clips.validations.to_int_param(page_val)
@@ -174,7 +176,7 @@ class TaggedClips(webapp.RequestHandler):
         page_clips = []
         tags_query = clips.hashtag.api.get_tag_query(tag)
         if tags_query:
-            page_tags = ui.models.paging(params,tags_query,page,PAGING,url_prefix="swags/tagged/as/%s/page" % (tag))
+            page_tags = ui.models.paging(params,tags_query,page,PAGING,url_prefix="swags/tagged/as/%s" % (tag))
             page_clips = clips.hashtag.api.get_clips_by_tags(page_tags)
         if tag:
             params['tag'] = tag[1:]
