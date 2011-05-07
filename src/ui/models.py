@@ -11,63 +11,10 @@ import urllib
 from google.appengine.api import users
 from dbo import UserInfo, Clip
 
-UNKNOWN_DATE_TEXT = "in the year one";
-TODAY = "today"
-YESTERDAY = "yesterday"
-OLDER = "%s days ago"
-
-def to_day_clips(clips):
-    """
-    Creates page model from list of clips.
-    """
-    #Clips model divided to day based dict
-    days_model = {}
-    #Holds order of the days- instead of dict keys
-    days_order = []
-    if clips:
-        #Go over each clip and add it into days model according to humanized date.
-        for clip in clips:
-            #Create humanized date string
-            str_date = __to_humanized_date(clip.date)
-            #Check if model has record for this date.
-            if not days_model.has_key(str_date):
-                days_model[str_date] = []
-                #Add day into ordered list
-                days_order.insert(0,str_date)
-            #Append clip into model by date
-            days_model[str_date].append(clip)
-    #Covert to list- due to Django templates 0.96 which is not able to iterate over dict :(
-    for day in days_order:
-        if days_model[day]:
-            if not day==TODAY:
-                days_model[day][0].day = day
-    result_list = []
-    for day in days_order:
-        result_list = days_model[day] + result_list
-    return [{'day':"" , 'clips': result_list}]
 
 def to_united_clips(clips):
     return [{'day':"" , 'clips': clips}]
 
-def __to_humanized_date(robotic_date):
-    """
-    Converts date time into human readable string.
-    """
-    if date:
-        try:
-            delta = date(robotic_date.year, robotic_date.month, robotic_date.day) - date.today()
-            days = delta.days
-            if days == 0:
-                return TODAY
-            if days == -1:
-                return YESTERDAY
-            else:
-                return OLDER % (days*-1)
-        except AttributeError:
-            pass
-        except ValueError:
-            pass
-    return UNKNOWN_DATE_TEXT
 
 def page_params(req=None):
     """

@@ -110,7 +110,7 @@ class Paging(webapp.RequestHandler):
             follow_query = clips.follow.api.get_followers_query(user_info)
             page_followers = ui.models.paging(params,follow_query,page,PAGING)
             page_clips = clips.follow.api.get_clips_by_followers(page_followers)
-            params['day_clips'] = ui.models.to_day_clips(page_clips)
+            params['day_clips'] = ui.models.to_united_clips(page_clips)
             swg_util.render("templates/index.html", params, self.response)
         else:
             #Get all events

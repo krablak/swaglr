@@ -180,7 +180,7 @@ class TaggedClips(webapp.RequestHandler):
             page_clips = clips.hashtag.api.get_clips_by_tags(page_tags)
         if tag:
             params['tag'] = tag[1:]
-        params['day_clips'] = ui.models.to_day_clips(page_clips)
+        params['day_clips'] = ui.models.to_united_clips(page_clips)
         swg_util.render("templates/tag_clips.html", params, self.response)      
 
         
